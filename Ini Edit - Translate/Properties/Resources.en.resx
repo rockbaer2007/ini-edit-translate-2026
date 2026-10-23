@@ -262,4 +262,5 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="label7" xml:space="preserve"><value>Desc_FRA</value></data>
   <data name="label8" xml:space="preserve"><value>Desc_POL</value></data>
   <data name="objekticons" xml:space="preserve"><value></value></data>
+  <data name="tableFilter" xml:space="preserve"><value>Table export (*.csv)|*.csv</value></data>
 </root>

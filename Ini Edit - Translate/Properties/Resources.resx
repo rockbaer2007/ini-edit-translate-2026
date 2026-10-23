@@ -866,4 +866,5 @@
 
 Entwickelt von Uwe Grimm / UGSo Software.
 Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></data>
+  <data name="tableFilter" xml:space="preserve"><value>Tabellenexport (*.csv)|*.csv</value></data>
 </root>

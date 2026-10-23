@@ -1662,7 +1662,7 @@ namespace Ini_Edit___Translate
             {
                 SaveFileDialog sfd = new SaveFileDialog
                 {
-                    Filter = "Excel CSV Documents (*.csv)|*.csv"
+                    Filter = Ui.Text("tableFilter")
                 };
                 string result = Path.GetFileNameWithoutExtension(Properties.Settings.Default.pathfile);
                 sfd.InitialDirectory = Path.GetDirectoryName(Properties.Settings.Default.pathfile); ;
@@ -1676,7 +1676,7 @@ namespace Ini_Edit___Translate
             {
                 SaveFileDialog sfd = new SaveFileDialog
                 {
-                    Filter = "Excel CSV Documents (*.csv)|*.csv"
+                    Filter = Ui.Text("tableFilter")
                 };
                 string result = Path.GetFileNameWithoutExtension(Properties.Settings.Default.pathfile);
                 sfd.InitialDirectory = Path.GetDirectoryName(Properties.Settings.Default.pathfile); ;

@@ -262,4 +262,5 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="label7" xml:space="preserve"><value>Desc_FRA</value></data>
   <data name="label8" xml:space="preserve"><value>Desc_POL</value></data>
   <data name="objekticons" xml:space="preserve"><value></value></data>
+  <data name="tableFilter" xml:space="preserve"><value>Export de tableaux (*.csv)|*.csv</value></data>
 </root>

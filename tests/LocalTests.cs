@@ -216,6 +216,7 @@ internal static class LocalTests
                     Assert(Ui.Text("openAiTitle").Length > 0 && Ui.Text("saveAction").Length > 0, "missing runtime label");
                     Assert(!Ui.Format("missingPair", "Name_GER", "Desc_GER").Contains("{0}"), "unexpanded placeholder");
                     Assert(!Ui.Text("tssl2").Contains("Google"), "obsolete provider status");
+                    Assert(Ui.Text("tableFilter").EndsWith("|*.csv"), "invalid localized export filter");
                 });
                 Test("editor labels and update removal " + language, () =>
                 {
