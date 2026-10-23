@@ -8,6 +8,8 @@ Windows-Anwendung für EEP-Modell-INI-Dateien und `Installation.eep`, entwickelt
 von Uwe Grimm / UGSo Software. Die 2026-Fassung führt den bisherigen INI-Editor
 mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 
+![Deutsche Programmoberfläche ohne private Inhalte](docs/images/editor-de.png)
+
 ## Funktionen
 
 - Modellnamen und Beschreibungen für Englisch, Deutsch, Französisch und Polnisch bearbeiten.

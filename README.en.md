@@ -5,6 +5,8 @@
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
 developed by Uwe Grimm / UGSo Software. Version **2.1.35.0**.
 
+![English application interface without personal data](docs/images/editor-en.png)
+
 ## Features
 
 - Edit model names and descriptions in English, German, French and Polish.
