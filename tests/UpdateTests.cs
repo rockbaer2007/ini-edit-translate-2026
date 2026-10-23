@@ -29,7 +29,7 @@ internal static class UpdateTests
         internal Func<HttpRequestMessage, CancellationToken, Task<HttpResponseMessage>> Reply;
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancel) { return Reply(request, cancel); }
     }
-    private static string Metadata(string version = "2.1.37")
+    private static string Metadata(string version = "2.1.38")
     {
         string prefix = "https://github.com/" + GithubUpdateClient.Repository + "/releases/download/v" + version + "/";
         return new JObject { ["tag_name"] = "v" + version, ["draft"] = false, ["prerelease"] = false, ["body"] = "Release notes",
@@ -74,6 +74,54 @@ internal static class UpdateTests
         Assert(File.ReadAllText(Path.Combine(job.InstallDirectory, UpdateCore.MainExe)) == "OLD MAIN");
         Assert(File.ReadAllText(Path.Combine(job.InstallDirectory, "help", "IET2.FDB")) == "USER DATABASE");
     }
+    private static void ProcessChecks()
+    {
+        foreach (string architecture in Environment.Is64BitOperatingSystem ? new[] { "x86", "x64" } : new[] { "x86" })
+        {
+            string directory = Folder();
+            string executable = Path.Combine(directory, UpdateCore.MainExe);
+            using (var compiler = new Microsoft.CSharp.CSharpCodeProvider())
+            {
+                var options = new System.CodeDom.Compiler.CompilerParameters
+                { GenerateExecutable = true, OutputAssembly = executable, CompilerOptions = "/platform:" + architecture };
+                var result = compiler.CompileAssemblyFromSource(options,
+                    "class Fixture { static void Main(string[] args) { System.Threading.Thread.Sleep(int.Parse(args[0])); } }");
+                Assert(!result.Errors.HasErrors);
+            }
+            Func<int, Process> start = milliseconds => Process.Start(new ProcessStartInfo(executable, milliseconds.ToString())
+                { UseShellExecute = false, CreateNoWindow = true });
+            Test("wait for real editor process across bitness " + architecture, () =>
+            {
+                using (var process = start(600))
+                {
+                    var job = new UpdateJob { InstallDirectory = directory, ProcessId = process.Id,
+                        ProcessStartTicks = process.StartTime.ToUniversalTime().Ticks };
+                    EditorProcess.WaitForExit(job, 10000);
+                    Assert(process.WaitForExit(1000));
+                    EditorProcess.WaitForExit(job, 1000); // Already exited, no module reads.
+                }
+            });
+            Test("reject identity mismatch and timeout before installation " + architecture, () =>
+            {
+                using (var process = start(30000))
+                {
+                    try
+                    {
+                        var job = new UpdateJob { InstallDirectory = directory, ProcessId = process.Id,
+                            ProcessStartTicks = process.StartTime.ToUniversalTime().Ticks + 1 };
+                        Fails(() => EditorProcess.WaitForExit(job, 5));
+                        job.ProcessStartTicks--;
+                        job.InstallDirectory = Folder();
+                        Fails(() => EditorProcess.WaitForExit(job, 5));
+                        job.InstallDirectory = directory;
+                        Fails(() => EditorProcess.WaitForExit(job, 5));
+                        Assert(!process.HasExited);
+                    }
+                    finally { if (!process.HasExited) { process.Kill(); process.WaitForExit(); } }
+                }
+            });
+        }
+    }
     [STAThread]
     private static int Main(string[] args)
     {
@@ -81,10 +129,11 @@ internal static class UpdateTests
         runtime = Path.GetFullPath(args[0]);
         try
         {
+            ProcessChecks();
             Test("public GitHub release and semantic version", () => { using (var client = Client(Metadata())) {
                 var release = client.Latest(CancellationToken.None).GetAwaiter().GetResult();
-                Assert(release.Version == new Version(2,1,37,0)); Assert(release.Notes == "Release notes"); } });
-            Test("old version is not newer", () => Assert(new Version(UpdateCore.Normalize("2.1.9")) < new Version(UpdateCore.Normalize("2.1.37"))));
+                Assert(release.Version == new Version(2,1,38,0)); Assert(release.Notes == "Release notes"); } });
+            Test("old version is not newer", () => Assert(new Version(UpdateCore.Normalize("2.1.9")) < new Version(UpdateCore.Normalize("2.1.38"))));
             Test("reject prerelease", () => { using(var client=Client(Metadata().Replace("\"prerelease\": false", "\"prerelease\": true"))) Fails(()=>client.Latest(CancellationToken.None).GetAwaiter().GetResult()); });
             Test("reject external asset URL", () => { using(var client=Client(Metadata().Replace("https://github.com/", "https://example.invalid/"))) Fails(()=>client.Latest(CancellationToken.None).GetAwaiter().GetResult()); });
             Test("reject HTTP and credentials in URLs", () => { Assert(!GithubUpdateClient.Trusted(new Uri("http://github.com/x"))); Assert(!GithubUpdateClient.Trusted(new Uri("https://user@github.com/x"))); });

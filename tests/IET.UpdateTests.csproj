@@ -12,6 +12,7 @@
     <Reference Include="Newtonsoft.Json"><HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath></Reference>
     <ProjectReference Include="..\Ini Edit - Translate\Ini Edit - Translate.csproj"><Name>INI Edit Translate 2026</Name></ProjectReference>
     <Compile Include="UpdateTests.cs" />
+    <Compile Include="..\updater\EditorProcess.cs"><Link>EditorProcess.cs</Link></Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

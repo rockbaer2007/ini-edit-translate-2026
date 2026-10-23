@@ -22,12 +22,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.37.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.38.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.37 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.37/INI-Edit-Translate-2026-v2.1.37-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.37)
+[Windows-ZIP v2.1.38 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.38/INI-Edit-Translate-2026-v2.1.38-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.38)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
@@ -86,7 +86,12 @@ versucht; ein Bericht nennt das Ergebnis. Sicherungen und Berichte liegen unter
 
 Der Updater benötigt keine Serverzugangsdaten. Prüfsummen dienen der Integritätsprüfung;
 es ist keine zusätzliche digitale Paketsignatur implementiert.
-32 isolierte Updateprüfungen decken Download, Abbruch, Paketpfade, Datenerhalt,
+2.1.38 korrigiert die Prozessübergabe beim Update, auch zwischen x86 und x64.
+Falls der alte 2.1.37-Updater vor der Installation scheitert, das vollständige
+2.1.38-ZIP zunächst in einen neuen Ordner entpacken. Eigene Daten vorher sichern;
+vorhandene Datenbanken und Wörterbücher nicht durch Paketdateien ersetzen.
+
+36 isolierte Updateprüfungen decken Download, Abbruch, Paketpfade, Datenerhalt,
 gesperrte Dateien und Rücknahme nach einem teilweisen Schreibfehler ab.
 
 ## Zweites Programm: Info_trans

@@ -3,7 +3,7 @@
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.37.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.38.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -23,7 +23,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.37](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.37/INI-Edit-Translate-2026-v2.1.37-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.37)
+[Download Windows ZIP v2.1.38](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.38/INI-Edit-Translate-2026-v2.1.38-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.38)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.
@@ -70,7 +70,11 @@ files already replaced and records the result. Backups and reports are stored un
 `%LOCALAPPDATA%/UGSo/IET2026/updates/<identifier>/`.
 
 No server credentials are needed. Checksums verify integrity; no additional digital
-package signature is implemented. 32 isolated update checks cover downloads,
+package signature is implemented. Version 2.1.38 fixes the process handoff,
+including x86/x64 transitions. If the old 2.1.37 updater fails before installation,
+extract the complete 2.1.38 ZIP into a new folder first. Back up your data;
+do not overwrite existing databases or dictionaries with package files.
+36 isolated update checks cover downloads,
 cancellation, package paths, retained data, locked files and rollback after partial writes.
 
 ## Second program: Info_trans

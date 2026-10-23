@@ -35,10 +35,10 @@ using System.Runtime.CompilerServices;
 // Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.37.0")]
-[assembly: AssemblyFileVersion("2.1.37.0")]
+[assembly: AssemblyVersion("2.1.38.0")]
+[assembly: AssemblyFileVersion("2.1.38.0")]
 [assembly: NeutralResourcesLanguage("")]
 
 
-[assembly: AssemblyInformationalVersion("2.1.37-openai")]
+[assembly: AssemblyInformationalVersion("2.1.38-openai")]
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("IET.UpdateTests")]

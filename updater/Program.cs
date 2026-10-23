@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using Iet.Update;
-[assembly: System.Reflection.AssemblyVersion("2.1.37.0")]
-[assembly: System.Reflection.AssemblyFileVersion("2.1.37.0")]
+[assembly: System.Reflection.AssemblyVersion("2.1.38.0")]
+[assembly: System.Reflection.AssemblyFileVersion("2.1.38.0")]
 [assembly: System.Reflection.AssemblyCompany("UGSo-Software by UG1")]
 
 internal static class Program
@@ -19,18 +19,7 @@ internal static class Program
         try
         {
             job = UpdateCore.ReadJob(args[0]);
-            Process running = null;
-            try { running = Process.GetProcessById(job.ProcessId); } catch (ArgumentException) { }
-            if (running != null)
-            {
-                using (running)
-                {
-                    if (running.StartTime.ToUniversalTime().Ticks != job.ProcessStartTicks ||
-                        !string.Equals(running.MainModule.FileName, UpdateCore.Target(job.InstallDirectory, UpdateCore.MainExe), StringComparison.OrdinalIgnoreCase))
-                        throw new IOException("Process identity differs.");
-                    if (!running.WaitForExit(120000)) throw new IOException("Application is still running.");
-                }
-            }
+            EditorProcess.WaitForExit(job);
             UpdateCore.Install(job);
             MessageBox.Show(Text(job.Language, "Update installiert. Die Anwendung wird neu gestartet.",
                 "Update installed. The application will restart.", "Mise à jour installée. Le programme va redémarrer."),

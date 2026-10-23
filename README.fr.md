@@ -3,7 +3,7 @@
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.37.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.38.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -24,7 +24,7 @@ Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traductio
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.37](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.37/INI-Edit-Translate-2026-v2.1.37-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.37)
+[Télécharger le ZIP Windows v2.1.38](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.38/INI-Edit-Translate-2026-v2.1.38-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.38)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.
@@ -74,7 +74,11 @@ rapports : `%LOCALAPPDATA%/UGSo/IET2026/updates/<identifiant>/`.
 
 Aucun identifiant de serveur nécessaire. Les sommes de contrôle vérifient l’intégrité ;
 aucune signature numérique de paquet supplémentaire n’est implémentée.
-32 tests isolés couvrent le téléchargement, l’annulation, les chemins, la conservation
+La version 2.1.38 corrige le passage au programme de mise à jour, y compris entre
+x86 et x64. Si l’ancien programme 2.1.37 échoue avant l’installation, extraire
+d’abord le ZIP 2.1.38 complet dans un nouveau dossier. Sauvegarder ses données ;
+ne pas remplacer les bases et dictionnaires existants par ceux du paquet.
+36 tests isolés couvrent le téléchargement, l’annulation, les chemins, la conservation
 des données, les fichiers verrouillés et la restauration après une écriture partielle.
 
 ## Second programme : Info_trans

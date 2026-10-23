@@ -15,7 +15,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.IO.Compression" /><Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" /><Reference Include="System.Windows.Forms" />
-    <Compile Include="UpdateCore.cs" /><Compile Include="Program.cs" />
+    <Compile Include="UpdateCore.cs" /><Compile Include="Program.cs" /><Compile Include="EditorProcess.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
