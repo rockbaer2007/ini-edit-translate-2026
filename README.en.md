@@ -21,6 +21,14 @@ developed by Uwe Grimm / UGSo Software. Version **2.1.35.0**.
 **Updates are currently disabled**, including the automatic connection and update menu.
 Google, LEO, Linguee and DeepL are no longer translation providers.
 
+## Download
+
+[Download Windows ZIP v2.1.35](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.35/INI-Edit-Translate-2026-v2.1.35-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.35)
+
+Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
+and .NET Framework 4.8; Visual Studio is only needed to build from source.
+Keep DLLs and language folders together. No installer is required.
+
 ## Build and use
 
 Windows 11, Visual Studio 2026, the .NET desktop workload and .NET Framework 4.8 Developer Pack.

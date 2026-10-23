@@ -22,6 +22,14 @@
 **La mise à jour est désactivée**, aussi bien la connexion automatique que le menu.
 Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traduction.
 
+## Téléchargement
+
+[Télécharger le ZIP Windows v2.1.35](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.35/INI-Edit-Translate-2026-v2.1.35-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.35)
+
+Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
+.NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.
+Conserver les DLL et dossiers de langues ensemble. Aucun installateur nécessaire.
+
 ## Compilation et utilisation
 
 Windows 11, Visual Studio 2026, développement de bureau .NET et Developer Pack .NET Framework 4.8.

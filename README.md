@@ -26,6 +26,14 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 automatische Updateverbindung und keinen Update-Menüpunkt. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
+## Download
+
+[Windows-ZIP v2.1.35 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.35/INI-Edit-Translate-2026-v2.1.35-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.35)
+
+ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
+.NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
+DLLs und Sprachordner zusammen lassen. Das Paket benötigt keinen Installer.
+
 ## Voraussetzungen und Build
 
 - Windows 11 und .NET Framework 4.8.
