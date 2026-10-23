@@ -143,7 +143,7 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Cette entrée concerne uniquement l’édition 2026.
-Les anciennes inscriptions restent inchangées.</value>
+Les entrées des autres versions restent inchangées.</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Chemin du logiciel enregistré</value>

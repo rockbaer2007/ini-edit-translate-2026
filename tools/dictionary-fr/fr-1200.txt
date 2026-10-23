@@ -1,0 +1,400 @@
+moyens de chargement
+aire de transbordement
+arrimage du chargement
+embrayage multidisque
+zones rurales
+machines agricoles
+chemin de fer agricole
+longueur hors tampons
+longueur hors tampons
+longueur hors tampons
+corps cylindrique de chaudière
+tender à grande autonomie
+trou oblong de fixation
+refoulement lent vers la bosse
+pancarte de limitation de vitesse
+signal de limitation de vitesse
+zone de ralentissement
+annonce de ralentissement
+marche à vitesse réduite des trains
+marche à vitesse réduite
+sens longitudinal
+côté longitudinal
+émetteur à ondes longues
+émission de bruit
+protection contre le bruit
+éclisse
+cahier des charges fonctionnel
+limite de charge
+essieu porteur
+essieu porteur
+table de roulement
+cercle de roulement
+diamètre du cercle de roulement
+essieu porteur arrière
+organes de roulement
+pancartes de cloche et de sifflement
+pancarte de sonnerie
+cloche
+durée de vie
+dépôt de conteneurs vides
+marche à vide
+marche haut-le-pied ou à vide
+locomotive haut-le-pied [explication source tronquée]
+locomotive haut-le-pied
+wagon vide
+voie de garage des wagons vides
+roue pleine allégée
+caractéristiques
+gamme de services
+indication d'itinéraire
+exploitation supervisée
+chef de service
+responsable de division
+fonction directrice
+contre-rail
+système de gestion de flotte
+direction, commande
+touret de câble
+centre de routage
+comité de pilotage
+gabarit de libre passage
+gabarit du rail conducteur
+gabarit de dégagement
+signal lumineux
+signal lumineux électrique
+priorité aux feux de circulation
+inversion des feux selon le sens de marche
+conditions de livraison
+délai de livraison
+voiture-couchettes
+point de changement de ligne
+contrôle continu de la marche des trains
+système de contrôle continu des trains
+aiguillage à gauche
+fil multibrin
+canal logique
+locomotive à châssis rigide
+voies de remisage des locomotives
+ligne secondaire
+ligne secondaire
+locomotive de ligne secondaire
+locomotive de ligne secondaire
+conducteur de locomotive
+conducteur de locomotive
+caisse de locomotive
+locomotive
+chaudière de locomotive
+voie d'attente des locomotives
+changement de locomotive
+conducteur de locomotive de manœuvre
+remise à locomotives
+remise à locomotives
+lorry, wagonnet
+temps de desserrage
+réservoir d'air
+réservoir d'air
+conteneur aérien
+ventilateur, extracteur
+ventilateur
+refroidissement par air
+pompe à air
+pompe à air
+étude de faisabilité
+train à sustentation magnétique
+champ magnétique
+système à sustentation magnétique à grande vitesse
+chemin de fer à sustentation magnétique
+voiture pour le personnel
+secteur Agriculture, Sylviculture et Biens de consommation [ligne source à vérifier]
+secteur Matériaux de construction et Élimination des déchets
+secteur Chimie, Pétrole et Engrais [ligne source à vérifier]
+secteur Métallurgie et Mines
+secteur de marché
+masse électrique
+masse électrique
+contact de masse
+fret
+marchandises en vrac
+réduction de masse
+inertie
+roue pleine
+échelle
+type de mât
+chemin de fer d'approvisionnement
+traction multiple
+traction multiple
+véhicules multisystèmes
+locomotive bifréquence
+locomotive multisystème
+locomotive pour trafic mixte
+locomotive polyvalente
+jalon
+avis, opinion
+délai de signalisation de réponse
+système de transmission des messages
+pancarte de point d'arrêt
+adaptateur de liaison de données de mesure
+unité d'acquisition de données
+laiton
+voiture d'essais
+voiture de mesure
+commande par microprocesseur
+pourcentage minimal de masse freinée
+rayon minimal
+quai central
+moyenne pression de chaudière
+moyenne pression
+accès central
+accès central
+rail central conducteur
+moteur central
+voiture intermédiaire
+mobilité
+modèle
+modernisation, rénovation
+conception modulaire
+méthode des moments
+roue monobloc
+monorail
+assemblage
+moteur
+draisine motorisée
+voiture motrice
+moyeu
+réplique
+demande
+essieu porteur arrière
+essieu porteur arrière
+trafic de télécommunications
+assurer la pousse
+cesser la pousse
+pousse
+liaison rapide de nuit
+roulement à aiguilles
+essieu sur roulements à aiguilles
+transport collectif local
+système de métro léger
+voiture de trafic local
+train de voyageurs local
+vapeur saturée
+vapeur saturée
+ligne secondaire
+ligne secondaire
+mât de signalisation
+heure creuse
+technique pendulaire
+pancarte de fin de déclivité
+indicateur de changement de déclivité
+comptage des rivets, souci excessif du détail
+puissance nominale
+réseau
+gestionnaire de réseau
+performance du réseau
+refabrication
+maillechort
+non valable
+radio mobile privée [anglais source contradictoire : Public Mobile Radio]
+priorité sans préemption
+wagon à bords bas
+wagon à bords bas
+basse pression de chaudière
+basse pression
+plancher bas
+section à plancher bas
+wagon surbaissé
+tramway à plancher bas
+voiture de tramway à plancher bas
+basse tension
+rail à profil bas
+rivet
+radio mobile privée, PMR
+voie à écartement normal
+voie à écartement normal de 1 435 mm
+période de trafic normal
+normalisation
+frein d'urgence
+freinage d'urgence
+gestion des situations d'urgence
+responsable des situations d'urgence
+mode dégradé de retour
+superstructure de la voie
+réchauffeur d'eau d'alimentation à surface
+réchauffeur d'eau d'alimentation
+caténaire
+fil de contact, caténaire
+poteau de caténaire
+avarie de caténaire
+harmonique
+trolleybus
+construction à châssis ouvert
+wagon tombereau
+wagon tombereau
+transports publics locaux de voyageurs
+réseau téléphonique public commuté
+sans retour automatique à la position initiale
+chauffe au fioul
+chauffe au fioul
+opérateurs
+analyse opérationnelle
+traitement local des commandes
+système de localisation
+ensemble, lot
+lot
+colis postaux
+colis postaux
+palette
+sortie papier
+partiel, fractionnaire
+navetteur
+planification des équipages
+exploitation automatique sans personnel à bord
+transport de voyageurs
+loi sur le transport de voyageurs
+transport de voyageurs à longue distance
+transport collectif de voyageurs
+transport de voyageurs
+voiture de voyageurs
+voiture de voyageurs
+train de voyageurs
+train de voyageurs
+locomotive pour trains de voyageurs [explication source tronquée]
+locomotive pour trains express [fragment de la ligne précédente]
+locomotive-tender pour trains de voyageurs
+sifflet
+pancarte de sifflement
+lever la lame du chasse-neige
+abaisser la lame du chasse-neige
+bâche
+couverture bâchée
+wagon bâché
+trains avec arrêts réguliers
+plate-forme de la voie
+logiciel de planification
+carte de circuit imprimé
+plate-forme
+espace nécessaire
+réservation de place
+effet de polissage
+portique de manutention
+voiture postale
+heurtoir
+heurtoir
+centre de presse
+panneau aggloméré
+pression primaire
+circuit primaire
+priorité
+classe de priorité
+chemin de fer privé
+embranchement particulier
+wagon de particulier
+marche d'essai
+marche d'essai
+gamme de produits
+production
+service d'exploitation
+site de production
+nom du produit
+offensive commerciale sur les produits
+présentation des produits
+gamme de produits
+procès-verbal
+conduite de processus
+système de contrôle de processus
+assistance aux processus
+centre d'essais
+dispositif soumis à l'essai
+série d'essais
+précision des essais
+tampon
+tampon
+batterie de secours
+dépassement de tampon
+gestion des tampons
+pompe
+moteur de pompe
+alimentation du moteur de pompe
+contrôle ponctuel de la marche des trains
+à l'heure, ponctuel
+taux de ponctualité
+processus ponctuel
+contrôle qualité
+assurance qualité
+quantification
+accélération latérale
+signal d'accélération latérale
+contrôle de dynamique latérale
+direction transversale
+roue
+frein de roue
+disque de frein de roue
+capteur de vitesse de roue
+absorbeur acoustique radial
+contact de roue
+charge sur roue [anglais source : charge par essieu]
+pesage des charges par essieu
+contre-rails d'aiguillage
+contre-rail
+matériau de roue
+bandage de roue
+bandage de roue
+essieu monté
+essieu monté [anglais source mêlant bogie et essieu monté]
+charge à l'essieu
+installation de changement d'essieux
+axe d'essieu
+bruit de roulement
+absorbeur acoustique de roue
+disque de roue
+frotteur de contact sur roue
+portée de roue
+outillage pour roues [anglais source contradictoire : matériaux de roues]
+châssis
+châssis
+alignement des trames
+données de trame
+désalignement des trames
+motif de synchronisation des trames
+perte de trame
+bord, cadre
+signaux de manœuvre et d'arrêt
+gare de triage
+gare de triage
+gare de triage
+gare de triage et de formation des trains [ligne source à vérifier]
+mouvements de manœuvre
+manœuvrer
+manœuvre au lancer
+agent de manœuvre
+agent de manœuvre, d'attelage et d'enrayage
+mouvement de manœuvre
+autorisation de manœuvre
+liaison radio de manœuvre
+voie de garage
+voie de triage
+signal d'arrêt de manœuvre [anglais source différent : signal d'appel]
+pancarte de limite de manœuvre
+locomotive de manœuvre
+locomotive de manœuvre
+point de manœuvre
+signal de manœuvre
+signal de manœuvre
+espace fumeurs
+générateur de fumée
+boîte à fumée
+tube à fumée de chaudière
+grand tube à fumée
+surchauffeur de boîte à fumée
+signal d'évacuation
+référence
+méthode du champ de référence
+type normalisé
+construction standard
+sens normal de circulation
+qualité de régulation
+écartement normal
+écartement normal
+lignes régionales secondaires
+rame automotrice régionale
+trains régionaux

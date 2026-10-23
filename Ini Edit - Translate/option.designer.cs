@@ -151,7 +151,7 @@
             // button3
             // 
             resources.ApplyResources(this.button3, "button3");
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.button3.ForeColor = System.Drawing.Color.Green;
             this.button3.Name = "button3";
             this.toolTip1.SetToolTip(this.button3, resources.GetString("button3.ToolTip"));
             this.button3.UseVisualStyleBackColor = true;
@@ -159,7 +159,7 @@
             // 
             // label2
             // 
-            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.ForeColor = System.Drawing.Color.Green;
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
@@ -201,11 +201,12 @@
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
+            // 
             // option
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.CancelButton = this.button2;
             this.ControlBox = false;
             this.Controls.Add(this.checkBox2);

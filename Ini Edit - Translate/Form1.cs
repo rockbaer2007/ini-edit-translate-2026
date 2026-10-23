@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Ini_Edit___Translate
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         private IniFile SettingsJB;
         private string text;
@@ -37,7 +37,6 @@ namespace Ini_Edit___Translate
         private readonly string str_pol = "_POL";
         private IniFile SettingsJB66;
         private string beta21;
-        private readonly bool b;
         private IniFile SettingsJB67;
         private decimal upc;
         private string directoryPath;
@@ -57,6 +56,7 @@ namespace Ini_Edit___Translate
         public Form1()
         {
             InitializeComponent();
+            InitializeGithubUpdate();
 
             dataMA.AllowUserToAddRows = false;
             dataSF.AllowUserToAddRows = false;
@@ -68,7 +68,7 @@ namespace Ini_Edit___Translate
             panel5.Visible = false;
             label76.Visible = false;
             numericUpDown1.Visible = false;
-            menuStrip1.BackColor = Color.NavajoWhite;
+            menuStrip1.BackColor = Color.Lime;
             if (Properties.Settings.Default.read_only == true)
             {
                 radioButton1.Checked = true;
@@ -102,9 +102,11 @@ namespace Ini_Edit___Translate
 
         public class TestColorTable : ProfessionalColorTable
         {
-            private readonly Color culoare = Color.DarkOrange;
+            private readonly Color culoare = Color.Lime;
             private readonly Color culoare1 = Color.Black;
-            private readonly Color culoare2 = Color.AntiqueWhite;
+            private readonly Color culoare2 = Color.Lime;
+            public override Color MenuStripGradientBegin => culoare;
+            public override Color MenuStripGradientEnd => culoare;
             public override Color MenuItemSelected => culoare2;
             public override Color MenuItemBorder => culoare1;
             public override Color MenuItemSelectedGradientBegin => culoare2;
@@ -1551,7 +1553,7 @@ namespace Ini_Edit___Translate
 
         private void info_Click(object sender, EventArgs e)
         {
-            if (File.Exists("Info.rtf"))
+            if (File.Exists(infoscreen.InformationPath))
             {
                 infoscreen ins = new infoscreen();
                 ins.ShowDialog();
@@ -1629,6 +1631,11 @@ namespace Ini_Edit___Translate
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (updateShutdown)
+            {
+                Properties.Settings.Default.Save();
+                return;
+            }
             Properties.Settings.Default.pathdir = null;
             Properties.Settings.Default.pf_i = null;
             Properties.Settings.Default.pf_ia = null;
@@ -2786,7 +2793,17 @@ namespace Ini_Edit___Translate
 
         private void Translation_Click(object sender, EventArgs e)
         {
-            Process.Start("https://opensource.ugso-software.de/eep/ini-edit-translate-2026/");
+            string helper = Path.Combine(Application.StartupPath, "help", "Info_trans.exe");
+            if (!File.Exists(helper))
+            {
+                MessageBox.Show(Properties.Resources.zusatz);
+                return;
+            }
+            Process.Start(new ProcessStartInfo(helper)
+            {
+                WorkingDirectory = Path.GetDirectoryName(helper),
+                Arguments = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName
+            });
         }
 
         private void Settings_Click(object sender, EventArgs e)

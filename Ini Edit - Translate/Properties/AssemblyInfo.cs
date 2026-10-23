@@ -11,9 +11,9 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("INI Edit Translate 2026")]
 [assembly: AssemblyDescription("Translator for ini and installation.eep files from EEP (Trendverlag) in Cooperate with EEP_ModellInstallerCreator from Volker Feldmann (VF1)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("RB Soft by UG1")]
+[assembly: AssemblyCompany("UGSo-Software by UG1")]
 [assembly: AssemblyProduct("INI Edit Translate 2026")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright ©  2019-2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -35,9 +35,10 @@ using System.Runtime.CompilerServices;
 // Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.35.0")]
-[assembly: AssemblyFileVersion("2.1.35.0")]
+[assembly: AssemblyVersion("2.1.37.0")]
+[assembly: AssemblyFileVersion("2.1.37.0")]
 [assembly: NeutralResourcesLanguage("")]
 
 
-[assembly: AssemblyInformationalVersion("2.1.35-openai")]
+[assembly: AssemblyInformationalVersion("2.1.37-openai")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("IET.UpdateTests")]

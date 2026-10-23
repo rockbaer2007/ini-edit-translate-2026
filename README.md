@@ -22,13 +22,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.35.0. Die Updatefunktion ist vorerst deaktiviert.** Es gibt keine
-automatische Updateverbindung und keinen Update-Menüpunkt. Google, LEO,
+**Version 2.1.37.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.35 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.35/INI-Edit-Translate-2026-v2.1.35-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.35)
+[Windows-ZIP v2.1.37 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.37/INI-Edit-Translate-2026-v2.1.37-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.37)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
@@ -64,6 +63,56 @@ Die API erfordert Internet und eigene OpenAI-API-Abrechnung. Ein ChatGPT-Abonnem
 ersetzt diese API-Abrechnung nicht. Ein echter API-Aufruf und die sprachliche Qualität
 der erzeugten Modelltexte müssen mit dem eigenen Zugang geprüft werden.
 
+Der Info-Dialog wählt die geprüfte Hilfe `Info.de.rtf`, `Info.en.rtf` oder `Info.fr.rtf` passend zur Oberflächensprache. Die historische `Info.rtf` bleibt unverändert als Original erhalten. Die aktuellen Hilfetexte beschreiben OpenAI und die wiederhergestellte Nachschlagehilfe.
+
+## GitHub-Updates
+
+Unter **Über → Nach Updates suchen** wird das neueste öffentliche GitHub-Release
+abgefragt. Es gibt keine automatische Prüfung beim Programmstart. Nur eine neuere
+stabile Version wird angeboten; Versionsnummer und Release-Notizen werden angezeigt.
+
+**Herunterladen und installieren** lädt die Windows-ZIP samt SHA-256-Prüfsumme.
+Download und Paketprüfung sind abbrechbar und erfolgen vor dem Schließen der Anwendung.
+Vor der Installation müssen offene Dateien gespeichert und Info_trans geschlossen sein.
+Die Installation startet erst nach Bestätigung. Ein separates Hilfsprogramm wartet auf
+das Ende des Editors, sichert die bisherigen Dateien und installiert das Paket.
+
+Einstellungen und der verschlüsselte OpenAI-Schlüssel bleiben erhalten. Vorhandene
+IET2.FDB-, CSV-, DAT- und Konfigurationsdateien der Nachschlagehilfe sowie die ursprüngliche
+Info.rtf werden gesichert und nicht ersetzt. Eigene Modelldateien bleiben unangetastet.
+Bei einem Installationsfehler wird die Wiederherstellung der bereits ersetzten Dateien
+versucht; ein Bericht nennt das Ergebnis. Sicherungen und Berichte liegen unter
+`%LOCALAPPDATA%/UGSo/IET2026/updates/<Kennung>/`.
+
+Der Updater benötigt keine Serverzugangsdaten. Prüfsummen dienen der Integritätsprüfung;
+es ist keine zusätzliche digitale Paketsignatur implementiert.
+32 isolierte Updateprüfungen decken Download, Abbruch, Paketpfade, Datenerhalt,
+gesperrte Dateien und Rücknahme nach einem teilweisen Schreibfehler ab.
+
+## Zweites Programm: Info_trans
+
+Das Paket enthält auch `help/Info_trans.exe`. **Nachschlagehilfe** im Haupteditor
+öffnet dieses separate Programm in der gewählten Sprache. Die echte `IET2.FDB`
+und die zugehörige native Firebird-2.5.8-Laufzeit wurden aus dem Archiv von 2019
+übernommen. Eine separate Firebird-Serverinstallation ist nicht nötig.
+
+Die Datenbank enthält 5 Immobilien- und 2 Gütereinträge sowie 2 Updateeinträge.
+Die Tabellen für Signale, Rollmaterial, Gleisobjekte und Landschaft sind im
+Original leer. Zusätzlich sind 236 Iconeinträge, 369 technische Begriffe und
+2.428 bereinigte Wörterbucheinträge enthalten. Das neue „Wörterbuch DE/EN/FR“
+ergänzt Französisch und korrigiert deutsche Begriffe anhand der englischen Quelle.
+Die ursprüngliche DE/EN-Datei bleibt erhalten. Alle offenen Rückfragen sind geklärt;
+die bestätigten Korrekturen stehen in [der Prüfliste](docs/dictionary-review.md).
+
+`Info_trans` wird passend zu den nativen DLLs für x86 gebaut. Die verwaltete DLL
+FirebirdSql.Data.FirebirdClient 7.5.0.0 wurde mit der echten Firebird-2.5.8-Datenbank
+geprüft. Tests lesen nur getrennte Datenbankkopien und vergleichen alle sieben
+Tabellen mit der Anzeige in DE/EN/FR. Das Paket enthält die unveränderte Quelldatenbank.
+
+Fehlende oder nicht ladbare Bestandteile werden angezeigt. SQL-Import bleibt dann
+gesperrt; vor einem verfügbaren manuellen SQL-Import wird die Datenbank lokal gesichert.
+Die automatische Programmaktualisierung bleibt deaktiviert.
+
 ## Daten und Sicherungen
 
 - OpenAI-Konfiguration: `%LOCALAPPDATA%/UGSo/IET2026/openai.json`.
@@ -78,7 +127,7 @@ erkennt nicht jedes denkbare INI-Schema und ersetzt keine inhaltliche Prüfung d
 
 ## Prüfstand
 
-Debug- und Release-Build mit Visual Studio 2026/.NET Framework 4.8. 30 lokale Prüfungen
+Debug- und Release-Build mit Visual Studio 2026/.NET Framework 4.8. 41 lokale Prüfungen
 mit simulierten API-Antworten: Abbruch, HTTP-Fehler, Antwortprüfung, Platzhalter, Cache,
 DPAPI, Wiederherstellung, Tabellenexport und gerenderte Oberflächen für DE/EN/FR.
 Keine echten API-Aufrufe in der Testsuite.

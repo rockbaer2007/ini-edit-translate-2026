@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>2.1.35.0</AssemblyVersion>
+    <AssemblyVersion>2.1.37.0</AssemblyVersion>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <Install>true</Install>
@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.1.35.0</ApplicationVersion>
+    <ApplicationVersion>2.1.37.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -64,10 +64,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\IniFile.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -89,6 +91,9 @@
   <ItemGroup>
     <Compile Include="about.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="about.Designer.cs">
+      <DependentUpon>about.cs</DependentUpon>
     </Compile>
     <Compile Include="BasicProgressBar.cs">
       <SubType>Component</SubType>
@@ -123,12 +128,41 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OpenAiTranslation.cs" />
     <Compile Include="Ui.cs" />
+    <Compile Include="GithubUpdateClient.cs" />
+    <Compile Include="GithubUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Update.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsMigration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="..\updater\UpdateCore.cs">
+      <Link>UpdateCore.cs</Link>
+    </Compile>
     <Compile Include="TableExport.cs" />
     <Compile Include="TranslationSnapshot.cs" />
-    <Compile Include="OpenAiSettingsForm.cs" />
+    <Compile Include="OpenAiSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.Translation.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="about.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="about.de.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="about.en.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="about.fr.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.de.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,6 +437,35 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="..\Info.de.rtf;..\Info.en.rtf;..\Info.fr.rtf">
+      <Link>%(Filename)%(Extension)</Link>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Info.rtf">
+      <Link>Info.rtf</Link>
+      <TargetPath>Info.rtf</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <ProjectReference Include="..\Info_trans\Info_trans.csproj">
+      <Project>{B07B4BEF-67FD-49D0-915D-E3481F819017}</Project>
+      <Name>Info_trans</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\updater\IET.Updater.csproj">
+      <Project>{64F71161-5D7E-4F6D-93A9-9B6F5CF28437}</Project>
+      <Name>IET.Updater</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="CopyInfoTrans" AfterTargets="Build">
+    <ItemGroup>
+      <InfoTransFiles Include="..\Info_trans\bin\$(Configuration)\**\*" Exclude="..\Info_trans\bin\$(Configuration)\**\*.pdb" />
+    </ItemGroup>
+    <Copy SourceFiles="@(InfoTransFiles)" DestinationFiles="@(InfoTransFiles->'$(TargetDir)help\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="..\updater\bin\$(Configuration)\IET.Updater.exe" DestinationFolder="$(TargetDir)" />
+  </Target>
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>

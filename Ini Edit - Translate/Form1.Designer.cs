@@ -276,9 +276,9 @@
             this.dlgOpen_eep = new System.Windows.Forms.OpenFileDialog();
             this.label16 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.directoryTreeViewOnDemand1 = new Ini_Edit___Translate.DirectoryTreeViewOnDemand();
             this.valueChangedEventArgsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataMA)).BeginInit();
@@ -449,7 +449,7 @@
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
-            this.label10.ForeColor = System.Drawing.Color.Maroon;
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label10.Name = "label10";
             // 
             // label11
@@ -515,10 +515,10 @@
             // 
             // btn_def_trl
             // 
-            this.btn_def_trl.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_def_trl.BackColor = System.Drawing.Color.LightGreen;
             this.btn_def_trl.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_def_trl, "btn_def_trl");
-            this.btn_def_trl.ForeColor = System.Drawing.Color.White;
+            this.btn_def_trl.ForeColor = System.Drawing.Color.Black;
             this.btn_def_trl.Image = global::Ini_Edit___Translate.Properties.Resources.Refresh;
             this.btn_def_trl.Name = "btn_def_trl";
             this.btn_def_trl.UseVisualStyleBackColor = false;
@@ -540,13 +540,14 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tabPage1.BackColor = System.Drawing.Color.Lime;
             this.tabPage1.Controls.Add(this.dataMA);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             // 
             // dataMA
             // 
+            this.dataMA.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataMA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataMA.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.counter1,
@@ -585,13 +586,14 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tabPage2.Controls.Add(this.dataSF);
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             // 
             // dataSF
             // 
+            this.dataSF.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataSF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataSF.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.counter,
@@ -635,35 +637,35 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tabPage3.Controls.Add(this.listBox1);
             resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.Color.Linen;
+            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             resources.ApplyResources(this.listBox1, "listBox1");
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Name = "listBox1";
             // 
             // tabPage4
             // 
-            this.tabPage4.BackColor = System.Drawing.Color.NavajoWhite;
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tabPage4.Controls.Add(this.richTextBox1);
             resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Linen;
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             resources.ApplyResources(this.richTextBox1, "richTextBox1");
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             // 
             // tabPage5
             // 
-            this.tabPage5.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tabPage5.Controls.Add(this.label76);
             this.tabPage5.Controls.Add(this.numericUpDown1);
             this.tabPage5.Controls.Add(this.btn_save);
@@ -695,10 +697,10 @@
             // 
             // btn_save
             // 
-            this.btn_save.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_save.BackColor = System.Drawing.Color.Lime;
             this.btn_save.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_save, "btn_save");
-            this.btn_save.ForeColor = System.Drawing.Color.White;
+            this.btn_save.ForeColor = System.Drawing.Color.Black;
             this.btn_save.Image = global::Ini_Edit___Translate.Properties.Resources.Save;
             this.btn_save.Name = "btn_save";
             this.btn_save.Text = global::Ini_Edit___Translate.Properties.Resources.fsave;
@@ -707,10 +709,10 @@
             // 
             // button13
             // 
-            this.button13.BackColor = System.Drawing.Color.DarkOrange;
+            this.button13.BackColor = System.Drawing.Color.Lime;
             this.button13.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.button13, "button13");
-            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.ForeColor = System.Drawing.Color.Black;
             this.button13.Image = global::Ini_Edit___Translate.Properties.Resources.Open;
             this.button13.Name = "button13";
             this.button13.Text = global::Ini_Edit___Translate.Properties.Resources.fopen;
@@ -719,6 +721,7 @@
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel5.Controls.Add(this.pictureBox31);
             this.panel5.Controls.Add(this.label90);
             this.panel5.Controls.Add(this.pictureBox32);
@@ -755,7 +758,6 @@
             resources.ApplyResources(this.pictureBox31, "pictureBox31");
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox31, resources.GetString("pictureBox31.ToolTip"));
             // 
             // label90
             // 
@@ -770,14 +772,13 @@
             resources.ApplyResources(this.pictureBox32, "pictureBox32");
             this.pictureBox32.Name = "pictureBox32";
             this.pictureBox32.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox32, resources.GetString("pictureBox32.ToolTip"));
             // 
             // btn_trl_5
             // 
-            this.btn_trl_5.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_trl_5.BackColor = System.Drawing.Color.Lime;
             this.btn_trl_5.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_trl_5, "btn_trl_5");
-            this.btn_trl_5.ForeColor = System.Drawing.Color.White;
+            this.btn_trl_5.ForeColor = System.Drawing.Color.Black;
             this.btn_trl_5.Image = global::Ini_Edit___Translate.Properties.Resources.Language;
             this.btn_trl_5.Name = "btn_trl_5";
             this.btn_trl_5.UseVisualStyleBackColor = false;
@@ -789,7 +790,6 @@
             resources.ApplyResources(this.pictureBox33, "pictureBox33");
             this.pictureBox33.Name = "pictureBox33";
             this.pictureBox33.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox33, resources.GetString("pictureBox33.ToolTip"));
             // 
             // label77
             // 
@@ -803,7 +803,6 @@
             resources.ApplyResources(this.pictureBox34, "pictureBox34");
             this.pictureBox34.Name = "pictureBox34";
             this.pictureBox34.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox34, resources.GetString("pictureBox34.ToolTip"));
             // 
             // label78
             // 
@@ -816,7 +815,6 @@
             resources.ApplyResources(this.pictureBox35, "pictureBox35");
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox35, resources.GetString("pictureBox35.ToolTip"));
             // 
             // label79
             // 
@@ -829,7 +827,6 @@
             resources.ApplyResources(this.pictureBox36, "pictureBox36");
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox36, resources.GetString("pictureBox36.ToolTip"));
             // 
             // label80
             // 
@@ -951,7 +948,6 @@
             resources.ApplyResources(this.pictureBox13, "pictureBox13");
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox13, resources.GetString("pictureBox13.ToolTip"));
             // 
             // pictureBox14
             // 
@@ -959,7 +955,6 @@
             resources.ApplyResources(this.pictureBox14, "pictureBox14");
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox14, resources.GetString("pictureBox14.ToolTip"));
             // 
             // pictureBox15
             // 
@@ -967,7 +962,6 @@
             resources.ApplyResources(this.pictureBox15, "pictureBox15");
             this.pictureBox15.Name = "pictureBox15";
             this.pictureBox15.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox15, resources.GetString("pictureBox15.ToolTip"));
             // 
             // pictureBox16
             // 
@@ -975,7 +969,6 @@
             resources.ApplyResources(this.pictureBox16, "pictureBox16");
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox16, resources.GetString("pictureBox16.ToolTip"));
             // 
             // pictureBox17
             // 
@@ -983,7 +976,6 @@
             resources.ApplyResources(this.pictureBox17, "pictureBox17");
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox17, resources.GetString("pictureBox17.ToolTip"));
             // 
             // pictureBox18
             // 
@@ -991,7 +983,6 @@
             resources.ApplyResources(this.pictureBox18, "pictureBox18");
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox18, resources.GetString("pictureBox18.ToolTip"));
             // 
             // label91
             // 
@@ -1002,7 +993,7 @@
             // 
             // btn_trl_3
             // 
-            this.btn_trl_3.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_trl_3.BackColor = System.Drawing.Color.Lime;
             this.btn_trl_3.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_trl_3, "btn_trl_3");
             this.btn_trl_3.ForeColor = System.Drawing.Color.White;
@@ -1147,7 +1138,6 @@
             resources.ApplyResources(this.pictureBox19, "pictureBox19");
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox19, resources.GetString("pictureBox19.ToolTip"));
             // 
             // label92
             // 
@@ -1158,7 +1148,7 @@
             // 
             // btn_trl_2
             // 
-            this.btn_trl_2.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_trl_2.BackColor = System.Drawing.Color.Lime;
             this.btn_trl_2.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_trl_2, "btn_trl_2");
             this.btn_trl_2.ForeColor = System.Drawing.Color.White;
@@ -1173,7 +1163,6 @@
             resources.ApplyResources(this.pictureBox20, "pictureBox20");
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox20, resources.GetString("pictureBox20.ToolTip"));
             // 
             // label42
             // 
@@ -1192,7 +1181,6 @@
             resources.ApplyResources(this.pictureBox21, "pictureBox21");
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox21, resources.GetString("pictureBox21.ToolTip"));
             // 
             // label45
             // 
@@ -1210,7 +1198,6 @@
             resources.ApplyResources(this.pictureBox22, "pictureBox22");
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox22, resources.GetString("pictureBox22.ToolTip"));
             // 
             // label47
             // 
@@ -1223,7 +1210,6 @@
             resources.ApplyResources(this.pictureBox23, "pictureBox23");
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox23, resources.GetString("pictureBox23.ToolTip"));
             // 
             // pictureBox24
             // 
@@ -1231,7 +1217,6 @@
             resources.ApplyResources(this.pictureBox24, "pictureBox24");
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox24, resources.GetString("pictureBox24.ToolTip"));
             // 
             // label48
             // 
@@ -1343,7 +1328,6 @@
             resources.ApplyResources(this.pictureBox25, "pictureBox25");
             this.pictureBox25.Name = "pictureBox25";
             this.pictureBox25.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox25, resources.GetString("pictureBox25.ToolTip"));
             // 
             // label93
             // 
@@ -1356,7 +1340,6 @@
             resources.ApplyResources(this.pictureBox26, "pictureBox26");
             this.pictureBox26.Name = "pictureBox26";
             this.pictureBox26.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox26, resources.GetString("pictureBox26.ToolTip"));
             // 
             // pictureBox27
             // 
@@ -1364,11 +1347,10 @@
             resources.ApplyResources(this.pictureBox27, "pictureBox27");
             this.pictureBox27.Name = "pictureBox27";
             this.pictureBox27.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox27, resources.GetString("pictureBox27.ToolTip"));
             // 
             // btn_trl_4
             // 
-            this.btn_trl_4.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_trl_4.BackColor = System.Drawing.Color.Lime;
             this.btn_trl_4.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_trl_4, "btn_trl_4");
             this.btn_trl_4.ForeColor = System.Drawing.Color.White;
@@ -1404,7 +1386,6 @@
             resources.ApplyResources(this.pictureBox28, "pictureBox28");
             this.pictureBox28.Name = "pictureBox28";
             this.pictureBox28.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox28, resources.GetString("pictureBox28.ToolTip"));
             // 
             // label58
             // 
@@ -1422,7 +1403,6 @@
             resources.ApplyResources(this.pictureBox29, "pictureBox29");
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox29, resources.GetString("pictureBox29.ToolTip"));
             // 
             // label60
             // 
@@ -1441,7 +1421,6 @@
             resources.ApplyResources(this.pictureBox30, "pictureBox30");
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox30, resources.GetString("pictureBox30.ToolTip"));
             // 
             // label62
             // 
@@ -1537,7 +1516,6 @@
             resources.ApplyResources(this.pictureBox12, "pictureBox12");
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox12, resources.GetString("pictureBox12.ToolTip"));
             // 
             // pictureBox11
             // 
@@ -1545,7 +1523,6 @@
             resources.ApplyResources(this.pictureBox11, "pictureBox11");
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox11, resources.GetString("pictureBox11.ToolTip"));
             // 
             // pictureBox10
             // 
@@ -1553,7 +1530,6 @@
             resources.ApplyResources(this.pictureBox10, "pictureBox10");
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox10, resources.GetString("pictureBox10.ToolTip"));
             // 
             // pictureBox9
             // 
@@ -1561,7 +1537,6 @@
             resources.ApplyResources(this.pictureBox9, "pictureBox9");
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox9, resources.GetString("pictureBox9.ToolTip"));
             // 
             // pictureBox8
             // 
@@ -1569,7 +1544,6 @@
             resources.ApplyResources(this.pictureBox8, "pictureBox8");
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox8, resources.GetString("pictureBox8.ToolTip"));
             // 
             // pictureBox1
             // 
@@ -1577,7 +1551,6 @@
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox1, resources.GetString("pictureBox1.ToolTip"));
             // 
             // label89
             // 
@@ -1588,7 +1561,7 @@
             // 
             // btn_trl_1
             // 
-            this.btn_trl_1.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_trl_1.BackColor = System.Drawing.Color.Lime;
             this.btn_trl_1.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_trl_1, "btn_trl_1");
             this.btn_trl_1.ForeColor = System.Drawing.Color.White;
@@ -1707,10 +1680,10 @@
             // 
             // preview
             // 
-            this.preview.BackColor = System.Drawing.Color.DarkOrange;
+            this.preview.BackColor = System.Drawing.Color.LightGreen;
             this.preview.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.preview, "preview");
-            this.preview.ForeColor = System.Drawing.Color.White;
+            this.preview.ForeColor = System.Drawing.Color.Black;
             this.preview.Image = global::Ini_Edit___Translate.Properties.Resources.Find;
             this.preview.Name = "preview";
             this.preview.UseVisualStyleBackColor = false;
@@ -1729,10 +1702,10 @@
             // 
             // btn_man
             // 
-            this.btn_man.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_man.BackColor = System.Drawing.Color.LightGreen;
             this.btn_man.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.btn_man, "btn_man");
-            this.btn_man.ForeColor = System.Drawing.Color.White;
+            this.btn_man.ForeColor = System.Drawing.Color.Black;
             this.btn_man.Image = global::Ini_Edit___Translate.Properties.Resources.Language;
             this.btn_man.Name = "btn_man";
             this.btn_man.UseVisualStyleBackColor = false;
@@ -1767,6 +1740,7 @@
             // 
             this.conTM.Name = "conTM";
             resources.ApplyResources(this.conTM, "conTM");
+            // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
@@ -1775,7 +1749,7 @@
             // 
             // label21
             // 
-            this.label21.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label21.BackColor = System.Drawing.Color.Lime;
             resources.ApplyResources(this.label21, "label21");
             this.label21.Name = "label21";
             // 
@@ -1823,10 +1797,10 @@
             // 
             // button9
             // 
-            this.button9.BackColor = System.Drawing.Color.DarkOrange;
+            this.button9.BackColor = System.Drawing.Color.LightGreen;
             this.button9.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.button9, "button9");
-            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.ForeColor = System.Drawing.Color.Black;
             this.button9.Image = global::Ini_Edit___Translate.Properties.Resources.Open;
             this.button9.Name = "button9";
             this.button9.UseVisualStyleBackColor = false;
@@ -1834,10 +1808,10 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.Color.DarkOrange;
+            this.button10.BackColor = System.Drawing.Color.LightGreen;
             this.button10.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.button10, "button10");
-            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.ForeColor = System.Drawing.Color.Black;
             this.button10.Image = global::Ini_Edit___Translate.Properties.Resources.Save;
             this.button10.Name = "button10";
             this.button10.Text = global::Ini_Edit___Translate.Properties.Resources.fsave;
@@ -1846,10 +1820,10 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.DarkOrange;
+            this.button11.BackColor = System.Drawing.Color.LightGreen;
             this.button11.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.button11, "button11");
-            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.ForeColor = System.Drawing.Color.Black;
             this.button11.Image = global::Ini_Edit___Translate.Properties.Resources.Open;
             this.button11.Name = "button11";
             this.button11.Text = global::Ini_Edit___Translate.Properties.Resources.fopen;
@@ -1859,7 +1833,7 @@
             // label24
             // 
             resources.ApplyResources(this.label24, "label24");
-            this.label24.ForeColor = System.Drawing.Color.Maroon;
+            this.label24.ForeColor = System.Drawing.Color.Green;
             this.label24.Name = "label24";
             this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
@@ -1963,11 +1937,13 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
             // settingsToolStripMenuItem
             // 
             resources.ApplyResources(this.settingsToolStripMenuItem, "settingsToolStripMenuItem");
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.Settings_Click);
+            // 
             // translationAidToolStripMenuItem
             // 
             resources.ApplyResources(this.translationAidToolStripMenuItem, "translationAidToolStripMenuItem");
@@ -1976,6 +1952,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Lime;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem,
             this.translationAidToolStripMenuItem});
@@ -1986,8 +1963,9 @@
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
-            this.label19.BackColor = System.Drawing.Color.NavajoWhite;
+            this.label19.BackColor = System.Drawing.Color.Lime;
             this.label19.Name = "label19";
+            // 
             // dlgOpen_eep
             // 
             resources.ApplyResources(this.dlgOpen_eep, "dlgOpen_eep");
@@ -1997,6 +1975,7 @@
             // 
             resources.ApplyResources(this.label16, "label16");
             this.label16.Name = "label16";
+            // 
             // toolTip1
             // 
             this.toolTip1.AutomaticDelay = 1000;
@@ -2023,7 +2002,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.tabControl1);

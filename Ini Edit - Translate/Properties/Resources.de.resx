@@ -163,7 +163,7 @@
     <value>Name des Teilsets:</value>
   </data>
   <data name="zusatz" xml:space="preserve">
-    <value>Die Dokumentation wird im Browser geöffnet.</value>
+    <value>Die Nachschlagehilfe fehlt. help/Info_trans.exe und die zugehörigen Dateien müssen beim Hauptprogramm bleiben.</value>
   </data>
   <data name="grptyp" xml:space="preserve">
     <value>Modelltyp – mögliche Symbole dieser Kategorie</value>
@@ -263,4 +263,7 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="label8" xml:space="preserve"><value>Desc_POL</value></data>
   <data name="objekticons" xml:space="preserve"><value></value></data>
   <data name="tableFilter" xml:space="preserve"><value>Tabellenexport (*.csv)|*.csv</value></data>
+  <data name="infoTitle" xml:space="preserve">
+    <value>Programminformationen</value>
+  </data>
 </root>

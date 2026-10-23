@@ -163,7 +163,7 @@
     <value>Ouvrir un fichier</value>
   </data>
   <data name="zusatz" xml:space="preserve">
-    <value>La documentation s’ouvre dans votre navigateur.</value>
+    <value>L’aide de référence est absente. Conservez help/Info_trans.exe et ses fichiers à côté du programme principal.</value>
   </data>
   <data name="grptyp" xml:space="preserve">
     <value>Type de modèle – icônes disponibles dans cette catégorie</value>
@@ -263,4 +263,7 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="label8" xml:space="preserve"><value>Desc_POL</value></data>
   <data name="objekticons" xml:space="preserve"><value></value></data>
   <data name="tableFilter" xml:space="preserve"><value>Export de tableaux (*.csv)|*.csv</value></data>
+  <data name="infoTitle" xml:space="preserve">
+    <value>Informations sur le programme</value>
+  </data>
 </root>

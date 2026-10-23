@@ -1,0 +1,24 @@
+INI Edit Translate 2026
+INI editor and translator for EEP
+
+The interface supports German, English and French. It follows your Windows language and can also be changed in Settings.
+
+Editing files
+The program edits EEP model INI files and Installation.eep. Model names and descriptions can be maintained in German, English, French and Polish. Other sections cover movement axes, signal functions, PDF references and model metadata. Check the preview before saving.
+
+Translating with OpenAI
+Translation uses only the OpenAI API. Enter your own API key and model under Settings → OpenAI translation. Translation requires internet access and separate OpenAI API billing; a ChatGPT subscription does not cover API usage.
+Texts you explicitly translate are sent to OpenAI. Your API key is stored encrypted for the current Windows account. Files can be edited offline when translation is not used.
+Select the source language before translating. You can cancel a translation in progress. Invalid responses or changed placeholders are rejected, preserving your previous texts.
+
+Reference help
+Reference help opens the separate Info_trans program, which provides dictionaries, icon references and the included Firebird database. Some database tables are empty, as in the original. Reference help requires neither a separate database server nor internet access.
+
+Backups
+Before overwriting an existing INI file, the program saves a copy with its original filename under %LOCALAPPDATA%/UGSo/IET2026/backups. Make an additional backup of your files before editing them for the first time.
+
+Use About → Check for updates to check GitHub, download a newer version and install it after confirmation. Save your files and close Info_trans first. Existing databases and settings are retained; program files are backed up. There is no automatic startup check.
+
+This open-source edition requires no activation.
+
+Uwe Grimm / UGSo Software

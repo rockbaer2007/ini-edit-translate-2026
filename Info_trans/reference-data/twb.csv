@@ -1,0 +1,371 @@
+﻿Technischer  Grundwortschatz  deutsch  -  französisch  -  englisch ;;
+Deutsch/German/Allemand;Französisch/French/français;Englisch/English/Anglais
+Elektrotechnik;Electrotechnique;Electrical Engineering
+Meß- und Regeltechnik   ;Technique de Mesure et Automation ;Metrology  and Automatic Control 
+abgeschirmt ;blindé ;shielded 
+abgleichen ;aligner ;trim, balance 
+abgreifen (einer Spannung (f)) ;prélever  (une tension) ;tap 
+abklemmen ;débrancher ;disconnect 
+Anschluß (m) ;connexion (f) ;connection 
+Blind-  ;réactif ;reactive 
+Blindwiderstand (m) ;réactance (f) ;reactance 
+Bode-Diagramm (n) ;courbes (fpl) de réponse harmonique ;frequency response curve, Bode plot 
+ ;représentation (f) de Bode ; 
+Brückenschaltung (f) ;circuit (m) en pont ;bridge circuit 
+Dehnungsmeßstreifen, DMS  (m) ;jauge (f) de contrainte ;strain gage 
+digital ;numérique ;digital 
+Drehstrom (m) ;courant (m) triphasé ;three-phase-current 
+Empfänger (m) ;récepteur (m) ;receiver 
+Empfindlichkeit (f) ;sensibilité (f) ;sensitivity 
+Erdung (f) ;mise (f) à la terre ;grounding 
+Feld (n) ;champ (m) ;field 
+Gleichstrom (m) ;courant (m) continu, CC ;direct-current, DC 
+Halbleiter (m) ;semi-conducteur (m) ;semiconductor 
+kalibrieren ;étalonner, calibrer ;gage 
+Kurzschluß (m) ;court-circuit (m) ;short circuit 
+Ladung (f) ;charge (f) ;charge 
+Leitfähigkeit (f) ;conductivité (f) ;conductance, conductivity 
+Leitung (f) ;ligne (f), conduite (f) ;line 
+Magnet (m) ;aimant (m) ;magnet 
+messen ;mesurer, jauger ;gage, measure 
+Nenn- ;nominal ;nominal, rated 
+Netz (n) ;réseau (m) ;supply network 
+Phasenverschiebung (f) ;déphasage (m) ;phase shift 
+Pegel (m) ;niveau (m) ;level 
+Prüfstand (m) ;banc (m) d`essai ;test bed 
+Regelkreis (m) ;boucle (m) de régulation ;loop 
+Regelung (f) ;régulative (f), commande (f) asservie ;(closed loop) control 
+Regler (m) ;régulateur (m) ;controler 
+Schalter (m) ;commutateur (m), interrupteur (m) ;switch 
+Sender (m) ;émetteur (m) ;emitter 
+Sensor (m), Fühler (m) ;capteur (m) ;sensor 
+Sicherung (f) ;fusible (m) ;fuse, fuze 
+Spannung (f) ;tension (f) ;tension 
+Spule (f) ;bobine (f) ;bobbin, coil 
+Stecker (m) ;fiche (f) ;plug 
+Steuerung (f) ;commande (f) (directe) ;(open loop) control  
+Strom (m) ;courant (m) ;current 
+Stromstärke (f) ;intensité (f) (de courant) ;amperage, intensity of current 
+verstärken ;amplifier ;amplify 
+Verzerrung (f) ;distorsion (f) ;bias 
+Wechselstrom (m) ;courant (m) alternatif,  CA ;alternating-current, AC 
+Fertigung  (f) ;Fabrication  (f) ;Manufacturing 
+anfasen ;biseauter ;chamfer 
+aufschrumpfen ;serrer ;shrink on 
+Ausschuß (m) ;rebut (m) ;refuse, no-go (als Präfix) 
+bearbeiten ;usiner ;machine 
+Bohren (n) ;forage (m), perçage (m) ;drilling, boring 
+Drehen (n) ;tournage (m) ;turning 
+Drehmaschine (f) ;tour (m) ;lathe 
+Drehmeißel (m) ;outil (m) tranchant ;lathe tool 
+Druckluft (f) ;air (m) comprimé ;compressed air 
+entgraten ;ébavurer ;deburr 
+Fräser (m) ;fraise (f) ;mill, milling cutter 
+Fräsmaschine (f) ;fraiseuse (f) ;milling machine 
+fügen ;joindre ;join 
+Funkenerodieren (n) ;étincelage (m) ;electro discharge machining, EDM 
+Gewindebohren (n) ;taraudage (m) ;tapping 
+Gewindeschneiden (n) ;filetage (m) ;thread cutting with dies  
+Grat (m) ;ébarbure (f) ;burr 
+Hartlöten (n) ;brasage (m) ;hard-soldering, brazing 
+hobeln ;raboter ;plan 
+Honen (n) ;superfinition (f) ;honing 
+kleben  ;coller ;glue, bond (Metalle) 
+Kugelstrahlen (n) ;grenaillage (m) ;peening 
+Kühlung (f) ;refroidissement (m) ;cooling 
+Läppen (n) ;rodage (m) ;lapping 
+Lehre (f) ;calibre (m), jauge (f) ;gage 
+Räumen (n) ;brochage (m) (à façon), chambrage (m) ;roaching 
+Reibahle (f) ;alésoir (m) ;reamer 
+schleifen  ;rectifier, meuler ;grind 
+schlichten  ;finir ;dress 
+schmieden ;forger ;forge 
+schruppen  ;dégrossir ;rough-cut 
+schweißen ;souder ;weld 
+senken  ;lamer ;countersink 
+Span (m) ;copeau (m) ;chip, fine 
+Spannfutter (n) ;mandrin (m) (de serrage) ;chuck 
+stanzen (n) ;estamper ;blank, stamp 
+stumpf ;émoussé, sans pointe ;dull, blunt 
+trennen ;tronçonner ;cut 
+Verschleiß (m) ;usure (f)  ;wear 
+Verzug (m) ;voilement (m) ;distortion 
+Vorschub (m) ;avance (f) ;feed 
+Weichlöten (n) ;soudage (m) tendre (à l’étain) ;soft soldering 
+Werkstatt (f) ;atelier (m) ;workshop 
+Ziehen (n) ;étirage (m) ;drawing 
+Konstruktion  (f) ;Construction (f) ;Construction  
+abdichten ;obturer ;seal 
+Ablauf (m) ;écoulement (m) ;outflow 
+Abmaß (n) ;écart (m) ;deviation 
+abschrauben ;dévisser  ;unscrew, loosen 
+abstützen ;étayer ;prop, strut 
+Abtriebswelle (f) ;arbre (m) commandé ;output shaft 
+Achsabstand (m) ;entraxe (f) ;center distance 
+Achse (f) ;essieu (m) ;axle 
+Anschlag (m) ;butée (f) ;stop 
+Aufhängung (f) ;suspension (f) ;suspension 
+Backe (f) ;mâchoire (f) ;cheek, jaw 
+bemaßen ;coter ;dimension 
+Bohrung (f) ;trou (m), alésage (m) ;bore(-hole) 
+Bolzen (m) ;boulon (m) ;bolt 
+Bremse (f) ;frein (m) ;brake 
+Buchse (f) ;bague-coussinet (f), manchon (m) ;bushing 
+Deckel (m) ;couvercle (m) ;flap, head 
+Dichtung (f) ;joint (m) ;sealing 
+Dorn (m) ;mandrin (m), broche (f) ;core bar, arbor 
+drehbar ;pivotant ;hinged, pivoted, rotatable 
+Düse (f) ;tuyère (f), injecteur (m) ;nozzle, jet 
+Entwurf (m) ;ébauche (f), croquis (m) ;sketch, draft 
+Feder (f) ;ressort (m) ;spring 
+Felge (f) ;jante (f) ;rim 
+Flanke (f) ;flanc (m) ;flank 
+Flansch (m) ;bride (f) ;flange 
+Flügel (m) ;aile (f) ;wing 
+Formschluß (m) ;liaison (f) de forme ;positive locking 
+Freistich (m) ;dégagement (m) ;undercut 
+Führung (f) ;guidage (m) ;guide 
+Gehäuse (n) ;boîtier (m), carter (m) ;casing 
+Getriebe (n) ;boîte (f) d`engrenages, boîte de vitesses ;gearing, transmission (unit) 
+Gewinde (n) ;filet (m) ;thread 
+Gleitlager (n) ;palier (m) lisse ;plain bearing 
+Hebel (m) ;levier (m), manette (f) ;lever 
+Hohlwelle (f) ;arbre (m) creux ;hollow shaft 
+Hub (m) ;course (f) ;stroke 
+hydrodynamisches Lager (n) ;palier (m) hydrodynamique ;selfacting bearing 
+Innengewinde (n) ;taraudage (m), filet (m) intérieur ;female thread, inside thread 
+Istmaß (n) ;cote (f) effective ;actual size 
+Kegelrad (n) ;roue (f) conique ;bevel gear 
+Keil (m) ;coin (m) ;wedge 
+Keilwelle (f) ;arbre (m) cannelé ;spline shaft 
+Kette (f) ;chaîne (f) ;chain 
+Klappe (f) ;clapet (m) ;bascule, cap, flap 
+Knopf (m) ;bouton (m) ;button  
+Kraftschluß (m) ;liaison (f) de force ;force locking 
+Kugellager (n) ;roulement (m) à billes  ;ball bearing 
+Kupplung (f)  (nicht ausrückbar) ;manchon (m) ;coupling 
+Kupplung (f)  (schaltbar) ;embrayage (m) ;clutch 
+Kurbel (f) ;manivelle (f) ;crank (handle) 
+Kurbelwelle (f) ;vilebrequin (m) ;crankshaft 
+Laufrichtung (f) ;sens (m) de marche ;machine direction 
+Leerlauf (m) ;marche à vide ;free motion, idle speed, no-load (als Präf.) 
+Lenkung (f) ;direction (f) ;steering 
+Loch (n) ;trou (m), orifice (m) ;hole 
+Maßstab (m) ;échelle (f) ;scale 
+Muffe (f) ;manchon (m) ;sleeve 
+Mutter (f) ;écrou (m) ;nut 
+Nabe (f) ;moyeu (m) ;hub 
+Niet (m) ;rivet (m) ;rivet 
+Nocken (m) ;came (f) ;cam 
+Nut (f) ;rainure (f), encoche (f) ;gash, flute 
+Öffnung (f) ;ouverture (f), orifice (m) ;mouth, opening 
+Passung (f) ;ajustement (m) ;fitting, clearance 
+Paßfeder (f) ;languette (f) ;(parallel) key, feather 
+Paßstift (m) ;goujon (m) (d`assemblage) ;alignment pin 
+Pendel…lager (n) ;roulement (m) à rotule à … ;self-aligning … bearing 
+Profilverschiebung (f) ;déport (m) des dentures ;(addendum) correction 
+Propeller (m) ;hélice (f) ;(air-) screw, propeller 
+Pumpe (f) ;pompe (f) ;pump 
+Radialwellendichtring (m), Simmerring (m) ;bague (f) d’étanchéité ;rotary shaft seal 
+Rauhigkeit (f) ;rugosité (f) ;roughness 
+Riemen (m) ;courroie (f) ;belt 
+Ring (m) ;bague (f), couronne (f) ;ring 
+Rippe (f) ;nervure (f), ailette (f) ;rib, fin 
+Ritzel (n) ;pignon (m) ;pinion (wheel) 
+Rohr (n) ;tube (m), tuyau (m) ;tube, pipe 
+Schaft (m) ;corps (m) ;shaft, shank 
+Scharnier (n) ;charnière (f) ;hinge 
+Scheibe (f) ;disque (f), rondelle (f) ;disc 
+Schiene (f) ;rail (m) ;rail, runner 
+Schlauch (m) ;tuyau (m) flexible ;flexible pipe, hose 
+Schmierung (f) ;graissage (m) ;lubrication 
+Schneckenrad (n) ;roue (f) à vis sans fin ;worm gear 
+Schneide (f) ;arête (f) ;cutting lip 
+Schräg- ;oblique, incliné ;slant, helical (bei Zahnrädern) 
+Schraube (f) ;vis (f) ;screw, bolt 
+Schubstange (f) ;bielle (f) ;push rod 
+Schwungrad (n) ;volant (m) d’inertie ;fly wheel 
+Seil (n) ;câble (m) ;cable, rope 
+Sicherungsring (m) ;arrêt (m), bague (f) de sûreté ;circlip 
+Sitz (m) (z.B. einer Lagerung) ;logement (m) ;seat 
+Sonnenrad (n) ;couronne (f) ;sun gear 
+Spalt (m) ;fente (f) ;gap, clearance 
+Speiche (f) ;rayon (m) ;spoke 
+Sperre (f) ;arrêt (m), verrouillage (m)  ;lock (-ing device) 
+Spiel (n) ;jeu (m) ;allowance, play 
+Spindel (f) ;arbre (m) fileté  ;mandrel, spindle 
+Splint (m) ;goupille (f) fendue ;cotter pin, forelock 
+Stange (f) ;barre (f) ;bar, rod 
+Stift (m) ;goupille (f), cheville (f) ;finger, peg 
+Stirnrad (n) ;roue (f) cylindrique ;cylindrical gear, spur gear 
+Taster (m) ;palpeur (m) ;calipers 
+Teilkreis (m) ;cercle (m) primitif ;dividing circle, pitch circle 
+Träger (m) ;poutre (m) ;girder 
+Trichter (m) ;entonnoir (m) ;funnel 
+Übersetzung (f) ;multiplication (f) ;gear ratio, multiplication 
+Ventil (n) ;soupape (f), vanne (f) ;valve 
+Verzahnung (f) ;engrenage (m) ;toothing 
+Wälzlager (n) ;roulement (m) ;rolling bearing 
+Welle (f) ;arbre (m) ;shaft 
+Zahnrad (n) ;roue (f) dentée ;cogwheel, gear (-wheel) 
+Zahnstange (f) ;crémaillère (f) ;rack 
+Zapfen (m) ;tourillon (m) ;gudgeon ,neck 
+Technische Mechanik  /  Mathematik   ;Génie mécanique / Mathématiques ;Engineering Mechanics  /  Mathematics 
+Ableitung (f) ;dérivation (f) ;derivation 
+Achse (f) ;axe (f) ;axis  
+Bahn (f) ;aire (f) ;course, track 
+Beschleunigung (f) ;accélération (f) ;acceleration 
+Bezugspunkt (m) ;repère (m), point (m) de référence ;reference point 
+Biegung (f) ;flexion (f) ;bend, bending 
+Bogen (m) ;arc (m) ;arc 
+Dämpfung (f) ;amortissement (m) ;damping 
+Dichte (f) ;densité (f) ;density 
+Drehimpuls (m) ;moment (m) cinétique ;angular momentum 
+Drehmoment (n) ;couple (m) ;torque 
+Druck (m) ;pression (f) ;pressure, compression 
+Durchbiegung (f) ;fléchissement (m), flexion (f) ;deflection 
+Durchmesser (m) ;diamètre (m) ;diameter 
+eingespannt ;encastré ;fixed 
+Evolvente (f) ;développante (f) ;involute (curve) 
+Festlager (n) ; ;fixed support 
+Flächenträgheitsmoment (n) ;moment (m) d´inertie ;planar moment of second order 
+Fliehkraft (f) ;force (f) centrifuge ;centrifugal force 
+Gelenk (n) ;articulation (f) ;articulation, joint 
+Gleichgewicht (n) ;équilibre (m) ;equilibrium 
+Gleitreibungszahl (m) ;coefficient (m) de frottement dynamique ;coefficient of gliding friction 
+Grad (m) ;degré (f) ;degree 
+Haftreibung (f) ;frottement (m) statique ;static friction, stiction 
+Impuls (m) ;impulsion (f) ;impulse, momentum 
+Kegel (m) ;cône (m) ;cone 
+knicken ;flamber ;buckle 
+Kreisel (m) ;gyroscope (m) ;gyroscope 
+Krümmung (f) ;courbure (f) ;curvature 
+Kugel (f) ;sphère (f) ;sphere 
+Kurve (f) ;courbe (f) ;curve 
+Last (f) ;charge (f) , effort (m) ;load 
+Leistung (f) ;puissance (f) ;performance, power 
+Loslager (n) ;             palier / roulement (m) libre ;floating bearing 
+Oberfläche (f) ;surface (f) ;surface 
+Querschnitt (m) ;section (f) ;(cross-)section 
+Radius (m) ;rayon (m) ;radius 
+Reibung (f) ;friction (f), frottement (m) ;friction 
+Schlupf (m) ;glissement (m) ;slip rate 
+Schub (m) ;cisaillement (m) ;shear 
+Schwerpunkt (m) ;centre (m) de gravité ;center of gravity 
+Spannung (f) ;tension (f),  contrainte (f) ;stress 
+Stoß (m) ;choc (m),  collision (f),  percussion (f) ;impact, thrust 
+Streuung (f) ;dispersion (f) ;dispersion, spread 
+Träger (m) ;poutre (f) ;beam 
+Trägheit (f) ;inertie (f) ;inertia 
+Umfang (m) ;circonférence (f) ;circumference 
+Verhältnis (n) ;rapport (m) ;ratio 
+Widerstandsmoment (n) ;moment (m) résistant ;section modulus 
+Wurzel (f) ;racine (f) ;root 
+Zug (m) ;traction (f) ;tension 
+Werkstoffkunde   ;Science des matériaux ;Materials Science and Engineering 
+abschrecken ;tremper ;quench 
+Anlassen (n) ;revenu (m) ;drawing, temper 
+Automatenstahl (m) ;acier (m) de décolletage ;free-cutting steel 
+Baustahl (m) ;acier (m) de construction ;mild steel 
+Beschichtung (f) ;revêtement (m) ;coating 
+Blech (n) ;tôle (f) ;(metal) sheet, plate 
+Blei (n) ;plomb (m) ;lead 
+Bruch (m) ;rupture (f) ;fracture 
+Dauerfestigkeit (f)   ;limite (f) de fatigue ;fatigue strength 
+Dehnung (f) ;extension (f), allongement (m) ;strain 
+Draht (m) ;fil (m) ;wire 
+E(lastizitäts)-Modul (m) ;module (m) d’élasticité ;Young’s modulus  EY 
+Edelmetall (n) ;métal (m) précieux ;noble metal 
+Edelstahl (m) ;acier (m) spécial (affiné) ;refined steel 
+Eigenspannung (f) ;contrainte (f) propre ;residual stress 
+Einsatzhärten (n), Aufkohlen (n) ;cémentation (f) ;(carbon) case hardening 
+Eisen (n) ;fer (m) ;iron 
+Erz (n) ;minerai (m) ;ore 
+Festigkeit (f) ;résistance (f) ;strength 
+Formkern (m) ;noyau (m) de moule ;core 
+Gefüge (n) ;structure (f) ;structure 
+gießen  ;couler, mouler ;cast 
+Gießerei (f) ;fonderie (f) ;foundry 
+Gitter (n)   ;résau (m) cristallin ;lattice 
+glühen ;recuire ;bake 
+Gummi (m) ;caoutchouc (m) ;rubber 
+Gußeisen (n) ;fonte (f) (moulée) ;cast iron 
+Gußform (f) ;moule (m) ;mold (for casting) 
+Härte (f) ;dureté (f) ;hardness 
+härten ;tremper, durcir ;harden 
+hitzebeständig ;réfractaire ;heat resistant, refractory 
+Kerbe (f) ;entaille (f), encoche (f) ;notch 
+Kerbwirkungszahl (f) ;facteur (m) d`entaille ;notch effect number 
+Korn (n) ;grain (m) ;grain 
+Kriechen (n) ;fluage (m) ;creep 
+Kupfer (n) ;cuivre (m) ;copper 
+Legierung (f) ;alliage (m) ;alloy 
+Leichtmetall (n) ;alliage (m) léger ;light metal 
+Lot (n) (hart) ;brasure (f) ;brazer 
+Lot (n) (weich) ;soudure (f) (à l`étain) ;softsolder 
+Lunker (m) ;retassure (f) ;blow hole, pipe 
+Messing (n) ;laiton (m) (jaune) ;brass 
+Probe (f) ;éprouvette (f) ;sample 
+Riß (m) ;crique (f), fissure (f) ;crack 
+Rost (m) ;rouille (f) ;rust, stain 
+Schrott (m) ;ferrailles (fpl), mitraille (f) ;junk, scrap 
+Sintern (n) ;frittage (m) ;sintering 
+Sprödigkeit (f) ;fragilité (f) ;brittleness 
+Stahl (m) ;acier (m) ;steel 
+Streckgrenze (f)   Res ;limite (f) d`allongement ;yield strength  RY 
+Verbundwerkstoff (m) ;matériaux (mpl) composite ;composite (material) 
+Verfestigung (f) ;stabilisation (f), durcissement (m) ;hardening, solidification 
+Vergütung (f) ;traitement (m) de trempe et de revenu ;quenching and tempering 
+Versetzung (f) ;dislocation (f) ;dislocation 
+Wechselfestigkeit (f)    ;résistance (f) aux efforts alternés  ;high cycle fatigue 
+Widerstand (m) ;résistance (f) ;resistance 
+Zähigkeit (f) ;tenacité (f) ;toughness 
+Zinn (n) ;étain (m) ;tin 
+Zugfestigkeit (f)     Rm ;résistance (f) à la traction ;tensile strength 
+Werkzeuge  ;Outils ;Tools 
+Amboß (m) ;enclume (f) ;anvil 
+Beißzange (f) ;tenaille (f) commune ;pliers (pl), pincers (pl) 
+Bohrer (m) ;foret (m), perçoir (m) ;borer, drill 
+Drehmomentschlüssel (m) ;clé (f) dynamométrique ;torque wrench 
+Feile (f) ;lime (f) ;file 
+Hammer (m) ;marteau (m) ;hammer 
+Handbohrmaschine (f) ;perceuse (f) à main ;handdrill 
+Lötkolben (m) ;fer (m) à souder électrique ;soldering iron 
+Meßschieber (m) ;pied (m) à coulisse ;caliper square 
+Nadel (f) ;aiguille (f) ;needle 
+Nagel (m) ;clou (m), pointe (f) ;nail 
+Ratsche (f) ;cliquet (m) ;ratchet spanner 
+Säge (f) ;scie (f) ;saw 
+Schraubendreher (m) ;tournevis (m) ;screw-driver 
+Schraubenschlüssel (m) ;clé (f) (de serrage) ;wrench 
+Schraubstock (m) ;étau (m) ;vice 
+Schraubzwinge (f) ;serre-joint (m) ;joiner’s clamp 
+Schweißbrenner (m) ;chalumeau (m) ;welding torch 
+Zange (f) ;pince (f) ;tongs (pl) 
+Sonstiges ;Divers ;Diverse 
+auswuchten ;équilibrer ;balance 
+Dampf (m) ;vapeur (f) ;vapour 
+Datei (f) ;fichier (m) ;(data) file 
+Daten (pl) ;données(fpl) ;data 
+Drehzahl (f) ;nombre (m) de tours, régime (m) ;speed 
+drosseln ;obturer ;throttle 
+Durchfluß (m) ;flux (m), débit (m) ;flow 
+Funktionsstörung (f) ;défaillance (f) ;malfunctioning 
+Hardware (f) ;matériel (m)  (informatique) ;hardware 
+Instandhaltung (f) ;maintenance (f), entretien (m) ;maintenance 
+isolieren (gegen Wärmeausgleich) ;calorifuger ;insulate 
+Ölwechsel (m) ;vidange (f) ;oil change 
+Schaden (m) ;dommage (m), dégât (m) ;damage 
+Schnittstelle (f) ;interface (f) ;interface 
+Software (f) ;logiciel (m) ;software 
+sortieren ;trier, classer ;sort 
+Speicher (m) (inform.) ;mémoire (f) ;memory 
+Strahlung (f) ;radiation (f) ;radiation 
+Unterdruck (m) ;sous-pression (f) ;low pressure 
+Unwucht (f) ;balourd (m), charge (f) déséquilibrée ;unbalance, out-of-balance 
+Vakuum (n) ;vide (m) ;vacuum 
+Verbrennung (f) ;combustion (f) ;combustion 
+Verlust (m) ;perte (f), fuite (f) ;loss, drop 
+Wärmeleitfähigkeit (f) ;conductivité (f) thermique, conductibilité ;heat conductivity 
+Wirkungsgrad (m) ;rendement (m) ;efficiency 
+Zuverlässigkeit (f) ;fiabilité (f) ;reliability, dependability 

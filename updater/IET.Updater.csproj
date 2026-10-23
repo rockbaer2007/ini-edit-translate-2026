@@ -1,0 +1,21 @@
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <OutputType>WinExe</OutputType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AssemblyName>IET.Updater</AssemblyName>
+    <ProjectGuid>{64F71161-5D7E-4F6D-93A9-9B6F5CF28437}</ProjectGuid>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" /><Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.IO.Compression" /><Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Serialization" /><Reference Include="System.Windows.Forms" />
+    <Compile Include="UpdateCore.cs" /><Compile Include="Program.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

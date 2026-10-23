@@ -11,6 +11,7 @@ namespace Ini_Edit___Translate
         {
 
             string[] CommandLineArgs = Environment.GetCommandLineArgs();
+            SettingsMigration.UpgradeIfNeeded();
             if (string.IsNullOrWhiteSpace(Properties.Settings.Default.culture_l))
             {
                 CultureInfo culture = CultureInfo.InstalledUICulture;

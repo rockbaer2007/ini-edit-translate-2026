@@ -121,13 +121,13 @@
     <value>Fichiers INI (*.ini)|*.ini</value>
   </data>
   <data name="dlgOpen.Title" xml:space="preserve">
-    <value>Veuillez sélectionner le fichier</value>
+    <value>Sélectionner un fichier</value>
   </data>
   <data name="dlgSave.Filter" xml:space="preserve">
     <value>Fichiers INI (*.ini)|*.ini</value>
   </data>
   <data name="dlgSave.Title" xml:space="preserve">
-    <value>Veuillez sélectionner ou entrer le nom du fichier</value>
+    <value>Sélectionner un fichier ou saisir son nom</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
@@ -162,7 +162,7 @@ ChatGPT</value>
     <value>N°</value>
   </data>
   <data name="counter1.ToolTipText" xml:space="preserve">
-    <value>Le compteur correspond à l'entrée XX dans les colonnes</value>
+    <value>Le numéro correspond à XX dans les noms des entrées INI.</value>
   </data>
   <data name="counter.HeaderText" xml:space="preserve">
     <value>N°</value>
@@ -368,7 +368,7 @@ et d’Installation.eep</value>
     <value>101, 13</value>
   </data>
   <data name="label94.Text" xml:space="preserve">
-    <value>chemin d'installation</value>
+    <value>Chemin d’installation</value>
   </data>
   <data name="lb_epche.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 13</value>
@@ -473,7 +473,7 @@ et d’Installation.eep</value>
     <value>253, 70</value>
   </data>
   <data name="infoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Écran d'information</value>
+    <value>Informations sur le programme</value>
   </data>
   <data name="overProgramToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -600,10 +600,10 @@ et d’Installation.eep</value>
     <value>136, 20</value>
   </data>
   <data name="translationAidToolStripMenuItem.Text" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Aide de référence</value>
   </data>
   <data name="button12.Text" xml:space="preserve">
-    <value>export</value>
+    <value>Exporter</value>
   </data>
   <data name="dlgOpen_eep.Filter" xml:space="preserve">
     <value>Fichiers EEP (*.eep)|*.eep</value>
@@ -7195,7 +7195,7 @@ et d’Installation.eep</value>
     <value>Fichiers EEP (*.eep)|*.eep</value>
   </data>
   <data name="label88.Text" xml:space="preserve">
-    <value>Typ</value>
+    <value>Type</value>
   </data>
   <data name="SignFunc.Text" xml:space="preserve">
     <value>SignFunc</value>
@@ -7242,8 +7242,8 @@ et d’Installation.eep</value>
   <data name="btn_trl_5.Text" xml:space="preserve"><value>Traduire</value></data>
   <data name="btn_man.Text" xml:space="preserve"><value>Traduire</value></data>
   <data name="label27.Text" xml:space="preserve"><value>Génération</value></data>
-  <data name="label28.Text" xml:space="preserve"><value>Année début</value></data>
-  <data name="label29.Text" xml:space="preserve"><value>Année fin</value></data>
+  <data name="label28.Text" xml:space="preserve"><value>Année de début</value></data>
+  <data name="label29.Text" xml:space="preserve"><value>Année de fin</value></data>
   <data name="label30.Text" xml:space="preserve"><value>Icône</value></data>
   <data name="label31.Text" xml:space="preserve"><value>Pays</value></data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve"><value>Informations</value></data>

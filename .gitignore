@@ -351,3 +351,9 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Bundled native Firebird runtime restored from the original Info_trans package.
+!Info_trans/firebird-runtime/x86/
+!Info_trans/firebird-runtime/x86/**
+/database-test-output/
+/dist/

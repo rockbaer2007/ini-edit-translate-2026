@@ -1,0 +1,1140 @@
+{
+  "source": "Info_trans/ws_D_E.csv",
+  "entries": 2428,
+  "corrections": [
+    {
+      "source_row": 38,
+      "before": [
+        "Abstandsregelautomat ",
+        "vehicle distance speed regulator"
+      ],
+      "after": [
+        [
+          "Automatischer Abstands- und Geschwindigkeitsregler",
+          "vehicle distance speed regulator",
+          "régulateur automatique de distance entre véhicules"
+        ]
+      ]
+    },
+    {
+      "source_row": 104,
+      "before": [
+        "Antrieb ",
+        "propulsion; drive system; motor including gears"
+      ],
+      "after": [
+        [
+          "Antrieb ",
+          "propulsion; drive system; motor including gears and wheels",
+          "propulsion, système de traction, moteur avec engrenages et roues"
+        ]
+      ]
+    },
+    {
+      "source_row": 105,
+      "before": [
+        "and wheels",
+        ""
+      ],
+      "after": []
+    },
+    {
+      "source_row": 169,
+      "before": [
+        "autom",
+        "Massenbeförderungsmittel "
+      ],
+      "after": [
+        [
+          "Massenbeförderungsmittel",
+          "public transport",
+          "transports publics"
+        ]
+      ]
+    },
+    {
+      "source_row": 229,
+      "before": [
+        "Banddbreite ",
+        "bandwidt"
+      ],
+      "after": [
+        [
+          "Bandbreite",
+          "bandwidt",
+          "largeur de bande"
+        ]
+      ]
+    },
+    {
+      "source_row": 250,
+      "before": [
+        "Bedien- u",
+        "Anzeigesystem "
+      ],
+      "after": [
+        [
+          "Bedien- und Anzeigesystem",
+          "control and display system",
+          "système de commande et d'affichage"
+        ]
+      ]
+    },
+    {
+      "source_row": 383,
+      "before": [
+        "Bremsassisten ",
+        "brake assist system"
+      ],
+      "after": [
+        [
+          "Bremsassistent",
+          "brake assist system",
+          "assistance au freinage"
+        ]
+      ]
+    },
+    {
+      "source_row": 613,
+      "before": [
+        "Elektronischer Buchfahrplan undVerzeichnis der Langsamfahrstellen electronic schedule sheet and catalog of restricted speed zones",
+        ""
+      ],
+      "after": [
+        [
+          "Elektronischer Buchfahrplan und Verzeichnis der Langsamfahrstellen",
+          "electronic schedule sheet and catalog of restricted speed zones",
+          "livret de marche électronique et répertoire des ralentissements"
+        ]
+      ]
+    },
+    {
+      "source_row": 749,
+      "before": [
+        "Fertigungstolerenz ",
+        "production tolerance"
+      ],
+      "after": [
+        [
+          "Fertigungstoleranz",
+          "production tolerance",
+          "tolérance de fabrication"
+        ]
+      ]
+    },
+    {
+      "source_row": 852,
+      "before": [
+        "Getreide ",
+        "grain, transmission, gear, gear box, gear"
+      ],
+      "after": [
+        [
+          "Getreide",
+          "grain",
+          "céréales"
+        ],
+        [
+          "Getriebe",
+          "transmission, gear, gear box, gear",
+          "transmission, engrenage, boîte de vitesses"
+        ]
+      ]
+    },
+    {
+      "source_row": 878,
+      "before": [
+        "Gleisbild-Stellwerk ",
+        "track diagram"
+      ],
+      "after": [
+        [
+          "Gleisbild",
+          "track diagram",
+          "schéma des voies"
+        ]
+      ]
+    },
+    {
+      "source_row": 890,
+      "before": [
+        "Gleisnummernsignal ",
+        "track number indicator"
+      ],
+      "after": [
+        [
+          "Gleisnummernanzeiger",
+          "track number indicator",
+          "indicateur de numéro de voie"
+        ]
+      ]
+    },
+    {
+      "source_row": 1034,
+      "before": [
+        "Hohlwelle ",
+        "quill shaft"
+      ],
+      "after": [
+        [
+          "Hohlwelle",
+          "quill shaft",
+          "arbre creux"
+        ]
+      ]
+    },
+    {
+      "source_row": 1084,
+      "before": [
+        "Kehrschleife ",
+        "reverse curve"
+      ],
+      "after": [
+        [
+          "Gegenbogen",
+          "reverse curve",
+          "contre-courbe"
+        ]
+      ]
+    },
+    {
+      "source_row": 1098,
+      "before": [
+        "Klappdeckelwagen ",
+        "lidded wagon"
+      ],
+      "after": [
+        [
+          "Wagen mit Klappdeckeln",
+          "lidded wagon",
+          "wagon à couvercles rabattables"
+        ]
+      ]
+    },
+    {
+      "source_row": 1103,
+      "before": [
+        "Kleinselbstschalter ",
+        "microswitch"
+      ],
+      "after": [
+        [
+          "Mikroschalter",
+          "microswitch",
+          "micro-interrupteur"
+        ]
+      ]
+    },
+    {
+      "source_row": 1128,
+      "before": [
+        "Kombinierter Verkehr ",
+        "Combined Transport (als Überschrift), intermodal transport, bimodal traffic"
+      ],
+      "after": [
+        [
+          "",
+          "Combined Transport (als Überschrift), intermodal transport, bimodal traffic",
+          "transport combiné, transport intermodal"
+        ]
+      ]
+    },
+    {
+      "source_row": 1129,
+      "before": [
+        "Kombiverkehr, Wagen für den ",
+        " "
+      ],
+      "after": []
+    },
+    {
+      "source_row": 1178,
+      "before": [
+        "Kurbelstange ",
+        "connecting rod (i.e"
+      ],
+      "after": [
+        [
+          "Kurbelstange ",
+          "connecting rod",
+          "bielle motrice"
+        ]
+      ]
+    },
+    {
+      "source_row": 1243,
+      "before": [
+        "Leerlok ",
+        "locomotive running light (i.e"
+      ],
+      "after": [
+        [
+          "Leerlok ",
+          "locomotive running light",
+          "locomotive haut-le-pied"
+        ]
+      ]
+    },
+    {
+      "source_row": 1309,
+      "before": [
+        "Marktbereich Agrarprodukte/ Forstwirtschaft/ Konsumgüter … Market Unit Agriculture/Forestry/ Consumer Goods",
+        ""
+      ],
+      "after": [
+        [
+          "Marktbereich Agrarprodukte / Forstwirtschaft / Konsumgüter",
+          "Market Unit Agriculture/Forestry/ Consumer Goods",
+          "secteur Agriculture, Sylviculture et Biens de consommation"
+        ]
+      ]
+    },
+    {
+      "source_row": 1311,
+      "before": [
+        "Marktbereich Chemie/ Mineralöl/Düngemittel … Market Unit Chemicals/ Mineral Oil/Fertilizers",
+        ""
+      ],
+      "after": [
+        [
+          "Marktbereich Chemie / Mineralöl / Düngemittel",
+          "Market Unit Chemicals/ Mineral Oil/Fertilizers",
+          "secteur Chimie, Pétrole et Engrais"
+        ]
+      ]
+    },
+    {
+      "source_row": 1328,
+      "before": [
+        "Mehrsystemlok ",
+        "dual-frequency loco"
+      ],
+      "after": [
+        [
+          "Zweifrequenzlokomotive",
+          "dual-frequency loco",
+          "locomotive bifréquence"
+        ]
+      ]
+    },
+    {
+      "source_row": 1337,
+      "before": [
+        "Meßdatenanschlusseinheit ",
+        "communication line adapter unit"
+      ],
+      "after": [
+        [
+          "Kommunikationsleitungsadapter",
+          "communication line adapter unit",
+          "adaptateur de liaison de données de mesure"
+        ]
+      ]
+    },
+    {
+      "source_row": 1367,
+      "before": [
+        "Nachlaufachse ",
+        "trailing truck"
+      ],
+      "after": [
+        [
+          "Nachlaufdrehgestell",
+          "trailing truck",
+          "bogie porteur arrière"
+        ]
+      ]
+    },
+    {
+      "source_row": 1368,
+      "before": [
+        "Nachlaufachse ",
+        "trailing truck"
+      ],
+      "after": [
+        [
+          "Nachlaufdrehgestell",
+          "trailing truck",
+          "bogie porteur arrière"
+        ]
+      ]
+    },
+    {
+      "source_row": 1389,
+      "before": [
+        "Neitenzählen ",
+        "nitpicking"
+      ],
+      "after": [
+        [
+          "Nietenzählen (übertriebene Detailkritik)",
+          "nitpicking",
+          "comptage des rivets, souci excessif du détail"
+        ]
+      ]
+    },
+    {
+      "source_row": 1397,
+      "before": [
+        "nichtöffentlicher beweglicher Landfunk ",
+        "Public Mobile Radio"
+      ],
+      "after": [
+        [
+          "Öffentlicher beweglicher Landfunk",
+          "Public Mobile Radio",
+          "radio mobile publique"
+        ]
+      ]
+    },
+    {
+      "source_row": 1411,
+      "before": [
+        "nöbl ",
+        "PMR"
+      ],
+      "after": [
+        [
+          "Privater Mobilfunk (PMR)",
+          "PMR",
+          "radio mobile privée, PMR"
+        ]
+      ]
+    },
+    {
+      "source_row": 1461,
+      "before": [
+        "Personenzuglokomotive ",
+        "passenger (tender) locomotive (as opposed to"
+      ],
+      "after": [
+        [
+          "Personenzuglokomotive ",
+          "passenger (tender) locomotive (as opposed to express passenger locomotive)",
+          "locomotive à tender pour trains de voyageurs (par opposition à une locomotive pour trains express)"
+        ]
+      ]
+    },
+    {
+      "source_row": 1462,
+      "before": [
+        "express passenger locomotive)",
+        ""
+      ],
+      "after": []
+    },
+    {
+      "source_row": 1524,
+      "before": [
+        "Quantisierung ",
+        "quantification"
+      ],
+      "after": [
+        [
+          "Quantifizierung",
+          "quantification",
+          "quantification"
+        ]
+      ]
+    },
+    {
+      "source_row": 1531,
+      "before": [
+        "Radbremsscheine ",
+        "heel brake disk"
+      ],
+      "after": [
+        [
+          "Radbremsscheibe",
+          "heel brake disk",
+          "disque de frein de roue"
+        ]
+      ]
+    },
+    {
+      "source_row": 1535,
+      "before": [
+        "Radlast ",
+        "axle load"
+      ],
+      "after": [
+        [
+          "Achslast",
+          "axle load",
+          "charge à l'essieu"
+        ]
+      ]
+    },
+    {
+      "source_row": 1536,
+      "before": [
+        "Radlastverwiegung ",
+        "weighing of axle loads"
+      ],
+      "after": [
+        [
+          "Achslastverwiegung",
+          "weighing of axle loads",
+          "pesage des charges par essieu"
+        ]
+      ]
+    },
+    {
+      "source_row": 1543,
+      "before": [
+        "Radsatz ",
+        "bogie, (amer.) wheelset"
+      ],
+      "after": [
+        [
+          "Radsatz ",
+          "bogie, (amer.) wheelset",
+          "bogie, (amér.) essieu monté"
+        ]
+      ]
+    },
+    {
+      "source_row": 1552,
+      "before": [
+        "Radwerkzeuge ",
+        "wheel materials"
+      ],
+      "after": [
+        [
+          "Radmaterialien",
+          "wheel materials",
+          "matériaux de roue"
+        ]
+      ]
+    },
+    {
+      "source_row": 1556,
+      "before": [
+        "Rahmendaten ",
+        "frames"
+      ],
+      "after": [
+        [
+          "Datenrahmen",
+          "frames",
+          "données de trame"
+        ]
+      ]
+    },
+    {
+      "source_row": 1565,
+      "before": [
+        "Rangierbahnhof, Zugbildungsanlage, Zugbildungsbahnhof … marshaling yard",
+        ""
+      ],
+      "after": [
+        [
+          "Rangierbahnhof, Zugbildungsanlage, Zugbildungsbahnhof",
+          "marshaling yard",
+          "gare de triage et de formation des trains"
+        ]
+      ]
+    },
+    {
+      "source_row": 1576,
+      "before": [
+        "Rangierhaltsignal ",
+        "calling-on signal"
+      ],
+      "after": [
+        [
+          "Vorsichtssignal (calling-on signal)",
+          "calling-on signal",
+          "signal d'appel autorisant une marche prudente"
+        ]
+      ]
+    },
+    {
+      "source_row": 1605,
+      "before": [
+        "reibungsunabhängig ",
+        "no-friction"
+      ],
+      "after": [
+        [
+          "Reibungsfrei",
+          "no-friction",
+          "sans frottement"
+        ]
+      ]
+    },
+    {
+      "source_row": 1623,
+      "before": [
+        "Richtungsgleis ",
+        "sorting siding"
+      ],
+      "after": [
+        [
+          "Richtungsgleis",
+          "sorting siding",
+          "voie de classement"
+        ]
+      ]
+    },
+    {
+      "source_row": 1700,
+      "before": [
+        "Schiebenradkörper ",
+        "solid wheel body"
+      ],
+      "after": [
+        [
+          "Scheibenradkörper",
+          "solid wheel body",
+          "corps de roue pleine"
+        ]
+      ]
+    },
+    {
+      "source_row": 1730,
+      "before": [
+        "Schienenstoß ",
+        "rail bond"
+      ],
+      "after": [
+        [
+          "Schienenstromverbinder",
+          "rail bond",
+          "connexion électrique entre rails"
+        ]
+      ]
+    },
+    {
+      "source_row": 1736,
+      "before": [
+        "Schienenverkehrssystem ",
+        "transit system"
+      ],
+      "after": [
+        [
+          "Öffentliches Verkehrssystem",
+          "transit system",
+          "système de transport collectif"
+        ]
+      ]
+    },
+    {
+      "source_row": 1766,
+      "before": [
+        "Schnittstelle ",
+        "socket"
+      ],
+      "after": [
+        [
+          "Buchse / Anschlussdose",
+          "socket",
+          "prise, connecteur"
+        ]
+      ]
+    },
+    {
+      "source_row": 1773,
+      "before": [
+        "Schotterwagen ",
+        "hopper wagon"
+      ],
+      "after": [
+        [
+          "Trichterwagen",
+          "hopper wagon",
+          "wagon-trémie"
+        ]
+      ]
+    },
+    {
+      "source_row": 1801,
+      "before": [
+        "Schwimmwinkel ",
+        "attitude angle"
+      ],
+      "after": [
+        [
+          "Schwimmwinkel / Schräglagewinkel",
+          "attitude angle",
+          "angle de dérive"
+        ]
+      ]
+    },
+    {
+      "source_row": 1815,
+      "before": [
+        "Selbstentaldewagen ",
+        "self unloading car"
+      ],
+      "after": [
+        [
+          "Selbstentladewagen",
+          "self unloading car",
+          "wagon autodéchargeur"
+        ]
+      ]
+    },
+    {
+      "source_row": 1819,
+      "before": [
+        "Senkendsignal ",
+        "raise pantograph signal"
+      ],
+      "after": [
+        [
+          "Stromabnehmer-Hebesignal",
+          "raise pantograph signal",
+          "signal de levée du pantographe"
+        ]
+      ]
+    },
+    {
+      "source_row": 1903,
+      "before": [
+        "Stahlbetonbrücke ",
+        "concrete girder bridge"
+      ],
+      "after": [
+        [
+          "Betonbalkenbrücke",
+          "concrete girder bridge",
+          "pont à poutres en béton"
+        ]
+      ]
+    },
+    {
+      "source_row": 1904,
+      "before": [
+        "Stahlbetonbruecke ",
+        "concrete-girder bridge"
+      ],
+      "after": [
+        [
+          "Betonbalkenbrücke",
+          "concrete-girder bridge",
+          "pont à poutres en béton"
+        ]
+      ]
+    },
+    {
+      "source_row": 1924,
+      "before": [
+        "Steigung ",
+        "gradient, up-gradient, ascending gradient, ascending"
+      ],
+      "after": [
+        [
+          "Steigung ",
+          "gradient, up-gradient, ascending gradient, ascending grade",
+          "déclivité, rampe, pente ascendante"
+        ]
+      ]
+    },
+    {
+      "source_row": 1925,
+      "before": [
+        "grade",
+        ""
+      ],
+      "after": []
+    },
+    {
+      "source_row": 1935,
+      "before": [
+        "Steuerung ",
+        "valve gear rods"
+      ],
+      "after": [
+        [
+          "Steuerungsgestänge",
+          "valve gear rods",
+          "bielles de distribution"
+        ]
+      ]
+    },
+    {
+      "source_row": 1940,
+      "before": [
+        "Stirnradgebtriebe ",
+        "helical gear box"
+      ],
+      "after": [
+        [
+          "Schrägstirnradgetriebe",
+          "helical gear box",
+          "réducteur à engrenages hélicoïdaux"
+        ]
+      ]
+    },
+    {
+      "source_row": 1954,
+      "before": [
+        "Streckenbau ",
+        "track layout"
+      ],
+      "after": [
+        [
+          "Gleisführung / Gleisplan",
+          "track layout",
+          "tracé de la voie"
+        ]
+      ]
+    },
+    {
+      "source_row": 1960,
+      "before": [
+        "Streuung ",
+        "mean variation"
+      ],
+      "after": [
+        [
+          "Mittlere Abweichung",
+          "mean variation",
+          "variation moyenne"
+        ]
+      ]
+    },
+    {
+      "source_row": 1966,
+      "before": [
+        "Stromrichter ",
+        "inverter"
+      ],
+      "after": [
+        [
+          "Wechselrichter",
+          "inverter",
+          "onduleur"
+        ]
+      ]
+    },
+    {
+      "source_row": 2021,
+      "before": [
+        "Transport unbegleiteter KV ",
+        "(amer.) unaccompanied Combined"
+      ],
+      "after": [
+        [
+          "Transport unbegleiteter KV ",
+          "(amer.) unaccompanied Combined Transport",
+          "transport combiné non accompagné"
+        ]
+      ]
+    },
+    {
+      "source_row": 2029,
+      "before": [
+        "Transportüberwachung ",
+        "monitoring of a transport/ shipment, transport"
+      ],
+      "after": [
+        [
+          "Transportüberwachung ",
+          "monitoring of a transport/ shipment, transport monitoring",
+          "suivi d'un transport ou d'une expédition"
+        ]
+      ]
+    },
+    {
+      "source_row": 2030,
+      "before": [
+        "monitoring",
+        ""
+      ],
+      "after": []
+    },
+    {
+      "source_row": 2035,
+      "before": [
+        "Trassierung ",
+        "roadbed"
+      ],
+      "after": [
+        [
+          "Gleisbett",
+          "roadbed",
+          "plate-forme de la voie"
+        ]
+      ]
+    },
+    {
+      "source_row": 2041,
+      "before": [
+        "Treibstange ",
+        "coupling rod"
+      ],
+      "after": [
+        [
+          "Kuppelstange",
+          "coupling rod",
+          "bielle d'accouplement"
+        ]
+      ]
+    },
+    {
+      "source_row": 2049,
+      "before": [
+        "Triebkopf ",
+        "driving trailer; power car"
+      ],
+      "after": [
+        [
+          "Triebkopf ",
+          "driving trailer; power car",
+          "remorque pilote, motrice d'extrémité"
+        ]
+      ]
+    },
+    {
+      "source_row": 2085,
+      "before": [
+        "UIC Union Internationale des Chemins de Fer … International Railway Union/Organisation",
+        ""
+      ],
+      "after": [
+        [
+          "UIC – Internationaler Eisenbahnverband",
+          "International Railway Union/Organisation",
+          "Union internationale des chemins de fer, UIC"
+        ]
+      ]
+    },
+    {
+      "source_row": 2099,
+      "before": [
+        "Umrichter ",
+        "inverter"
+      ],
+      "after": [
+        [
+          "Wechselrichter",
+          "inverter",
+          "onduleur"
+        ]
+      ]
+    },
+    {
+      "source_row": 2100,
+      "before": [
+        "Umsatz in Geschäftsverantwortung ",
+        "sales in business responsibility Umsatz, im Namen und auf Rechnung von "
+      ],
+      "after": [
+        [
+          "Umsatz in Geschäftsverantwortung",
+          "revenue under operational responsibility",
+          "chiffre d'affaires sous responsabilité opérationnelle"
+        ],
+        [
+          "Umsatz, im Namen und auf Rechnung von",
+          "sales, in the name of and on the account of",
+          "chiffre d'affaires, au nom et pour le compte de"
+        ]
+      ]
+    },
+    {
+      "source_row": 2101,
+      "before": [
+        "In Rechnung gestellt wurde sales, in the name of and on the account of… Amount billed:",
+        ""
+      ],
+      "after": [
+        [
+          "In Rechnung gestellt wurde",
+          "Amount billed:",
+          "montant facturé :"
+        ]
+      ]
+    },
+    {
+      "source_row": 2111,
+      "before": [
+        "unbegleiteter Kombinierter Ladungsverkehr unaccompanied Combined Transport",
+        ""
+      ],
+      "after": [
+        [
+          "Unbegleiteter kombinierter Ladungsverkehr",
+          "unaccompanied Combined Transport",
+          "transport combiné non accompagné"
+        ]
+      ]
+    },
+    {
+      "source_row": 2168,
+      "before": [
+        "Verkehrswert ",
+        "traffic load"
+      ],
+      "after": [
+        [
+          "Verkehrslast",
+          "traffic load",
+          "charge de trafic"
+        ]
+      ]
+    },
+    {
+      "source_row": 2196,
+      "before": [
+        "vollautom",
+        "fahrerloser spurgeführter Betrieb automatic guideway transit (AGT)"
+      ],
+      "after": [
+        [
+          "Vollautomatischer fahrerloser spurgeführter Betrieb",
+          "automatic guideway transit (AGT)",
+          "transport guidé automatique sans conducteur"
+        ]
+      ]
+    },
+    {
+      "source_row": 2252,
+      "before": [
+        "Wahlinformation ",
+        "address message"
+      ],
+      "after": [
+        [
+          "Adressnachricht",
+          "address message",
+          "message d'adresse"
+        ]
+      ]
+    },
+    {
+      "source_row": 2285,
+      "before": [
+        "Wechselbahnhof ",
+        "locomotive changing point"
+      ],
+      "after": [
+        [
+          "Lokwechselstelle",
+          "locomotive changing point",
+          "point de changement de locomotive"
+        ]
+      ]
+    },
+    {
+      "source_row": 2301,
+      "before": [
+        "Weichensperrkeis ",
+        "point blocking circuit"
+      ],
+      "after": [
+        [
+          "Weichensperrkreis",
+          "point blocking circuit",
+          "circuit de blocage d'aiguillage"
+        ]
+      ]
+    },
+    {
+      "source_row": 2302,
+      "before": [
+        "Weichenstellung ",
+        "switch stand, switching"
+      ],
+      "after": [
+        [
+          "Weichenstellbock",
+          "switch stand",
+          "appareil de manœuvre d'aiguillage"
+        ],
+        [
+          "Weichenstellen",
+          "switching",
+          "manœuvre des aiguillages"
+        ]
+      ]
+    },
+    {
+      "source_row": 2312,
+      "before": [
+        "Wendeanlage ",
+        "reverser"
+      ],
+      "after": [
+        [
+          "Umkehrvorrichtung",
+          "reverser",
+          "dispositif d'inversion"
+        ]
+      ]
+    },
+    {
+      "source_row": 2327,
+      "before": [
+        "Zahlungssystem ",
+        "fare management system"
+      ],
+      "after": [
+        [
+          "Fahrgeldmanagementsystem",
+          "fare management system",
+          "système de gestion tarifaire"
+        ]
+      ]
+    },
+    {
+      "source_row": 2349,
+      "before": [
+        "Zubeeinflussung ",
+        "automatic train control"
+      ],
+      "after": [
+        [
+          "Zugbeeinflussung",
+          "automatic train control",
+          "contrôle automatique des trains"
+        ]
+      ]
+    },
+    {
+      "source_row": 2375,
+      "before": [
+        "Zugentlastung ",
+        "strain relief"
+      ],
+      "after": [
+        [
+          "Zugentlastung (Kabel)",
+          "strain relief",
+          "dispositif anti-traction du câble"
+        ]
+      ]
+    },
+    {
+      "source_row": 2386,
+      "before": [
+        "Zugkraft ",
+        "tractive power"
+      ],
+      "after": [
+        [
+          "Zugleistung",
+          "tractive power",
+          "puissance de traction"
+        ]
+      ]
+    },
+    {
+      "source_row": 2387,
+      "before": [
+        "Zugkraft ",
+        "tractive power"
+      ],
+      "after": [
+        [
+          "Zugleistung",
+          "tractive power",
+          "puissance de traction"
+        ]
+      ]
+    }
+  ],
+  "unresolved": []
+}

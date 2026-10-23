@@ -14,13 +14,29 @@ jobs:
       - uses: NuGet/setup-nuget@v2
       - name: Restore dependencies
         run: nuget restore "INI Edit Translate 2026.sln" -NonInteractive
+      - name: Verify reproducible reviewed dictionary
+        run: |
+          python tools/build-dictionary-fr.py
+          git diff --exit-code -- Info_trans/reference-data/ws_D_E_F.csv docs/dictionary-review.json
       - name: Build release
         run: msbuild "INI Edit Translate 2026.sln" /t:Build /p:Configuration=Release /v:minimal
       - name: Build local tests
         run: msbuild tests/IET.LocalTests.csproj /t:Build /v:minimal
       - name: Run local tests without live API calls
         run: ./tests/bin/IET.LocalTests.exe
+      - name: Build isolated database tests
+        run: msbuild tests/IET.DatabaseTests.csproj /t:Build /v:minimal
+      - name: Verify real database in separate working copies
+        run: ./tests/bin/database/IET.DatabaseTests.exe "Info_trans/bin/Release" "database-test-output"
+      - name: Build update tests
+        run: msbuild tests/IET.UpdateTests.csproj /t:Build /v:minimal
+      - name: Verify update installation and rollback in temporary folders
+        run: ./tests/bin/updates/IET.UpdateTests.exe "Ini Edit - Translate/bin/Release"
+      - name: Package both programs with reference data
+        run: ./tools/package-release.ps1 -OutputDirectory dist
       - uses: actions/upload-artifact@v4
         with:
           name: INI-Edit-Translate-2026-windows
-          path: Ini Edit - Translate/bin/Release/
+          path: |
+            dist/*.zip
+            dist/SHA256SUMS.txt

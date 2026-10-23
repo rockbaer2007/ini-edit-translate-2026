@@ -233,15 +233,183 @@ internal static class LocalTests
                         Assert(all.All(control => !control.Text.Contains("\ufffd")), "broken editor label");
                         Assert(!all.Any(control => control.Name == "groupBox3"), "legacy provider panel");
                         var menus = all.OfType<MenuStrip>().SelectMany(menu => menu.Items.Cast<ToolStripItem>()).OfType<ToolStripMenuItem>();
-                        Assert(!menus.SelectMany(menu => menu.DropDownItems.Cast<ToolStripItem>()).Any(item => item.Name.IndexOf("update", StringComparison.OrdinalIgnoreCase) >= 0), "update action remains");
+                        var updateItems = menus.SelectMany(menu => menu.DropDownItems.Cast<ToolStripItem>())
+                            .Where(item => item.Name.IndexOf("update", StringComparison.OrdinalIgnoreCase) >= 0).ToArray();
+                        Assert(updateItems.Length == 1 && updateItems[0].Name == "githubUpdateMenuItem", "only the new GitHub updater is offered");
                         if (args.Length > 0)
                         {
                             string file = Path.Combine(Path.GetDirectoryName(args[0]), "editor-" + language + ".png");
                             using (var bitmap = new Bitmap(form.Width, form.Height)) { form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height)); bitmap.Save(file); }
+                            var editorTabs = all.OfType<TabControl>().Single(tab => tab.Name == "tabControl1");
+                            editorTabs.SelectedIndex = 4;
+                            form.Refresh();
+                            using (var bitmap = new Bitmap(form.Width, form.Height))
+                            {
+                                form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "installation-" + language + ".png"));
+                            }
                         }
                         form.Close();
                     }
                 });
+            }
+            string helperData = Path.Combine(Path.GetTempPath(), "iet-helper-" + Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(helperData);
+            string previousRoot = Info_trans.DataFiles.Root;
+            try
+            {
+                Info_trans.DataFiles.Root = helperData;
+                Test("helper tables preserve quoted separators, Unicode and whitespace", () =>
+                {
+                    File.WriteAllText(Path.Combine(helperData, "iconhelp.csv"), "Name;Text\r\n\" A;B \";Été\r\n", new UTF8Encoding(true));
+                    var data = Info_trans.DataFiles.ReadTable("iconhelp.dat");
+                    Assert(data.Rows.Count == 1 && (string)data.Rows[0][0] == " A;B " && (string)data.Rows[0][1] == "Été", "CSV values");
+                });
+                Test("helper glossary retains the first actual entry", () =>
+                {
+                    File.WriteAllText(Path.Combine(helperData, "twb.csv"), "Title;;\r\nDE;FR;EN\r\nA;B;C\r\n");
+                    File.WriteAllText(Path.Combine(helperData, "ws_D_E.csv"), "Abbildung;figure\r\n");
+                    Assert(Info_trans.DataFiles.ReadTable("twb.dat").Rows.Count == 1, "glossary title skipped");
+                    Assert((string)Info_trans.DataFiles.ReadTable("ws_D_E.dat").Rows[0][0] == "Abbildung", "first row retained");
+                    Assert(Info_trans.DataFiles.ReadDictionary().Columns.Count == 2, "legacy dictionary fallback");
+                });
+                Test("three-language dictionary uses header, keeps first entry and prioritizes reviewed CSV", () =>
+                {
+                    File.WriteAllText(Path.Combine(helperData, "ws_D_E_F.csv"), "Deutsch;English;Français\r\nAbbildung;figure;illustration\r\n\"A;B\";C;été\r\n", new UTF8Encoding(true));
+                    var dictionary = Info_trans.DataFiles.ReadDictionary();
+                    Assert(dictionary.Columns.Count == 3 && dictionary.Columns[2].ColumnName == "Français", "French header");
+                    Assert(dictionary.Rows.Count == 2 && (string)dictionary.Rows[0][0] == "Abbildung", "header not data; first entry retained");
+                    Assert((string)dictionary.Rows[1][0] == "A;B" && (string)dictionary.Rows[1][2] == "été", "quoted separator and accents");
+                });
+                Test("helper loads all supplied reference files with original row counts", () =>
+                {
+                    Info_trans.DataFiles.Root = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                        "..", "..", "Info_trans", "reference-data"));
+                    Assert(Info_trans.DataFiles.ReadTable("iconhelp.dat").Rows.Count == 236, "icon rows");
+                    Assert(Info_trans.DataFiles.ReadTable("twb.dat").Rows.Count == 369, "technical glossary rows");
+                    Assert(Info_trans.DataFiles.ReadTable("ws_D_E.dat").Rows.Count == 2431, "DE EN glossary rows");
+                    var dictionary = Info_trans.DataFiles.ReadDictionary();
+                    Assert(dictionary.Rows.Count == 2428 && dictionary.Columns.Count == 3, "full DE EN FR dictionary");
+                    Assert(dictionary.Rows.Cast<System.Data.DataRow>().All(row => !string.IsNullOrWhiteSpace((string)row[2])), "French completeness");
+                    var entries = dictionary.Rows.Cast<System.Data.DataRow>().ToArray();
+                    Assert(entries.Any(row => (string)row[0] == "Getreide" && (string)row[1] == "grain" && (string)row[2] == "céréales"), "grain split");
+                    Assert(entries.Any(row => (string)row[0] == "Getriebe" && (string)row[1] == "transmission, gear, gear box, gear"), "gearbox split retains remaining English text");
+                    Assert(entries.Any(row => (string)row[0] == "Massenbeförderungsmittel" && (string)row[1] == "public transport") && !entries.Any(row => (string)row[0] == "autom"), "public transport correction");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Antrieb" && ((string)row[1]).EndsWith("gears and wheels")), "drive continuation merged");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Personenzuglokomotive" && ((string)row[1]).EndsWith("as opposed to express passenger locomotive)")), "passenger locomotive continuation merged");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Steigung" && ((string)row[1]).EndsWith("ascending grade")), "gradient continuation merged");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Transportüberwachung" && ((string)row[1]).EndsWith("transport monitoring")), "monitoring continuation merged");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Leerlok" && (string)row[1] == "locomotive running light"), "removed incomplete explanation");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Transport unbegleiteter KV" && (string)row[1] == "(amer.) unaccompanied Combined Transport"), "completed combined transport");
+                    Assert(entries.Any(row => (string)row[0] == "Öffentlicher beweglicher Landfunk" && (string)row[1] == "Public Mobile Radio"), "public radio German correction");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Radsatz" && (string)row[1] == "bogie, (amer.) wheelset") &&
+                        entries.Any(row => ((string)row[0]).Trim() == "Triebkopf" && (string)row[1] == "driving trailer; power car"), "British and American original terms retained");
+                    Assert(entries.Any(row => (string)row[0] == "" && ((string)row[1]).StartsWith("Combined Transport")) && !entries.Any(row => ((string)row[0]).StartsWith("Kombiverkehr, Wagen")), "requested German text and separate row removed");
+                    Assert(entries.Any(row => (string)row[0] == "Weichenstellbock" && (string)row[1] == "switch stand") && entries.Any(row => (string)row[0] == "Weichenstellen" && (string)row[1] == "switching"), "switch stand and switching split");
+                    Assert(entries.Any(row => (string)row[0] == "Bedien- und Anzeigesystem" && (string)row[1] == "control and display system" && (string)row[2] == "système de commande et d'affichage"), "completed control and display translation");
+                    Assert(entries.Any(row => ((string)row[0]).Trim() == "Kurbelstange" && (string)row[1] == "connecting rod" && (string)row[2] == "bielle motrice"), "removed second incomplete explanation");
+                    Assert(entries.All(row => !string.IsNullOrWhiteSpace((string)row[1])), "English translations complete");
+                    Assert(entries.Any(row => (string)row[0] == "Umsatz in Geschäftsverantwortung" && (string)row[1] == "revenue under operational responsibility" && (string)row[2] == "chiffre d'affaires sous responsabilité opérationnelle") &&
+                        entries.Any(row => (string)row[0] == "Umsatz, im Namen und auf Rechnung von" && (string)row[1] == "sales, in the name of and on the account of") &&
+                        entries.Any(row => (string)row[0] == "In Rechnung gestellt wurde" && (string)row[1] == "Amount billed:"), "three sales and billing entries separated");
+                    Assert(Info_trans.DataFiles.ReadTable("object.csv").Rows.Count == 1, "one original workbook entry");
+                    Assert(Info_trans.DataFiles.ReadTable("estate.csv").Rows.Count == 0, "empty source stays empty");
+                    using (var helper = new Info_trans.Form1())
+                    {
+                        helper.StartPosition = FormStartPosition.Manual;
+                        helper.Location = new Point(-20000, -20000);
+                        helper.ShowInTaskbar = false;
+                        helper.Show(); helper.Refresh();
+                        var grid = Descendants(helper).OfType<DataGridView>().Single(item => item.Name == "dataGridView10");
+                        Assert(((System.Data.DataTable)grid.DataSource).Rows.Count == 2428 && grid.Columns.Count == 3, "actual three-language form data bound");
+                        Assert(Descendants(helper).OfType<TabPage>().Single(page => page.Name == "tabPage10").Text.Contains("DE/EN/FR"), "three-language tab caption");
+                        Descendants(helper).OfType<TabControl>().Single().SelectedTab = (TabPage)grid.Parent;
+                        helper.Refresh();
+                        if (args.Length > 0)
+                        {
+                            using (var bitmap = new Bitmap(helper.Width, helper.Height))
+                            {
+                                helper.DrawToBitmap(bitmap, new Rectangle(0, 0, helper.Width, helper.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "info-trans.png"));
+                            }
+                        }
+                        helper.Close();
+                    }
+                    Info_trans.DataFiles.Root = helperData;
+                });
+                Test("helper preserves unreadable database and disables SQL import", () =>
+                {
+                    string databasePath = Path.Combine(helperData, "IET2.FDB");
+                    File.WriteAllText(databasePath, "synthetic-invalid-database");
+                    using (var helper = new Info_trans.Form1())
+                    {
+                        helper.StartPosition = FormStartPosition.Manual;
+                        helper.Location = new Point(-20000, -20000);
+                        helper.ShowInTaskbar = false;
+                        helper.Show(); helper.Refresh();
+                        Assert(!Descendants(helper).OfType<Button>().Single(button => button.Name == "button2").Enabled, "SQL disabled");
+                        Assert(File.ReadAllText(databasePath) == "synthetic-invalid-database", "original bytes retained");
+                        helper.Close();
+                    }
+                    File.Delete(databasePath);
+                });
+                foreach (string language in new[] { "de", "en", "fr" })
+                {
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+                    Test("helper starts with missing data without crashing " + language, () =>
+                    {
+                        using (var helper = new Info_trans.Form1())
+                        {
+                            helper.StartPosition = FormStartPosition.Manual;
+                            helper.Location = new Point(-20000, -20000);
+                            helper.ShowInTaskbar = false;
+                            helper.Show();
+                            helper.Refresh();
+                            var status = Descendants(helper).OfType<StatusStrip>().Single().Items[0].Text;
+                            Assert(status.Contains("estate.csv") && status.Contains("IET2.FDB"), "missing data visible");
+                            helper.Close();
+                        }
+                    });
+                }
+            }
+            finally
+            {
+                Info_trans.DataFiles.Root = previousRoot;
+                Directory.Delete(helperData, true);
+            }
+            foreach (string language in new[] { "de", "en", "fr" })
+            {
+            Test("localized information opens independently of current working directory " + language, () =>
+            {
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(language);
+                string previousDirectory = Environment.CurrentDirectory;
+                try
+                {
+                    Environment.CurrentDirectory = Path.GetTempPath();
+                    using (var information = new infoscreen())
+                    {
+                        var text = Descendants(information).OfType<RichTextBox>().Single().Text;
+                        Assert(!string.IsNullOrWhiteSpace(text), "RTF content loaded");
+                        Assert(File.Exists(infoscreen.InformationPath), "information path beside executable");
+                        Assert(infoscreen.InformationPath.EndsWith("Info." + language + ".rtf"), "localized document selected");
+                        Assert(text.Contains("OpenAI") && !text.Contains("Google") && !text.Contains("Leo.org"), "current translation instructions");
+                        Assert(information.Text == Ui.Text("infoTitle"), "localized information title");
+                        if (args.Length > 0)
+                        {
+                            information.StartPosition = FormStartPosition.Manual;
+                            information.Location = new Point(-20000, -20000);
+                            information.Show(); information.Refresh();
+                            using (var bitmap = new Bitmap(information.Width, information.Height))
+                            {
+                                information.DrawToBitmap(bitmap, new Rectangle(0, 0, information.Width, information.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "information-" + language + ".png"));
+                            }
+                            information.Close();
+                        }
+                    }
+                }
+                finally { Environment.CurrentDirectory = previousDirectory; }
+            });
             }
             Console.WriteLine(passed + " local checks passed; zero live API calls.");
             return 0;

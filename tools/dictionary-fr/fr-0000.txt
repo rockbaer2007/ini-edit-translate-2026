@@ -1,0 +1,400 @@
+illustration, figure, image
+plaque de recouvrement
+couvercle, capot
+refouler les wagons vers la bosse de triage
+triage à la bosse interdit
+signal de refoulement vers la bosse
+ordre de départ
+signal d'autorisation de départ
+ordre de départ du train
+prêt au départ
+signal de départ
+départ
+quai de départ
+horaire des départs
+voie de départ
+signal de départ
+lieu de départ
+tableau des départs
+heure de départ
+discipline de traitement
+intervalle entre deux départs
+gare de départ
+processus de départ
+trafic sortant
+soupape de décharge
+installation de triage par gravité
+bosse de triage
+triage par gravité
+commande séquentielle
+aptitude à la réception
+essai de réception
+plan de réception certifié
+amovible
+date du voyage
+systèmes d'arrêt
+arrêt, mise hors service
+expéditeur
+régulateur automatique de distance entre véhicules
+faisceau de remisage
+gare de remisage
+voie de garage, voie de remisage
+remisage
+méthode d'échantillonnage
+compartiment
+service, département
+chef de service
+voiture à compartiments
+décalcomanie
+gare de bifurcation
+bifurcation
+palier d'essieu
+essieu, arbre d'essieu
+disposition des essieux
+boîte d'essieu, roulement d'essieu
+empattement
+système de comptage des essieux
+donner un coup de sifflet d'avertissement
+signal d'avertissement
+correspondance d'adresses
+table de routage
+champ d'adresse
+adressage
+longueur d'adresse
+schéma d'adressage
+partie d'adresse
+batterie pour appareil portatif
+batterie rechargeable, accumulateur
+automotrice à accumulateurs
+moteur universel à courant alternatif et continu
+module de commande additionnel
+vitesse de variation
+ensemble de modifications
+accélération au démarrage
+démarrage, mise en mouvement
+effort de traction au démarrage
+pancarte de début
+appareil de block d'entrée
+signal de début
+exigences
+classe d'exigences
+distance d'arrêt
+trafic entrant
+arrivée
+quai d'arrivée
+zone d'arrivée
+niveau des arrivées
+intervalle entre deux arrivées
+horaire des arrivées
+lieu d'arrivée
+processus d'arrivée
+taux d'arrivée
+tableau des arrivées
+jour d'arrivée
+heure d'arrivée
+conception du réseau, planification des installations
+disponibilité de l'installation
+pression de contact
+appareil de sonorisation
+raccorder électriquement
+correspondance, raccordement
+voie de raccordement, embranchement particulier
+borne de raccordement
+broche de connexion
+motorisation, système de traction
+et roues [ligne source incomplète]
+transmission et châssis
+entraînement, système de traction
+contrôleur de traction
+système de propulsion
+dispositif d'entraînement
+couple moteur
+répartition du couple moteur
+roue motrice
+technique de propulsion
+programme utilisateur
+train de travaux
+cycle de fonctionnement
+tunnel sous la Manche
+cendrier
+cendrier
+tiroir de manœuvre
+moteur asynchrone de traction
+caisse, superstructure
+superstructures
+durée de séjour
+surélevé, sur viaduc
+remettre sur les rails
+appareil de relevage et de remise sur rails
+résolution
+choc, impact
+inscription, étiquette
+date de commande
+volume de la commande
+voies de réparation
+atelier de réparation
+faisceau de départ
+signal de sortie
+temps de détection d'une défaillance
+taux de défaillance
+version, exécution
+vitesse initiale
+grandeur de sortie
+puissance de sortie
+processus de sortie
+taux d'utilisation
+flèche, console
+grue à flèche
+retirer du service
+retrait du service, radiation
+retrait du service, radiation
+équipement technique
+signal de coupure du courant
+signal d'annonce de coupure du courant
+appel d'offres
+dossier d'appel d'offres
+quai latéral
+aiguillage symétrique en courbe
+émission, transmission
+blocage externe
+transport exceptionnel, chargement exceptionnel
+réunion extraordinaire
+hors horaire, non programmé
+voiture d'exposition
+installer, disposer
+point de croisement, évitement
+tiroir de manœuvre
+joint à sifflet
+chargeur de batterie automobile
+transport de masse automatique [ligne source à vérifier]
+fonctionnement automatique
+attelage automatique
+dispositif d'automatisation
+automobiles, voitures
+wagon porte-autos à deux niveaux
+rampe de chargement des automobiles
+absorbeur acoustique axial
+contre-aiguille
+chemin de fer
+bifurcation ferroviaire
+installations ferroviaires
+raccordement ferroviaire
+dépôt de locomotives
+remblai ferroviaire
+wagon de service
+électrification ferroviaire
+électronique ferroviaire
+billet de train
+renseignements sur les horaires des trains
+fret ferroviaire
+emprise ferroviaire
+compagnie ferroviaire
+registre foncier ferroviaire
+gare ferroviaire
+bâtiment de gare
+hall de gare
+hôtel de la gare
+service d'assistance en gare
+billet de train
+plate-forme de la voie, infrastructure ferroviaire
+ligne de chemin de fer
+horaire des trains
+police ferroviaire
+tarifs ferroviaires
+rayon de courbure
+voyages en train
+voyageurs ferroviaires
+spécialiste des voyages ferroviaires
+réservations de train
+réseau téléphonique ferroviaire automatique
+commissionnaire de transport ferroviaire
+quai
+voie à quai
+surveillance de la voie à quai
+bordure de quai
+ligne ferroviaire
+alimentation électrique de traction
+système ferroviaire
+tarifs ferroviaires
+technique ferroviaire
+transport ferroviaire
+passage à niveau
+système de protection des passages à niveau
+signal de contrôle du passage à niveau
+passage inférieur ferroviaire
+trafic ferroviaire
+livraison par chemin de fer
+masse de lest
+zones urbaines
+largeur de bande
+station de base
+émetteur de station de base
+pile électrique
+coffre à batteries
+instructions de construction et d'exploitation
+tranche de construction
+type, modèle, conception
+chemin de fer de chantier
+échelle, taille normalisée
+sous-ensemble
+direction du chantier
+série, type de matériel
+véhicule de série
+kit de montage
+chantier
+signal de ralentissement de chantier
+matériaux de construction
+méthode de construction
+état d'avancement des travaux
+arrêt à la demande
+système de commande et d'affichage [ligne source à vérifier]
+durée de service
+unité de commande
+interface homme-machine
+processus de service
+taux de service
+poste de commande informatique
+système de commande
+embranchements particuliers desservis
+mode d'emploi, guide d'utilisation
+condition
+franchir, parcourir une courbe
+commande, ordre
+fixer, monter
+fixation
+douille de fixation
+dispositif de fixation
+transporteur, transitaire
+transport, acheminement
+transport combiné accompagné
+traitement limité
+conteneur, récipient
+wagon porte-conteneurs
+manutention, traitement
+personnes en situation de handicap
+remorque d'autorail
+approvisionnement en charbon
+installation de chargement du charbon
+voie de chargement du charbon
+installation de chargement
+wagon chargé
+capacité de charge
+charge
+durée d'occupation
+éclairage
+interface utilisateur
+interface utilisateur
+conseil
+division, secteur
+responsable de division
+chemin de fer de montagne
+exploitation minière
+chef de bosse
+rapport
+sans contact
+protection contre les contacts électriques
+installation d'approvisionnement en sable
+voie de sablage
+approvisionnement, acquisition
+coûts d'acquisition
+problèmes d'approvisionnement
+accélération, capacité d'accélération
+indicateur d'accélération
+capteur d'accélération
+lettrage, marquage
+indicateur de voie occupée
+possession, propriété
+confirmation
+gare destinataire
+destination
+ravitaillement en carburant
+installation de ravitaillement en carburant
+tige de commande
+traverse en béton
+exploitation, entreprise
+exploitation et maintenance
+analyse d'exploitation
+mode de fonctionnement
+freins de service
+planification de l'utilisation du matériel
+gestion de l'exploitation
+système de gestion de l'exploitation
+vitesse de service
+dépôt
+coûts d'exploitation
+poste central de commande
+système de régulation de l'exploitation
+techniques de régulation de l'exploitation
+direction de l'exploitation
+numéro d'exploitation
+planification des horaires et des services
+sécurité d'exploitation
+tension de service
+gares et points d'arrêt
+perturbation d'exploitation
+système d'exploitation
+actifs d'exploitation, fonds de roulement
+dépôt
+atelier de maintenance
+heures d'exploitation
+centre d'exploitation
+centre de commande de l'exploitation
+état de fonctionnement
+ballast, lit de la voie
+profil du ballast
+nettoyage du ballast
+rampe mobile de transroulage
+plaque signalétique
+conteneur terrestre
+transport interne
+transport intérieur
+voiture-buffet
+débit binaire
+tuyère d'échappement
+ressort à lames
+tôle
+arbre de renvoi
+feu clignotant
+signal clignotant
+canton de block
+pression de blocage
+blocage
+probabilité de blocage
+signal de block
+poste de block
+plancher
+élément de plancher
+courbe
+pont en arc
+rayon de courbure
+aiguillage en courbe
+alésage, trou de perçage
+système d'information embarqué
+carte d'embarquement
+talon de carte d'embarquement
+contrôle des cartes d'embarquement
+restaurant à bord
+talus
+marché des services de sécurité publique
+détecteur d'incendie
+classe de protection contre l'incendie
+système de protection contre l'incendie
+voie large, écartement supérieur à 1 435 mm
+assistance au freinage
+sabot de frein
+garniture de frein
+usure des garnitures de frein
+pression de freinage
+capteur de pression de freinage
+frein
+serrer les freins
+freins en bon état de fonctionnement
+desserrer les freins
+desserrer les freins
+frein
+agent serre-frein
+plate-forme de serre-frein
+guérite de serre-frein
+liquide de frein
+timonerie de frein
+sabot de frein

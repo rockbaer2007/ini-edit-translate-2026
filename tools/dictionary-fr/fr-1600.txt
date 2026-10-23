@@ -1,0 +1,400 @@
+trafic régional de voyageurs
+régulateur, contrôleur, manipulateur
+régulateur
+masse adhérente
+indépendant de l'adhérence
+coefficient de frottement
+portée, couverture
+trafic purement aléatoire
+voie de lavage
+centre de vente de billets
+informations de voyage
+train de voyageurs
+voiture de voyageurs
+poste d'aiguillage sur portique
+relais
+relations, itinéraires
+rendement financier
+stratégie de réservation
+division Transport et Logistique
+trafic résiduel
+directive
+indicateur d'itinéraire
+voie de classement
+flèche de direction
+indicateur de destination
+indicateur avancé d'itinéraire
+frein à contre-pression Riggenbach
+rail à gorge
+rail à gorge
+rotonde à locomotives
+rotonde à locomotives
+risque
+bogie porteur pour wagons
+bogie porteur pour véhicules ferroviaires
+fosse à bogies porteurs
+fosse à bogies porteurs
+wagon à toit roulant
+route roulante
+boîte d'essieu à roulements à rouleaux
+bruit de roulement
+wagon porteur
+rouille
+barreau de grille
+trajet retour
+aiguillage talonnable à rappel automatique
+pompe de retour
+feu arrière
+signal de refoulement
+rétrocompatible
+niveau d'appel
+délai après numérotation
+wagons à grumes
+rotonde
+rancher
+rancher
+logement de rancher
+wagon à ranchers
+wagon à ranchers
+véhicules de trains suburbains et de métro
+marchandises de groupage
+sabler
+tuyau de sablage
+sablière
+sablière
+dispositif de sablage
+semi-remorque routière
+semi-remorque
+semi-remorque routière
+semi-remorque routière
+wagon-trémie autodéchargeur
+conduite d'aspiration
+vide, dépression
+vide, dépression
+frein à vide
+wagon à bonbonnes d'acide
+train suburbain, S-Bahn
+réseau de transport régional
+pancarte à damier
+écarter les wagons avariés
+wagon avarié
+contrôleur, chef de train
+contrôleur, chef de train
+levier de commande
+signal de disjonction
+repère de contact de voie
+plaque de disque
+collecteur à disque
+roue pleine
+wagon articulé
+pantographe en losange
+décalcomanie
+pont transbordeur
+pont transbordeur
+toit coulissant
+toit coulissant
+wagon à toit coulissant
+wagon à toit coulissant
+locomotive de pousse
+signal pour locomotive de pousse
+corps de roue pleine
+boîte à vapeur
+boîte à vapeur
+porte coulissante
+porte coulissante
+wagon à parois coulissantes
+wagon à parois coulissantes
+rail
+rail
+lit de la voie
+autorail léger
+autorail léger
+remorque d'autorail léger
+remorque d'autorail léger
+rame d'autorails légers
+motrice d'autorail léger
+véhicule ferroviaire
+véhicule ferroviaire
+matériel roulant
+joint de rails en équerre
+transport ferroviaire de fret
+fabricant de voies
+champignon du rail
+petit locotracteur
+dessus du rail, niveau du rail
+locomotive nettoyeuse de rails
+wagon nettoyeur de rails
+train meuleur de rails
+âme du rail
+joint de rails
+connexion électrique entre rails
+patin de captage sur rail conducteur
+connexion électrique des rails
+éclisse de raccordement
+éclisse, raccord de voie
+système de transport ferroviaire
+système de transport collectif
+cheminement longitudinal des rails
+joint de rails décalé
+pancarte, plaque
+scories, mâchefer
+voiture-lits
+voiture-lits
+patin de prise de courant
+frotteur de prise de courant
+ligne de contact
+locomotive à tender séparé
+locomotive à vapeur avec tender séparé
+cheminée
+feu de fin de convoi
+insert de feu de fin de convoi
+voie étroite
+voie étroite
+wagon de marchandises à voie étroite
+locomotive à voie étroite
+neige fondante
+chasse-neige
+pancarte pour chasse-neige
+fraise à neige
+chasse-neige rotatif
+trafic rapide
+train express
+train express
+locomotive à tender pour trains express
+locomotive pour trains express
+wagons à bois scié
+prise, connecteur
+cheminée
+cheminée
+ballast
+ballast
+sous-couche de ballast
+wagon à ballast
+wagon-trémie
+barrière
+barrières
+vis
+marchandises en vrac
+transport de produits en vrac
+wagon pour vrac
+signal d'arrêt de sécurité
+pancarte d'arrêt immédiat
+casque de protection
+indice de protection
+signaux de protection et d'obstacle
+section de protection
+aiguille de déraillement de sécurité
+chemin de fer suspendu
+système de sustentation
+goujon soudé
+souder
+crampon de rail
+selle de rail
+traverse
+traverse
+espacement des traverses
+bras pivotant
+pont tournant
+wagon à toit pivotant
+wagon pour charges lourdes
+circuit à flotteur
+angle de dérive
+coulisse de distribution
+coulisse de distribution
+vibrations
+énergie d'oscillation
+sans vibrations
+volant d'inertie
+volant d'inertie
+rame de six voitures
+conteneur maritime
+transport portuaire vers l'arrière-pays
+ligne secondaire
+ligne secondaire
+signal de block automatique
+wagon autodéchargeur
+autodéchargeur
+wagon-trémie autodéchargeur
+site d'émission
+signal de levée du pantographe
+signal d'abaissement du pantographe
+annonce d'abaissement du pantographe
+marchandises sensibles
+sélection séquentielle
+type de série
+système de service et de diagnostic
+sécurité
+dispositif de vigilance du conducteur
+soupape de sûreté
+soupape de sûreté
+dispositif de protection
+systèmes de signalisation
+contact visuel
+tube à fumée
+signal
+signal à distance de freinage réduite
+signalisation et télécommunications
+indication du signal
+aspect du signal
+portique de signalisation
+portique de signalisation
+règlement de signalisation
+référence au signal
+signalisation
+palette de signalisation
+disque de signalisation
+plaque de type du signal
+combinaison de signaux
+mât de signalisation
+répétiteur de signal
+position, indication du signal
+position du signal
+défaillance de signalisation
+pancarte de signalisation
+équipement de signalisation
+répétiteur de signal
+emblème, signe
+simulation
+modèle de simulation
+système de simulation
+véhicule spécial
+série limitée, édition spéciale
+train spécial
+train spécial
+transitaire
+clients des transitaires
+roue à rayons
+roue à rayons
+dôme d'alimentation
+dôme d'alimentation
+pompe d'alimentation
+pompe d'alimentation en eau
+voiture-restaurant
+voiture-restaurant
+eau d'alimentation
+pompe à piston d'alimentation en eau
+contreplaqué
+signal de manœuvre et de protection de voie
+fermeture de la voie
+essieu à paliers à pointes
+feux avant
+puissance de pointe
+débit de cellules de pointe
+facteur de concentration du trafic
+rebroussement
+rebroussement
+écartement
+écartement
+surécartement
+surécartement
+boudin de roue
+boudin de roue
+dispositif de graissage des boudins
+graissage des boudins
+gare de changement d'écartement
+écartement
+écartement de la voie
+stabilité
+métro léger, chemin de fer urbain
+véhicule de métro léger
+automotrice de métro léger
+autobus urbain
+système de transport urbain
+pont à poutres en béton
+pont à poutres en béton
+traverse en béton armé
+traverse en béton armé
+voie principale
+grume
+dispositif de freinage standard
+organisme de normalisation
+ralentissement permanent
+sites, emplacements
+funiculaire
+funiculaire
+empilage
+empotage
+prise murale
+fiche mâle
+entretoise de chaudière
+entretoise de chaudière
+aptitude à gravir les pentes
+rampe, déclivité
+annonce de rampe
+rampe, pente ascendante
+déclivité [fragment de la ligne précédente]
+rampe raide
+rampe raide
+ligne à fortes déclivités
+ligne à fortes déclivités
+houille
+ballast de pierre
+poste d'aiguillage
+poste d'aiguillage et enclenchements
+signal d'enclenchement
+bielles de distribution
+voiture-pilote
+voiture-pilote
+antenne ferroviaire en impasse
+immobilisation
+réducteur à engrenages hélicoïdaux
+face d'extrémité
+processus stochastique
+bourreuse
+défaillance, perturbation
+imprimante de journal des défauts
+véhicules de tramway et de métro léger
+tramway
+tramway
+réseaux de tramway
+voiture de tramway
+plate-forme partagée avec le trafic routier
+ligne, pleine voie
+section de voie
+tracé de la voie
+block de ligne
+agent de surveillance de la voie
+agent de visite de la voie
+catégorie de ligne
+verrouillage de libération
+variation moyenne
+organe de captage de courant, pantographe
+capteur de courant, pantographe
+consommation de courant
+circuit électrique
+carénage aérodynamique
+onduleur
+rail conducteur, troisième rail
+ligne conductrice
+tension nominale du rail conducteur
+consommation de courant
+élément de voie emboîtable
+voie en impasse
+conteneur de très grande hauteur
+systèmes de transport local, navettes automatiques
+disponibilité du système
+changement de système d'alimentation
+signal de fin de changement de système d'alimentation
+signal de commutation du système d'alimentation
+profil quotidien du trafic
+profil quotidien du trafic
+viaduc
+maître-cylindre tandem
+installation de ravitaillement en carburant
+conteneur-citerne
+tare
+calculatrice de poche
+wagon-poche
+caractéristiques techniques
+inspection technique des wagons
+terminal d'abonné
+partage partiel
+installation de télécommunications
+wagon à capots télescopiques
+marchandises sous température dirigée
+tender
+locomotive-tender
+locomotive-tender
+exploitant de terminal
+cycle d'essai
+wagon surbaissé à berceau

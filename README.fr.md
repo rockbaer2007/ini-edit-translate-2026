@@ -3,7 +3,7 @@
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.35.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.37.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -19,12 +19,12 @@
 - Exporter les tableaux complets en UTF-8 avec BOM et séparateurs de tabulation.
 - Textes d’interface allemands, anglais et français révisés.
 
-**La mise à jour est désactivée**, aussi bien la connexion automatique que le menu.
+**Les mises à jour GitHub manuelles avec installation confirmée sont disponibles.** Aucune vérification automatique au démarrage.
 Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traduction.
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.35](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.35/INI-Edit-Translate-2026-v2.1.35-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.35)
+[Télécharger le ZIP Windows v2.1.37](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.37/INI-Edit-Translate-2026-v2.1.37-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.37)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.
@@ -52,6 +52,55 @@ OpenAI nécessite Internet et une facturation API distincte. Un abonnement ChatG
 ne remplace pas cette facturation. L’accès réel à l’API et la qualité des traductions
 produites restent à vérifier avec son propre compte.
 
+La fenêtre d’information choisit l’aide révisée `Info.de.rtf`, `Info.en.rtf` ou `Info.fr.rtf` selon la langue de l’interface. Le fichier historique `Info.rtf` est conservé sans modification. L’aide actuelle décrit OpenAI et le programme de référence restauré.
+
+## Mises à jour GitHub
+
+Choisir **À propos → Rechercher des mises à jour** pour consulter la dernière version
+publique sur GitHub. Aucune vérification automatique au démarrage. Seule une version
+stable plus récente est proposée, avec son numéro et ses notes de publication.
+
+**Télécharger et installer** récupère le ZIP Windows et sa somme SHA-256.
+Le téléchargement et la vérification peuvent être annulés avant la fermeture du programme.
+Enregistrer les fichiers ouverts et fermer Info_trans avant l’installation, puis confirmer.
+Un programme auxiliaire attend la fermeture de l’éditeur, sauvegarde les fichiers existants
+et installe le paquet.
+
+Les paramètres et la clé OpenAI chiffrée sont conservés. Les fichiers FDB, CSV, DAT et
+de configuration existants de l’aide, ainsi que l’Info.rtf d’origine, sont sauvegardés
+sans être remplacés. Les fichiers de modèles restent intacts. En cas d’échec, le programme
+tente de restaurer les fichiers déjà remplacés et consigne le résultat. Sauvegardes et
+rapports : `%LOCALAPPDATA%/UGSo/IET2026/updates/<identifiant>/`.
+
+Aucun identifiant de serveur nécessaire. Les sommes de contrôle vérifient l’intégrité ;
+aucune signature numérique de paquet supplémentaire n’est implémentée.
+32 tests isolés couvrent le téléchargement, l’annulation, les chemins, la conservation
+des données, les fichiers verrouillés et la restauration après une écriture partielle.
+
+## Second programme : Info_trans
+
+Le paquet contient aussi `help/Info_trans.exe`. **Aide de référence** dans
+l’éditeur ouvre ce programme dans la langue choisie. La véritable `IET2.FDB`
+et son moteur natif Firebird 2.5.8 ont été récupérés dans l’archive de 2019.
+Aucune installation séparée d’un serveur Firebird n’est nécessaire.
+
+La base contient 5 entrées de bâtiments, 2 de marchandises et 2 de mises à jour.
+Les tables des signaux, matériel roulant, objets de voie et paysage sont vides
+dans l’original. Sont aussi inclus : 236 entrées d’icônes, 369 termes techniques
+et 2 428 entrées de dictionnaire corrigées. Le nouveau dictionnaire DE/EN/FR ajoute
+le français et corrige les termes allemands à partir de la référence anglaise.
+Le fichier DE/EN d’origine est conservé. Toutes les questions restantes ont été
+résolues ; les corrections figurent dans la [liste de vérification](docs/dictionary-review.md).
+
+`Info_trans` est compilé pour x86, comme les DLL natives. Le fournisseur géré
+FirebirdSql.Data.FirebirdClient 7.5.0.0 a été vérifié avec la vraie base Firebird 2.5.8.
+Les tests lisent des copies séparées et comparent les sept tables avec l’interface
+DE/EN/FR. Le paquet contient la base source inchangée.
+
+Les composants absents ou illisibles sont signalés ; l’import SQL est alors
+désactivé. Une sauvegarde locale précède tout import SQL manuel disponible.
+La mise à jour automatique du programme reste désactivée.
+
 ## Données et vérifications
 
 La configuration est conservée sous `%LOCALAPPDATA%/UGSo/IET2026/openai.json`. La clé
@@ -61,7 +110,7 @@ conservent le nom d’origine sous `%LOCALAPPDATA%/UGSo/IET2026/backups/`.
 Les textes sélectionnés sont envoyés à OpenAI avec `store: false`. Les données de
 l’ancienne application ne sont ni migrées ni remplacées automatiquement.
 
-30 contrôles locaux couvrent les réponses API simulées, l’annulation, les erreurs,
+40 contrôles locaux couvrent les réponses API simulées, l’annulation, les erreurs,
 les espaces réservés, la restauration, l’export et les interfaces DE/EN/FR rendues.
 Aucun appel API réel. Exécuter `MSBuild.exe tests/IET.LocalTests.csproj /t:Build`,
 puis `tests/bin/IET.LocalTests.exe`. Tous les schémas INI possibles ne sont pas pris en charge.

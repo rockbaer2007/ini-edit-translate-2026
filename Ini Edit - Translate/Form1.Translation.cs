@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Ini_Edit___Translate
 {
-    public partial class Form1
+    public partial class Form1 : System.Windows.Forms.Form
     {
         private static void BackupInputFile(string path)
         {

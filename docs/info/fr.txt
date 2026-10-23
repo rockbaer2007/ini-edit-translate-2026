@@ -1,0 +1,24 @@
+INI Edit Translate 2026
+Éditeur et traducteur de fichiers INI pour EEP
+
+L’interface est disponible en allemand, anglais et français. Elle suit la langue de Windows et peut aussi être modifiée dans Paramètres.
+
+Modifier des fichiers
+Le programme permet de modifier les fichiers INI de modèles EEP et Installation.eep. Les noms et descriptions des modèles peuvent être renseignés en allemand, anglais, français et polonais. D’autres sections concernent les axes de mouvement, fonctions des signaux, références PDF et métadonnées des modèles. Vérifier l’aperçu avant d’enregistrer.
+
+Traduire avec OpenAI
+La traduction utilise uniquement l’API OpenAI. Saisir sa propre clé API et le modèle dans Paramètres → Traduction OpenAI. La traduction nécessite Internet et une facturation API OpenAI distincte ; un abonnement ChatGPT ne couvre pas l’utilisation de l’API.
+Les textes dont la traduction est explicitement demandée sont envoyés à OpenAI. La clé API est enregistrée sous forme chiffrée pour le compte Windows actuel. Les fichiers peuvent être modifiés hors ligne si la traduction n’est pas utilisée.
+Choisir la langue source avant de traduire. Une traduction en cours peut être annulée. Les réponses non valides et les espaces réservés modifiés sont rejetés ; les textes précédents sont conservés.
+
+Aide de référence
+Aide de référence ouvre le programme séparé Info_trans, qui contient des dictionnaires, une référence des icônes et la base Firebird fournie. Certaines tables sont vides, comme dans l’original. L’aide ne nécessite ni serveur de base de données séparé ni connexion Internet.
+
+Sauvegardes
+Avant de remplacer un fichier INI existant, le programme enregistre une copie portant son nom d’origine dans %LOCALAPPDATA%/UGSo/IET2026/backups. Faire une sauvegarde supplémentaire de ses fichiers avant leur première modification.
+
+À propos → Rechercher des mises à jour permet de consulter GitHub, télécharger une nouvelle version et confirmer son installation. Enregistrer ses fichiers et fermer Info_trans d’abord. Les bases et paramètres existants sont conservés ; les fichiers du programme sont sauvegardés. Aucune vérification automatique au démarrage.
+
+Cette édition open source ne nécessite aucune activation.
+
+Uwe Grimm / UGSo Software

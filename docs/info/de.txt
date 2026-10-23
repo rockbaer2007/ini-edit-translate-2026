@@ -1,0 +1,24 @@
+INI Edit Translate 2026
+INI-Editor und Übersetzer für EEP
+
+Die Oberfläche unterstützt Deutsch, Englisch und Französisch. Die Sprache wird aus der Windows-Sprache abgeleitet und lässt sich unter Einstellungen ändern.
+
+Dateien bearbeiten
+Das Programm bearbeitet EEP-Modell-INI-Dateien und Installation.eep. Modellnamen und Beschreibungen können in Deutsch, Englisch, Französisch und Polnisch gepflegt werden. Weitere Bereiche sind Bewegungsachsen, Signalfunktionen, PDF-Verweise und Modellmetadaten. Vor dem Speichern die Vorschau prüfen.
+
+Übersetzen mit OpenAI
+Die Übersetzung verwendet ausschließlich die OpenAI-API. Unter Einstellungen → OpenAI-Übersetzung den eigenen API-Schlüssel und das Modell eintragen. Für Übersetzungen sind Internetzugang und eine separate OpenAI-API-Abrechnung erforderlich; ein ChatGPT-Abonnement ersetzt sie nicht.
+Die ausdrücklich übersetzten Texte werden an OpenAI gesendet. Der API-Schlüssel wird für das aktuelle Windows-Konto verschlüsselt gespeichert. Ohne Übersetzung können Dateien auch offline bearbeitet werden.
+Die Ausgangssprache vor dem Übersetzen wählen. Eine laufende Übersetzung kann abgebrochen werden. Fehlerhafte Antworten oder veränderte Platzhalter werden abgelehnt; die vorherigen Texte bleiben erhalten.
+
+Nachschlagehilfe
+Nachschlagehilfe öffnet das separate Programm Info_trans mit Wörterbüchern, Iconhilfe und der mitgelieferten Firebird-Datenbank. Die Datenbanktabellen sind teilweise leer, wie im Original. Die Hilfe benötigt keinen separaten Datenbankserver und keinen Internetzugang.
+
+Sicherungen
+Vor dem Überschreiben vorhandener INI-Dateien wird eine Kopie mit dem ursprünglichen Dateinamen unter %LOCALAPPDATA%/UGSo/IET2026/backups abgelegt. Eigene Dateien vor der ersten Bearbeitung zusätzlich sichern.
+
+Unter Über → Nach Updates suchen kann eine neue GitHub-Version geprüft, heruntergeladen und nach Bestätigung installiert werden. Vorher eigene Dateien speichern und Info_trans schließen. Vorhandene Datenbanken und Einstellungen bleiben erhalten; Programmdateien werden gesichert. Es gibt keine automatische Prüfung beim Start.
+
+Diese Open-Source-Ausgabe benötigt keine Freischaltung.
+
+Uwe Grimm / UGSo Software

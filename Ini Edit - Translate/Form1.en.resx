@@ -7073,7 +7073,7 @@
     <value>Installation section</value>
   </data>
   <data name="counter1.ToolTipText" xml:space="preserve">
-    <value>Counter corresponds to the XX entry in the columns</value>
+    <value>The number corresponds to XX in the INI entry names.</value>
   </data>
   <data name="btn_def_trl.Text" xml:space="preserve">
     <value>Translate with
@@ -7089,13 +7089,13 @@ ChatGPT</value>
     <value>INI files (*.ini)|*.ini</value>
   </data>
   <data name="dlgOpen.Title" xml:space="preserve">
-    <value>Please select the file</value>
+    <value>Select a file</value>
   </data>
   <data name="dlgSave.Filter" xml:space="preserve">
     <value>INI files (*.ini)|*.ini</value>
   </data>
   <data name="dlgSave.Title" xml:space="preserve">
-    <value>Please select or enter the file name</value>
+    <value>Select a file or enter a file name</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Name_ENG</value>
@@ -7138,10 +7138,10 @@ and Installation.eep</value>
     <value>EEP files (*.eep)|*.eep</value>
   </data>
   <data name="label94.Text" xml:space="preserve">
-    <value>Installpath</value>
+    <value>Installation path</value>
   </data>
   <data name="label88.Text" xml:space="preserve">
-    <value>Typ</value>
+    <value>Type</value>
   </data>
   <data name="lb_epche.Text" xml:space="preserve">
     <value>Era</value>
@@ -7150,13 +7150,13 @@ and Installation.eep</value>
     <value>About</value>
   </data>
   <data name="infoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Info Screen</value>
+    <value>Program information</value>
   </data>
   <data name="overProgramToolStripMenuItem.Text" xml:space="preserve">
     <value>About the application</value>
   </data>
   <data name="translationAidToolStripMenuItem.Text" xml:space="preserve">
-    <value>Documentation</value>
+    <value>Reference help</value>
   </data>
   <data name="SignFunc.Text" xml:space="preserve">
     <value>SignFunc</value>

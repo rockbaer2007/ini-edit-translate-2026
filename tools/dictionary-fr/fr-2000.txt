@@ -1,0 +1,430 @@
+wagon surbaissé
+neige profonde
+filiale
+fréquence audio
+tonne, tonneau, bouée
+tonneau, bouée, tonne
+toiture en berceau
+toiture en berceau
+tonnes-kilomètres
+service à accès par lots fermés
+essieu porteur
+aimant de sustentation
+wagon porteur
+wagon porte-conteneurs
+puissance de traction
+moteur de traction
+transformateur
+transformateur
+trafic de transit
+transport
+transport combiné non accompagné [anglais source tronqué]
+transport de porte à porte
+prestataire de transport
+entreprise de transport
+transporteur
+chaîne de transport
+prestations de transport
+flux de transport
+suivi d'un transport ou d'une expédition
+surveillance [fragment de la ligne précédente]
+Transrapid, train allemand à sustentation magnétique
+pancarte trapézoïdale
+sillon ferroviaire
+tarification des sillons
+plate-forme de la voie
+essieu moteur
+essieu moteur
+pièce d'essieu moteur
+roue motrice
+diamètre des roues motrices
+bielle d'accouplement
+bielle motrice
+chemin de fer de halage
+section de voie isolée
+bogie moteur
+bogie moteur
+engin moteur
+conducteur de train
+motrice d'extrémité [anglais source mêlant remorque pilote et motrice]
+motrice d'extrémité
+essieu moteur monté
+bielle motrice
+autorail
+autorail
+remorque d'autorail
+unité automotrice
+rame automotrice
+rame automotrice
+rame automotrice
+marchepied
+collecteur cylindrique
+tunnel
+entrée de tunnel
+signal de tunnel
+transmission hydrodynamique
+transmission hydrodynamique réversible
+organisme de contrôle technique, TÜV
+métro
+métro
+bureau d'échange
+transition
+courbe de raccordement
+courbe de raccordement
+surchauffeur
+surchauffeur
+collecteur de surchauffeur
+courbe en dévers
+révision générale
+capacité de surcharge
+trafic de débordement
+début de prise en charge
+probabilité de dépassement
+carte d'ensemble
+signal de surveillance
+Union internationale des chemins de fer, UIC [colonnes source mélangées]
+ultrasons
+reconstruction
+modernisation par adaptation
+véhicule reconstruit sur ancien châssis
+véhicule reconstruit
+voie d'évitement pour remise en tête
+voie d'évitement
+conditions ambiantes
+température ambiante
+gare de transbordement
+gare de transbordement
+passerelle latérale
+détournement d'itinéraire
+onduleur
+chiffre d'affaires sous responsabilité opérationnelle [ligne source mélangée]
+montant facturé au nom et pour le compte de [ligne source mélangée]
+inverseur
+levier d'inversion
+transbordement de conteneurs
+terminal de transbordement
+installation de changement d'écartement
+installation de correspondance
+gare de correspondance
+levier d'inversion d'aiguillage
+bilan environnemental
+transport combiné non accompagné [colonnes source mélangées]
+accident
+prescriptions de prévention des accidents
+signal d'annulation
+en retard
+structure de base
+infrastructure
+amélioration de l'infrastructure
+priorité avec préemption
+sous le plateau du réseau
+montage sous le plateau
+installation de levage en fosse
+métro
+selle d'appui
+sous-traitant
+entreprise
+division de l'entreprise
+sous-programme
+en cours d'acheminement
+trafic au départ
+expéditeur initial
+type de wagon normalisé par [phrase source poursuivie à la ligne suivante]
+association allemande des wagons des chemins de fer d'État [fragment source]
+wagon de conception standardisée
+connexion, liaison
+renseignements sur les correspondances
+module de couplage
+voie de raccordement entre lignes qui se croisent
+voie de liaison
+locomotive à combustion interne
+autorail à combustion interne
+locomotive compound
+système en réseau
+câblage
+schéma de câblage
+accord, arrangement
+simplifié
+disponible
+responsable des ventes
+commande et signalisation du trafic
+trafic offert
+entreprises de transport
+relation de trafic
+qualité de service
+capacité de trafic
+volume de transport
+matrice de trafic
+volume du trafic
+erreur de mesure du trafic
+mesure du trafic
+modèle de trafic
+planification du trafic
+source de trafic
+puits de trafic
+système de transport
+jour de circulation
+services intertransporteurs
+charge de trafic
+carénage
+distance de freinage réduite
+installation de chargement, terminal
+conseiller en chargement
+rampe de chargement
+rampe de chargement
+chargement
+poser les voies
+perte
+système avec pertes
+trafic perdu
+probabilité de perte
+expédition
+gare expéditrice
+lieu d'expédition
+usure
+limite d'usure
+signal de manœuvre
+gare d'expédition
+retard
+installation d'essais
+tableau de distribution électrique
+indicateur de ralentissement
+intersection
+voiture vidéo
+rampe de chargement du bétail
+logiciel de visualisation
+transport guidé automatique sans conducteur [colonnes source mélangées]
+partage intégral
+partitionnement complet
+préacheminement et postacheminement
+pancarte d'annonce avancée
+modèle réel, prototype
+conforme au prototype
+couleur de premier plan
+pression primaire
+essieu ou bogie porteur avant
+bogie porteur avant
+banlieue
+ligne de banlieue
+trafic suburbain
+train de banlieue
+avancer
+proposition
+présérie
+type de présérie
+précaution
+signal d'avertissement
+signal avancé
+balises d'annonce du signal avancé
+pancarte de signal avancé
+ralentissement temporaire
+indicatif téléphonique
+sens de marche avant
+bureau de réception
+voiture ferroviaire
+wagon de marchandises
+wagon à toit ouvrant
+wagon à température dirigée
+voiture, wagon
+inscription sur véhicule
+inscription sur véhicule
+commande de wagons
+plancher et châssis du wagon
+plancher du wagon
+agent de répartition des wagons
+catégorie de wagon
+caisse de véhicule
+caisse de véhicule
+chargement d'un wagon
+transport par wagons isolés
+liste des wagons du train
+visiteur de wagons
+parc de véhicules
+bord inférieur de caisse
+ordre des véhicules dans la rame
+plaque de destination
+cycle de rotation des wagons
+rotation du matériel
+visite des wagons
+installation de lavage des véhicules
+voies de lavage des trains
+wagon de marchandises
+message d'adresse
+probabilité
+chemin de fer forestier
+locomotive forestière
+convertisseur
+tender baignoire
+tender baignoire
+envoi de marchandises
+revêtement calorifuge
+wagon isotherme
+wagon couvert isotherme
+temps d'attente
+attendre
+salle d'attente
+discipline de sélection entre files d'attente
+blocage en tête de file
+discipline de file d'attente
+réseau de files d'attente
+système de files d'attente
+signal d'attente
+système à attente
+probabilité d'attente
+maintenance
+bouchons de lavage de chaudière
+bouchon de lavage de chaudière
+chemise d'eau
+réservoir d'eau du tender
+réservoir
+grue hydraulique
+colonne d'alimentation en eau
+château d'eau
+château d'eau
+caisse mobile
+point de changement de locomotive
+caisse mobile
+courant alternatif
+aiguillage
+aiguillage
+moteur d'aiguillage
+moteur d'aiguillage
+diagnostic des aiguillages
+levier d'aiguillage
+cœur d'aiguillage
+cœur d'aiguillage
+maintenance des aiguillages et traversées
+lanterne d'aiguillage
+feu d'aiguillage
+signal d'aiguillage
+levier de tension d'aiguillage
+circuit de blocage d'aiguillage
+appareil de manœuvre, manœuvre d'aiguillage [anglais ambigu]
+contrôleur d'aiguillage
+signal de contrôle d'aiguillage
+lame d'aiguille
+lames d'aiguille
+transmettre
+acheminement
+arbre, essieu
+frein sur essieu
+disque de frein sur essieu
+dispositif d'inversion
+point de rebroussement
+signal tournant
+boucle de retournement
+boucle de retournement
+rame réversible
+équipement de réversibilité
+inscription publicitaire
+atelier
+repère de répétition
+pare-fumée
+pare-fumée
+courant alternatif, CA
+bourrelet
+paiement
+système de gestion tarifaire
+roue dentée
+roue dentée
+chemin de fer à crémaillère
+chemin de fer à crémaillère
+locomotive à crémaillère
+transports organisés à délais critiques
+horaire, calendrier
+service à temps partagé
+temporisation
+bureau administratif central
+poste central de commande du trafic
+remorquer
+destination, cible, objectif
+indicateur de destination
+gare de destination
+désignation de direction
+facteur de destination
+taux d'intérêt
+port franc
+signal de zone
+système de contrôle automatique des trains
+contrôle automatique des trains
+service de rabattement
+chemin de fer sucrier
+voie d'accès
+ordre aléatoire
+sélection aléatoire
+générateur de nombres aléatoires
+train
+train
+indicateur de départ des trains
+espacement entre trains
+accessible
+accessibilité
+système de contrôle d'accès
+indicateur de desserte des trains
+contrôle automatique des trains
+système de contrôle automatique des trains
+agent d'accompagnement du train
+éclairage du train
+actionné par le train
+formation des trains
+gare de formation, triage
+faisceau de formation des trains
+ensemble de trains
+signal de protection du train
+conduite et manœuvre des trains
+dispositif anti-traction du câble
+calculateur de marche des trains
+véhicule tracteur
+espacement des circulations
+poste de block
+chef de train
+chef de train
+radio sol-train
+radio ferroviaire GSM-R
+crochet d'attelage
+crochet de traction
+puissance de traction
+puissance de traction
+longueur du train
+plaque de parcours du train
+plaque de destination du train
+poste d'annonce des trains
+réseau de trains
+coffret de train
+coffret de train miniature
+fin du train
+plaque de queue
+feu de fin de convoi
+protection des trains
+dispositif de sécurité
+feu de tête
+système de commande des trains
+séparation du train
+rame, train complet
+afficheur de destination
+afficheur de destination
+vitesse autorisée
+vitesse autorisée
+liste des ralentissements temporaires et des particularités
+collision
+collision
+service supplémentaire
+signal auxiliaire, signaux complémentaires
+allocation
+fiabilité
+arrêt automatique du train
+ligne à double voie
+rame de deux voitures
+type nain
+signal nain entre les voies
+signal nain au sol
+rail double
+remisage intermédiaire
+rail de raccordement
+voiture intermédiaire
+véhicule intermédiaire
+ordre cyclique
+cylindre
+couvercle de cylindre
+robinet de purge de cylindre
+robinets de purge de cylindre

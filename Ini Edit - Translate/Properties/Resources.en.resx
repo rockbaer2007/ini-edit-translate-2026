@@ -163,7 +163,7 @@
     <value>Subset name:</value>
   </data>
   <data name="zusatz" xml:space="preserve">
-    <value>The documentation opens in your browser.</value>
+    <value>Reference help is missing. Keep help/Info_trans.exe and its files beside the main application.</value>
   </data>
   <data name="grptyp" xml:space="preserve">
     <value>Model type – available icons in this category</value>
@@ -263,4 +263,7 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="label8" xml:space="preserve"><value>Desc_POL</value></data>
   <data name="objekticons" xml:space="preserve"><value></value></data>
   <data name="tableFilter" xml:space="preserve"><value>Table export (*.csv)|*.csv</value></data>
+  <data name="infoTitle" xml:space="preserve">
+    <value>Program information</value>
+  </data>
 </root>

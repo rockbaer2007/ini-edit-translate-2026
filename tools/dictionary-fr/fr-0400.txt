@@ -1,0 +1,400 @@
+servofrein, amplificateur de freinage
+feu stop
+couple de freinage
+régulation du couple de freinage
+pédale de frein
+actionnement de la pédale de frein
+essai des freins
+signal d'essai des freins
+pourcentage de masse freinée
+disque de frein
+flexible de frein
+semelle de frein
+contrôleur de freinage
+tambour de frein
+décélération de freinage
+distance de freinage, distance d'arrêt
+repère de freinage
+bulletin de freinage
+pont, viaduc
+livret de marche
+prise, douille
+réservation
+demande de réservation
+conditions de réservation
+confirmation de réservation
+date de réservation
+formulaire de réservation
+abaisser le pantographe
+lever le pantographe
+excursion en train
+train d'excursion
+radiocommunication à ressources partagées
+réseau radio à ressources partagées
+office fédéral
+chemins de fer fédéraux allemands, Deutsche Bundesbahn
+office central de la Deutsche Bundesbahn
+police fédérale allemande des frontières
+ministère fédéral des Transports
+balai, brosse
+gare routière
+conducteur d'autobus
+compagnie d'autobus
+billet d'autobus
+voyage en autocar
+liaison par autobus
+gare de fret
+centre régional de régulation du fret
+longeron de châssis
+conteneur
+wagon porte-conteneurs
+dépôt de conteneurs
+grue à conteneurs
+toit, toiture
+conducteurs électriques de toiture
+vis de toiture
+pantographe
+vapeur
+dôme à vapeur
+locomotive à vapeur
+sifflet à vapeur
+locomotive sans foyer à accumulateur de vapeur
+injecteur à vapeur
+automotrice à vapeur
+bague d'amortissement
+cylindre à vapeur
+niveau des unités de données
+système d'acquisition de données
+fonctionnement continu
+page de couverture
+entretoise de ciel de foyer
+signal de protection
+décomposition
+détaillage
+décimale
+affichage de diagnostic
+niveau de dialogue
+consigne de service
+masse en ordre de marche
+qualité de service
+tableau de service
+règlement de service
+locomotive diesel
+autorail diesel
+rame automotrice diesel
+lecteur de disquettes
+gestion des circulations, répartition
+dôme
+traversée-jonction double
+wagon à ranchers doubles
+traverse double
+voie de guidage double
+voiture à deux niveaux
+traversée-jonction double
+communication croisée entre voies
+double traction
+autorail double
+porte double
+fil métallique
+draisine
+bogie
+flanc de bogie
+voiture ou wagon à bogies
+installation de changement de bogies
+pont tournant
+wagon à traverse pivotante
+moteur triphasé
+vitesse de rotation
+voie à trois files de rails
+aiguillage triple
+entreprise ferroviaire tierce
+air comprimé
+frein à air comprimé
+surveillance de pression
+engrais
+ajouré
+signal de passage sans arrêt
+gare de passage
+trafic de transit
+train express à intercirculation
+courant direct
+pancarte de début de sonnerie continue
+pancarte de fin de sonnerie
+diamètre
+distance de glissement, marge de sécurité
+débit
+train express
+au niveau du sol
+pièce de coin
+verrou tournant
+tare, poids à vide
+train semi-direct
+traversée-jonction simple
+aiguillage simple
+faisceau de réception
+signal d'entrée
+inséré
+appareil de remise sur rails
+ligne à voie unique
+charge unitaire
+locomotive de type unifié
+pantographe unijambiste
+insert
+domaine d'utilisation
+direction des opérations
+signal de réenclenchement du courant
+travaux de réglage
+commande de réglage
+plage de réglage
+organe de réglage
+traitement individuel
+réparation ponctuelle
+entraînement individuel des roues
+voie de guidage simple
+wagon isolé
+système de transport par wagons isolés
+trafic par wagons isolés
+chemin de fer
+atelier de réparation ferroviaire
+construction ferroviaire
+agent des chemins de fer
+exploitation ferroviaire
+directeur d'exploitation ferroviaire
+règlement de construction et d'exploitation ferroviaires
+talus ferroviaire
+pont ferroviaire
+Office fédéral allemand des chemins de fer, EBA
+remblai ferroviaire
+vol dans les chemins de fer
+direction régionale des chemins de fer
+cheminot
+bac ferroviaire
+horaire des trains
+véhicule ferroviaire
+lettre de voiture ferroviaire
+emprise ferroviaire
+loi sur les chemins de fer
+hôtel de gare
+nœud ferroviaire
+grue ferroviaire
+croisement ferroviaire
+gabarit de chargement ferroviaire
+ligne ferroviaire
+matériel ferroviaire
+réseau ferroviaire
+plate-forme de terrassement ferroviaire
+ballast ferroviaire
+traverse de chemin de fer
+signal ferroviaire
+technique de signalisation ferroviaire
+signalisation ferroviaire
+gare ferroviaire
+transport ferroviaire
+pont-rail
+accident ferroviaire
+catastrophe ferroviaire
+infrastructure ferroviaire, terrassements
+passage inférieur ferroviaire
+entreprise ferroviaire
+liaison ferroviaire
+trafic ferroviaire
+règlement du trafic ferroviaire
+entreprise de transport ferroviaire
+prescriptions ferroviaires
+administration ferroviaire
+voiture de chemin de fer
+secteur ferroviaire
+train
+locomotive électrique
+rame automotrice électrique
+trains automoteurs électriques
+électroacoustique
+locomotive électrique
+livret de marche électronique et répertoire des ralentissements [ligne source à vérifier]
+automotrice électrique
+rame automotrice électrique
+locomotive électrique
+destinataire
+gare de réception
+bâtiment voyageurs
+gare terminus
+destinataire final
+trafic à destination, trafic arrivant
+appareil de block de sortie
+assemblage final
+pancarte de fin de sifflement
+pancarte de fin
+consommation d'énergie
+alimentation électrique
+distribution d'énergie
+dérailler
+déraillement
+dételé
+dispositif de dételage
+voie de dételage
+installation de déchargement
+trappe de déchargement
+rampe de déchargement
+trafic extérieur au départ
+trafic au départ
+boucle de masse
+mise à la terre
+contact de terre
+perche de mise à la terre
+enregistrement des événements
+séquencement des événements
+appareil de block d'autorisation
+réduction, remise
+fonction de renouvellement
+processus de renouvellement
+essais
+signal de substitution
+pièces de rechange
+compartiment de première classe
+chemin de fer minier
+minerais
+wagon à minerai
+bosse de triage
+système européen de radiocommunication à ressources partagées, TETRA
+trafic extérieur
+trafic extérieur
+barre d'excentrique
+ingénieur spécialisé
+manipulateur de traction et de freinage
+circulation des trains
+acquisition des données de parcours
+service des circulations
+agent de circulation, aiguilleur
+règlement de circulation
+fil de contact de la caténaire
+fil de contact
+comportement en marche
+conduite semi-automatique des trains
+sans conducteur
+exploitation sans conducteur avec agent à bord
+voyageur, passager
+assistance aux voyageurs
+adapté aux voyageurs
+information des voyageurs
+système d'information des voyageurs
+gestion des recettes tarifaires
+manipulateur de traction
+vitesse de marche
+châssis, organes de roulement
+inscription sur le châssis
+billet
+guichet de vente des billets
+confort de voyage
+caténaire
+signal de caténaire
+système de caténaires
+horaire
+écart par rapport à l'horaire
+période horaire
+pupitre de conduite
+distributeur automatique de billets
+système de contrôle automatique des trains
+signal autorisant la marche
+tension de traction
+itinéraire établi
+indicateur d'annulation d'itinéraire
+marche, trajet
+marche sur itinéraire dévié
+annonce de voie libre
+voie libre avec limitation de vitesse
+voie libre
+autorisation de mouvement de manœuvre
+autorisation de circulation des trains
+marche en voie directe
+signal d'autorisation de marche
+sens de marche
+selon le sens de marche
+indicateur de direction
+inverseur de marche
+signal de marche
+voie, infrastructure de guidage
+châssis et organes de roulement
+temps de parcours
+véhicule
+équipement du véhicule
+fonctionnement autonome du véhicule
+matériel roulant
+unités de matériel roulant
+module de cabine de conduite
+concept de véhicule
+vue agrandie du véhicule
+châssis du véhicule
+système du véhicule
+type de véhicule
+circulation à contresens
+soufflet d'intercirculation
+passerelle d'intercirculation à soufflet
+passage d'intercirculation
+ressort
+lame d'aiguille flexible
+défaut, erreur
+code d'erreur
+produit pulvérulent en vrac
+chemin de fer à voie étroite industriel
+bobine d'excitation, inducteur
+fenêtre
+trafic grandes lignes et à grande vitesse
+alimenté à distance
+installation de télécommunications
+local des batteries de télécommunications
+local de télécommunications
+train rapide à longue distance
+télécommande
+trafic à longue distance
+tolérance de fabrication
+foyer
+inflammable
+voûte en briques du foyer
+chambre de combustion
+sans foyer
+grand tube à fumée
+grille de foyer
+service d'incendie
+dossier de financement
+toit plat
+toit plat
+méplat de roue
+méplat
+wagon plat
+élément de voie flexible
+gestion de flotte
+patte de lièvre
+sémaphore
+signal à palette
+transmission hydraulique
+frein silencieux
+fonction de suivi
+transparent, film
+format
+erreur de format
+signal mécanique à palette
+faux départ pour prise de vues
+arrêt et passage organisés pour les photographes
+fret
+lettre de voiture
+transporteur
+pleine voie
+libération, autorisation
+produits de loisirs
+pare-brise
+plaque frontale
+aimant de guidage
+cabine de conduite
+poste de conduite
+cabine de conduite
+signal de cabine
+grandeur de consigne
+rail de guidage, contre-rail
+technique de guidage
+chemin de fer à wagonnets
+bouchon de remplissage
+fondé sur la radio
+pare-étincelles
+pare-étincelles
+radiocommande
+types de blocs fonctionnels

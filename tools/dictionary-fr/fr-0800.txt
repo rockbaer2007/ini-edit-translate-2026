@@ -1,0 +1,400 @@
+horloge radiopilotée
+revêtement de sol
+plaques de plancher
+train complet
+plaque de type
+marquage de catégorie
+voie courbe
+wagon couvert
+wagon couvert
+wagon couvert
+danger, risque
+freinage d'urgence
+marchandises dangereuses
+pente, déclivité
+descente
+contre-courbe pour aiguillage de réseau miniature
+contrepoids
+wagon contrepoids
+voie de sens opposé
+contre-manivelle
+contre-manivelle
+boîtier
+articulation
+locomotive articulée
+locomotives articulées
+automotrice articulée
+autorisation, homologation
+dossier d'homologation
+bagages
+compartiment à bagages
+compartiment à bagages
+quai à bagages
+fourgon à bagages
+fourgon à bagages
+alignement droit, voie droite
+wagon d'outillage
+émission sonore
+secteur d'activité
+domaine d'activité
+directeur général
+vitesse
+indicateur de vitesse
+limitation de vitesse
+régulateur de vitesse
+signal de vitesse
+pancarte de limitation de vitesse
+indicateur d'annonce de limitation de vitesse
+embiellage
+bâti, châssis
+montage en châssis
+traitement cadencé
+céréales [source contradictoire : mélange de céréales et de transmission]
+ensemble de transmission
+arbre creux de transmission
+arbre de transmission
+poids, masse
+bénéfice
+accélération de lacet
+vitesse de lacet
+moment de lacet
+grille
+pont à treillis
+redresseur
+courant continu
+courant continu
+chemins de fer à courant continu
+voie
+entraxe des voies
+axe de la voie
+ensemble des voies
+ensemble des voies
+embranchement particulier
+travaux de voie
+ouvrier de voie
+ouvrier de voie
+chantier de voie ferrée
+lit de la voie, plate-forme
+poste d'aiguillage à tableau de contrôle optique
+frein de voie
+frein de voie
+freins de triage
+pont ferroviaire
+triangle de retournement
+triangle ferroviaire
+entretien de la voie
+patiner les voies
+couper et patiner les rails
+installation de contrôle de libération de la voie
+véhicule de mesure de la voie
+indicateur de numéro de voie
+superstructure de la voie
+plan des voies
+dérailleur de sécurité, sabot d'arrêt
+circuit de voie
+infrastructure de la voie
+réhabilitation de l'infrastructure de la voie
+branchement, aiguillage
+relevé préalable de la voie
+pont-bascule ferroviaire
+indicateur de changement de voie
+circulation banalisée
+rampe hélicoïdale
+nombre à virgule flottante
+palier lisse
+coussinet de glissement
+rame articulée
+rame articulée
+fibres d'herbe
+grappin
+chariot porte-conteneurs à flèche télescopique
+formalités frontalières
+fréquence limite
+charge maximale admissible
+risque limite
+transfrontalier, international
+garage franc, repère de limite de garage
+main courante
+poignée de maintien
+wagon de grande capacité
+wagon de grande capacité
+wagon-citerne de grande capacité
+voiture à salle ouverte
+conteneur de grand volume
+chemin de fer de mine
+principes
+traitement par lots
+adresse de groupe
+processus d'arrivée par lots
+identifiant de groupe
+pancarte de sifflement groupée
+roue élastique
+bourrelet en caoutchouc
+intercirculation à bourrelets en caoutchouc
+bogie en métal moulé
+métal moulé
+gare de marchandises
+gare de fret
+transport de marchandises
+horaire des trains de marchandises
+transport de marchandises à longue distance
+transport de marchandises à longue distance
+livret horaire marchandises
+halle à marchandises
+halle à marchandises
+trafic de marchandises
+point de desserte marchandises
+plate-forme logistique de fret
+centre de distribution de marchandises
+wagon de marchandises
+train de marchandises
+train de marchandises
+fourgon de queue
+fourgon de queue
+locomotive pour trains de marchandises
+locomotive pour trains de marchandises
+locomotive-tender pour trains de marchandises
+assurance qualité
+port
+bandage d'adhérence
+demi-barrière
+arrêt
+annonce d'arrêt
+arrêt de tous les mouvements
+arrêt des manœuvres
+arrêt des trains
+arrêt immédiat
+point d'arrêt
+arrêt
+pancarte d'arrêt
+signal d'arrêt
+frein à main
+contacteur de frein à main
+manutention, manipulation
+main courante
+levier manuel
+levier manuel
+terminal portatif
+wagon à capots
+ligne principale
+ligne principale
+gare centrale
+gare principale, gare centrale
+maître-cylindre de frein
+pression du maître-cylindre de frein
+parcours principal
+ligne principale
+réservoir principal d'air
+ouvrir le disjoncteur principal
+fermer le disjoncteur principal
+signal principal
+ligne principale
+ligne principale
+heure de pointe
+vérin de levage
+levier
+levier
+chemin de fer militaire de campagne
+vapeur surchauffée
+vapeur surchauffée
+chauffer anormalement
+boîte chaude
+boîte chaude
+installation de détection de boîtes chaudes
+détecteur de boîtes chaudes
+détecteur de boîtes chaudes
+chauffeur de locomotive
+chauffeur de locomotive
+sabot d'enrayage
+sabot d'arrêt
+poseur de sabots d'enrayage
+classique, conventionnel
+cœur de croisement
+cœur d'aiguillage
+distribution Walschaerts-Heusinger
+convertisseur auxiliaire
+souffleur
+souffleur
+signal auxiliaire
+train de secours
+trajet aller
+décor graphique de fond
+construction de bâtiments
+wagon tombereau à hauts bords
+wagon tombereau à hauts bords
+haute pression de chaudière
+haute pression
+rames automotrices à grande vitesse
+trafic à grande vitesse
+train à grande vitesse
+haute puissance
+vitesse maximale
+vitesse maximale
+période de pointe
+arbre creux
+société holding
+bois
+traverse en bois
+gare de chargement du bois
+wagon de ferroutage
+unité hydraulique
+transmission hydrodynamique
+à pleine vitesse
+mise en service
+démarrage, mise en fonctionnement
+vis à six pans creux
+contrôle inductif de la marche des trains
+dispositif inductif d'arrêt automatique des trains, Indusi
+dispositif de sécurité inductif, Indusi
+chemin de fer industriel
+locomotive industrielle
+système d'information
+aménagement intérieur
+éclairage intérieur
+éclairage intérieur
+chiffre d'affaires interne
+blocage interne
+innovation
+quai central
+maintenance
+réparation, remise en état
+personnel de réparation
+institut
+fonction d'intensité
+unité de transport intermodal
+trafic interne
+trafic interne
+interopérabilité
+investissement
+câble
+câble
+caniveau à câbles
+touret de câble
+touret de câble
+tender à cabine
+calcul des coûts, devis
+réserves de capacité
+écartement du Cap, 1 067 mm
+accouplement à cardan
+arbre à cardan
+caisse, boîte
+tender à caisse rectangulaire
+tender à caisse rectangulaire
+réducteur à engrenages coniques et hélicoïdaux
+boucle de retournement
+boucle terminale de retournement
+feu de repérage
+activité principale
+chaudière
+chaudière
+pression de chaudière
+virole de chaudière
+soupape de sûreté de chaudière
+soupapes de sûreté de chaudière
+wagon-citerne
+wagon-citerne
+compartiment pour enfants
+couvercle rabattable
+wagon à couvercles rabattables
+wagon à couvercles rabattables
+trappe
+signal à disque rabattable
+strapontin
+micro-interrupteur
+wagon pour petit bétail
+borne de raccordement
+pince
+attache de rail
+frein à sabots
+frein à sabots
+gare de bifurcation
+balai de charbon
+chauffe au charbon
+soute à charbon du tender
+chauffe au charbon pulvérisé
+chauffe au charbon pulvérisé
+wagon à charbon
+piston
+piston
+course du piston
+tiroir cylindrique
+tiroir cylindrique
+tige de piston
+tige de piston
+tube de protection de tige de piston
+collecteur
+collecteur
+signal combiné
+transport combiné, transport intermodal
+wagon pour transport combiné [ligne source incomplète]
+confort
+validation de commande
+interface de communication
+système de communication
+signal compact
+plaque de contact
+pince de contact de rail
+conversion
+directive du groupe
+gare terminus en impasse
+gare terminus en impasse
+rampe de chargement en bout
+transmission de puissance
+grue
+grue
+wagon porte-flèche de grue
+voie de roulement de grue
+grutier
+wagon de protection de grue
+manutention par grue
+wagon-grue de secours
+crosse de piston
+crosse de piston
+pancarte à croix
+traversée de voies
+croisement
+locomotive de guerre
+installation de refroidissement
+wagon frigorifique
+wagon frigorifique
+coulisse de distribution
+coulisse de distribution
+conseiller clientèle
+information des voyageurs
+centre de service clientèle
+ouvrages d'art
+essieu accouplé
+essieu accouplé
+bielle d'accouplement
+bielle d'accouplement
+agent d'attelage
+attelage
+attelage
+boîtier d'attelage
+jeu d'attelage
+boîtier d'attelage
+essieu coudé
+essieu coudé
+bielle motrice [explication source tronquée]
+bielle motrice
+voiture directe
+courbe
+courbe
+rayon de courbure
+ligne sinueuse
+forme abrégée
+attelage court
+attelage court
+cinématique d'attelage court
+marchandises adaptées au transport combiné
+réseau ferroviaire géré par systèmes cybernétiques
+peinture, livrée
+unité de chargement
+masse du chargement
+voie de chargement
+capacité de chargement
+longueur utile de chargement
+gabarit de chargement
+gabarit de chargement
+chargement hors gabarit
+dépassement du gabarit de chargement

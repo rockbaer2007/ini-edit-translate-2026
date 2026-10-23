@@ -1,0 +1,237 @@
+﻿Kategorie im EEP-Menü;Pfad im Ressourcenordner;Modelltyp;Icon
+Omegas→Omegas;Omegas;1,37;9
+Goods→Goods;Goods;20,21;9
+Landschaftselemente→Fauna→Menschen;LSElemente\Fauna\Figuren;23;20,21,22,56,57,58,59,60,61,62,123,124
+Landschaftselemente→Fauna→Tiere;LSElemente\Fauna\Tiere;23;52,53,54,55,144
+Landschaftselemente→Flora→Gräser;LSElemente\Flora\Gras;24;
+Landschaftselemente→Flora→Büsche;LSElemente\Flora\Buesche;24;51
+;LSElemente\Flora\Vegetation;;
+Landschaftselemente→Flora→Kakteen und Agaven;LSElemente\Flora\Bush;24;
+;LSElemente\Flora\Kakteen;;
+Landschaftselemente→Flora→Blumen und Gartenpflanzen;LSElemente\Flora;24;108
+Landschaftselemente→Flora→Laubbäume;LSElemente\Flora;24;50
+Landschaftselemente→Flora→Nadelbäume;LSElemente\Flora;24;49
+Landschaftselemente→Flora→Gruppen von Pflanzen;LSElemente\Flora;24;8
+Landschaftselemente→Flora→Sonstige;LSElemente\Flora;24;
+Landschaftselemente→Terra→Berge;LSElemente\Terra;25;119
+Landschaftselemente→Terra→Gewässer;LSElemente\Terra\Gewaesser;25;
+Landschaftselemente→Bodenmodelle zur '3D-Texturierung'→Gräser;LSElemente\Instancing\Flora\Grass;38;117
+Landschaftselemente→Bodenmodelle zur '3D-Texturierung'→Steine;LSElemente\Instancing\Terra\Stones;38;119
+Landschaftselemente→Bodenmodelle zur '3D-Texturierung'→Sonstige;LSElemente\Instancing;38;
+Landschaftselemente→Klänge→Eigene Sounds;LSElemente\Sound\System;25;
+Landschaftselemente→Klänge→Klänge;LSElemente\Sound;25;
+Landschaftselemente→Animationen→Tiere;LSElemente\Animations\Fauna;23;
+Landschaftselemente→Animationen→Menschen;LSElemente\Animations\Figuren;23;
+;LSElemente\Animations\Humans;;
+Landschaftselemente→Sonstige→Sonstige;LSElemente;23,24,25;
+Rollmaterial→Bahn→Normalspur 1435mm→Lokomotiven→Schlepptenderloks;Rollmaterial\Schiene\Lokomotiven;2;
+Rollmaterial→Bahn→Normalspur 1435mm→Lokomotiven→Tender;Rollmaterial\Schiene\Tender;3;
+Rollmaterial→Bahn→Normalspur 1435mm→Lokomotiven→Tenderloks;Rollmaterial\Schiene\Lokomotiven;1;
+Rollmaterial→Bahn→Normalspur 1435mm→Lokomotiven→Diesel;Rollmaterial\Schiene\Lokomotiven;5;
+Rollmaterial→Bahn→Normalspur 1435mm→Lokomotiven→Elektrisch;Rollmaterial\Schiene\Lokomotiven;4;
+Rollmaterial→Bahn→Normalspur 1435mm→Wagen→Personenwagen;Rollmaterial\Schiene\Personenwaggons;10;
+Rollmaterial→Bahn→Normalspur 1435mm→Wagen→Güterwagen;Rollmaterial\Schiene\Gueterwaggons;9;
+;Rollmaterial\Schiene\Gueterwagen;;
+Rollmaterial→Bahn→Normalspur 1435mm→Wagen→Dienst-Bauwagen;Rollmaterial\Schiene\Dienst_Bauwagen;9,1;
+Rollmaterial→Bahn→Normalspur 1435mm→Wagen→Zug-Zubehör;Rollmaterial\Schiene\Zubehoer;9,10,12;
+Rollmaterial→Bahn→Normalspur 1435mm→Triebwagen→Triebwagen;Rollmaterial\Schiene\Triebwagen;6;
+Rollmaterial→Bahn→Normalspur 1435mm→U- und S-Bahnen→U- und S-Bahnen;Rollmaterial\Schiene\U&S_Bahn;7;
+Rollmaterial→Bahn→Schmalspur 600mm→Dampflokomotiven 600mm;Rollmaterial\Schiene\Schmalspur600;1,2;
+Rollmaterial→Bahn→Schmalspur 600mm→Tender 600mm;Rollmaterial\Schiene\Schmalspur600;3;
+Rollmaterial→Bahn→Schmalspur 600mm→Diesellokomotiven 600mm;Rollmaterial\Schiene\Schmalspur600;5;
+Rollmaterial→Bahn→Schmalspur 600mm→Elektrolokomotiven 600mm;Rollmaterial\Schiene\Schmalspur600;4;
+Rollmaterial→Bahn→Schmalspur 600mm→Triebwagen 600mm;Rollmaterial\Schiene\Schmalspur600;6;
+Rollmaterial→Bahn→Schmalspur 600mm→Personenwagen 600mm;Rollmaterial\Schiene\Schmalspur600;10;
+Rollmaterial→Bahn→Schmalspur 600mm→Güterwagen 600mm;Rollmaterial\Schiene\Schmalspur600;9;
+Rollmaterial→Bahn→Schmalspur 600mm→Maschinen 600mm;Rollmaterial\Schiene\Schmalspur600;12;
+Rollmaterial→Bahn→Schmalspur 750mm→Dampflokomotiven 750mm;Rollmaterial\Schiene\Schmalspur750;1,2;
+Rollmaterial→Bahn→Schmalspur 750mm→Tender 750mm;Rollmaterial\Schiene\Schmalspur750;3;
+Rollmaterial→Bahn→Schmalspur 750mm→Diesel 750mm;Rollmaterial\Schiene\Schmalspur750;5;
+Rollmaterial→Bahn→Schmalspur 750mm→Elektrolokomotiven 750mm;Rollmaterial\Schiene\Schmalspur750;4;
+Rollmaterial→Bahn→Schmalspur 750mm→Triebwagen 750mm;Rollmaterial\Schiene\Schmalspur750;6;
+Rollmaterial→Bahn→Schmalspur 750mm→Personenwagen 750mm;Rollmaterial\Schiene\Schmalspur750;10;
+Rollmaterial→Bahn→Schmalspur 750mm→Güterwagen 750mm;Rollmaterial\Schiene\Schmalspur750;9;
+Rollmaterial→Bahn→Schmalspur 750mm→Maschinen 750mm;Rollmaterial\Schiene\Schmalspur750;12;
+Rollmaterial→Bahn→Schmalspur 1000mm→Dampflokomotiven 1000mm;Rollmaterial\Schiene\Schmalspur1000;1,2;
+Rollmaterial→Bahn→Schmalspur 1000mm→Tender 1000mm;Rollmaterial\Schiene\Schmalspur1000;3;
+Rollmaterial→Bahn→Schmalspur 1000mm→Diesel 1000mm;Rollmaterial\Schiene\Schmalspur1000;5;
+Rollmaterial→Bahn→Schmalspur 1000mm→Elektrolokomotiven 1000mm;Rollmaterial\Schiene\Schmalspur1000;4;
+Rollmaterial→Bahn→Schmalspur 1000mm→Triebwagen 1000mm;Rollmaterial\Schiene\Schmalspur1000;6;
+Rollmaterial→Bahn→Schmalspur 1000mm→Personenwagen 1000mm;Rollmaterial\Schiene\Schmalspur1000;10;
+Rollmaterial→Bahn→Schmalspur 1000mm→Güterwagen 1000mm;Rollmaterial\Schiene\Schmalspur1000;9;
+Rollmaterial→Bahn→Schmalspur 1000mm→Maschinen 1000mm;Rollmaterial\Schiene\Schmalspur1000;12;
+Rollmaterial→Strassenbahn→Strassenbahn;Rollmaterial\Schiene\Strassenbahn;6,8;
+Rollmaterial→Strassenverkehr→Abstandhalter;Rollmaterial\Strasse\Abstandhalter;14,15;
+Rollmaterial→Strassenverkehr→Anhänger;Rollmaterial\Strasse\Anhaenger;14,15;
+;Rollmaterial\Strasse\Wechselbruecken;;
+;Rollmaterial\Strasse\LKW\Autotransport-Anhaenger;;
+;Rollmaterial\Strasse\LKW\Tandem-Anhaenger;;
+;Rollmaterial\Strasse\PKW\1Achs-Anhaenger;;
+Rollmaterial→Strassenverkehr→Busse;Rollmaterial\Strasse\BUS;14,15;
+Rollmaterial→Strassenverkehr→Kleintransporter und -Busse;Rollmaterial\Strasse\Kleinbusse;14,15;
+;Rollmaterial\Strasse\LKW\Kleintransporter;;
+Rollmaterial→Strassenverkehr→Transporter;Rollmaterial\Strasse\Transporter;14,15;
+Rollmaterial→Strassenverkehr→Baufahrzeuge;Rollmaterial\Strasse\Kommunal-Bau;14,15;
+Rollmaterial→Strassenverkehr→Fuhrwerke, Kutschen und Gespanne;Rollmaterial\Strasse\Kutschen;14,15;
+;Rollmaterial\Strasse\Pferde;;
+;Rollmaterial\Strasse\PKW\Pferde-Anhaenger;;
+Rollmaterial→Strassenverkehr→Landwirtschaftsfahrzeuge;Rollmaterial\Strasse\Landwirtschaft;14,15;
+Rollmaterial→Strassenverkehr→Militärfahrzeuge;Rollmaterial\Strasse\Military;14,15;
+Rollmaterial→Strassenverkehr→Notdienstfahrzeuge;Rollmaterial\Strasse\Notdienst;14,15;
+Rollmaterial→Strassenverkehr→Dienstfahrzeuge;Rollmaterial\Strasse\Strassendienst;14,15;
+;Rollmaterial\Strasse\Dienst;;
+Rollmaterial→Strassenverkehr→PKW;Rollmaterial\Strasse\PKW;14,15;
+Rollmaterial→Strassenverkehr→LKW;Rollmaterial\Strasse\LKW;14,15;
+Rollmaterial→Strassenverkehr→Strassenfahrzeuge (Hauptgruppe);Rollmaterial\Strasse;12,14,15;
+Rollmaterial→Luftverkehr→Flugzeuge;Rollmaterial\Luft;11;
+Rollmaterial→Schifffahrt→Wasserfahrzeuge;Rollmaterial\Wasser;13;
+Rollmaterial→Maschinen→Maschinen;Rollmaterial\Maschinen;12;
+Rollmaterial→Animationen→Tiere;Rollmaterial\Animations\Fauna;13;
+Rollmaterial→Animationen→Menschen;Rollmaterial\Animations\Figuren;13;
+Rollmaterial→Andere→Andere;Rollmaterial;1,2,3,4,5,6,7,8,9,10,11,12,13,14,15;
+Signale→Hauptsignale;Signale\Signale;27,28;97,98,34,99
+Signale→Vorsignale;Signale\Signale;28;2
+Signale→Rangiersignale;Signale\Signale;28;172
+Signale→Bahnübergänge;Signale\Signale;26,28,29,30;35
+Signale→Ampeln;Signale\Signale;26,28,29,30;105
+Signale→Straßenbahnsignale;Signale\Signale;26;77
+Signale→Signaltafeln;Signale\Signale;26,27,28,29,30;103
+Signale→Sonstige;Signale\Signale;26,27,28,29,30;
+Immobilien→Ausstattung→Beleuchtung;Immobilien;22;128
+Immobilien→Ausstattung→Begrenzungen;Immobilien;22;129,134
+Immobilien→Ausstattung→Camping;Immobilien\Ausstattung\Camping;22;142
+Immobilien→Ausstattung→Garten, Park, Sportanlage;Immobilien;22;8,49,50,51,117,142
+Immobilien→Ausstattung→Schilder;Immobilien;22;70
+Immobilien→Ausstattung→Flaggen;Immobilien;22;19
+Immobilien→Ausstattung→Ladegut, Güter, Fracht;Immobilien;22;9,29,136
+Immobilien→Ausstattung→Uhren;Immobilien;22;18
+Immobilien→Ausstattung→Sonstige;Immobilien\Landschaft;22;
+;Immobilien\Zubehoer;;
+;Immobilien\Ausstattung;;
+Immobilien→Verkehr→Bahnhöfe;Immobilien\Bahnhoefe;22;73,93
+;Immobilien\Bahnhof;;
+;Immobilien\Verkehr\Verkehr\Nahverkehr;;
+;Immobilien\Verkehr\Bahnhoefe;;
+;Immobilien\Domizil;;
+Immobilien→Verkehr→Bahnsteige;Immobilien;22;5
+Immobilien→Verkehr→Bahnsteig-Zubehör;Immobilien;22;79
+Immobilien→Verkehr→Betriebswerke / Güterbahnhof;Immobilien\Verkehr;22;15,114
+;Immobilien\Verkehr\Bahnhof;;
+;Immobilien\United_States;;
+;Immobilien\Bahnhof;;
+Immobilien→Verkehr→Stellwerke;Immobilien;22;115
+Immobilien→Verkehr→Streckenausstattung;Immobilien\Verkehr\Streckenausstattung;22;
+;Immobilien\Verkehr\Kilometersteine;;
+;Immobilien\Verkehr\Bruecken\pfeiler;;
+;Immobilien\Verkehr\Gleismauern;;
+;Immobilien\Stellwerk;;
+Immobilien→Verkehr→Brücken;Immobilien;22;112,113
+Immobilien→Verkehr→Tunnel;Immobilien\Verkehr;22;78
+Immobilien→Verkehr→Oberleitung;Immobilien\Verkehr;22;96
+Immobilien→Verkehr→Prellböcke;Immobilien\Verkehr\Prellboecke;22;
+Immobilien→Verkehr→Verkehrszeichen und Ampeln;Immobilien;22;104,105
+Immobilien→Verkehr→Signaltafeln;Immobilien\Verkehr;22;103
+Immobilien→Verkehr→LKW;Immobilien\Verkehr;22;41,42,127
+Immobilien→Verkehr→Bau und Baufahrzeuge;Immobilien\Verkehr;22;44,46
+Immobilien→Verkehr→Busse;Immobilien\Verkehr;22;28
+Immobilien→Verkehr→PKW;Immobilien\Verkehr;22;14,27,40
+Immobilien→Verkehr→Dienstfahrzeuge;Immobilien\Verkehr;22;26,121
+Immobilien→Verkehr→Zweiräder;Immobilien\Verkehr;22;38,39
+Immobilien→Verkehr→Landwirtschaft;Immobilien\Verkehr;22;43,125
+Immobilien→Verkehr→Luftfahrt;Immobilien\Verkehr\Luft;22;17,45,109,110,111,24
+Immobilien→Verkehr→Schifffahrt;Immobilien\Verkehr;22;16,19,48,106,118,143
+;Immobilien\Binnenhafen;;
+;Immobilien\Binnenwerft;;
+Immobilien→Verkehr→Sonstige;Immobilien\Verkehr;22;
+Immobilien→Steuerelemente→Stellpult;Immobilien\Goods;22;24
+Immobilien→Steuerelemente→Informationsmodelle;Immobilien\Sehenswert\Information;22;154
+Immobilien→Sehenswürdigkeiten→Burgen und Schlösser;Immobilien;22;66
+Immobilien→Sehenswürdigkeiten→Kirchen und Klöster;Immobilien;22;65
+Immobilien→Sehenswürdigkeiten→Denkmalgeschützt und Friedhof;Immobilien;22;64
+Immobilien→Sehenswürdigkeiten→Sonstige;Immobilien\Sehenswert;22;
+Immobilien→Militär→Militär;Immobilien\Military;22;
+Immobilien→Land→Wohnhäuser;Immobilien;22;67
+Immobilien→Land→Landwirtschaft;Immobilien;22;43,69,125
+Immobilien→Land→Sonstige;Immobilien\Domizil\Land;22;
+Immobilien→Stadt→Einfamilienhäuser;Immobilien\Domizil\Stadt;22;7,67
+Immobilien→Stadt→Mehrfamilienhäuser;Immobilien;22;71
+Immobilien→Stadt→Hochhäuser;Immobilien;22;72,138
+Immobilien→Stadt→Freizeitpark;Immobilien\Freizeitpark;22;23
+;Immobilien\Einschienenbahn;;
+;Immobilien\Ausstattung\Kinder-Spielplatz;;
+;Immobilien\Gewerbe-Handel\Biergarten;;
+;Immobilien\Gewerbe-Handel\Kartbahn;;
+;Immobilien\Gewerbe-Handel\Rummel;;
+;Immobilien\Freizeit;;
+Immobilien→Stadt→Sonstige;Immobilien\Domizil\Stadt;22;
+Immobilien→Gewerbe und Industrie→Fabriken und Anlagen;Immobilien\Industrie;22;137,139,140,141
+;Immobilien\Gewerbe-Handel;;
+Immobilien→Gewerbe und Industrie→Handel und Gewerbe;Immobilien\Industrie;22;63
+;Immobilien\Gewerbe-Handel;;
+;Immobilien\Domizil;;
+Immobilien→Gewerbe und Industrie→Baustelle;Immobilien\Baustelle;22;
+Immobilien→Gewerbe und Industrie→Sonstige→;Immobilien\Industrie;22;
+;Immobilien\Gewerbe-Handel;;
+Immobilien→Sonstige→Sonstige;Immobilien;22;
+Gleisobjekte Straßen→Bahnhof→Bahnhöfe;Gleisobjekte\Strassen;18;73
+Gleisobjekte Straßen→Bahnhof→Bahnsteige;Gleisobjekte\Strassen;18;5
+Gleisobjekte Straßen→Brücken und Tunnel→Brücken;Gleisobjekte\Strassen;18;112,113
+Gleisobjekte Straßen→Brücken und Tunnel→Tunnel;Gleisobjekte\Strassen;18;78
+Gleisobjekte Straßen→Zäune und Geländer→Zäune und Geländer;Gleisobjekte\Strassen;18;134
+Gleisobjekte Straßen→Mauern, Arkaden, Dämme→Mauern, Arkaden, Dämme;Gleisobjekte\Strassen;18;129
+Gleisobjekte Straßen→Sonstige→Sonstige;Gleisobjekte\Strassen;28;
+Gleisobjekte Bahngleise→Animierte Gleisobjekte→Weichen und Weichen-Kombinationen;Gleisobjekte\Gleise\3DVersion\Switches;16;
+Gleisobjekte Bahngleise→Animierte Gleisobjekte→DKW, EKW;Gleisobjekte\Gleise\3DVersion\Crossroads;16;
+Gleisobjekte Bahngleise→Drehscheiben und Schiebebühnen→Drehscheiben;Gleisobjekte\Gleise\Drehscheiben;16;
+;Gleisobjekte\Gleise\Bahnhoefe\Betriebswerke\Cheyenne;;
+Gleisobjekte Bahngleise→Drehscheiben und Schiebebühnen→Schiebebühnen;Gleisobjekte\Gleise\Schiebebuehnen;16;
+Gleisobjekte Bahngleise→Betriebswerke und Industrieanschlüsse→Betriebswerke;Gleisobjekte\Gleise\Kohlenbansen;16;
+;Gleisobjekte\Gleise\Bahnhoefe\Betriebswerke;;
+Gleisobjekte Bahngleise→Betriebswerke und Industrieanschlüsse→Industrieanschüsse;Gleisobjekte\Gleise\Bahnhoefe\Gueterbahnhoefe;16;
+;Gleisobjekte\Gleise\Bahnhoefe\Industrie;;
+Gleisobjekte Bahngleise→Gleismauern, Arkaden, Bahndämme→Gleismauern, Arkaden, Bahndämme;Gleisobjekte\Gleise;16;129
+Gleisobjekte Bahngleise→Brücken und Tunnel→Brücken;Gleisobjekte\Gleise;16;112,113
+Gleisobjekte Bahngleise→Brücken und Tunnel→Tunnel;Gleisobjekte\Gleise;16;78
+Gleisobjekte Bahngleise→Bahnhof→Bahnsteige;Gleisobjekte\Gleise;16;5
+Gleisobjekte Bahngleise→Bahnhof→Bahnhöfe;Gleisobjekte\Gleise;16;73
+Gleisobjekte Bahngleise→Bahnhof→Güterabfertigungen;Gleisobjekte\Gleise;16;114
+Gleisobjekte Bahngleise→Zäune und Geländer→Zäune und Geländer;Gleisobjekte\Gleise;16;134
+Gleisobjekte Bahngleise→Sonstige→Sonstige;Gleisobjekte\Gleise;16;
+Gleisobjekte Straßenbahn→Bahnhof→Bahnhöfe;Gleisobjekte\Schienen;17;73
+Gleisobjekte Straßenbahn→Bahnhof→Bahnsteige;Gleisobjekte\Schienen;17;5
+Gleisobjekte Straßenbahn→Brücken und Tunnel→Brücken;Gleisobjekte\Schienen;17;112,113
+Gleisobjekte Straßenbahn→Brücken und Tunnel→Tunnel;Gleisobjekte\Schienen;17;78
+Gleisobjekte Straßenbahn→Drehscheiben und Schiebebühnen→Drehscheiben;Gleisobjekte\Schienen;17;162
+Gleisobjekte Straßenbahn→Drehscheiben und Schiebebühnen→Schiebebühnen;Gleisobjekte\Schienen;17;163
+Gleisobjekte Straßenbahn→Zäune und Geländer→Zäune und Geländer;Gleisobjekte\Schienen;17;134
+Gleisobjekte Straßenbahn→Sonstige→Sonstige;Gleisobjekte\Schienen;17;
+Gleisobjekte Wasserwege→Bahnhof→Bahnhöfe;Gleisobjekte\Sonstiges;19;73
+Gleisobjekte Wasserwege→Bahnhof→Bahnsteige;Gleisobjekte\Sonstiges;19;5
+Gleisobjekte Wasserwege→Brücken und Tunnel→Brücken;Gleisobjekte\Sonstiges;19;112,113
+Gleisobjekte Wasserwege→Brücken und Tunnel→Tunnel;Gleisobjekte\Sonstiges;19;78
+Gleisobjekte Wasserwege→Betriebswerke und Industrie→Betriebswerke;Gleisobjekte\Sonstiges;19;114,115
+Gleisobjekte Wasserwege→Betriebswerke und Industrie→Industrie;Gleisobjekte\Sonstiges;19;15,24,139,140,141
+Gleisobjekte Wasserwege→Ober- und Freileitungen→Oberleitungen;Gleisobjekte\Sonstiges;19;96
+Gleisobjekte Wasserwege→Ober- und Freileitungen→Freileitungen;Gleisobjekte\Sonstiges;19;135
+Gleisobjekte Wasserwege→Gleismauern, Arkaden, Bahndämme→Gleismauern, Arkaden, Bahndämme;Gleisobjekte\Sonstiges;19;129
+Gleisobjekte Wasserwege→Zäune und Geländer→Zäune und Geländer;Gleisobjekte\Sonstiges;19;134
+Gleisobjekte Wasserwege→Sonstige→Sonstige;Gleisobjekte\Sonstiges;19;
+Gleise→Bahngleise→Gleise;Gleisstile\Gleise;31;37
+Gleise→Bahngleise→Bahnsteige;Gleisstile\Gleise;31;5
+Gleise→Bahngleise→Tunnel;Gleisstile\Gleise;31;78
+Gleise→Bahngleise→Oberleitungen und Stromschienen;Gleisstile\Gleise;31;91,92,93,96,135
+Gleise→Bahngleise→Sonstige;Gleisstile\Gleise;31;
+Gleise→Straßen→Straßen;Gleisstile\Strassen;33;148
+Gleise→Straßen→Feldwege;Gleisstile\Strassen;33;164
+Gleise→Straßen→Tunnel;Gleisstile\Strassen;33;78
+Gleise→Straßen→Sonstige;Gleisstile\Strassen;33;
+Gleise→Straßenbahngleise→Straßenbahngleise;Gleisstile\Schienen;32;149
+Gleise→Straßenbahngleise→Tunnel;Gleisstile\Schienen;32;78
+Gleise→Straßenbahngleise→Sonstige;Gleisstile\Schienen;32;
+Gleise→Sonstige Splines→Sonstige Splines;Gleisstile\Sonstiges;34;150
+Gleise→Sonstige Splines→Oberleitungen und Stromschienen;Gleisstile\Sonstiges;34;91,92,93,96,135
+Gleise→Sonstige Splines→Hecken;Gleisstile\Sonstiges;34;8,49,50,51,108,117,142
+Gleise→Sonstige Splines→Mauern und Zäune;Gleisstile\Sonstiges;34;129,134
+Gleise→Sonstige Splines→Kamera Dollygleis;Gleisstile\Sonstiges;34;147
+Gleise→Sonstige Splines→Wasser;Gleisstile\Sonstiges;34;120
+Gleise→Sonstige Splines→Sonstige;Gleisstile\Sonstiges;34;
