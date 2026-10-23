@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="msg2" xml:space="preserve">
+    <value>This is a root folder. Select a file.</value>
+  </data>
+  <data name="msg1" xml:space="preserve">
+    <value>This is a subfolder. Select a file.</value>
+  </data>
+  <data name="msg7" xml:space="preserve">
+    <value>Enter a user name with at least 3 characters.</value>
+  </data>
+  <data name="msg6" xml:space="preserve">
+    <value>The file could not be read.</value>
+  </data>
+  <data name="msg5" xml:space="preserve">
+    <value>No registration key is available.</value>
+  </data>
+  <data name="msg4" xml:space="preserve">
+    <value>File verification failed.</value>
+  </data>
+  <data name="msg3" xml:space="preserve">
+    <value>File not found.</value>
+  </data>
+  <data name="msg11" xml:space="preserve">
+    <value>File saved.</value>
+  </data>
+  <data name="msg12" xml:space="preserve">
+    <value>INI Edit Translate 2026</value>
+  </data>
+  <data name="msg13" xml:space="preserve">
+    <value>INI Edit Translate 2026</value>
+  </data>
+  <data name="translate" xml:space="preserve">
+    <value>Translate</value>
+  </data>
+  <data name="fopen" xml:space="preserve">
+    <value>Open file</value>
+  </data>
+  <data name="fsave" xml:space="preserve">
+    <value>Save file</value>
+  </data>
+  <data name="dset" xml:space="preserve">
+    <value>Selected set description</value>
+  </data>
+  <data name="nset" xml:space="preserve">
+    <value>Subset name:</value>
+  </data>
+  <data name="zusatz" xml:space="preserve">
+    <value>The documentation opens in your browser.</value>
+  </data>
+  <data name="grptyp" xml:space="preserve">
+    <value>Model type – available icons in this category</value>
+  </data>
+  <data name="icon_std" xml:space="preserve">
+    <value>Icon 23 is a default icon. Select a suitable icon.</value>
+  </data>
+  <data name="icon_int" xml:space="preserve">
+    <value>An internal icon is in use. Select a different icon.</value>
+  </data>
+  <data name="icon_nogo" xml:space="preserve">
+    <value>This icon is no longer permitted. Replace it.</value>
+  </data>
+  <data name="upd" xml:space="preserve">
+    <value>Updates are disabled.</value>
+  </data>
+  <data name="down1" xml:space="preserve">
+    <value>Connecting …</value>
+  </data>
+  <data name="down2" xml:space="preserve">
+    <value>Downloading …</value>
+  </data>
+  <data name="down3" xml:space="preserve">
+    <value>Saving file …</value>
+  </data>
+  <data name="down5" xml:space="preserve">
+    <value>No file has been downloaded.</value>
+  </data>
+  <data name="down4" xml:space="preserve">
+    <value>File saved.</value>
+  </data>
+  <data name="down6" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="quest1" xml:space="preserve">
+    <value>Save application path?</value>
+  </data>
+  <data name="quest2" xml:space="preserve">
+    <value>Register the current application path for the 2026 edition?</value>
+  </data>
+  <data name="no_ver" xml:space="preserve">
+    <value>Updates are disabled.</value>
+  </data>
+  <data name="tssl3" xml:space="preserve">
+    <value>No network. Online translation is currently unavailable.</value>
+  </data>
+  <data name="tssl2" xml:space="preserve">
+    <value>Network available. OpenAI is checked when you translate.</value>
+  </data>
+  <data name="tssl1" xml:space="preserve">
+    <value>OpenAI has not been checked. The connection is checked when you translate.</value>
+  </data>
+  <data name="msg8" xml:space="preserve"><value>Enter an English model name.</value></data>
+  <data name="msg9" xml:space="preserve"><value>Enter a German model name.</value></data>
+  <data name="msg10" xml:space="preserve"><value>Enter a French model name.</value></data>
+  <data name="openAiTitle" xml:space="preserve"><value>OpenAI translation</value></data>
+  <data name="modelLabel" xml:space="preserve"><value>OpenAI model</value></data>
+  <data name="apiKeyLabel" xml:space="preserve"><value>API key (leave blank to keep the existing key)</value></data>
+  <data name="apiPrivacy" xml:space="preserve"><value>The key is encrypted for your Windows account. Selected texts are sent to OpenAI. The API requires internet access and separate billing.</value></data>
+  <data name="saveAction" xml:space="preserve"><value>Save</value></data>
+  <data name="cancelAction" xml:space="preserve"><value>Cancel</value></data>
+  <data name="apiSaveError" xml:space="preserve"><value>Could not save OpenAI settings. Check the model ID and file access.</value></data>
+  <data name="apiReadError" xml:space="preserve"><value>Could not read the local OpenAI configuration. The file has not been changed.</value></data>
+  <data name="restartRequired" xml:space="preserve"><value>Saved settings will take effect after restarting.</value></data>
+  <data name="translationCancelled" xml:space="preserve"><value>Translation cancelled or timed out. Existing texts are preserved.</value></data>
+  <data name="translationFailed" xml:space="preserve"><value>Translation failed. Check the connection, API key and response format.</value></data>
+  <data name="translating" xml:space="preserve"><value>Translating …</value></data>
+  <data name="invalidModel" xml:space="preserve"><value>Enter a valid OpenAI model ID.</value></data>
+  <data name="unsupportedLanguage" xml:space="preserve"><value>This language is not supported.</value></data>
+  <data name="inputTooLong" xml:space="preserve"><value>The text exceeds the limit of 24,000 characters.</value></data>
+  <data name="missingApiKey" xml:space="preserve"><value>OpenAI API key missing. Open Settings → OpenAI translation.</value></data>
+  <data name="apiHttpFailure" xml:space="preserve"><value>OpenAI request failed (HTTP {0}). Check the key, model, credit or connection. Existing texts are preserved.</value></data>
+  <data name="incompleteResponse" xml:space="preserve"><value>OpenAI did not return a complete translation.</value></data>
+  <data name="refusedResponse" xml:space="preserve"><value>OpenAI could not translate this text.</value></data>
+  <data name="missingLanguages" xml:space="preserve"><value>The OpenAI response does not contain all target languages.</value></data>
+  <data name="changedTokens" xml:space="preserve"><value>Placeholders or formatting markers changed. The translation was discarded.</value></data>
+  <data name="missingPair" xml:space="preserve"><value>Complete the {0} and {1} fields.</value></data>
+  <data name="invalidArguments" xml:space="preserve"><value>Incomplete command: Required arguments or a file path are missing.</value></data>
+  <data name="alreadyRunning" xml:space="preserve"><value>INI Edit Translate 2026 is already running.</value></data>
+  <data name="translationSaved" xml:space="preserve"><value>File translated and saved:
+{0}</value></data>
+  <data name="automaticTranslation" xml:space="preserve"><value>Automatic translation</value></data>
+  <data name="notIniFile" xml:space="preserve"><value>The specified file is not an INI file.</value></data>
+  <data name="missingInfo" xml:space="preserve"><value>Info.rtf is missing. Use the online documentation.</value></data>
+  <data name="aboutTitle" xml:space="preserve"><value>About INI Edit Translate 2026</value></data>
+  <data name="aboutDescription" xml:space="preserve"><value>Editor and ChatGPT translator for EEP model INI files and Installation.eep.
+
+Developed by Uwe Grimm / UGSo Software.
+Open source under the MIT licence. No registration required.</value></data>
+  <data name="label1" xml:space="preserve"><value>Name_ENG</value></data>
+  <data name="label2" xml:space="preserve"><value>Name_GER</value></data>
+  <data name="label3" xml:space="preserve"><value>Name_FRA</value></data>
+  <data name="label4" xml:space="preserve"><value>Name_POL</value></data>
+  <data name="label5" xml:space="preserve"><value>Desc_ENG</value></data>
+  <data name="label6" xml:space="preserve"><value>Desc_GER</value></data>
+  <data name="label7" xml:space="preserve"><value>Desc_FRA</value></data>
+  <data name="label8" xml:space="preserve"><value>Desc_POL</value></data>
+  <data name="objekticons" xml:space="preserve"><value></value></data>
+</root>

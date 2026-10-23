@@ -1,0 +1,26 @@
+name: Windows build and local checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      - uses: NuGet/setup-nuget@v2
+      - name: Restore dependencies
+        run: nuget restore "INI Edit Translate 2026.sln" -NonInteractive
+      - name: Build release
+        run: msbuild "INI Edit Translate 2026.sln" /t:Build /p:Configuration=Release /v:minimal
+      - name: Build local tests
+        run: msbuild tests/IET.LocalTests.csproj /t:Build /v:minimal
+      - name: Run local tests without live API calls
+        run: ./tests/bin/IET.LocalTests.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: INI-Edit-Translate-2026-windows
+          path: Ini Edit - Translate/bin/Release/
