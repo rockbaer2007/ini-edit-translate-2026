@@ -1,5 +1,19 @@
 # INI Edit Translate 2026
 
+## Version 2.1.42 : conserver les noms de modèles
+
+La traduction conserve les quatre noms de modèles des fichiers INI et d’Installation.eep.
+Seuls les descriptions, les libellés des axes et les fonctions des signaux sont traduits ;
+les noms ne sont pas envoyés à OpenAI. La conversion voulue des tirets bas en espaces
+à l’importation est conservée. Les mauvaises affectations de langue ou de section dans
+les descriptions d’installation sont corrigées.
+
+Les erreurs de traduction proposent désormais **Copier l’erreur**. Les erreurs de flux
+incluent des codes validés ; les formats de réponse invalides ont des messages distincts.
+Les jetons et messages bruts du serveur ne sont pas affichés. La cause du problème
+ChatGPT signalé reste à confirmer.
+
+
 ## Version 2.1.41 : diagnostic de connexion et des modèles
 
 Les erreurs indiquent désormais l’étape concernée. Une connexion confirmée est
@@ -10,7 +24,7 @@ temporaires, les erreurs réseau et les formats inattendus ont des messages dist
 en DE/EN/FR. Cette mise à jour aide à diagnostiquer le problème distant signalé ; sa
 cause n’est pas encore confirmée. Paramètres, clés API et connexions sont conservés.
 
-[ZIP Windows v2.1.41](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.41/INI-Edit-Translate-2026-v2.1.41-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.41)
+[ZIP Windows v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
 
 ## Version 2.1.40 : connexion ChatGPT
 
@@ -41,7 +55,7 @@ rappel local isolé. L’autorisation du compte réel et la traduction restent �
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.41.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.42.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -62,7 +76,7 @@ Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traductio
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.41](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.41/INI-Edit-Translate-2026-v2.1.41-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.41)
+[Télécharger le ZIP Windows v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.

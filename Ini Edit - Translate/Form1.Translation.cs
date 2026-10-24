@@ -47,8 +47,8 @@ namespace Ini_Edit___Translate
             }
             catch (Exception error)
             {
-                var message = error is InvalidOperationException ? error.Message : Ui.Text("translationFailed");
-                MessageBox.Show(translationProgress ?? this, message, "OpenAI", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                using (var dialog = CreateTranslationErrorDialog(Ui.Text("cgStageTranslation") + ": " + OpenAiErrors.SafeMessage(error)))
+                    dialog.ShowDialog(translationProgress ?? this);
             }
             finally
             {
@@ -68,6 +68,25 @@ namespace Ini_Edit___Translate
                 translationOperationRunning = false;
                 restoreTranslation = null;
             }
+        }
+
+        internal static Form CreateTranslationErrorDialog(string message)
+        {
+            var dialog = new Form { Text = "OpenAI", ClientSize = new Size(650, 240), MinimumSize = new Size(500, 220),
+                StartPosition = FormStartPosition.CenterParent, MinimizeBox = false, MaximizeBox = false };
+            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(12), ColumnCount = 1, RowCount = 2 };
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 42));
+            var text = new TextBox { Text = message, ReadOnly = true, Multiline = true, ScrollBars = ScrollBars.Vertical, Dock = DockStyle.Fill };
+            layout.Controls.Add(text, 0, 0);
+            var actions = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2 };
+            actions.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50)); actions.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            var copy = new Button { Text = Ui.Text("cgCopyError"), Dock = DockStyle.Fill };
+            copy.Click += (s, e) => { try { Clipboard.SetText(message); } catch { MessageBox.Show(dialog, Ui.Text("cgCopyFailed")); } };
+            var close = new Button { Text = "OK", DialogResult = DialogResult.OK, Dock = DockStyle.Fill };
+            actions.Controls.Add(copy, 0, 0); actions.Controls.Add(close, 1, 0); layout.Controls.Add(actions, 0, 1);
+            dialog.Controls.Add(layout); dialog.AcceptButton = close; dialog.CancelButton = close;
+            return dialog;
         }
 
         private async Task<string> TranslateTextAsync(string text, string from, string to)

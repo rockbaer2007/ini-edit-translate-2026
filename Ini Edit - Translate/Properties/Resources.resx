@@ -918,4 +918,7 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="cgStageModels" xml:space="preserve"><value>Modellliste laden</value></data>
   <data name="cgStageSession" xml:space="preserve"><value>Lokale Verbindung laden</value></data>
   <data name="cgLoginConfirmed" xml:space="preserve"><value>Die Anmeldung wurde bestätigt; der folgende Schritt ist fehlgeschlagen.</value></data>
+  <data name="cgStageTranslation" xml:space="preserve"><value>Übersetzung</value></data>
+  <data name="cgStreamFormat" xml:space="preserve"><value>Die ChatGPT-Übersetzungsantwort hat ein unerwartetes Format. Die bisherigen Texte bleiben erhalten.</value></data>
+  <data name="cgStreamSize" xml:space="preserve"><value>Die ChatGPT-Übersetzungsantwort überschreitet das Größenlimit. Die bisherigen Texte bleiben erhalten.</value></data>
 </root>

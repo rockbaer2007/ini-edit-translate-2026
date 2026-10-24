@@ -25,7 +25,7 @@ namespace Ini_Edit___Translate
                         int count = await reader.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
                         if (count == 0) break;
                         total += count;
-                        if (total > 2 * 1024 * 1024) throw new InvalidOperationException(Ui.Text("cgRequestFailed"));
+                        if (total > 2 * 1024 * 1024) throw new InvalidOperationException(Ui.Text("cgStreamSize"));
                         for (int i = 0; i < count; i++)
                         {
                             char c = buffer[i];
@@ -38,7 +38,7 @@ namespace Ini_Edit___Translate
                                 string json = data.ToString(); data.Clear();
                                 if (json == "[DONE]") throw new InvalidOperationException(Ui.Text("incompleteResponse"));
                                 JObject item;
-                                try { item = JObject.Parse(json); } catch { throw new InvalidOperationException(Ui.Text("cgRequestFailed")); }
+                                try { item = JObject.Parse(json); } catch { throw new InvalidOperationException(Ui.Text("cgStreamFormat")); }
                                 string type = (string)item["type"];
                                 if (type == "response.completed")
                                 {
@@ -47,8 +47,8 @@ namespace Ini_Edit___Translate
                                     return response;
                                 }
                                 if (type == "response.failed" || type == "error")
-                                    throw OpenAiErrors.FromCode((string)item["response"]?["error"]?["code"] ??
-                                        (string)item["error"]?["code"] ?? (string)item["code"], true);
+                                    throw OpenAiErrors.FromStream((string)item["response"]?["error"]?["code"] ??
+                                        (string)item["error"]?["code"] ?? (string)item["code"]);
                                 if (type == "response.incomplete") throw new InvalidOperationException(Ui.Text("incompleteResponse"));
                             }
                         }

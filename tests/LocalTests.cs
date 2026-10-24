@@ -69,6 +69,58 @@ internal static class LocalTests
                     Assert(handler.Calls == 1 && (string)handler.Body["input"] == "Sun {0}", "cache/source");
                 }
             });
+            Test("model names are never translated in model or installation fields", () =>
+            {
+                var flags = BindingFlags.NonPublic | BindingFlags.Instance;
+                string[] tags = { "eng", "ger", "fra" }, languages = { "en", "de", "fr" }, selections = { "E", "D", "F" };
+                string oldLanguage = Ini_Edit___Translate.Properties.Settings.Default.language;
+                var originalContext = SynchronizationContext.Current;
+                try
+                {
+                    for (int source = 0; source < 3; source++)
+                    for (int section = -1; section < 5; section++)
+                    using (var form = new Form1())
+                    {
+                        string suffix = section < 0 ? "txt" : section == 0 ? "eep" : "eep" + (section + 1);
+                        foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
+                        {
+                            ((Control)typeof(Form1).GetField("n_" + tag + "_" + suffix, flags).GetValue(form)).Text = "DRG V140 " + tag + "_unchanged";
+                            ((Control)typeof(Form1).GetField("d_" + tag + "_" + suffix, flags).GetValue(form)).Text = "original-" + tag;
+                        }
+                        var translated = new JObject();
+                        foreach (string lang in new[] { "en", "de", "fr", "pl" }.Where(l => l != languages[source])) translated[lang] = "description-" + lang;
+                        var response = new JObject { ["status"] = "completed", ["output"] = new JArray(new JObject { ["type"] = "message", ["content"] = new JArray(new JObject { ["type"] = "output_text", ["text"] = translated.ToString() }) }) };
+                        var handler = new Handler(response.ToString());
+                        using (var service = new OpenAiTranslation(Settings(), handler))
+                        using (var cancellation = new CancellationTokenSource())
+                        {
+                            typeof(Form1).GetField("openAi", flags).SetValue(form, service);
+                            typeof(Form1).GetField("translationCancellation", flags).SetValue(form, cancellation);
+                            Ini_Edit___Translate.Properties.Settings.Default.language = selections[source];
+                            string method = section < 0 ? tags[source] + "trans_n" : "eep_trans_" + tags[source] + "_to_" + section;
+                            var previousContext = SynchronizationContext.Current;
+                            try
+                            {
+                                SynchronizationContext.SetSynchronizationContext(null);
+                                ((Task)typeof(Form1).GetMethod(method, flags).Invoke(form, null)).GetAwaiter().GetResult();
+                            }
+                            finally { SynchronizationContext.SetSynchronizationContext(previousContext); }
+                            Assert(handler.Calls == 1 && (string)handler.Body["input"] == "original-" + tags[source], "only source description sent: " + method);
+                            foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
+                                Assert(((Control)typeof(Form1).GetField("n_" + tag + "_" + suffix, flags).GetValue(form)).Text == "DRG V140 " + tag + "_unchanged", "name changed: " + method);
+                            string[] targetTags = { "eng", "ger", "fra", "pol" }, targetLanguages = { "en", "de", "fr", "pl" };
+                            for (int target = 0; target < 4; target++)
+                                Assert(((Control)typeof(Form1).GetField("d_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
+                                    (target == source ? "original-" + tags[source] : "description-" + targetLanguages[target]), "description field mismatch: " + method);
+                        }
+                    }
+                }
+                finally
+                {
+                    Ini_Edit___Translate.Properties.Settings.Default.language = oldLanguage;
+                    SynchronizationContext.SetSynchronizationContext(originalContext);
+                }
+            });
             Test("empty and same-language texts do not call network", () =>
             {
                 var handler = new Handler(Response());
@@ -217,6 +269,25 @@ internal static class LocalTests
                     Assert(!Ui.Format("missingPair", "Name_GER", "Desc_GER").Contains("{0}"), "unexpanded placeholder");
                     Assert(!Ui.Text("tssl2").Contains("Google"), "obsolete provider status");
                     Assert(Ui.Text("tableFilter").EndsWith("|*.csv"), "invalid localized export filter");
+                });
+                Test("translation errors are readable and copyable " + language, () =>
+                {
+                    foreach (float scale in new[] { 1f, 1.5f })
+                    using (var form = Form1.CreateTranslationErrorDialog(Ui.Text("cgStageTranslation") + ": " + OpenAiErrors.FromStream("server_error").Message))
+                    {
+                        form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-20000, -20000); form.ShowInTaskbar = false;
+                        form.Scale(new SizeF(scale, scale)); form.Show(); form.PerformLayout(); form.Refresh();
+                        Assert(Descendants(form).OfType<TextBox>().Any(t => t.ReadOnly && t.Multiline && t.Text.Contains("SSE; code=server_error")), "diagnostic text selectable");
+                        Assert(Descendants(form).OfType<Button>().Any(b => b.Text == Ui.Text("cgCopyError") && b.Visible), "copy action visible");
+                        foreach (Control control in form.Controls) Assert(form.ClientRectangle.Contains(control.Bounds), "error dialog root overflow");
+                        if (args.Length > 0)
+                            using (var bitmap = new Bitmap(form.Width, form.Height))
+                            {
+                                form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "translation-error-" + language + "-" + (int)(scale * 100) + ".png"));
+                            }
+                        form.Close();
+                    }
                 });
                 Test("ChatGPT settings render without live authentication " + language, () =>
                 {

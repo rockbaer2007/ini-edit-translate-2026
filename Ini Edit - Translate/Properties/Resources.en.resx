@@ -314,4 +314,7 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="cgStageModels" xml:space="preserve"><value>Load model catalog</value></data>
   <data name="cgStageSession" xml:space="preserve"><value>Load local connection</value></data>
   <data name="cgLoginConfirmed" xml:space="preserve"><value>Sign-in was confirmed; the following step failed.</value></data>
+  <data name="cgStageTranslation" xml:space="preserve"><value>Translation</value></data>
+  <data name="cgStreamFormat" xml:space="preserve"><value>The ChatGPT translation response has an unexpected format. Existing texts are retained.</value></data>
+  <data name="cgStreamSize" xml:space="preserve"><value>The ChatGPT translation response exceeds the size limit. Existing texts are retained.</value></data>
 </root>

@@ -1438,21 +1438,7 @@ namespace Ini_Edit___Translate
 
         private async Task engtrans_n()
         {
-            if (string.IsNullOrEmpty(n_eng_txt.Text))
-            {
-
-            }
-            else
-            {
-                string translation1 = await TranslateTextAsync(n_eng_txt.Text, "en", "de");
-                n_ger_txt.Text = translation1;
-
-                string translation2 = await TranslateTextAsync(n_eng_txt.Text, "en", "fr");
-                n_fra_txt.Text = translation2;
-
-                string translation3 = await TranslateTextAsync(n_eng_txt.Text, "en", "pl");
-                n_pol_txt.Text = translation3;
-            }
+            // Model names are identifiers. Preserve all four names during translation.
 
             if (string.IsNullOrEmpty(d_eng_txt.Text))
             {
@@ -1473,21 +1459,7 @@ namespace Ini_Edit___Translate
 
         private async Task gertrans_n()
         {
-            if (string.IsNullOrEmpty(n_ger_txt.Text))
-            {
-
-            }
-            else
-            {
-                string translation1 = await TranslateTextAsync(n_ger_txt.Text, "de", "en");
-                n_eng_txt.Text = translation1;
-
-                string translation2 = await TranslateTextAsync(n_ger_txt.Text, "de", "fr");
-                n_fra_txt.Text = translation2;
-
-                string translation3 = await TranslateTextAsync(n_ger_txt.Text, "de", "pl");
-                n_pol_txt.Text = translation3;
-            }
+            // Model names are identifiers. Preserve all four names during translation.
 
             if (string.IsNullOrEmpty(d_ger_txt.Text))
             {
@@ -1510,21 +1482,7 @@ namespace Ini_Edit___Translate
 
         private async Task fratrans_n()
         {
-            if (string.IsNullOrEmpty(n_fra_txt.Text))
-            {
-
-            }
-            else
-            {
-                string translation1 = await TranslateTextAsync(n_fra_txt.Text, "fr", "en");
-                n_eng_txt.Text = translation1;
-
-                string translation2 = await TranslateTextAsync(n_fra_txt.Text, "fr", "de");
-                n_ger_txt.Text = translation2;
-
-                string translation3 = await TranslateTextAsync(n_fra_txt.Text, "fr", "pl");
-                n_pol_txt.Text = translation3;
-            }
+            // Model names are identifiers. Preserve all four names during translation.
 
             if (string.IsNullOrEmpty(d_fra_txt.Text))
             {
@@ -1818,14 +1776,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep.Text, "de", "pl");//3
                     d_pol_eep.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep.Text, "de", "en");//1
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep.Text, "de", "fr");//2
-                    n_fra_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep.Text, "de", "pl");//3
-                    n_pol_eep.Text = translation9;
                 }
             }
         }
@@ -1841,7 +1793,7 @@ namespace Ini_Edit___Translate
                 else
                 {
                     string translation4 = await TranslateTextAsync(d_eng_eep.Text, "en", "fr");//2
-                    d_eng_eep.Text = translation4;
+                    d_fra_eep.Text = translation4;
 
                     string translation5 = await TranslateTextAsync(d_eng_eep.Text, "en", "de");//4
                     d_ger_eep.Text = translation5;
@@ -1849,14 +1801,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep.Text, "en", "pl");//3
                     d_pol_eep.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep.Text, "en", "fr");//2
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep.Text, "en", "de");//4
-                    n_ger_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep.Text, "en", "pl");//3
-                    n_pol_eep.Text = translation9;
                 }
             }
         }
@@ -1880,14 +1826,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_fra_eep.Text, "fr", "pl");//3
                     d_pol_eep.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep.Text, "fr", "en");//5
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep.Text, "fr", "de");//4
-                    n_ger_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep.Text, "fr", "pl");//3
-                    n_pol_eep.Text = translation9;
                 }
             }
         }
@@ -1911,14 +1851,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep2.Text, "de", "pl");//3
                     d_pol_eep2.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep2.Text, "de", "en");//1
-                    n_eng_eep2.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep2.Text, "de", "fr");//2
-                    n_fra_eep2.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep2.Text, "de", "pl");//3
-                    n_pol_eep2.Text = translation9;
                 }
             }
         }
@@ -1935,7 +1869,7 @@ namespace Ini_Edit___Translate
                 else
                 {
                     string translation4 = await TranslateTextAsync(d_eng_eep2.Text, "en", "fr");
-                    d_eng_eep2.Text = translation4;
+                    d_fra_eep2.Text = translation4;
 
                     string translation5 = await TranslateTextAsync(d_eng_eep2.Text, "en", "de");
                     d_ger_eep2.Text = translation5;
@@ -1943,14 +1877,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep2.Text, "en", "pl");
                     d_pol_eep2.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep2.Text, "en", "fr");
-                    n_eng_eep2.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep2.Text, "en", "de");
-                    n_ger_eep2.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep2.Text, "en", "pl");
-                    n_pol_eep2.Text = translation9;
                 }
             }
 
@@ -1960,29 +1888,23 @@ namespace Ini_Edit___Translate
         {
             if (Properties.Settings.Default.language == "F")
             {
-                if (string.IsNullOrEmpty(d_fra_eep.Text) || string.IsNullOrEmpty(n_fra_eep.Text))
+                if (string.IsNullOrEmpty(d_fra_eep2.Text) || string.IsNullOrEmpty(n_fra_eep2.Text))
                 {
                     MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(d_fra_eep.Text, "fr", "en");
-                    d_eng_eep.Text = translation4;
+                    string translation4 = await TranslateTextAsync(d_fra_eep2.Text, "fr", "en");
+                    d_eng_eep2.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(d_fra_eep.Text, "fr", "de");
-                    d_ger_eep.Text = translation5;
+                    string translation5 = await TranslateTextAsync(d_fra_eep2.Text, "fr", "de");
+                    d_ger_eep2.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(d_fra_eep.Text, "fr", "pl");
-                    d_pol_eep.Text = translation6;
+                    string translation6 = await TranslateTextAsync(d_fra_eep2.Text, "fr", "pl");
+                    d_pol_eep2.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep.Text, "fr", "en");
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep.Text, "fr", "de");
-                    n_ger_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep.Text, "fr", "pl");
-                    n_pol_eep.Text = translation9;
                 }
             }
         }
@@ -1997,14 +1919,8 @@ namespace Ini_Edit___Translate
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_ger_eep3.Text, "de", "en");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_ger_eep3.Text, "de", "fr");
-                    n_fra_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_ger_eep3.Text, "de", "pl");
-                    n_pol_eep3.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_ger_eep3.Text, "de", "en");
                     d_eng_eep3.Text = translation7;
@@ -2028,17 +1944,11 @@ namespace Ini_Edit___Translate
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_eng_eep3.Text, "en", "fr");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_eng_eep3.Text, "en", "de");
-                    n_ger_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_eng_eep3.Text, "en", "pl");
-                    n_pol_eep3.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_eng_eep3.Text, "en", "fr");
-                    d_eng_eep3.Text = translation7;
+                    d_fra_eep3.Text = translation7;
 
                     string translation8 = await TranslateTextAsync(d_eng_eep3.Text, "en", "de");
                     d_ger_eep3.Text = translation8;
@@ -2059,14 +1969,8 @@ namespace Ini_Edit___Translate
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "en");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "de");
-                    n_ger_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "pl");
-                    n_pol_eep3.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "en");
                     d_eng_eep3.Text = translation7;
@@ -2084,20 +1988,14 @@ namespace Ini_Edit___Translate
         {
             if (Properties.Settings.Default.language == "D")
             {
-                if (string.IsNullOrEmpty(d_ger_eep3.Text))
+                if (string.IsNullOrEmpty(d_ger_eep4.Text))
                 {
                     MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_ger_eep4.Text, "de", "en");
-                    n_eng_eep4.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_ger_eep4.Text, "de", "fr");
-                    n_fra_eep4.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_ger_eep4.Text, "de", "pl");
-                    n_pol_eep4.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_ger_eep4.Text, "de", "en");
                     d_eng_eep4.Text = translation7;
@@ -2115,29 +2013,23 @@ namespace Ini_Edit___Translate
         {
             if (Properties.Settings.Default.language == "E")
             {
-                if (string.IsNullOrEmpty(d_eng_eep3.Text))
+                if (string.IsNullOrEmpty(d_eng_eep4.Text))
                 {
                     MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_eng_eep3.Text, "en", "fr");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_eng_eep3.Text, "en", "de");
-                    n_ger_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_eng_eep3.Text, "en", "pl");
-                    n_pol_eep3.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(d_eng_eep3.Text, "en", "fr");
-                    d_eng_eep3.Text = translation7;
+                    string translation7 = await TranslateTextAsync(d_eng_eep4.Text, "en", "fr");
+                    d_fra_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(d_eng_eep3.Text, "en", "de");
-                    d_ger_eep3.Text = translation8;
+                    string translation8 = await TranslateTextAsync(d_eng_eep4.Text, "en", "de");
+                    d_ger_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(d_eng_eep3.Text, "en", "pl");
-                    d_pol_eep3.Text = translation9;
+                    string translation9 = await TranslateTextAsync(d_eng_eep4.Text, "en", "pl");
+                    d_pol_eep4.Text = translation9;
                 }
             }
         }
@@ -2146,29 +2038,23 @@ namespace Ini_Edit___Translate
         {
             if (Properties.Settings.Default.language == "F")
             {
-                if (string.IsNullOrEmpty(d_fra_eep3.Text))
+                if (string.IsNullOrEmpty(d_fra_eep4.Text))
                 {
                     MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "en");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "de");
-                    n_ger_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "pl");
-                    n_pol_eep3.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "en");
-                    d_eng_eep3.Text = translation7;
+                    string translation7 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "en");
+                    d_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "de");
-                    d_ger_eep3.Text = translation8;
+                    string translation8 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "de");
+                    d_ger_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "pl");
-                    d_pol_eep3.Text = translation9;
+                    string translation9 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "pl");
+                    d_pol_eep4.Text = translation9;
                 }
             }
         }
@@ -2192,14 +2078,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep5.Text, "de", "pl");
                     d_pol_eep5.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep5.Text, "de", "en");
-                    n_eng_eep5.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep5.Text, "de", "fr");
-                    n_fra_eep5.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep5.Text, "de", "pl");
-                    n_pol_eep5.Text = translation9;
                 }
             }
         }
@@ -2215,7 +2095,7 @@ namespace Ini_Edit___Translate
                 else
                 {
                     string translation4 = await TranslateTextAsync(d_eng_eep5.Text, "en", "fr");
-                    d_eng_eep5.Text = translation4;
+                    d_fra_eep5.Text = translation4;
 
                     string translation5 = await TranslateTextAsync(d_eng_eep5.Text, "en", "de");
                     d_ger_eep5.Text = translation5;
@@ -2223,14 +2103,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep5.Text, "en", "pl");
                     d_pol_eep5.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep5.Text, "en", "fr");
-                    n_eng_eep5.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep5.Text, "en", "de");
-                    n_ger_eep5.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep5.Text, "en", "pl");
-                    n_pol_eep5.Text = translation9;
                 }
             }
         }
@@ -2254,14 +2128,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "pl");
                     d_pol_eep5.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep5.Text, "fr", "en");
-                    n_eng_eep5.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep5.Text, "fr", "de");
-                    n_ger_eep5.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep5.Text, "fr", "pl");
-                    n_pol_eep5.Text = translation9;
                 }
             }
         }
@@ -2332,14 +2200,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep.Text, "de", "pl");
                     d_pol_eep.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep.Text, "de", "en");
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep.Text, "de", "fr");
-                    n_fra_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep.Text, "de", "pl");
-                    n_pol_eep.Text = translation9;
                 }
             }
             if (culture_set.Contains("en"))
@@ -2359,14 +2221,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep.Text, "en", "pl");
                     d_pol_eep.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep.Text, "en", "fr");
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep.Text, "en", "de");
-                    n_ger_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep.Text, "en", "pl");
-                    n_pol_eep.Text = translation9;
                 }
             }
             if (culture_set.Contains("fr"))
@@ -2386,14 +2242,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_fra_eep.Text, "fr", "pl");
                     d_pol_eep.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep.Text, "fr", "en");
-                    n_eng_eep.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep.Text, "fr", "de");
-                    n_ger_eep.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep.Text, "fr", "pl");
-                    n_pol_eep.Text = translation9;
                 }
             }
 
@@ -2420,14 +2270,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep4.Text, "de", "pl");
                     d_pol_eep4.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep4.Text, "de", "en");
-                    n_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep4.Text, "de", "fr");
-                    n_fra_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep4.Text, "de", "pl");
-                    n_pol_eep4.Text = translation9;
                 }
             }
             if (culture_set.Contains("en"))
@@ -2447,14 +2291,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep4.Text, "en", "pl");
                     d_pol_eep4.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep4.Text, "en", "fr");
-                    n_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep4.Text, "en", "de");
-                    n_ger_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep4.Text, "en", "pl");
-                    n_pol_eep4.Text = translation9;
                 }
             }
             if (culture_set.Contains("fr"))
@@ -2474,14 +2312,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "pl");
                     d_pol_eep4.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep4.Text, "fr", "en");
-                    n_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep4.Text, "fr", "de");
-                    n_ger_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep4.Text, "fr", "pl");
-                    n_pol_eep4.Text = translation9;
                 }
             }
 
@@ -2499,14 +2331,8 @@ namespace Ini_Edit___Translate
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_ger_eep3.Text, "de", "en");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_ger_eep3.Text, "de", "fr");
-                    n_fra_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_ger_eep3.Text, "de", "pl");
-                    n_pol_eep3.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_ger_eep3.Text, "de", "en");
                     d_eng_eep3.Text = translation7;
@@ -2526,14 +2352,8 @@ namespace Ini_Edit___Translate
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_eng_eep3.Text, "en", "fr");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_eng_eep3.Text, "en", "de");
-                    n_ger_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_eng_eep3.Text, "en", "pl");
-                    n_pol_eep3.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_eng_eep3.Text, "en", "fr");
                     d_eng_eep3.Text = translation7;
@@ -2553,14 +2373,8 @@ namespace Ini_Edit___Translate
                 }
                 else
                 {
-                    string translation4 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "en");
-                    n_eng_eep3.Text = translation4;
 
-                    string translation5 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "de");
-                    n_ger_eep3.Text = translation5;
 
-                    string translation6 = await TranslateTextAsync(n_fra_eep3.Text, "fr", "pl");
-                    n_pol_eep3.Text = translation6;
 
                     string translation7 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "en");
                     d_eng_eep3.Text = translation7;
@@ -2596,14 +2410,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep5.Text, "de", "pl");
                     d_pol_eep5.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep5.Text, "de", "en");
-                    n_eng_eep5.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep5.Text, "de", "fr");
-                    n_fra_eep5.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep5.Text, "de", "pl");
-                    n_pol_eep5.Text = translation9;
                 }
             }
             if (culture_set.Contains("en"))
@@ -2623,14 +2431,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep5.Text, "en", "pl");
                     d_pol_eep5.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep5.Text, "en", "fr");
-                    n_eng_eep5.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep5.Text, "en", "de");
-                    n_ger_eep5.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep5.Text, "en", "pl");
-                    n_pol_eep5.Text = translation9;
                 }
             }
             if (culture_set.Contains("fr"))
@@ -2650,14 +2452,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "pl");
                     d_pol_eep5.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep5.Text, "fr", "en");
-                    n_eng_eep5.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep5.Text, "fr", "de");
-                    n_ger_eep5.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep5.Text, "fr", "pl");
-                    n_pol_eep5.Text = translation9;
                 }
             }
 
@@ -2684,14 +2480,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_ger_eep4.Text, "de", "pl");
                     d_pol_eep4.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_ger_eep4.Text, "de", "en");
-                    n_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_ger_eep4.Text, "de", "fr");
-                    n_fra_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_ger_eep4.Text, "de", "pl");
-                    n_pol_eep4.Text = translation9;
                 }
             }
             if (culture_set.Contains("en"))
@@ -2711,14 +2501,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_eng_eep4.Text, "en", "pl");
                     d_pol_eep4.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_eng_eep4.Text, "en", "fr");
-                    n_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_eng_eep4.Text, "en", "de");
-                    n_ger_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_eng_eep4.Text, "en", "pl");
-                    n_pol_eep4.Text = translation9;
                 }
             }
             if (culture_set.Contains("fr"))
@@ -2738,14 +2522,8 @@ namespace Ini_Edit___Translate
                     string translation6 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "pl");
                     d_pol_eep4.Text = translation6;
 
-                    string translation7 = await TranslateTextAsync(n_fra_eep4.Text, "fr", "en");
-                    n_eng_eep4.Text = translation7;
 
-                    string translation8 = await TranslateTextAsync(n_fra_eep4.Text, "fr", "de");
-                    n_ger_eep4.Text = translation8;
 
-                    string translation9 = await TranslateTextAsync(n_fra_eep4.Text, "fr", "pl");
-                    n_pol_eep4.Text = translation9;
                 }
             }
 

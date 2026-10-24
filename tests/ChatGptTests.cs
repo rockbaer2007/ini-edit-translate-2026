@@ -305,6 +305,21 @@ internal static class ChatGptTests
                 }
                 Assert(!OpenAiErrors.SafeMessage(new HttpRequestException("https://secret/SECRET-FIXTURE")).Contains("SECRET-FIXTURE"), "network message is sanitized");
             });
+            test("ChatGPT stream errors expose safe code and discard raw messages", () =>
+            {
+                var body = "data: {\"type\":\"error\",\"code\":\"server_error\",\"message\":\"SECRET-FIXTURE\"}\n\n";
+                using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(body)))
+                {
+                    try { ChatGptStream.ReadAsync(stream, CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("error stream should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message.Contains("SSE; code=server_error") && !error.Message.Contains("SECRET-FIXTURE"), "safe stream diagnostics"); }
+                }
+                Assert(!OpenAiErrors.FromStream("sk-SECRET-FIXTURE").Message.Contains("SECRET-FIXTURE"), "unknown code not copied");
+                using (var stream = new MemoryStream(Encoding.UTF8.GetBytes("data: not-json\n\n")))
+                {
+                    try { ChatGptStream.ReadAsync(stream, CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("malformed stream should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message == Ui.Text("cgStreamFormat"), "specific format diagnostic"); }
+                }
+            });
             test("ChatGPT malformed model catalogs fail explicitly", () =>
             {
                 var vault = NewVault(root); Put(vault, Account());

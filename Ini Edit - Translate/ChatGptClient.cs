@@ -351,6 +351,16 @@ namespace Ini_Edit___Translate
 
     internal static class OpenAiErrors
     {
+        internal static string SafeCode(string code)
+        {
+            return code != null && System.Text.RegularExpressions.Regex.IsMatch(code,
+                @"\A(?:subscription_sharing_|chatpass_v2_)[a-z_]{1,70}\z|\A(?:invalid_grant|invalid_client|invalid_refresh_token|token_expired|refresh_token_expired|refresh_token_invalidated|refresh_token_reused|insufficient_quota|credit_balance_exhausted|rate_limit_exceeded|rate_limit_error|slow_down|server_error|model_not_found|invalid_request_error|unsupported_value|permission_denied|authentication_error)\z") ? code : "-";
+        }
+
+        internal static Exception FromStream(string code)
+        {
+            return new InvalidOperationException(FromCode(code, true).Message + Environment.NewLine + "SSE; code=" + SafeCode(code));
+        }
         internal static Exception FromCode(string code, bool chatGpt)
         {
             switch (code)
@@ -395,8 +405,7 @@ namespace Ini_Edit___Translate
             else if (chatGpt && status == 503) reason = Ui.Text("cgUnavailable");
             else reason = Ui.Format("apiHttpFailure", status);
             // Only protocol identifiers are copied, never server messages or arbitrary body values.
-            string safeCode = code != null && System.Text.RegularExpressions.Regex.IsMatch(code,
-                @"\A(?:subscription_sharing_|chatpass_v2_)[a-z_]{1,70}\z|\A(?:invalid_grant|invalid_client|invalid_refresh_token|token_expired|refresh_token_expired|refresh_token_invalidated|refresh_token_reused|insufficient_quota|credit_balance_exhausted|rate_limit_exceeded|rate_limit_error|slow_down)\z") ? code : "-";
+            string safeCode = SafeCode(code);
             string safeParam = new[] { "model", "input", "stream", "store", "text.format", "service_tier", "tools", "scope", "resource", "client_id", "grant_type" }.Contains(param) ? param : "-";
             System.Collections.Generic.IEnumerable<string> ids;
             string requestId = response.Headers.TryGetValues("x-request-id", out ids) ? ids.FirstOrDefault() : null;
