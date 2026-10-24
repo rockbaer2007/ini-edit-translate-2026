@@ -61,17 +61,21 @@ namespace Info_trans
 
         private void Center_Text()
         {
-            Graphics g = CreateGraphics();
-            double startingPoint = (Width / 2) - (g.MeasureString(Text.Trim(), Font).Width / 2);
-            double widthOfASpace = g.MeasureString(" ", Font).Width;
-            string tmp = " ";
-            double tmpWidth = 0;
-            while ((tmpWidth + widthOfASpace) < startingPoint)
+            using (Graphics g = CreateGraphics())
             {
-                tmp += " ";
-                tmpWidth += widthOfASpace;
+                double startingPoint = (Width / 2) - (g.MeasureString(Text.Trim(), Font).Width / 2);
+                double widthOfASpace = g.MeasureString(" ", Font).Width;
+                string tmp = " ";
+                double tmpWidth = 0;
+                // Some Windows font/rendering configurations ignore trailing spaces.
+                // Never let decorative caption padding block the form's Load event.
+                for (int count = 0; count < 256 && widthOfASpace > 0 && (tmpWidth + widthOfASpace) < startingPoint; count++)
+                {
+                    tmp += " ";
+                    tmpWidth += widthOfASpace;
+                }
+                Text = tmp + Text.Trim();
             }
-            Text = tmp + Text.Trim();
         }
 
         private void TabControl1_DrawItem_1(object sender, DrawItemEventArgs e)
