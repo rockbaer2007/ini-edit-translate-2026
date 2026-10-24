@@ -23,6 +23,7 @@ jobs:
       - name: Build local tests
         run: msbuild tests/IET.LocalTests.csproj /t:Build /v:minimal
       - name: Run local tests without live API calls
+        timeout-minutes: 2
         run: ./tests/bin/IET.LocalTests.exe
       - name: Build isolated database tests
         run: msbuild tests/IET.DatabaseTests.csproj /t:Build /v:minimal

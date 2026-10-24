@@ -43,7 +43,7 @@ internal static class LocalTests
             new JObject { ["type"] = "message", ["content"] = new JArray(new JObject { ["type"] = "output_text",
                 ["text"] = new JObject { ["de"] = de, ["fr"] = fr, ["pl"] = pl }.ToString() }) }) }.ToString();
     private static void Assert(bool condition, string message) { if (!condition) throw new Exception(message); }
-    private static void Test(string name, Action action) { action(); passed++; Console.WriteLine("PASS " + name); }
+    private static void Test(string name, Action action) { Console.WriteLine("RUN " + name); action(); passed++; Console.WriteLine("PASS " + name); }
     private static void Fails(Action action)
     {
         bool failed = false;
@@ -832,6 +832,7 @@ internal static class LocalTests
                 });
                 Test("helper loads all supplied reference files with original row counts", () =>
                 {
+                    Console.WriteLine("Reference test: reading source tables");
                     Info_trans.DataFiles.Root = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
                         "..", "..", "Info_trans", "reference-data"));
                     Assert(Info_trans.DataFiles.ReadTable("iconhelp.dat").Rows.Count == 236, "icon rows");
@@ -865,10 +866,12 @@ internal static class LocalTests
                     Assert(Info_trans.DataFiles.ReadTable("estate.csv").Rows.Count == 0, "empty source stays empty");
                     using (var helper = new Info_trans.Form1())
                     {
+                        Console.WriteLine("Reference test: form constructed; showing reference tables");
                         helper.StartPosition = FormStartPosition.Manual;
                         helper.Location = new Point(-20000, -20000);
                         helper.ShowInTaskbar = false;
                         helper.Show(); helper.Refresh();
+                        Console.WriteLine("Reference test: reference tables shown");
                         var grid = Descendants(helper).OfType<DataGridView>().Single(item => item.Name == "dataGridView10");
                         Assert(((System.Data.DataTable)grid.DataSource).Rows.Count == 2428 && grid.Columns.Count == 3, "actual three-language form data bound");
                         Assert(Descendants(helper).OfType<TabPage>().Single(page => page.Name == "tabPage10").Text.Contains("DE/EN/FR"), "three-language tab caption");

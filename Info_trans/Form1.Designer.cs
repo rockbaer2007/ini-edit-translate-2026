@@ -321,6 +321,7 @@
             this.tabPage11.BackColor = System.Drawing.Color.Lime;
             this.tabPage11.Controls.Add(this.dataGridView11);
             this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(1000, 400);
             this.tabPage11.Text = "Bahnabkürzung";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             //
