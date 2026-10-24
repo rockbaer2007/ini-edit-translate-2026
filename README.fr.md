@@ -1,5 +1,23 @@
 # INI Edit Translate 2026
 
+## Version 2.1.54 : abréviations ferroviaires dans Info_trans
+
+Info_trans ajoute l’onglet **Abréviations ferroviaires** avec 14 entrées :
+Bf, Hbf, Hp, Gbf, Rbf, Abzw, BÜ, Stw, EG, OL, Gl., Bstg., DWW et Kr.
+Le tableau présente l’allemand, l’anglais, le français et le polonais, avec les
+abréviations étrangères attestées. La ligne Kr., auparavant vide, est complétée
+pour une traversée de voies. Cliquer sur une cellule copie son contenu, comme
+dans les autres tableaux de référence. Le tableau est en lecture seule, les colonnes
+peuvent être triées et les textes longs passent à la ligne.
+L’onglet allemand s’appelle **Bahnabkürzung**, l’anglais **Railway abbreviations**.
+Le paquet complet inclut `help/railway-abbreviations.csv`. Ce tableau de référence
+ne modifie pas les règles de traduction automatique. Sauvegarde effectuée avant
+modification ; dictionnaire, base de données, paramètres, identifiants d’accès et
+liste externe des constructeurs sont conservés.
+114 vérifications locales réussies : contenu du tableau et affichage DE/EN/FR
+aux échelles 100 et 150 %, sans appel réel aux API.
+
+
 ## Version 2.1.53 : abréviations ferroviaires et codes de constructeurs
 
 20 abréviations ferroviaires utilisent désormais une correspondance locale fixe
@@ -275,7 +293,7 @@ temporaires, les erreurs réseau et les formats inattendus ont des messages dist
 en DE/EN/FR. Cette mise à jour aide à diagnostiquer le problème distant signalé ; sa
 cause n’est pas encore confirmée. Paramètres, clés API et connexions sont conservés.
 
-[ZIP Windows v2.1.53](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.53/INI-Edit-Translate-2026-v2.1.53-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.53)
+[ZIP Windows v2.1.54](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
 
 ## Version 2.1.40 : connexion ChatGPT
 
@@ -306,7 +324,7 @@ rappel local isolé. L’autorisation du compte réel et la traduction restent �
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.53.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.54.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -327,7 +345,7 @@ Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traductio
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.53](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.53/INI-Edit-Translate-2026-v2.1.53-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.53)
+[Télécharger le ZIP Windows v2.1.54](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.

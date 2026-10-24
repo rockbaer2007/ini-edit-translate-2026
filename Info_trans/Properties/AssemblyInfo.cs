@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 // Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
 // indem Sie "*" wie unten gezeigt eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.38.0")]
-[assembly: AssemblyFileVersion("2.1.38.0")]
+[assembly: AssemblyVersion("2.1.54.0")]
+[assembly: AssemblyFileVersion("2.1.54.0")]
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("IET.LocalTests")]
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("IET.DatabaseTests")]

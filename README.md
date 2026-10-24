@@ -1,5 +1,22 @@
 # INI Edit Translate 2026
 
+## Version 2.1.54: Bahnabkürzung in Info_trans
+
+Info_trans enthält den zusätzlichen Tab **Bahnabkürzung** mit den 14 Einträgen
+Bf, Hbf, Hp, Gbf, Rbf, Abzw, BÜ, Stw, EG, OL, Gl., Bstg., DWW und Kr.
+Die Tabelle zeigt Deutsch, Englisch, Französisch und Polnisch einschließlich
+belegter fremdsprachiger Kürzel. Die bisher leere Kr.-Zeile ist als Gleiskreuzung ergänzt.
+Ein Klick auf eine Zelle kopiert deren Inhalt wie in den bestehenden Nachschlagetabellen.
+Die Tabelle ist schreibgeschützt, Spalten können sortiert werden; lange Texte werden
+umgebrochen. Der Tab heißt auf Englisch **Railway abbreviations**, auf Französisch
+**Abréviations ferroviaires**. Die Datei `help/railway-abbreviations.csv` gehört zum
+vollständigen Paket. Sie ist eine Nachschlagetabelle und ändert keine automatischen
+Übersetzungsregeln. Vorher Backup erstellt; Wörterbuch, Datenbank, Einstellungen,
+Zugangsdaten und die externe Konstrukteursliste bleiben erhalten.
+114 lokale Prüfungen bestanden, einschließlich Tabelleninhalt und Oberfläche
+DE/EN/FR bei 100 und 150 Prozent Skalierung. Keine echten API-Anfragen.
+
+
 ## Version 2.1.53: Bahn-Abkürzungen und Konstrukteurskennungen
 
 20 Bahn-Abkürzungen werden jetzt anhand einer festen lokalen Zuordnung übersetzt:
@@ -292,7 +309,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.53](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.53/INI-Edit-Translate-2026-v2.1.53-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.53)
+[Windows-ZIP v2.1.54](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -348,12 +365,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.53.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.54.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.53 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.53/INI-Edit-Translate-2026-v2.1.53-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.53)
+[Windows-ZIP v2.1.54 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.

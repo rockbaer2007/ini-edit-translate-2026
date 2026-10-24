@@ -38,7 +38,7 @@ Copy-Item -LiteralPath (Join-Path $repoRoot 'Info_trans/reference-data/README.md
 Copy-Item -LiteralPath (Join-Path $repoRoot 'Info_trans/reference-data/IET2.FDB') -Destination (Join-Path $stage 'help/IET2.FDB') -Force
 $required = @('INI Edit Translate 2026.exe','INI Edit Translate 2026.exe.config','IET.Updater.exe','IniFile.dll','Info.rtf',
     'Newtonsoft.Json.dll','help/Info_trans.exe','help/Info_trans.exe.config','help/FirebirdSql.Data.FirebirdClient.dll',
-    'help/iconhelp.csv','help/twb.csv','help/ws_D_E.csv','help/ws_D_E_F.csv','help/object.csv',
+    'help/iconhelp.csv','help/twb.csv','help/ws_D_E.csv','help/ws_D_E_F.csv','help/object.csv','help/railway-abbreviations.csv',
     'docs/dictionary-review.md','docs/dictionary-review.json','docs/railway-glossary.md','docs/constructor-codes.txt',
     'help/estate.csv','help/goods.csv','help/landscape.csv','help/stock.csv','help/signals.csv',
     'help/licenses/Firebird-provider-license.txt','help/IET2.FDB','help/iconhelp.dat',

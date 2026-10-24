@@ -34,7 +34,8 @@ namespace Info_trans
                 DataFiles.Text("Datenbankimport", "Database import", "Import de base"),
                 DataFiles.Text("Iconhilfe", "Icon reference", "Référence des icônes"),
                 DataFiles.Text("Technischer Wortschatz", "Technical vocabulary", "Vocabulaire technique"),
-                DataFiles.Text("Wörterbuch DE/EN/FR", "DE/EN/FR dictionary", "Dictionnaire DE/EN/FR")
+                DataFiles.Text("Wörterbuch DE/EN/FR", "DE/EN/FR dictionary", "Dictionnaire DE/EN/FR"),
+                DataFiles.Text("Bahnabkürzung", "Railway abbreviations", "Abréviations ferroviaires")
             };
             tabControl1.Multiline = true;
             for (int index = 0; index < tabNames.Length; index++) tabControl1.TabPages[index].Text = tabNames[index];
@@ -207,6 +208,11 @@ namespace Info_trans
                 dataGridView10.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
                 if (dictionary.Columns.Count == 2)
                     tabPage10.Text = DataFiles.Text("Wörterbuch DE/EN", "DE/EN dictionary", "Dictionnaire DE/EN");
+            });
+            TryLoad("railway-abbreviations.csv", () =>
+            {
+                dataGridView11.DataSource = DataFiles.ReadTable("railway-abbreviations.csv");
+                foreach (DataGridViewColumn column in dataGridView11.Columns) column.MinimumWidth = 150;
             });
             dataStatus.Text = unavailable.Count == 0
                 ? DataFiles.Text("Nachschlagedaten geladen.", "Reference data loaded.", "Données de référence chargées.")

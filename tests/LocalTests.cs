@@ -886,6 +886,42 @@ internal static class LocalTests
                     }
                     Info_trans.DataFiles.Root = helperData;
                 });
+                foreach (string language in new[] { "de", "en", "fr" })
+                Test("railway abbreviation tab shows the complete four-language table " + language, () =>
+                {
+                    var culture = CultureInfo.CurrentUICulture;
+                    string root = Info_trans.DataFiles.Root;
+                    try
+                    {
+                        CultureInfo.CurrentUICulture = new CultureInfo(language);
+                        Info_trans.DataFiles.Root = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Info_trans", "reference-data"));
+                        foreach (float scale in new[] { 1f, 1.5f })
+                        using (var helper = new Info_trans.Form1())
+                        {
+                            helper.StartPosition = FormStartPosition.Manual; helper.Location = new Point(-20000, -20000); helper.ShowInTaskbar = false;
+                            helper.Scale(new SizeF(scale, scale)); helper.Show(); helper.Refresh();
+                            var grid = Descendants(helper).OfType<DataGridView>().Single(item => item.Name == "dataGridView11");
+                            var page = (TabPage)grid.Parent;
+                            Assert(page.Text == (language == "de" ? "Bahnabkürzung" : language == "en" ? "Railway abbreviations" : "Abréviations ferroviaires"), "localized tab name");
+                            Assert(grid.Rows.Count == 14 && grid.Columns.Count == 4 && grid.ReadOnly && !grid.AllowUserToAddRows, "four-language reference grid");
+                            Assert((string)grid.Rows[0].Cells[0].Value == "Bf – Bahnhof" && (string)grid.Rows[0].Cells[3].Value == "ST – stacja", "first entry and Polish abbreviation");
+                            Assert((string)grid.Rows[13].Cells[1].Value == "diamond crossing" && (string)grid.Rows[13].Cells[3].Value == "skrzyżowanie torów", "crossing row completed");
+                            Assert(grid.Rows.Cast<DataGridViewRow>().All(row => row.Cells.Cast<DataGridViewCell>().All(cell => !string.IsNullOrWhiteSpace(Convert.ToString(cell.Value)))), "no missing translations");
+                            Descendants(helper).OfType<TabControl>().Single().SelectedTab = page; helper.Refresh();
+                            Assert(grid.Dock == DockStyle.Fill && grid.Width <= page.ClientSize.Width && grid.Height <= page.ClientSize.Height, "grid fits tab");
+                            grid.ClearSelection(); grid.Rows[6].Cells[2].Selected = true;
+                            Assert(Convert.ToString(grid.SelectedCells[0].Value) == "PN – passage à niveau", "individual cell selection for existing clipboard action");
+                            if (args.Length > 0)
+                            using (var bitmap = new Bitmap(helper.Width, helper.Height))
+                            {
+                                helper.DrawToBitmap(bitmap, new Rectangle(0, 0, helper.Width, helper.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "railway-tab-" + language + "-" + (int)(scale * 100) + ".png"));
+                            }
+                            helper.Close();
+                        }
+                    }
+                    finally { CultureInfo.CurrentUICulture = culture; Info_trans.DataFiles.Root = root; }
+                });
                 Test("helper preserves unreadable database and disables SQL import", () =>
                 {
                     string databasePath = Path.Combine(helperData, "IET2.FDB");
