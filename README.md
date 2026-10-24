@@ -8,8 +8,14 @@ EW bedeutet Einfachweiche, auch ohne folgende Gradzahl.
 Beispiel: `GK3 DKW DR DB (V8)[e]EEP16.2` wird auf Französisch
 zu `GK3 TJD DR DB (V8)[e]EEP16.2`.
 
-Die bereitgestellte Liste mit 272 eindeutigen dreistelligen Konstrukteurskennungen
-ist eingebettet. Kennungen bleiben mit und ohne Klammern an jeder Position erhalten.
+Die mitgelieferte Startliste enthält 272 eindeutige dreistellige Konstrukteurskennungen.
+Beim ersten Programmstart wird eine externe UTF-8-Datei angelegt:
+`%LOCALAPPDATA%\UGSo\IET2026\constructor-codes.txt`.
+Neue Kennungen dort mit zwei Buchstaben und einer Ziffer, jeweils eine pro Zeile,
+ergänzen und das Programm neu starten. Updates überschreiben die Benutzerdatei nicht.
+Ergänzungen werden mit der mitgelieferten Grundliste zusammengeführt. Leerzeilen,
+Kommentare und ungültige Zeilen werden ignoriert; unlesbare Dateien bleiben erhalten
+und die Grundliste dient als Rückfallebene. Kennungen bleiben mit und ohne Klammern an jeder Position erhalten.
 Die bisherige allgemeine Erkennung weiterer Kennungen bleibt zusätzlich aktiv.
 DR, DB, Typbezeichnungen, Versionshinweise wie `(V8)` oder `(v8.2)`,
 EEP-Versionen und `[e]` bleiben unverändert.
@@ -53,7 +59,7 @@ veränderte Platzhalter führen zu keiner Teilübernahme; Originaldateien,
 Einstellungen und Zugangsdaten bleiben erhalten. Backup vor der Änderung erstellt.
 MyMemory bleibt die Voreinstellung für neue Konfigurationen.
 
-110 lokale Prüfungen bestanden, einschließlich aller 272 Kennungen, DE/EN/FR/PL,
+111 lokale Prüfungen bestanden, einschließlich aller 272 Kennungen, DE/EN/FR/PL,
 Import/Speichern/erneutem Einlesen, Versionshinweisen und Fehlerfällen.
 Keine echten API-Anfragen in diesen Prüfungen.
 Im vollständigen ZIP liegen die Zuordnung und Kontrollliste unter

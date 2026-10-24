@@ -8,8 +8,14 @@ EW bedeutet Einfachweiche, auch ohne folgende Gradzahl.
 Beispiel: `GK3 DKW DR DB (V8)[e]EEP16.2` wird auf Französisch
 zu `GK3 TJD DR DB (V8)[e]EEP16.2`.
 
-Die bereitgestellte Liste mit 272 eindeutigen dreistelligen Konstrukteurskennungen
-ist eingebettet. Kennungen bleiben mit und ohne Klammern an jeder Position erhalten.
+Die mitgelieferte Startliste enthält 272 eindeutige dreistellige Konstrukteurskennungen.
+Beim ersten Programmstart wird eine externe UTF-8-Datei angelegt:
+`%LOCALAPPDATA%\UGSo\IET2026\constructor-codes.txt`.
+Neue Kennungen dort mit zwei Buchstaben und einer Ziffer, jeweils eine pro Zeile,
+ergänzen und das Programm neu starten. Updates überschreiben die Benutzerdatei nicht.
+Ergänzungen werden mit der mitgelieferten Grundliste zusammengeführt. Leerzeilen,
+Kommentare und ungültige Zeilen werden ignoriert; unlesbare Dateien bleiben erhalten
+und die Grundliste dient als Rückfallebene. Kennungen bleiben mit und ohne Klammern an jeder Position erhalten.
 Die bisherige allgemeine Erkennung weiterer Kennungen bleibt zusätzlich aktiv.
 DR, DB, Typbezeichnungen, Versionshinweise wie `(V8)` oder `(v8.2)`,
 EEP-Versionen und `[e]` bleiben unverändert.
@@ -53,7 +59,7 @@ veränderte Platzhalter führen zu keiner Teilübernahme; Originaldateien,
 Einstellungen und Zugangsdaten bleiben erhalten. Backup vor der Änderung erstellt.
 MyMemory bleibt die Voreinstellung für neue Konfigurationen.
 
-110 lokale Prüfungen bestanden, einschließlich aller 272 Kennungen, DE/EN/FR/PL,
+111 lokale Prüfungen bestanden, einschließlich aller 272 Kennungen, DE/EN/FR/PL,
 Import/Speichern/erneutem Einlesen, Versionshinweisen und Fehlerfällen.
 Keine echten API-Anfragen in diesen Prüfungen.
 Im vollständigen ZIP liegen die Zuordnung und Kontrollliste unter
@@ -66,7 +72,13 @@ texts translated through the selected provider. EW means single turnout without
 requiring an angle. For example, `GK3 DKW DR DB (V8)[e]EEP16.2` becomes
 `GK3 TJD DR DB (V8)[e]EEP16.2` in French.
 
-The supplied list of 272 unique three-character constructor identifiers is embedded.
+The supplied initial list contains 272 unique three-character constructor identifiers.
+The first application start creates an external UTF-8 file:
+`%LOCALAPPDATA%\UGSo\IET2026\constructor-codes.txt`.
+Add new identifiers with two letters and one digit, one per line, then restart the app.
+Updates never overwrite this user file. Additions are merged with the supplied base
+list. Blank lines, comments and invalid entries are ignored. Unreadable files are
+retained and the base list remains available as a fallback.
 Identifiers are retained anywhere, with or without parentheses. Generic recognition
 of additional identifiers remains active. DR, DB, type labels, version notes such
 as `(V8)` or `(v8.2)`, EEP versions and `[e]` remain unchanged.
@@ -108,7 +120,7 @@ when English is the intermediate language. Errors or changed placeholders preven
 partial application. Original files, settings and credentials are retained.
 Backup created before changes. MyMemory remains the default for new configurations.
 
-110 local checks passed, covering all 272 identifiers, DE/EN/FR/PL, import/save/reload,
+111 local checks passed, covering all 272 identifiers, DE/EN/FR/PL, import/save/reload,
 version notes and failure cases, without live API calls.
 The full ZIP includes `docs/railway-glossary.md` and `docs/constructor-codes.txt`.
 
@@ -120,8 +132,13 @@ EW signifie aiguillage simple, sans exiger un angle après le code.
 Par exemple, `GK3 DKW DR DB (V8)[e]EEP16.2` devient
 `GK3 TJD DR DB (V8)[e]EEP16.2` en français.
 
-La liste fournie de 272 codes de constructeurs uniques de trois caractères est
-intégrée. Les codes sont conservés partout, avec ou sans parenthèses.
+La liste initiale fournie contient 272 codes de constructeurs uniques de trois caractères.
+Le premier démarrage crée un fichier UTF-8 externe :
+`%LOCALAPPDATA%\UGSo\IET2026\constructor-codes.txt`.
+Ajouter les nouveaux codes de deux lettres et un chiffre, un par ligne, puis redémarrer.
+Les mises à jour n’écrasent jamais ce fichier personnel. Les ajouts sont fusionnés
+avec la liste de base. Lignes vides, commentaires et entrées invalides sont ignorés.
+Un fichier illisible est conservé et la liste de base sert de solution de repli. Les codes sont conservés partout, avec ou sans parenthèses.
 La reconnaissance générale des autres codes reste active. DR, DB, types,
 indications de version comme `(V8)` ou `(v8.2)`, versions EEP et `[e]` restent inchangés.
 
@@ -163,7 +180,7 @@ modifié empêche toute application partielle. Fichiers originaux, paramètres e
 identifiants d’accès sont conservés. Sauvegarde effectuée avant modification.
 MyMemory reste le choix par défaut des nouvelles configurations.
 
-110 vérifications locales réussies : tous les 272 codes, DE/EN/FR/PL,
+111 vérifications locales réussies : tous les 272 codes, DE/EN/FR/PL,
 import/enregistrement/relecture, versions et erreurs, sans appel réel aux API.
 Le ZIP complet inclut `docs/railway-glossary.md` et `docs/constructor-codes.txt`.
 ## Sources / Quellen

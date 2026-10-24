@@ -256,8 +256,8 @@ internal static class LocalTests
             });
             Test("reviewed constructor list protects every code at the start middle and end", () =>
             {
-                Assert(ConstructorIdentifiers.Codes.Length == 272 && ConstructorIdentifiers.Codes.Distinct().Count() == 272, "complete unique resource");
-                foreach (string code in ConstructorIdentifiers.Codes)
+                Assert(ConstructorIdentifiers.DefaultCodes.Length == 272 && ConstructorIdentifiers.DefaultCodes.Distinct().Count() == 272, "complete unique resource");
+                foreach (string code in ConstructorIdentifiers.DefaultCodes)
                 {
                     string source = code + " Haus (" + code + ") DR DB (V8) (v8.2) EEP16.2[e] " + code;
                     foreach (string language in new[] { "en", "fr", "pl" })
@@ -270,6 +270,30 @@ internal static class LocalTests
                 }
                 Fails(() => OpenAiTranslation.ValidateTokens("DR DB (V8)", "DR Railway (V8)"));
                 Fails(() => OpenAiTranslation.ValidateTokens("DR DB (V8.2)", "DR DB (V8.3)"));
+            });
+            Test("external constructor list seeds once merges new codes and retains user data and fallback", () =>
+            {
+                string directory = Path.Combine(Path.GetTempPath(), "iet-constructors-" + Guid.NewGuid().ToString("N"));
+                string file = Path.Combine(directory, "constructor-codes.txt");
+                try
+                {
+                    ConstructorIdentifiers.EnsureExternalFile(file);
+                    Assert(File.ReadAllLines(file).SequenceEqual(ConstructorIdentifiers.DefaultCodes), "complete initial control file");
+                    File.WriteAllText(file, "# Custom constructors\r\nZZ9\r\nzz9\r\n GK3 \r\ninvalid name\r\nAB12\r\n", new UTF8Encoding(false));
+                    byte[] original = File.ReadAllBytes(file);
+                    ConstructorIdentifiers.EnsureExternalFile(file);
+                    Assert(original.SequenceEqual(File.ReadAllBytes(file)), "update/start never overwrites user file");
+                    var codes = ConstructorIdentifiers.Load(file);
+                    Assert(codes.Length == 273 && codes.Contains("ZZ9") && codes.Contains("GK3"), "new code normalized and duplicates removed");
+                    Assert(original.SequenceEqual(File.ReadAllBytes(file)), "loading never rewrites invalid rows or comments");
+                    File.WriteAllBytes(file, new byte[] { 0xff, 0xff, 0xff });
+                    Assert(ConstructorIdentifiers.Load(file).SequenceEqual(ConstructorIdentifiers.DefaultCodes), "malformed UTF8 safely falls back");
+                    File.Delete(file);
+                    Directory.CreateDirectory(file);
+                    ConstructorIdentifiers.EnsureExternalFile(file);
+                    Assert(ConstructorIdentifiers.Load(file).SequenceEqual(ConstructorIdentifiers.DefaultCodes), "blocked file cannot prevent startup");
+                }
+                finally { Directory.Delete(directory, true); }
             });
             Test("railway model abbreviations use reviewed locale equivalents and preserve types", () =>
             {

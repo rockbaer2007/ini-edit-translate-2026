@@ -8,8 +8,13 @@ EW signifie aiguillage simple, sans exiger un angle après le code.
 Par exemple, `GK3 DKW DR DB (V8)[e]EEP16.2` devient
 `GK3 TJD DR DB (V8)[e]EEP16.2` en français.
 
-La liste fournie de 272 codes de constructeurs uniques de trois caractères est
-intégrée. Les codes sont conservés partout, avec ou sans parenthèses.
+La liste initiale fournie contient 272 codes de constructeurs uniques de trois caractères.
+Le premier démarrage crée un fichier UTF-8 externe :
+`%LOCALAPPDATA%\UGSo\IET2026\constructor-codes.txt`.
+Ajouter les nouveaux codes de deux lettres et un chiffre, un par ligne, puis redémarrer.
+Les mises à jour n’écrasent jamais ce fichier personnel. Les ajouts sont fusionnés
+avec la liste de base. Lignes vides, commentaires et entrées invalides sont ignorés.
+Un fichier illisible est conservé et la liste de base sert de solution de repli. Les codes sont conservés partout, avec ou sans parenthèses.
 La reconnaissance générale des autres codes reste active. DR, DB, types,
 indications de version comme `(V8)` ou `(v8.2)`, versions EEP et `[e]` restent inchangés.
 
@@ -51,7 +56,7 @@ modifié empêche toute application partielle. Fichiers originaux, paramètres e
 identifiants d’accès sont conservés. Sauvegarde effectuée avant modification.
 MyMemory reste le choix par défaut des nouvelles configurations.
 
-110 vérifications locales réussies : tous les 272 codes, DE/EN/FR/PL,
+111 vérifications locales réussies : tous les 272 codes, DE/EN/FR/PL,
 import/enregistrement/relecture, versions et erreurs, sans appel réel aux API.
 Le ZIP complet inclut `docs/railway-glossary.md` et `docs/constructor-codes.txt`.
 

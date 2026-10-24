@@ -7,7 +7,13 @@ texts translated through the selected provider. EW means single turnout without
 requiring an angle. For example, `GK3 DKW DR DB (V8)[e]EEP16.2` becomes
 `GK3 TJD DR DB (V8)[e]EEP16.2` in French.
 
-The supplied list of 272 unique three-character constructor identifiers is embedded.
+The supplied initial list contains 272 unique three-character constructor identifiers.
+The first application start creates an external UTF-8 file:
+`%LOCALAPPDATA%\UGSo\IET2026\constructor-codes.txt`.
+Add new identifiers with two letters and one digit, one per line, then restart the app.
+Updates never overwrite this user file. Additions are merged with the supplied base
+list. Blank lines, comments and invalid entries are ignored. Unreadable files are
+retained and the base list remains available as a fallback.
 Identifiers are retained anywhere, with or without parentheses. Generic recognition
 of additional identifiers remains active. DR, DB, type labels, version notes such
 as `(V8)` or `(v8.2)`, EEP versions and `[e]` remain unchanged.
@@ -49,7 +55,7 @@ when English is the intermediate language. Errors or changed placeholders preven
 partial application. Original files, settings and credentials are retained.
 Backup created before changes. MyMemory remains the default for new configurations.
 
-110 local checks passed, covering all 272 identifiers, DE/EN/FR/PL, import/save/reload,
+111 local checks passed, covering all 272 identifiers, DE/EN/FR/PL, import/save/reload,
 version notes and failure cases, without live API calls.
 The full ZIP includes `docs/railway-glossary.md` and `docs/constructor-codes.txt`.
 

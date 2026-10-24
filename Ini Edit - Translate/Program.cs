@@ -175,7 +175,7 @@ namespace Ini_Edit___Translate
             System.Threading.Mutex mutex = new System.Threading.Mutex(true, Application.ProductName, out bool createdNew);
             if (createdNew)
             {
-
+                ConstructorIdentifiers.EnsureExternalFile();
                 Application.Run(new Form1());
                 mutex.ReleaseMutex();
             }
