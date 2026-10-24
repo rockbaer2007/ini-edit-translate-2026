@@ -1,5 +1,61 @@
 # INI Edit Translate 2026
 
+## Version 2.1.53 : abréviations ferroviaires et codes de constructeurs
+
+20 abréviations ferroviaires utilisent désormais une correspondance locale fixe
+dans les noms de modèles et les textes traduits par le fournisseur choisi.
+EW signifie aiguillage simple, sans exiger un angle après le code.
+Par exemple, `GK3 DKW DR DB (V8)[e]EEP16.2` devient
+`GK3 TJD DR DB (V8)[e]EEP16.2` en français.
+
+La liste fournie de 272 codes de constructeurs uniques de trois caractères est
+intégrée. Les codes sont conservés partout, avec ou sans parenthèses.
+La reconnaissance générale des autres codes reste active. DR, DB, types,
+indications de version comme `(V8)` ou `(v8.2)`, versions EEP et `[e]` restent inchangés.
+
+| DE | EN | FR | PL |
+| --- | --- | --- | --- |
+| DKW | DSS | TJD | Rkpd |
+| EKW | SS | TJS | Rkp |
+| EW | single turnout | BS | Rz |
+| ABW | contrary-flexure turnout | ABW* | Rłd |
+| IBW | similar-flexure turnout | IBW* | Rłj |
+| BW | locomotive depot | dépôt de locomotives | lokomotywownia |
+| Bf | station | gare | stacja |
+| Hbf | main station | gare principale | dworzec główny |
+| Hp | halt | halte ferroviaire | przystanek osobowy |
+| Gbf | freight station | gare de marchandises | stacja towarowa |
+| Rbf | marshalling yard | gare de triage | stacja rozrządowa |
+| Abzw | junction | bifurcation | posterunek odgałęźny |
+| BÜ | level crossing | passage à niveau | przejazd kolejowo-drogowy |
+| Stw | signal box | poste d’aiguillage | nastawnia |
+| EG | station building | bâtiment voyageurs | budynek dworca |
+| OL | overhead line equipment | caténaire | sieć trakcyjna |
+| Gl. | track | voie | tor |
+| Bstg. | platform | quai | peron |
+| DWW | three-way turnout | branchement à trois voies | rozjazd potrójny |
+| Kr. | diamond crossing | traversée de voies | skrzyżowanie torów |
+
+*En français, ABW/IBW sont conservés en attendant une validation terminologique.
+Les autres entrées utilisent des abréviations attestées ou des traductions en toutes
+lettres, sans prétendre à une norme universelle.
+Autres abréviations reconnues en entrée : DS/DSS/SS, TJD/TJS/BS, Rkpd/Rkp/Rz/Rłd/Rłj,
+PO, Jn, PODG, LC, PN, BV et OLE. Le polonais ambigu ST/St n’est pas converti.
+Hp désigne ici une halte ferroviaire et Kr. une traversée de voies.
+Les types techniques `Hp0`, `DKW190` et identifiants comme `DKW_190` ne sont pas découpés.
+
+Les termes vérifiés sont remplacés temporairement par des marqueurs protégés pour
+la traduction en ligne, puis rétablis dans la langue cible après validation,
+y compris lorsque l’anglais sert de langue intermédiaire. Une erreur ou un marqueur
+modifié empêche toute application partielle. Fichiers originaux, paramètres et
+identifiants d’accès sont conservés. Sauvegarde effectuée avant modification.
+MyMemory reste le choix par défaut des nouvelles configurations.
+
+110 vérifications locales réussies : tous les 272 codes, DE/EN/FR/PL,
+import/enregistrement/relecture, versions et erreurs, sans appel réel aux API.
+Le ZIP complet inclut `docs/railway-glossary.md` et `docs/constructor-codes.txt`.
+
+
 ## Version 2.1.52 : mots descriptifs dans les noms de modèles
 
 Les mots descriptifs sont désormais traduits dans les noms de modèles, même si leur
@@ -214,7 +270,7 @@ temporaires, les erreurs réseau et les formats inattendus ont des messages dist
 en DE/EN/FR. Cette mise à jour aide à diagnostiquer le problème distant signalé ; sa
 cause n’est pas encore confirmée. Paramètres, clés API et connexions sont conservés.
 
-[ZIP Windows v2.1.52](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.52/INI-Edit-Translate-2026-v2.1.52-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.52)
+[ZIP Windows v2.1.53](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.53/INI-Edit-Translate-2026-v2.1.53-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.53)
 
 ## Version 2.1.40 : connexion ChatGPT
 
@@ -245,7 +301,7 @@ rappel local isolé. L’autorisation du compte réel et la traduction restent �
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.52.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.53.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -266,7 +322,7 @@ Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traductio
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.52](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.52/INI-Edit-Translate-2026-v2.1.52-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.52)
+[Télécharger le ZIP Windows v2.1.53](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.53/INI-Edit-Translate-2026-v2.1.53-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.53)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.

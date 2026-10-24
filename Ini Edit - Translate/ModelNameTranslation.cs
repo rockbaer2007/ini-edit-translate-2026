@@ -46,15 +46,17 @@ namespace Ini_Edit___Translate
             new[] { "left", "links", "gauche", "lewy" },
             new[] { "right", "rechts", "droite", "prawy" }
         };
-        private static readonly Regex Parts = new Regex(OpenAiTranslation.Tokens.ToString() +
-            @"|[\p{L}\p{N}]+(?:_[\p{L}\p{N}]+)+|(?<![\p{L}\p{N}_])\p{L}+(?![\p{L}\p{N}_])", RegexOptions.CultureInvariant);
+        private static Regex Parts(string from) => new Regex(OpenAiTranslation.Tokens.ToString() +
+            @"|[\p{L}\p{N}]+(?:_[\p{L}\p{N}]+)+|" + RailwayGlossary.Pattern(from) +
+            @"|(?<![\p{L}\p{N}_])\p{L}+(?![\p{L}\p{N}_])", RegexOptions.CultureInvariant);
 
         internal static bool HasDescriptiveWords(string text, string from)
         {
             int source = Array.IndexOf(OpenAiTranslation.Languages, from);
             if (source < 0) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
             var words = new HashSet<string>(Words.Select(row => row[source]), StringComparer.OrdinalIgnoreCase);
-            return Parts.Matches(text ?? "").Cast<Match>().Any(match => words.Contains(match.Value.Normalize(NormalizationForm.FormC)));
+            return Parts(from).Matches(text ?? "").Cast<Match>().Any(match =>
+                words.Contains(match.Value.Normalize(NormalizationForm.FormC)) || RailwayGlossary.TryTranslate(match.Value, from, "en", out _));
         }
 
         internal static string Translate(string text, string from, string to)
@@ -64,8 +66,9 @@ namespace Ini_Edit___Translate
             if (string.IsNullOrEmpty(text) || source == target) return text;
             var dictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             foreach (var row in Words) dictionary.Add(row[source], row[target]);
-            string result = Parts.Replace(text, match => {
+            string result = Parts(from).Replace(text, match => {
                 string word = match.Value;
+                if (RailwayGlossary.TryTranslate(word, from, to, out string term)) return term;
                 if (!dictionary.TryGetValue(word.Normalize(NormalizationForm.FormC), out string translated)) return word;
                 if (word.All(char.IsUpper)) return translated.ToUpperInvariant();
                 if (char.IsUpper(word[0])) return char.ToUpperInvariant(translated[0]) + translated.Substring(1);

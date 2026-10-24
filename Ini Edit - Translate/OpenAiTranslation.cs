@@ -68,7 +68,10 @@ namespace Ini_Edit___Translate
         private readonly Dictionary<string, Dictionary<string, string>> cache = new Dictionary<string, Dictionary<string, string>>();
         internal static readonly string[] Languages = { "en", "de", "fr", "pl" };
         internal static readonly Regex Tokens = new Regex(
-            @"(?<![\p{L}\p{N}_])(?i:EEP)[ \t_-]*(?:[vV][ \t]*)?\d+(?:[.,]\d+)*(?![\p{L}\p{N}_])" +
+            ConstructorIdentifiers.Pattern +
+            @"|(?<![\p{L}\p{N}_])(?:DR|DB)(?![\p{L}\p{N}_])" +
+            @"|\((?i:v)\d+(?:[.,]\d+)*\)" +
+            @"|(?<![\p{L}\p{N}_])(?i:EEP)[ \t_-]*(?:[vV][ \t]*)?\d+(?:[.,]\d+)*(?![\p{L}\p{N}_])" +
             @"|\([ \t]*(?=[\p{L}\p{N}_-]{2,24}[ \t]*\))(?=[\p{L}\p{N}_-]*\p{L})(?=[\p{L}\p{N}_-]*\d)[\p{L}\p{N}_-]+[ \t]*\)" +
             @"|(?<![\p{L}\p{N}])\p{L}{1,5}\d{1,4}\p{L}?(?![\p{L}\p{N}])" +
             @"|\{[^{}\r\n]+\}|\[[^\]\r\n]+\]|%(?:\d+\$)?[-+0 #]*\d*(?:\.\d+)?[a-zA-Z%]|\\[nrt]|<[^>\r\n]+>", RegexOptions.CultureInvariant);
@@ -87,6 +90,19 @@ namespace Ini_Edit___Translate
         }
 
         internal async Task<string> TranslateAsync(string text, string from, string to, CancellationToken cancellation)
+        {
+            cancellation.ThrowIfCancellationRequested();
+            if (!Languages.Contains(from) || !Languages.Contains(to)) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
+            if (string.IsNullOrWhiteSpace(text) || from == to) return text;
+            if (text.Length > 24000) throw new InvalidOperationException(Ui.Text("inputTooLong"));
+            var glossary = RailwayGlossary.Prepare(text, from, to);
+            string translated = await TranslateCoreAsync(glossary.Text, from, to, cancellation).ConfigureAwait(false);
+            string result = glossary.Restore(translated);
+            ValidateTokens(text, result);
+            return result;
+        }
+
+        private async Task<string> TranslateCoreAsync(string text, string from, string to, CancellationToken cancellation)
         {
             cancellation.ThrowIfCancellationRequested();
             if (!Languages.Contains(from) || !Languages.Contains(to)) throw new ArgumentException(Ui.Text("unsupportedLanguage"));

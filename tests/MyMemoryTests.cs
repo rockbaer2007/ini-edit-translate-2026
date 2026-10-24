@@ -42,6 +42,20 @@ internal static class MyMemoryTests
 
     internal static void Run(Action<string, Action> test)
     {
+        test("railway glossary survives English pivot without online abbreviation or identifier changes", () =>
+        {
+            var handler = new Handler();
+            using (var service = new OpenAiTranslation(new OpenAiSettings { UseMyMemory = true }, handler))
+            {
+                string source = "GK3 DKW EW DR DB (V8.2)[e]Haus UD1";
+                Assert(service.TranslateAsync(source, "de", "fr", CancellationToken.None).GetAwaiter().GetResult() ==
+                    "GK3 TJD BS DR DB (V8.2)[e]Haus UD1", "reviewed target restored after pivot");
+                Assert(handler.Queries.All(query => query == "Haus"), "only ordinary description text sent online");
+                int before = handler.Calls;
+                Assert(service.TranslateAsync("DKW EW", "de", "pl", CancellationToken.None).GetAwaiter().GetResult() == "Rkpd Rz", "glossary-only text translated locally");
+                Assert(handler.Calls == before, "no online call for glossary-only text");
+            }
+        });
         test("EEP line-break controls, complete constructor tags and game versions stay outside MyMemory requests", () =>
         {
             string source = "Antrieb (GK3) für EEP16.2[e]Laterne (AG3)[e]eep16.2 (DL1) EEP 16.2 EEP17";

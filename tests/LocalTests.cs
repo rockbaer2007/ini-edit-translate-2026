@@ -254,11 +254,70 @@ internal static class LocalTests
                 Assert(ModelNameTranslation.Translate("Dom Helios Typ4 UD1", "pl", "fr") == "Maison Helios Typ4 UD1", "Polish source");
                 Assert(ModelNameTranslation.Translate("HAUS Helios", "de", "en") == "HOUSE Helios", "case retained");
             });
+            Test("reviewed constructor list protects every code at the start middle and end", () =>
+            {
+                Assert(ConstructorIdentifiers.Codes.Length == 272 && ConstructorIdentifiers.Codes.Distinct().Count() == 272, "complete unique resource");
+                foreach (string code in ConstructorIdentifiers.Codes)
+                {
+                    string source = code + " Haus (" + code + ") DR DB (V8) (v8.2) EEP16.2[e] " + code;
+                    foreach (string language in new[] { "en", "fr", "pl" })
+                    {
+                        string result = ModelNameTranslation.Translate(source, "de", language);
+                        OpenAiTranslation.ValidateTokens(source, result);
+                        Assert(result.StartsWith(code + " ") && result.EndsWith(" " + code), "constructor positions " + code);
+                        Assert(result.Contains("(" + code + ") DR DB (V8) (v8.2) EEP16.2[e]"), "protected literals " + code);
+                    }
+                }
+                Fails(() => OpenAiTranslation.ValidateTokens("DR DB (V8)", "DR Railway (V8)"));
+                Fails(() => OpenAiTranslation.ValidateTokens("DR DB (V8.2)", "DR DB (V8.3)"));
+            });
+            Test("railway model abbreviations use reviewed locale equivalents and preserve types", () =>
+            {
+                string source = "GK3 DKW EKW EW ABW IBW BW DR DB (V8)[e]EEP16.2";
+                Assert(ModelNameTranslation.Translate(source, "de", "en") == "GK3 DSS SS single turnout contrary-flexure turnout similar-flexure turnout locomotive depot DR DB (V8)[e]EEP16.2", "English railway glossary");
+                Assert(ModelNameTranslation.Translate(source, "de", "fr") == "GK3 TJD TJS BS ABW IBW dépôt de locomotives DR DB (V8)[e]EEP16.2", "French missing equivalents retained");
+                Assert(ModelNameTranslation.Translate(source, "de", "pl") == "GK3 Rkpd Rkp Rz Rłd Rłj lokomotywownia DR DB (V8)[e]EEP16.2", "Polish railway glossary");
+                Assert(ModelNameTranslation.Translate("EW 19° EW DKW190 DKW_190 EWig", "de", "en") == "single turnout 19° single turnout DKW190 DKW_190 EWig", "EW unrestricted but full tokens only");
+                Assert(ModelNameTranslation.Translate("Bf Hbf Hp Gbf Rbf Abzw BÜ Stw EG OL Gl. Bstg. DWW Kr.", "de", "en") == "station main station halt freight station marshalling yard junction level crossing signal box station building overhead line equipment track platform three-way turnout diamond crossing", "additional abbreviations");
+                Assert(ModelNameTranslation.Translate("DKW.", "de", "en") == "DSS.", "sentence punctuation");
+                Assert(ModelNameTranslation.Translate("TJD TJS BS", "fr", "de") == "DKW EKW EW", "French abbreviations as source");
+                Assert(ModelNameTranslation.Translate("Rkpd Rkp Rz Rłd Rłj", "pl", "en") == "DSS SS single turnout contrary-flexure turnout similar-flexure turnout", "Polish abbreviations as source");
+                Assert(ModelNameTranslation.Translate("ST St", "pl", "en") == "ST St", "ambiguous foreign ST not guessed");
+                Assert(ModelNameTranslation.Translate("po PO", "pl", "en") == "po halt", "Polish preposition is not a station abbreviation");
+            });
+            Test("railway glossary placeholders avoid collisions and reject altered or reordered entries", () =>
+            {
+                var glossary = RailwayGlossary.Prepare("DKW EKW {IET_RAIL_0}[e]DR DB (V8)", "de", "pl");
+                Assert(glossary.Restore(glossary.Text) == "Rkpd Rkp {IET_RAIL_0}[e]DR DB (V8)", "input placeholder preserved");
+                var keys = glossary.Replacements.Keys.ToArray();
+                Fails(() => glossary.Restore(glossary.Text.Replace(keys[0], "altered")));
+                string reordered = glossary.Text.Replace(keys[0], "TEMP").Replace(keys[1], keys[0]).Replace("TEMP", keys[1]);
+                Fails(() => glossary.Restore(reordered));
+            });
+            Test("OpenAI glossary restores target terms and rejects provider changes to protected literals", () =>
+            {
+                var handler = new Handler(Response());
+                bool corrupt = false;
+                handler.Reply = token => {
+                    string input = (string)handler.Body["input"];
+                    var values = new JObject();
+                    foreach (var property in ((JObject)handler.Body["text"]["format"]["schema"]["properties"]).Properties())
+                        values[property.Name] = corrupt ? input.Replace("DB", "Railway") : input;
+                    var answer = JObject.Parse(Response()); answer["output"][1]["content"][0]["text"] = values.ToString();
+                    return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(answer.ToString()) });
+                };
+                using (var service = new OpenAiTranslation(Settings(), handler))
+                {
+                    Assert(Translate(service, "DSS SS DR DB GK3 (V8)[e]", "en", "pl") == "Rkpd Rkp DR DB GK3 (V8)[e]", "API glossary target restored");
+                    corrupt = true;
+                    Fails(() => Translate(service, "DSS DR DB UD1 (V9)[e]", "en", "fr"));
+                }
+            });
             Test("model names translate and save with empty descriptions without needing a provider", () =>
             {
                 string directory = Path.Combine(Path.GetTempPath(), "iet-model-names-" + Guid.NewGuid().ToString("N")); Directory.CreateDirectory(directory);
                 string file = Path.Combine(directory, "model.ini");
-                File.WriteAllText(file, "[FileInfo]\r\nName_ENG=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nName_GER=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nName_FRA=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nName_POL=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nIcon=32\r\nGeneration=0\r\nDeployment_Start=1935\r\nDeployment_End=2014\r\nCountry=D\r\nCustomField=preserved\r\n");
+                File.WriteAllText(file, "[FileInfo]\r\nName_ENG=DKW Haus Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Winter\r\nName_GER=DKW Haus Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Winter\r\nName_FRA=DKW Haus Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Winter\r\nName_POL=DKW Haus Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Winter\r\nIcon=32\r\nGeneration=0\r\nDeployment_Start=1935\r\nDeployment_End=2014\r\nCountry=D\r\nCustomField=preserved\r\n");
                 bool readOnly = Ini_Edit___Translate.Properties.Settings.Default.read_only; var context = SynchronizationContext.Current;
                 try
                 {
@@ -273,12 +332,12 @@ internal static class LocalTests
                         var restore = (Action)typeof(Form1).GetField("restoreTranslation", flags).GetValue(form);
                         Assert(restore != null, "local-only names retain a recovery snapshot for later failures");
                         restore();
-                        Assert(((Control)typeof(Form1).GetField("n_eng_txt", flags).GetValue(form)).Text == "Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter", "later failure can restore the original model names");
+                        Assert(((Control)typeof(Form1).GetField("n_eng_txt", flags).GetValue(form)).Text == "DKW Haus Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Winter", "later failure can restore the original model names");
                     }
                     var saved = new UnicodeIniFile(file);
-                    Assert(saved["FileInfo"]["Name_ENG"] == "House Helios Typ4 UD1 (GK3) EEP16.2[e]Winter", "English name saved");
-                    Assert(saved["FileInfo"]["Name_FRA"] == "Maison Helios Typ4 UD1 (GK3) EEP16.2[e]Hiver", "French name saved");
-                    Assert(saved["FileInfo"]["Name_POL"] == "Dom Helios Typ4 UD1 (GK3) EEP16.2[e]Zima" && saved["FileInfo"]["CustomField"] == "preserved", "Polish and unrelated field saved");
+                    Assert(saved["FileInfo"]["Name_ENG"] == "DSS House Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Winter", "English name saved");
+                    Assert(saved["FileInfo"]["Name_FRA"] == "TJD Maison Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Hiver", "French name saved");
+                    Assert(saved["FileInfo"]["Name_POL"] == "Rkpd Dom Helios Typ4 UD1 (GK3) DR DB (V8) EEP16.2[e]Zima" && saved["FileInfo"]["CustomField"] == "preserved", "Polish and unrelated field saved");
                 }
                 finally { Ini_Edit___Translate.Properties.Settings.Default.read_only = readOnly; SynchronizationContext.SetSynchronizationContext(context); Directory.Delete(directory, true); }
             });
