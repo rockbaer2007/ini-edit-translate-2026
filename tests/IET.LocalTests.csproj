@@ -20,7 +20,9 @@
     </Reference>
     <Compile Include="LocalTests.cs" />
     <Compile Include="ChatGptTests.cs" />
+    <Compile Include="MyMemoryTests.cs" />
     <Reference Include="System.Web" />
+    <Reference Include="IniFile"><HintPath>..\Ini Edit - Translate\IniFile.dll</HintPath></Reference>
     <Content Include="..\Info.rtf">
       <Link>Info.rtf</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

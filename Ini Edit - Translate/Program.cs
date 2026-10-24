@@ -12,7 +12,7 @@ namespace Ini_Edit___Translate
 
             string[] CommandLineArgs = Environment.GetCommandLineArgs();
             SettingsMigration.UpgradeIfNeeded();
-            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.culture_l))
+            if (Properties.Settings.Default.culture_l == "system")
             {
                 CultureInfo culture = CultureInfo.InstalledUICulture;
                 CultureInfo.DefaultThreadCurrentCulture = culture;
@@ -21,13 +21,13 @@ namespace Ini_Edit___Translate
             else
             {
                 CultureInfo culture;
-                try { culture = new CultureInfo(Properties.Settings.Default.culture_l); }
-                catch (CultureNotFoundException) { culture = CultureInfo.InstalledUICulture; }
+                try { culture = new CultureInfo(Ui.ResolveLanguage(Properties.Settings.Default.culture_l)); }
+                catch (CultureNotFoundException) { culture = new CultureInfo("de"); }
                 CultureInfo.DefaultThreadCurrentCulture = culture;
                 CultureInfo.DefaultThreadCurrentUICulture = culture;
             }
             var uiLanguage = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            if (uiLanguage != "de" && uiLanguage != "fr") uiLanguage = "en";
+            if (uiLanguage != "de" && uiLanguage != "fr" && uiLanguage != "en") uiLanguage = "de";
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(uiLanguage);
             if (CommandLineArgs.Length > 1 &&
                 ((CommandLineArgs[1] == "-reg" && CommandLineArgs.Length < 4) ||

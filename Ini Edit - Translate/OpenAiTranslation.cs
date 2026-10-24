@@ -19,6 +19,8 @@ namespace Ini_Edit___Translate
         public string Model { get; set; } = "gpt-4.1-mini";
         public string ProtectedKey { get; set; }
         public bool UseChatGpt { get; set; }
+        public bool UseMyMemory { get; set; }
+        public string MyMemoryEmail { get; set; }
         public string ChatGptClientId { get; set; }
         public string ChatGptModel { get; set; }
         internal static string FilePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UGSo", "IET2026", "openai.json");
@@ -38,10 +40,11 @@ namespace Ini_Edit___Translate
         internal void Save(string key, string destination = null)
         {
             Model = (Model ?? "").Trim();
-            if (!UseChatGpt && !Regex.IsMatch(Model, @"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$"))
+            if (!UseMyMemory && !UseChatGpt && !Regex.IsMatch(Model, @"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$"))
                 throw new InvalidOperationException(Ui.Text("invalidModel"));
-            if (UseChatGpt && (string.IsNullOrWhiteSpace(ChatGptClientId) || string.IsNullOrWhiteSpace(ChatGptModel)))
+            if (!UseMyMemory && UseChatGpt && (string.IsNullOrWhiteSpace(ChatGptClientId) || string.IsNullOrWhiteSpace(ChatGptModel)))
                 throw new InvalidOperationException(Ui.Text("cgSelectModel"));
+            if (UseMyMemory) MyMemoryEmail = MyMemoryTranslation.ValidateEmail(MyMemoryEmail);
             if (!string.IsNullOrWhiteSpace(key))
                 ProtectedKey = Convert.ToBase64String(ProtectedData.Protect(Encoding.UTF8.GetBytes(key.Trim()), null, DataProtectionScope.CurrentUser));
             string path = destination ?? FilePath;
@@ -59,14 +62,16 @@ namespace Ini_Edit___Translate
         private readonly OpenAiSettings settings;
         private readonly IChatGptTokens chatGptTokens;
         private readonly ChatGptClient ownedChatGpt;
+        private readonly MyMemoryTranslation myMemory;
         // Cache only for one operation; source texts never persist in the cache.
         private readonly Dictionary<string, Dictionary<string, string>> cache = new Dictionary<string, Dictionary<string, string>>();
         internal static readonly string[] Languages = { "en", "de", "fr", "pl" };
-        private static readonly Regex Tokens = new Regex(@"\{[^{}\r\n]+\}|\[[^\]\r\n]+\]|%(?:\d+\$)?[-+0 #]*\d*(?:\.\d+)?[a-zA-Z%]|\\[nrt]|<[^>\r\n]+>", RegexOptions.CultureInvariant);
+        internal static readonly Regex Tokens = new Regex(@"\{[^{}\r\n]+\}|\[[^\]\r\n]+\]|%(?:\d+\$)?[-+0 #]*\d*(?:\.\d+)?[a-zA-Z%]|\\[nrt]|<[^>\r\n]+>", RegexOptions.CultureInvariant);
 
         internal OpenAiTranslation(OpenAiSettings settings, HttpMessageHandler handler = null, IChatGptTokens chatGptTokens = null)
         {
             this.settings = settings;
+            if (settings.UseMyMemory) { myMemory = new MyMemoryTranslation(settings.MyMemoryEmail, handler); return; }
             client = handler == null ? new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) : new HttpClient(handler);
             client.Timeout = TimeSpan.FromSeconds(60);
             if (settings.UseChatGpt)
@@ -82,6 +87,14 @@ namespace Ini_Edit___Translate
             if (!Languages.Contains(from) || !Languages.Contains(to)) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
             if (string.IsNullOrWhiteSpace(text) || from == to) return text;
             if (text.Length > 24000) throw new InvalidOperationException(Ui.Text("inputTooLong"));
+            if (from != "en" && to != "en" && from != to)
+            {
+                string english = await TranslateAsync(text, from, "en", cancellation).ConfigureAwait(false);
+                string result = await TranslateAsync(english, "en", to, cancellation).ConfigureAwait(false);
+                ValidateTokens(text, result);
+                return result;
+            }
+            if (myMemory != null) return await myMemory.TranslateAsync(text, from, to, cancellation).ConfigureAwait(false);
             string cacheKey = from + "\0" + text;
             if (!cache.TryGetValue(cacheKey, out var translated))
             {
@@ -211,6 +224,6 @@ namespace Ini_Edit___Translate
             if (!before.SequenceEqual(after)) throw new InvalidOperationException(Ui.Text("changedTokens"));
         }
 
-        public void Dispose() { client.Dispose(); ownedChatGpt?.Dispose(); }
+        public void Dispose() { client?.Dispose(); ownedChatGpt?.Dispose(); myMemory?.Dispose(); }
     }
 }

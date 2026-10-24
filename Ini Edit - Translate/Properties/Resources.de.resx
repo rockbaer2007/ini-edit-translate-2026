@@ -219,7 +219,7 @@
   <data name="msg8" xml:space="preserve"><value>Bitte einen englischen Modellnamen eingeben.</value></data>
   <data name="msg9" xml:space="preserve"><value>Bitte einen deutschen Modellnamen eingeben.</value></data>
   <data name="msg10" xml:space="preserve"><value>Bitte einen französischen Modellnamen eingeben.</value></data>
-  <data name="openAiTitle" xml:space="preserve"><value>OpenAI-Übersetzung</value></data>
+  <data name="openAiTitle" xml:space="preserve"><value>Übersetzungseinstellungen</value></data>
   <data name="modelLabel" xml:space="preserve"><value>OpenAI-Modell</value></data>
   <data name="apiKeyLabel" xml:space="preserve"><value>API-Schlüssel (leer lassen = bisherigen behalten)</value></data>
   <data name="apiPrivacy" xml:space="preserve"><value>Der Schlüssel wird für dein Windows-Konto verschlüsselt gespeichert. Ausgewählte Texte werden an OpenAI gesendet. Die API benötigt Internet und wird separat abgerechnet.</value></data>
@@ -234,7 +234,7 @@
   <data name="invalidModel" xml:space="preserve"><value>Bitte eine gültige OpenAI-Modellkennung eingeben.</value></data>
   <data name="unsupportedLanguage" xml:space="preserve"><value>Diese Sprache wird nicht unterstützt.</value></data>
   <data name="inputTooLong" xml:space="preserve"><value>Der Text überschreitet das Limit von 24.000 Zeichen.</value></data>
-  <data name="missingApiKey" xml:space="preserve"><value>OpenAI-API-Schlüssel fehlt. Einstellungen → OpenAI-Übersetzung öffnen.</value></data>
+  <data name="missingApiKey" xml:space="preserve"><value>OpenAI-API-Schlüssel fehlt. Einstellungen → Übersetzungseinstellungen öffnen.</value></data>
   <data name="apiHttpFailure" xml:space="preserve"><value>OpenAI-Anfrage fehlgeschlagen (HTTP {0}). Schlüssel, Modell, Guthaben oder Verbindung prüfen. Bisherige Texte bleiben erhalten.</value></data>
   <data name="incompleteResponse" xml:space="preserve"><value>OpenAI hat keine vollständige Übersetzung geliefert.</value></data>
   <data name="refusedResponse" xml:space="preserve"><value>OpenAI konnte diesen Text nicht übersetzen.</value></data>
@@ -320,4 +320,16 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="cgTranslationJson" xml:space="preserve"><value>Die Übersetzungsausgabe enthält kein gültiges JSON im erwarteten Sprachformat. Vorhandene Texte bleiben erhalten.</value></data>
   <data name="cgProtocolJson" xml:space="preserve"><value>Die Serverantwort enthält kein gültiges JSON. Verbindung und Zugangsdaten bleiben erhalten.</value></data>
   <data name="cgNoTranslationText" xml:space="preserve"><value>OpenAI hat die Anfrage abgeschlossen, aber keinen auswertbaren Übersetzungstext geliefert. Vorhandene Texte bleiben erhalten.</value></data>
+  <data name="mmProvider" xml:space="preserve"><value>MyMemory – kostenloses Tageskontingent</value></data>
+  <data name="mmPrivacy" xml:space="preserve"><value>Kein Konto und kein API-Schlüssel nötig. Texte werden über das Internet an MyMemory/Translated gesendet. Laut Anbieter werden eingesandte Segmente langfristig gespeichert. Die App ruft nur Übersetzungen ab und veröffentlicht keine Wörterbucheinträge.</value></data>
+  <data name="mmEmail" xml:space="preserve"><value>E-Mail für höheres Kontingent (freiwillig, wird an MyMemory gesendet)</value></data>
+  <data name="mmLimits" xml:space="preserve"><value>Anonym bis 5.000 Zeichen täglich; mit gültiger E-Mail laut Anbieter bis 50.000. Jede Zielsprache zählt separat. Lange Texte werden in Abschnitte bis 500 UTF-8-Bytes aufgeteilt. Keine automatische Umschaltung auf andere Anbieter.</value></data>
+  <data name="mmReady" xml:space="preserve"><value>MyMemory ausgewählt. Modellnamen bleiben erhalten; gleiche Texte werden pro Durchgang zwischengespeichert.</value></data>
+  <data name="mmTranslating" xml:space="preserve"><value>Übersetzung mit MyMemory. Das kostenlose Tageskontingent wird verwendet.</value></data>
+  <data name="mmInvalidEmail" xml:space="preserve"><value>Bitte eine gültige einzelne E-Mail-Adresse eingeben oder das freiwillige Feld leer lassen.</value></data>
+  <data name="mmSegmentTooLong" xml:space="preserve"><value>Ein einzelnes Unicode-Zeichen mit Kombinationszeichen überschreitet die MyMemory-Grenze. Der Text wurde nicht gesendet.</value></data>
+  <data name="mmLimit" xml:space="preserve"><value>MyMemory hat das Tageskontingent oder die Anfragegrenze gemeldet. Später erneut versuchen. Vorhandene Texte bleiben erhalten.</value></data>
+  <data name="mmHttp" xml:space="preserve"><value>MyMemory-Anfrage fehlgeschlagen (Status {0}). Vorhandene Texte bleiben erhalten.</value></data>
+  <data name="mmResponse" xml:space="preserve"><value>MyMemory hat keine gültige Übersetzung geliefert. Vorhandene Texte bleiben erhalten.</value></data>
+  <data name="mmNetwork" xml:space="preserve"><value>MyMemory konnte nicht erreicht werden. Internetverbindung, Proxy und Firewall prüfen.</value></data>
 </root>

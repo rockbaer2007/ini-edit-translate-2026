@@ -1,5 +1,36 @@
 # INI Edit Translate 2026
 
+## Version 2.1.47: MyMemory und Englisch als Zwischensprache
+
+Unter **Optionen → Übersetzungseinstellungen** stehen OpenAI-API, ChatGPT-Abo
+und **MyMemory** zur Wahl. MyMemory benötigt Internet, aber keinen Schlüssel und kein
+Konto. Eine optionale E-Mail-Adresse wird mit jeder Anfrage an MyMemory gesendet:
+laut Anbieter 5.000 Zeichen täglich anonym, bis zu 50.000 mit gültiger E-Mail.
+Jede Zielsprache zählt separat; längere Texte werden in Abschnitte mit höchstens
+500 UTF-8-Bytes zerlegt. Ein flüchtiger Cache vermeidet Wiederholungen innerhalb einer Aktion.
+
+Deutsch ist die Voreinstellung. Die ausgewählte Oberfläche bestimmt die anfängliche
+Ausgangssprache; die Quellwahl für Achsen/Signalfunktionen bleibt bedienbar.
+Deutsch und Französisch werden zuerst nach Englisch übersetzt; weitere Zielsprachen
+entstehen aus diesem englischen Zwischenstand. Die gewählte Ausgangssprache bleibt erhalten.
+Das gilt für alle Anbieter. Modellnamen werden weiterhin nicht übersetzt.
+
+MyMemory kann übermittelte Texte langfristig speichern. Die App ruft ausschließlich
+die Übersetzungsabfrage auf und veröffentlicht keine zusätzlichen Wörterbucheinträge.
+Es gibt keinen automatischen Anbieterwechsel. Bereits gespeicherte API-Schlüssel,
+ChatGPT-Verbindungen, Modelle und Wörterbücher bleiben erhalten.
+Polnische Sonderzeichen werden beim INI-Speichern über Unicode erhalten; wenn nötig
+wird die gesicherte Ausgabedatei in UTF-16 mit BOM gespeichert. Die reale EEP-Verarbeitung
+einer solchen Datei wurde hier nicht geprüft.
+
+90 lokale Prüfungen sowie Einlesen, echte MyMemory-Übersetzung und Speichern einer
+Kopie der bereitgestellten Beispiel-INI wurden geprüft. Die Originaldatei bleibt unverändert.
+Maschinelle Fachübersetzungen vor Verwendung prüfen.
+
+[MyMemory API](https://mymemory.translated.net/doc/spec.php) ·
+[Kontingente](https://mymemory.translated.net/doc/usagelimits.php) ·
+[Datennutzung](https://mymemory.translated.net/terms-and-conditions)
+
 ## Version 2.1.46: fertige Stream-Texte erhalten
 
 Fehlt der Übersetzungstext im letzten Abschlussereignis, berücksichtigt die App nun
@@ -86,7 +117,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.46](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.46/INI-Edit-Translate-2026-v2.1.46-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.46)
+[Windows-ZIP v2.1.47](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.47/INI-Edit-Translate-2026-v2.1.47-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.47)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -142,12 +173,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.46.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.47.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.46 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.46/INI-Edit-Translate-2026-v2.1.46-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.46)
+[Windows-ZIP v2.1.47 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.47/INI-Edit-Translate-2026-v2.1.47-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.47)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
@@ -171,7 +202,7 @@ verwenden. Ein vorgefertigtes Installationspaket ist in diesem Repository nicht 
 ## Erste Schritte
 
 1. Unter **Über → Einstellungen** die gewünschte Sprache und den Bearbeitungsmodus wählen.
-2. **OpenAI-Übersetzung** öffnen und den eigenen API-Schlüssel sowie das Modell eintragen.
+2. **Übersetzungseinstellungen** öffnen und MyMemory, OpenAI-API oder ChatGPT-Abo wählen.
    Voreinstellung: `gpt-4.1-mini`. Ein leeres Schlüsselfeld erhält den bisherigen Schlüssel.
 3. Eine eigene Datei zunächst mit **Nur einlesen** öffnen und die Inhalte prüfen.
 4. Zum Übersetzen den Modus **Einlesen und übersetzen** verwenden oder die entsprechenden

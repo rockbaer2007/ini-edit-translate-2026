@@ -219,7 +219,7 @@
   <data name="msg8" xml:space="preserve"><value>Enter an English model name.</value></data>
   <data name="msg9" xml:space="preserve"><value>Enter a German model name.</value></data>
   <data name="msg10" xml:space="preserve"><value>Enter a French model name.</value></data>
-  <data name="openAiTitle" xml:space="preserve"><value>OpenAI translation</value></data>
+  <data name="openAiTitle" xml:space="preserve"><value>Translation settings</value></data>
   <data name="modelLabel" xml:space="preserve"><value>OpenAI model</value></data>
   <data name="apiKeyLabel" xml:space="preserve"><value>API key (leave blank to keep the existing key)</value></data>
   <data name="apiPrivacy" xml:space="preserve"><value>The key is encrypted for your Windows account. Selected texts are sent to OpenAI. The API requires internet access and separate billing.</value></data>
@@ -234,7 +234,7 @@
   <data name="invalidModel" xml:space="preserve"><value>Enter a valid OpenAI model ID.</value></data>
   <data name="unsupportedLanguage" xml:space="preserve"><value>This language is not supported.</value></data>
   <data name="inputTooLong" xml:space="preserve"><value>The text exceeds the limit of 24,000 characters.</value></data>
-  <data name="missingApiKey" xml:space="preserve"><value>OpenAI API key missing. Open Settings → OpenAI translation.</value></data>
+  <data name="missingApiKey" xml:space="preserve"><value>OpenAI API key missing. Open Settings → Translation settings.</value></data>
   <data name="apiHttpFailure" xml:space="preserve"><value>OpenAI request failed (HTTP {0}). Check the key, model, credit or connection. Existing texts are preserved.</value></data>
   <data name="incompleteResponse" xml:space="preserve"><value>OpenAI did not return a complete translation.</value></data>
   <data name="refusedResponse" xml:space="preserve"><value>OpenAI could not translate this text.</value></data>
@@ -320,4 +320,16 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="cgTranslationJson" xml:space="preserve"><value>The translation output is not valid JSON in the expected language format. Existing texts are retained.</value></data>
   <data name="cgProtocolJson" xml:space="preserve"><value>The server response is not valid JSON. Your connection and credentials are retained.</value></data>
   <data name="cgNoTranslationText" xml:space="preserve"><value>OpenAI completed the request without usable translation text. Existing texts are retained.</value></data>
+  <data name="mmProvider" xml:space="preserve"><value>MyMemory – free daily allowance</value></data>
+  <data name="mmPrivacy" xml:space="preserve"><value>No account or API key required. Texts are sent over the internet to MyMemory/Translated. The provider states that submitted segments are stored long term. The app only retrieves translations and does not publish dictionary entries.</value></data>
+  <data name="mmEmail" xml:space="preserve"><value>Email for a higher allowance (optional, sent to MyMemory)</value></data>
+  <data name="mmLimits" xml:space="preserve"><value>Up to 5,000 characters daily anonymously; up to 50,000 with a valid email according to the provider. Each target language counts separately. Long text is split into sections up to 500 UTF-8 bytes. No automatic switch to another provider.</value></data>
+  <data name="mmReady" xml:space="preserve"><value>MyMemory selected. Model names are retained; identical texts are cached for this operation.</value></data>
+  <data name="mmTranslating" xml:space="preserve"><value>Translating with MyMemory using the free daily allowance.</value></data>
+  <data name="mmInvalidEmail" xml:space="preserve"><value>Enter a single valid email address or leave this optional field empty.</value></data>
+  <data name="mmSegmentTooLong" xml:space="preserve"><value>A single Unicode character with combining marks exceeds the MyMemory limit. The text was not sent.</value></data>
+  <data name="mmLimit" xml:space="preserve"><value>MyMemory reported a daily allowance or request limit. Try again later. Existing texts are retained.</value></data>
+  <data name="mmHttp" xml:space="preserve"><value>MyMemory request failed (status {0}). Existing texts are retained.</value></data>
+  <data name="mmResponse" xml:space="preserve"><value>MyMemory did not return a valid translation. Existing texts are retained.</value></data>
+  <data name="mmNetwork" xml:space="preserve"><value>MyMemory could not be reached. Check your internet connection, proxy and firewall.</value></data>
 </root>

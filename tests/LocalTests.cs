@@ -58,6 +58,42 @@ internal static class LocalTests
     {
         try
         {
+            Test("German is default; English and French select the matching source controls", () =>
+            {
+                Assert(Ui.ResolveLanguage(null) == "de" && Ui.ResolveLanguage("") == "de" && Ui.ResolveLanguage("invalid") == "de", "default German");
+                var previous = CultureInfo.CurrentUICulture;
+                var context = SynchronizationContext.Current;
+                try
+                {
+                    foreach (string language in new[] { "de", "en", "fr" })
+                    {
+                        CultureInfo.CurrentUICulture = new CultureInfo(language);
+                        using (var form = new Form1())
+                        {
+                            int number = language == "de" ? 4 : language == "en" ? 3 : 5;
+                            var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+                            Assert(((RadioButton)typeof(Form1).GetField("radioButton" + number, flags).GetValue(form)).Checked, "matching source: " + language);
+                        }
+                    }
+                }
+                finally { CultureInfo.CurrentUICulture = previous; SynchronizationContext.SetSynchronizationContext(context); }
+            });
+            Test("INI Unicode text survives save and reload without replacing Polish characters", () =>
+            {
+                string path = Path.Combine(Path.GetTempPath(), "iet-unicode-" + Guid.NewGuid().ToString("N") + ".ini");
+                try
+                {
+                    File.WriteAllText(path, "[FileInfo]\r\nOriginal=Großdiesellokomotive\r\n", Encoding.Default);
+                    byte[] bytes = File.ReadAllBytes(path);
+                    Form1.EnsureIniEncoding(path, new[] { "English" });
+                    Assert(bytes.SequenceEqual(File.ReadAllBytes(path)), "ANSI unchanged when representable");
+                    Form1.EnsureIniEncoding(path, new[] { "Duża lokomotywa" });
+                    var ini = new UnicodeIniFile(path); ini["FileInfo"]["Description_POL"] = "Duża lokomotywa";
+                    var loaded = new UnicodeIniFile(path);
+                    Assert(loaded["FileInfo"]["Description_POL"] == "Duża lokomotywa" && loaded["FileInfo"]["Original"] == "Großdiesellokomotive", "Unicode and original fields retained");
+                }
+                finally { if (File.Exists(path)) File.Delete(path); }
+            });
             Test("three target languages, one request, unchanged source", () =>
             {
                 var handler = new Handler(Response());
@@ -91,6 +127,8 @@ internal static class LocalTests
                         foreach (string lang in new[] { "en", "de", "fr", "pl" }.Where(l => l != languages[source])) translated[lang] = "description-" + lang;
                         var response = new JObject { ["status"] = "completed", ["output"] = new JArray(new JObject { ["type"] = "message", ["content"] = new JArray(new JObject { ["type"] = "output_text", ["text"] = translated.ToString() }) }) };
                         var handler = new Handler(response.ToString());
+                        handler.Reply = token => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(
+                            handler.Calls == 1 ? response.ToString() : Response("description-de", "description-fr", "description-pl")) });
                         using (var service = new OpenAiTranslation(Settings(), handler))
                         using (var cancellation = new CancellationTokenSource())
                         {
@@ -105,7 +143,8 @@ internal static class LocalTests
                                 ((Task)typeof(Form1).GetMethod(method, flags).Invoke(form, null)).GetAwaiter().GetResult();
                             }
                             finally { SynchronizationContext.SetSynchronizationContext(previousContext); }
-                            Assert(handler.Calls == 1 && (string)handler.Body["input"] == "original-" + tags[source], "only source description sent: " + method);
+                            Assert(handler.Calls == (source == 0 ? 1 : 2) && (string)handler.Body["input"] ==
+                                (source == 0 ? "original-eng" : "description-en"), "English pivot and cached target languages: " + method);
                             foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
                                 Assert(((Control)typeof(Form1).GetField("n_" + tag + "_" + suffix, flags).GetValue(form)).Text == "DRG V140 " + tag + "_unchanged", "name changed: " + method);
                             string[] targetTags = { "eng", "ger", "fra", "pol" }, targetLanguages = { "en", "de", "fr", "pl" };
@@ -309,6 +348,30 @@ internal static class LocalTests
                         form.Close();
                     }
                 });
+                Test("MyMemory settings render without credentials or network " + language, () =>
+                {
+                    string scratch = Path.Combine(Path.GetTempPath(), "iet-mm-ui-" + Guid.NewGuid().ToString("N"));
+                    try
+                    {
+                        foreach (float scale in new[] { 1f, 1.5f })
+                        using (var form = new OpenAiSettingsForm(new OpenAiSettings { UseMyMemory = true, UseChatGpt = true, ProtectedKey = "must-not-read" }, new ChatGptClient(new ChatGptVault(Path.Combine(scratch, "session.dat")))))
+                        {
+                            form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-20000, -20000); form.ShowInTaskbar = false;
+                            form.Scale(new SizeF(scale, scale)); form.Show(); form.PerformLayout(); form.Refresh();
+                            Assert(Descendants(form).OfType<ComboBox>().Any(c => c.Items.Count == 3 && c.SelectedIndex == 2), "MyMemory selected");
+                            Assert(Descendants(form).OfType<GroupBox>().Any(g => g.Visible && g.Text == Ui.Text("mmProvider")), "MyMemory settings visible");
+                            Assert(!Descendants(form).OfType<GroupBox>().Any(g => g.Visible && (g.Text == Ui.Text("cgProviderPlan") || g.Text == Ui.Text("cgProviderApi"))), "other provider fields hidden");
+                            foreach (Control control in form.Controls) Assert(form.ClientRectangle.Contains(control.Bounds), "MyMemory dialog overflow");
+                            if (args.Length > 0) using (var bitmap = new Bitmap(form.Width, form.Height))
+                            {
+                                form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "mymemory-settings-" + language + "-" + (int)(scale * 100) + ".png"));
+                            }
+                            form.Close();
+                        }
+                    }
+                    finally { if (Directory.Exists(scratch)) Directory.Delete(scratch, true); }
+                });
                 Test("ChatGPT settings render without live authentication " + language, () =>
                 {
                     string scratch = Path.Combine(Path.GetTempPath(), "iet-chatgpt-ui-" + Guid.NewGuid().ToString("N"));
@@ -320,7 +383,7 @@ internal static class LocalTests
                         {
                             form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-20000, -20000); form.ShowInTaskbar = false;
                             form.Scale(new SizeF(scale, scale)); form.Show(); form.PerformLayout(); form.Refresh();
-                            Assert(Descendants(form).OfType<ComboBox>().Any(c => c.Items.Count == 2 && c.SelectedIndex == 1), "plan selected");
+                            Assert(Descendants(form).OfType<ComboBox>().Any(c => c.Items.Count == 3 && c.SelectedIndex == 1), "plan selected");
                             Assert(Descendants(form).OfType<GroupBox>().Any(g => g.Visible && g.Text == Ui.Text("cgProviderPlan")), "plan controls visible");
                             var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
                             Func<CancellationToken, Task> failModels = token =>
@@ -568,6 +631,7 @@ internal static class LocalTests
                 }
             });
             Task.Run(() => ChatGptTests.Run(Test)).GetAwaiter().GetResult();
+            Task.Run(() => MyMemoryTests.Run(Test)).GetAwaiter().GetResult();
             Console.WriteLine(passed + " local checks passed; zero live API calls.");
             return 0;
         }

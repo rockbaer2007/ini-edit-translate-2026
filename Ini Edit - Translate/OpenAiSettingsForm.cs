@@ -19,6 +19,8 @@ namespace Ini_Edit___Translate
         private readonly Label status = new Label { AutoSize = true, MaximumSize = new Size(590, 0), Dock = DockStyle.Top };
         private readonly GroupBox apiGroup = new GroupBox { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Dock = DockStyle.Top };
         private readonly GroupBox chatGroup = new GroupBox { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Dock = DockStyle.Top };
+        private readonly GroupBox memoryGroup = new GroupBox { AutoSize = true, AutoSizeMode = AutoSizeMode.GrowAndShrink, Dock = DockStyle.Top };
+        private readonly TextBox memoryEmail = new TextBox { Dock = DockStyle.Fill };
         private readonly Button login, add, signOut, reload, save, cancel;
         private CancellationTokenSource pending;
         private bool loadingAccounts;
@@ -44,7 +46,7 @@ namespace Ini_Edit___Translate
             settings = initial ?? OpenAiSettings.Load();
             chat = chatClient ?? new ChatGptClient();
             apiModel.Text = settings.Model;
-            provider.Items.AddRange(new object[] { Ui.Text("cgProviderApi"), Ui.Text("cgProviderPlan") });
+            provider.Items.AddRange(new object[] { Ui.Text("cgProviderApi"), Ui.Text("cgProviderPlan"), Ui.Text("mmProvider") });
 
             var outer = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 2, Padding = new Padding(12) };
             outer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
@@ -89,6 +91,13 @@ namespace Ini_Edit___Translate
             chatRows.Controls.Add(usage);
             chatGroup.Controls.Add(chatRows);
             body.Controls.Add(chatGroup);
+            memoryGroup.Text = Ui.Text("mmProvider");
+            var memoryRows = Rows(); memoryRows.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            memoryRows.Controls.Add(new Label { Text = Ui.Text("mmPrivacy"), AutoSize = true, MaximumSize = new Size(570, 0) });
+            memoryRows.Controls.Add(Caption(Ui.Text("mmEmail")));
+            memoryEmail.Text = settings.MyMemoryEmail ?? ""; memoryRows.Controls.Add(memoryEmail);
+            memoryRows.Controls.Add(new Label { Text = Ui.Text("mmLimits"), AutoSize = true, MaximumSize = new Size(570, 0) });
+            memoryGroup.Controls.Add(memoryRows); body.Controls.Add(memoryGroup);
             body.Controls.Add(status);
             copyError.Visible = false;
             copyError.Click += (s, e) => { try { Clipboard.SetText(status.Text); } catch { MessageBox.Show(Ui.Text("cgCopyFailed")); } };
@@ -102,8 +111,14 @@ namespace Ini_Edit___Translate
             outer.Controls.Add(buttons, 0, 1); Controls.Add(outer);
             AcceptButton = save; CancelButton = cancel;
 
-            provider.SelectedIndexChanged += (s, e) => { apiGroup.Visible = provider.SelectedIndex == 0; chatGroup.Visible = provider.SelectedIndex == 1; SelectAccount(); };
-            provider.SelectedIndex = settings.UseChatGpt ? 1 : 0;
+            provider.SelectedIndexChanged += async (s, e) =>
+            {
+                apiGroup.Visible = provider.SelectedIndex == 0; chatGroup.Visible = provider.SelectedIndex == 1;
+                memoryGroup.Visible = provider.SelectedIndex == 2; copyError.Visible = false; SelectAccount();
+                if (Visible && provider.SelectedIndex == 1 && accounts.Items.Count == 0)
+                    await RunAsync(token => LoadAccountsAsync(settings.ChatGptClientId, token));
+            };
+            provider.SelectedIndex = settings.UseMyMemory ? 2 : settings.UseChatGpt ? 1 : 0;
             accounts.SelectedIndexChanged += (s, e) => { if (!loadingAccounts) SelectAccount(); };
             login.Click += async (s, e) => await RunAsync(async token =>
             {
@@ -138,22 +153,25 @@ namespace Ini_Edit___Translate
                 try
                 {
                     bool plan = provider.SelectedIndex == 1;
+                    bool memory = provider.SelectedIndex == 2;
                     var account = accounts.SelectedItem as ChatGptAccount;
                     var model = models.SelectedItem as ChatGptModel;
                     if (plan && (account == null || !account.SignedIn)) throw new InvalidOperationException(Ui.Text("cgLoginRequired"));
                     if (plan && !account.PlanEnabled) throw new InvalidOperationException(Ui.Text("cgNoConsent"));
                     if (plan && model == null) throw new InvalidOperationException(Ui.Text("cgSelectModel"));
-                    settings.Model = apiModel.Text;
-                    settings.UseChatGpt = plan;
+                    if (!memory) settings.Model = apiModel.Text;
+                    settings.UseMyMemory = memory;
+                    if (memory) settings.MyMemoryEmail = MyMemoryTranslation.ValidateEmail(memoryEmail.Text);
+                    else settings.UseChatGpt = plan;
                     if (plan) { settings.ChatGptClientId = account.ClientId; settings.ChatGptModel = model.Slug; }
-                    settings.Save(plan ? null : key.Text);
+                    settings.Save(provider.SelectedIndex == 0 ? key.Text : null);
                     DialogResult = DialogResult.OK; Close();
                 }
                 catch (InvalidOperationException error) { status.Text = error.Message; }
                 catch { status.Text = Ui.Text("apiSaveError"); }
             };
             cancel.Click += (s, e) => { if (pending != null) pending.Cancel(); else { DialogResult = DialogResult.Cancel; Close(); } };
-            Shown += async (s, e) => await RunAsync(token => LoadAccountsAsync(settings.ChatGptClientId, token));
+            Shown += async (s, e) => { if (provider.SelectedIndex != 2) await RunAsync(token => LoadAccountsAsync(settings.ChatGptClientId, token)); };
             FormClosing += (s, e) => { if (pending != null) { e.Cancel = true; pending.Cancel(); } };
             FormClosed += (s, e) => chat.Dispose();
         }
@@ -182,7 +200,7 @@ namespace Ini_Edit___Translate
                 models.Items.Add(new ChatGptModel { Slug = settings.ChatGptModel, DisplayName = settings.ChatGptModel + " · " + Ui.Text("cgLastModel") });
                 models.SelectedIndex = 0;
             }
-            status.Text = provider.SelectedIndex == 0 ? "" : account == null || !account.SignedIn ? Ui.Text("cgLoginRequired") :
+            status.Text = provider.SelectedIndex == 2 ? Ui.Text("mmReady") : provider.SelectedIndex == 0 ? "" : account == null || !account.SignedIn ? Ui.Text("cgLoginRequired") :
                 account.PlanEnabled ? Ui.Text("cgReady") : Ui.Text("cgNoConsent");
         }
 

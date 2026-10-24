@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +19,38 @@ namespace Ini_Edit___Translate
                 DateTime.UtcNow.ToString("yyyyMMdd-HHmmss-fffffff") + "-" + Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(directory);
             File.Copy(path, Path.Combine(directory, Path.GetFileName(path)));
+        }
+
+        private void PrepareIniForWrite(string path)
+        {
+            BackupInputFile(path);
+            var texts = new List<string>();
+            Action<Control> collect = null;
+            collect = control => { if (control is TextBoxBase) texts.Add(control.Text); foreach (Control child in control.Controls) collect(child); };
+            collect(this);
+            foreach (var grid in new[] { dataMA, dataSF })
+                foreach (DataGridViewRow row in grid.Rows)
+                    foreach (DataGridViewCell cell in row.Cells) texts.Add(Convert.ToString(cell.Value));
+            EnsureIniEncoding(path, texts);
+        }
+
+        internal static void EnsureIniEncoding(string path, IEnumerable<string> texts)
+        {
+            var ansi = Encoding.GetEncoding(Encoding.Default.CodePage, EncoderFallback.ExceptionFallback, DecoderFallback.ExceptionFallback);
+            try { foreach (string text in texts) ansi.GetByteCount(text ?? ""); return; }
+            catch (EncoderFallbackException) { }
+            // Win32 profile APIs retain UTF-16 only when the file already has its BOM.
+            string content = "";
+            if (File.Exists(path))
+                using (var reader = new StreamReader(path, Encoding.Default, true)) content = reader.ReadToEnd();
+            string temporary = path + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            try
+            {
+                File.WriteAllText(temporary, content, Encoding.Unicode);
+                if (File.Exists(path)) File.Replace(temporary, path, null);
+                else File.Move(temporary, path);
+            }
+            finally { if (File.Exists(temporary)) File.Delete(temporary); }
         }
 
         private OpenAiTranslation openAi;
@@ -43,7 +76,7 @@ namespace Ini_Edit___Translate
             try { await operation(); success = true; }
             catch (OperationCanceledException)
             {
-                MessageBox.Show(translationProgress ?? this, Ui.Text("translationCancelled"), "OpenAI");
+                MessageBox.Show(translationProgress ?? this, Ui.Text("translationCancelled"), Ui.Text("openAiTitle"));
             }
             catch (Exception error)
             {
@@ -72,7 +105,7 @@ namespace Ini_Edit___Translate
 
         internal static Form CreateTranslationErrorDialog(string message)
         {
-            var dialog = new Form { Text = "OpenAI", ClientSize = new Size(650, 240), MinimumSize = new Size(500, 220),
+            var dialog = new Form { Text = Ui.Text("openAiTitle"), ClientSize = new Size(650, 240), MinimumSize = new Size(500, 220),
                 StartPosition = FormStartPosition.CenterParent, MinimizeBox = false, MaximizeBox = false };
             var layout = new TableLayoutPanel { Dock = DockStyle.Fill, Padding = new Padding(12), ColumnCount = 1, RowCount = 2 };
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
@@ -101,7 +134,7 @@ namespace Ini_Edit___Translate
                 translationProgress = new Form { Text = Ui.Text("openAiTitle"), ClientSize = new Size(420, 110),
                     StartPosition = FormStartPosition.CenterParent, FormBorderStyle = FormBorderStyle.FixedDialog,
                     MaximizeBox = false, MinimizeBox = false };
-                translationProgress.Controls.Add(new Label { Text = Ui.Text(settings.UseChatGpt ? "cgTranslating" : "translating"),
+                translationProgress.Controls.Add(new Label { Text = Ui.Text(settings.UseMyMemory ? "mmTranslating" : settings.UseChatGpt ? "cgTranslating" : "translating"),
                     AutoSize = true, MaximumSize = new Size(390, 0), Location = new Point(15, 10) });
                 var cancel = new Button { Text = Ui.Text("cancelAction"), Width = 180, Height = 30, Location = new Point(15, 60) };
                 cancel.Click += (sender, args) => { translationCancellation.Cancel(); cancel.Enabled = false; };

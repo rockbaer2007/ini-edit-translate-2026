@@ -1,5 +1,5 @@
 ﻿using Ini_Edit___Translate.Properties;
-using JB.IO;
+using IniFile = Ini_Edit___Translate.UnicodeIniFile;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
@@ -57,6 +57,11 @@ namespace Ini_Edit___Translate
         {
             InitializeComponent();
             InitializeGithubUpdate();
+            culture_set = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            if (culture_set != "en" && culture_set != "fr") culture_set = "de";
+            radioButton3.Checked = culture_set == "en";
+            radioButton4.Checked = culture_set == "de";
+            radioButton5.Checked = culture_set == "fr";
 
             dataMA.AllowUserToAddRows = false;
             dataSF.AllowUserToAddRows = false;
@@ -163,7 +168,8 @@ namespace Ini_Edit___Translate
             if (Properties.Settings.Default.par_m == true)
             {
                 {
-                    SettingsJB67 = new JB.IO.IniFile(Properties.Settings.Default.pf_m);
+                    PrepareIniForWrite(Properties.Settings.Default.pf_m);
+                    SettingsJB67 = new IniFile(Properties.Settings.Default.pf_m);
                     SettingsJB67["FileInfo"]["Name_ENG"] = "\"" + n_eng_txt.Text + "\"";
                     SettingsJB67["FileInfo"]["Name_GER"] = "\"" + n_ger_txt.Text + "\"";
                     SettingsJB67["FileInfo"]["Name_FRA"] = "\"" + n_fra_txt.Text + "\"";
@@ -245,7 +251,8 @@ namespace Ini_Edit___Translate
                 if (dlgSave.ShowDialog() == DialogResult.OK)
                 {
                     {
-                        SettingsJB67 = new JB.IO.IniFile(dlgSave.FileName);
+                        PrepareIniForWrite(dlgSave.FileName);
+                        SettingsJB67 = new IniFile(dlgSave.FileName);
                         SettingsJB67["FileInfo"]["Name_ENG"] = "\"" + n_eng_txt.Text + "\"";
                         SettingsJB67["FileInfo"]["Name_GER"] = "\"" + n_ger_txt.Text + "\"";
                         SettingsJB67["FileInfo"]["Name_FRA"] = "\"" + n_fra_txt.Text + "\"";
@@ -329,8 +336,8 @@ namespace Ini_Edit___Translate
         }
         private void inischreiben(string filepath)
         {
-            BackupInputFile(filepath);
-            SettingsJB66 = new JB.IO.IniFile(filepath);
+            PrepareIniForWrite(filepath);
+            SettingsJB66 = new IniFile(filepath);
             SettingsJB66["Install_00"]["Name_ENG"] = "\"" + n_eng_eep.Text + "\"";
             SettingsJB66["Install_00"]["Name_GER"] = "\"" + n_ger_eep.Text + "\"";
             SettingsJB66["Install_00"]["Name_FRA"] = "\"" + n_fra_eep.Text + "\"";
@@ -387,10 +394,10 @@ namespace Ini_Edit___Translate
 
         private void inischreiben2(string path)
         {
-            BackupInputFile(path);
+            PrepareIniForWrite(path);
             {
                 {
-                    SettingsJB67 = new JB.IO.IniFile(path);
+                    SettingsJB67 = new IniFile(path);
                     SettingsJB67["FileInfo"]["Name_ENG"] = "\"" + n_eng_txt.Text + "\"";
                     SettingsJB67["FileInfo"]["Name_GER"] = "\"" + n_ger_txt.Text + "\"";
                     SettingsJB67["FileInfo"]["Name_FRA"] = "\"" + n_fra_txt.Text + "\"";
@@ -565,7 +572,7 @@ namespace Ini_Edit___Translate
                 int Jahr = d.Year;
             }
             Cursor.Current = Cursors.WaitCursor;
-            SettingsJB = new JB.IO.IniFile(filepath);
+            SettingsJB = new IniFile(filepath);
             n_eng_txt.Text = SettingsJB["FileInfo"]["Name_ENG"].Replace("\"", "").Replace("_", " ");
             n_ger_txt.Text = SettingsJB["FileInfo"]["Name_GER"].Replace("\"", "").Replace("_", " ");
             n_fra_txt.Text = SettingsJB["FileInfo"]["Name_FRA"].Replace("\"", "").Replace("_", " ");
@@ -746,7 +753,7 @@ namespace Ini_Edit___Translate
         private async Task inilesen_auto(string filepath)
         {
             Cursor.Current = Cursors.WaitCursor;
-            SettingsJB = new JB.IO.IniFile(filepath);
+            SettingsJB = new IniFile(filepath);
             n_eng_txt.Text = SettingsJB["FileInfo"]["Name_ENG"].Replace("\"", "").Replace("_", " ");
             n_ger_txt.Text = SettingsJB["FileInfo"]["Name_GER"].Replace("\"", "").Replace("_", " ");
             n_fra_txt.Text = SettingsJB["FileInfo"]["Name_FRA"].Replace("\"", "").Replace("_", " ");
@@ -830,7 +837,7 @@ namespace Ini_Edit___Translate
             panel3.Visible = false;
             panel4.Visible = false;
             panel5.Visible = false;
-            SettingsJB66 = new JB.IO.IniFile(filepath);
+            SettingsJB66 = new IniFile(filepath);
             n_eng_eep.Text = SettingsJB66["Install_00"]["Name_ENG"].Replace("\"", "").Replace("_", " ");
             n_ger_eep.Text = SettingsJB66["Install_00"]["Name_GER"].Replace("\"", "").Replace("_", " ");
             n_fra_eep.Text = SettingsJB66["Install_00"]["Name_FRA"].Replace("\"", "").Replace("_", " ");
@@ -1065,7 +1072,7 @@ namespace Ini_Edit___Translate
             }
 
             culture_set = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-            if (culture_set != "de" && culture_set != "fr") culture_set = "en";
+            if (culture_set != "en" && culture_set != "fr") culture_set = "de";
             Text = "INI Edit Translate 2026";
             button10.Enabled = btn_save.Enabled = true;
             menuStrip1.Renderer = new ToolStripProfessionalRenderer(new TestColorTable());

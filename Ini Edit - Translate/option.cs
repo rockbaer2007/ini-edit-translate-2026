@@ -30,7 +30,7 @@ namespace Ini_Edit___Translate
                 checkBox2.Checked = true;
             }
 
-            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.culture_l))
+            if (Properties.Settings.Default.culture_l == "system")
             {
                 radioButton4.Checked = true;
             }
@@ -42,7 +42,7 @@ namespace Ini_Edit___Translate
             {
                 radioButton2.Checked = true;
             }
-            else if (Properties.Settings.Default.culture_l == "de")
+            else
             {
                 radioButton3.Checked = true;
             }
@@ -63,22 +63,22 @@ namespace Ini_Edit___Translate
 
         private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.culture_l = "fr";
+            if (radioButton1.Checked) Properties.Settings.Default.culture_l = "fr";
         }
 
         private void RadioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.culture_l = "en";
+            if (radioButton2.Checked) Properties.Settings.Default.culture_l = "en";
         }
 
         private void RadioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.culture_l = "de";
+            if (radioButton3.Checked) Properties.Settings.Default.culture_l = "de";
         }
 
         private void RadioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.culture_l = null;
+            if (radioButton4.Checked) Properties.Settings.Default.culture_l = "system";
         }
 
         private void Button2_Click(object sender, EventArgs e)
