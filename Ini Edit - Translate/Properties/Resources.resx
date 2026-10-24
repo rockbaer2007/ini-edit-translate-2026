@@ -936,4 +936,6 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="mmHttp" xml:space="preserve"><value>MyMemory-Anfrage fehlgeschlagen (Status {0}). Vorhandene Texte bleiben erhalten.</value></data>
   <data name="mmResponse" xml:space="preserve"><value>MyMemory hat keine gültige Übersetzung geliefert. Vorhandene Texte bleiben erhalten.</value></data>
   <data name="mmNetwork" xml:space="preserve"><value>MyMemory konnte nicht erreicht werden. Internetverbindung, Proxy und Firewall prüfen.</value></data>
+  <data name="rememberLastFolder" xml:space="preserve"><value>Letzten Pfad erhalten</value></data>
+  <data name="lastFolderUnavailable" xml:space="preserve"><value>Der letzte Ordner ist momentan nicht verfügbar. Bitte einen Ordner auswählen.</value></data>
 </root>

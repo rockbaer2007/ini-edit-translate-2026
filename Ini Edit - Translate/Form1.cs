@@ -88,6 +88,33 @@ namespace Ini_Edit___Translate
             dataSF.ColumnHeadersDefaultCellStyle.BackColor = Color.Linen;
             tabControl1.BackColor = Color.Transparent;
             label19.Text = null;
+            RestoreLastFolder();
+        }
+
+        internal void RestoreLastFolder()
+        {
+            string path = Properties.Settings.Default.pathdir;
+            bool available = Properties.Settings.Default.rememberLastFolder && !string.IsNullOrWhiteSpace(path) && Directory.Exists(path);
+            directoryTreeViewOnDemand1.BeginInit();
+            if (available)
+            {
+                directoryTreeViewOnDemand1.EndInit();
+                dlgOpen.InitialDirectory = dlgOpen_eep.InitialDirectory = path;
+                folderBrowserDialog1.SelectedPath = path;
+            }
+            directoryTreeViewOnDemand1.Visible = label23.Visible = available;
+            label24.Visible = !available;
+            if (Properties.Settings.Default.rememberLastFolder && !available && !string.IsNullOrWhiteSpace(path))
+                label24.Text = Ui.Text("lastFolderUnavailable");
+        }
+
+        private void RememberWorkingDirectory(string file)
+        {
+            if (!Properties.Settings.Default.rememberLastFolder) return;
+            Properties.Settings.Default.pathdir = Path.GetDirectoryName(Path.GetFullPath(file));
+            dlgOpen.InitialDirectory = dlgOpen_eep.InitialDirectory = Properties.Settings.Default.pathdir;
+            folderBrowserDialog1.SelectedPath = Properties.Settings.Default.pathdir;
+            Properties.Settings.Default.Save();
         }
 
         private void Center_Text()
@@ -158,6 +185,7 @@ namespace Ini_Edit___Translate
                     label21.Text = " " + decc;
                     richTextBox1.LoadFile(decc, RichTextBoxStreamType.PlainText);
                 }
+                RememberWorkingDirectory(dlgOpen.FileName);
                 await inilesen(dlgOpen.FileName);
             }
 
@@ -1535,6 +1563,7 @@ namespace Ini_Edit___Translate
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.pathdir = folderBrowserDialog1.SelectedPath;
+                dlgOpen.InitialDirectory = dlgOpen_eep.InitialDirectory = folderBrowserDialog1.SelectedPath;
                 Properties.Settings.Default.Save();
                 directoryTreeViewOnDemand1.BeginInit();
                 directoryTreeViewOnDemand1.EndInit();
@@ -1596,12 +1625,12 @@ namespace Ini_Edit___Translate
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!Properties.Settings.Default.rememberLastFolder) Properties.Settings.Default.pathdir = null;
             if (updateShutdown)
             {
                 Properties.Settings.Default.Save();
                 return;
             }
-            Properties.Settings.Default.pathdir = null;
             Properties.Settings.Default.pf_i = null;
             Properties.Settings.Default.pf_ia = null;
             Properties.Settings.Default.pf_m = null;
@@ -1703,6 +1732,7 @@ namespace Ini_Edit___Translate
             if (dlgOpen_eep.ShowDialog() == DialogResult.OK)
             {
                 zwa = dlgOpen_eep.FileName;
+                RememberWorkingDirectory(zwa);
                 await inilesen2(zwa);
             }
 

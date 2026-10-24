@@ -19,7 +19,12 @@ namespace Ini_Edit___Translate
                 catch (Exception) { MessageBox.Show(this, Ui.Text("apiReadError"), "OpenAI"); }
             };
             Controls.Add(openAiButton);
-            ClientSize = new Size(ClientSize.Width, ClientSize.Height + 44);
+            var rememberFolder = new CheckBox { Name = "rememberLastFolder", Text = Ui.Text("rememberLastFolder"),
+                AutoSize = false, Dock = DockStyle.Bottom, Height = 32,
+                Checked = Properties.Settings.Default.rememberLastFolder };
+            rememberFolder.CheckedChanged += (sender, args) => Properties.Settings.Default.rememberLastFolder = rememberFolder.Checked;
+            Controls.Add(rememberFolder);
+            ClientSize = new Size(ClientSize.Width, ClientSize.Height + 76);
             readkey();
             if (Properties.Settings.Default.read_only == true)
             {

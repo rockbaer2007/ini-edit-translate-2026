@@ -332,4 +332,6 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="mmHttp" xml:space="preserve"><value>MyMemory request failed (status {0}). Existing texts are retained.</value></data>
   <data name="mmResponse" xml:space="preserve"><value>MyMemory did not return a valid translation. Existing texts are retained.</value></data>
   <data name="mmNetwork" xml:space="preserve"><value>MyMemory could not be reached. Check your internet connection, proxy and firewall.</value></data>
+  <data name="rememberLastFolder" xml:space="preserve"><value>Keep last folder</value></data>
+  <data name="lastFolderUnavailable" xml:space="preserve"><value>The last folder is currently unavailable. Please select a folder.</value></data>
 </root>

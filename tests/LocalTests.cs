@@ -94,6 +94,87 @@ internal static class LocalTests
                 }
                 finally { if (File.Exists(path)) File.Delete(path); }
             });
+            Test("last folder restores after restart, respects opt-out and retains unavailable paths", () =>
+            {
+                var settings = Ini_Edit___Translate.Properties.Settings.Default;
+                bool previous = settings.rememberLastFolder; string previousPath = settings.pathdir;
+                var context = SynchronizationContext.Current;
+                string directory = Path.Combine(Path.GetTempPath(), "iet-last-folder-" + Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(directory);
+                try
+                {
+                    settings.rememberLastFolder = true; settings.pathdir = directory;
+                    for (int restart = 0; restart < 2; restart++)
+                    using (var form = new Form1())
+                    {
+                        var tree = Descendants(form).OfType<DirectoryTreeViewOnDemand>().Single();
+                        Assert(tree.Nodes.Count == 1 && tree.Nodes[0].Text == directory, "folder restored on restart");
+                        var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+                        Assert(((OpenFileDialog)typeof(Form1).GetField("dlgOpen", flags).GetValue(form)).InitialDirectory == directory, "file picker restored");
+                        Assert(((OpenFileDialog)typeof(Form1).GetField("dlgOpen_eep", flags).GetValue(form)).InitialDirectory == directory, "installation picker restored");
+                        Assert(((Control)typeof(Form1).GetField("n_ger_txt", flags).GetValue(form)).Text == "", "no automatic file opening");
+                    }
+                    settings.rememberLastFolder = false;
+                    using (var form = new Form1()) Assert(Descendants(form).OfType<DirectoryTreeViewOnDemand>().Single().Nodes.Count == 0, "opt-out skips restoration");
+                    settings.rememberLastFolder = true; settings.pathdir = Path.Combine(directory, "missing");
+                    using (var form = new Form1())
+                    {
+                        Assert(Descendants(form).OfType<DirectoryTreeViewOnDemand>().Single().Nodes.Count == 0, "unavailable directory not loaded");
+                        Assert(Descendants(form).OfType<Label>().Any(label => label.Text == Ui.Text("lastFolderUnavailable")), "unavailable directory explained");
+                        Assert(settings.pathdir.EndsWith("missing"), "temporarily unavailable path retained");
+                    }
+                }
+                finally { settings.rememberLastFolder = previous; settings.pathdir = previousPath; SynchronizationContext.SetSynchronizationContext(context); Directory.Delete(directory); }
+            });
+            Test("last folder preference persists independently of executable version", () =>
+            {
+                string file = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;
+                byte[] previous = File.Exists(file) ? File.ReadAllBytes(file) : null;
+                try
+                {
+                    var saved = new Ini_Edit___Translate.Properties.Settings { rememberLastFolder = true, pathdir = @"C:\EEP\Modelle" };
+                    saved.Save();
+                    var reloaded = new Ini_Edit___Translate.Properties.Settings();
+                    Assert(reloaded.rememberLastFolder && reloaded.pathdir == @"C:\EEP\Modelle", "saved preference and directory reload together");
+                }
+                finally
+                {
+                    if (previous == null) { if (File.Exists(file)) File.Delete(file); }
+                    else File.WriteAllBytes(file, previous);
+                }
+            });
+            Test("last-folder option renders and toggles in DE EN FR at 100 and 150 percent", () =>
+            {
+                var settings = Ini_Edit___Translate.Properties.Settings.Default;
+                bool remember = settings.rememberLastFolder, readOnly = settings.read_only, message = settings.msg_on;
+                string language = settings.culture_l; var culture = CultureInfo.CurrentUICulture; var context = SynchronizationContext.Current;
+                try
+                {
+                    settings.read_only = true;
+                    foreach (string locale in new[] { "de", "en", "fr" })
+                    foreach (float scale in new[] { 1f, 1.5f })
+                    {
+                        CultureInfo.CurrentUICulture = new CultureInfo(locale);
+                        using (var form = new Ini_Edit___Translate.option())
+                        {
+                            form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-20000, -20000); form.ShowInTaskbar = false;
+                            form.Scale(new SizeF(scale, scale)); form.Show(); form.PerformLayout();
+                            var control = Descendants(form).OfType<CheckBox>().Single(box => box.Name == "rememberLastFolder");
+                            Assert(control.Text == Ui.Text("rememberLastFolder") && form.ClientRectangle.Contains(control.Bounds), "localized option fits");
+                            Assert(!form.Controls.OfType<Button>().Any(button => button.Bounds.IntersectsWith(control.Bounds)), "option does not overlap buttons");
+                            control.Checked = true; Assert(settings.rememberLastFolder, "enable bound");
+                            control.Checked = false; Assert(!settings.rememberLastFolder, "disable bound");
+                            if (args.Length > 0) using (var bitmap = new Bitmap(form.Width, form.Height))
+                            {
+                                form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height));
+                                bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "folder-settings-" + locale + "-" + (int)(scale * 100) + ".png"));
+                            }
+                            form.Close();
+                        }
+                    }
+                }
+                finally { settings.rememberLastFolder = remember; settings.read_only = readOnly; settings.msg_on = message; settings.culture_l = language; CultureInfo.CurrentUICulture = culture; SynchronizationContext.SetSynchronizationContext(context); }
+            });
             Test("three target languages, one request, unchanged source", () =>
             {
                 var handler = new Handler(Response());

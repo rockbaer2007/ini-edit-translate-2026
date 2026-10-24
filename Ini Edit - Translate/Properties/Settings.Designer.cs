@@ -22,6 +22,15 @@ namespace Ini_Edit___Translate.Properties {
                 return defaultInstance;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.SettingsProviderAttribute(typeof(CryptoSettingsProvider))]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool rememberLastFolder {
+            get { return ((bool)(this["rememberLastFolder"])); }
+            set { this["rememberLastFolder"] = value; }
+        }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Configuration.SettingsProviderAttribute(typeof(CryptoSettingsProvider))]

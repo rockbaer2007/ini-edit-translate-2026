@@ -332,4 +332,6 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="mmHttp" xml:space="preserve"><value>Échec de la requête MyMemory (statut {0}). Les textes existants sont conservés.</value></data>
   <data name="mmResponse" xml:space="preserve"><value>MyMemory n’a pas fourni de traduction valide. Les textes existants sont conservés.</value></data>
   <data name="mmNetwork" xml:space="preserve"><value>MyMemory est inaccessible. Vérifiez la connexion Internet, le proxy et le pare-feu.</value></data>
+  <data name="rememberLastFolder" xml:space="preserve"><value>Conserver le dernier dossier</value></data>
+  <data name="lastFolderUnavailable" xml:space="preserve"><value>Le dernier dossier est actuellement indisponible. Veuillez sélectionner un dossier.</value></data>
 </root>
