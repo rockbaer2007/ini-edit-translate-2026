@@ -1767,378 +1767,92 @@ namespace Ini_Edit___Translate
         private async Task eep_trans_ger_to_0()
         {
             if (Properties.Settings.Default.language == "D")
-            {
-                if (string.IsNullOrEmpty(d_ger_eep.Text) || string.IsNullOrEmpty(n_ger_eep.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep.Text, "de", "en");//1
-                    d_eng_eep.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep.Text, "de", "fr");//2
-                    d_fra_eep.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep.Text, "de", "pl");//3
-                    d_pol_eep.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(0, "de");
         }
 
         private async Task eep_trans_eng_to_0()
         {
             if (Properties.Settings.Default.language == "E")
-            {
-                if (string.IsNullOrEmpty(d_eng_eep.Text) || string.IsNullOrEmpty(n_eng_eep.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep.Text, "en", "fr");//2
-                    d_fra_eep.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep.Text, "en", "de");//4
-                    d_ger_eep.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep.Text, "en", "pl");//3
-                    d_pol_eep.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(0, "en");
         }
 
         private async Task eep_trans_fra_to_0()
         {
             if (Properties.Settings.Default.language == "F")
-            {
-                if (string.IsNullOrEmpty(d_fra_eep.Text) || string.IsNullOrEmpty(d_fra_eep.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep.Text, "fr", "en");//5
-                    d_eng_eep.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep.Text, "fr", "de");//4
-                    d_ger_eep.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep.Text, "fr", "pl");//3
-                    d_pol_eep.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(0, "fr");
         }
 
         private async Task eep_trans_ger_to_1()
         {
             if (Properties.Settings.Default.language == "D")
-            {
-                if (string.IsNullOrEmpty(d_ger_eep2.Text) || string.IsNullOrEmpty(n_ger_eep2.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep2.Text, "de", "en");//1
-                    d_eng_eep2.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep2.Text, "de", "fr");//2
-                    d_fra_eep2.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep2.Text, "de", "pl");//3
-                    d_pol_eep2.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(1, "de");
         }
 
 
         private async Task eep_trans_eng_to_1()
         {
             if (Properties.Settings.Default.language == "E")
-            {
-                if (string.IsNullOrEmpty(d_eng_eep2.Text) || string.IsNullOrEmpty(n_eng_eep2.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep2.Text, "en", "fr");
-                    d_fra_eep2.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep2.Text, "en", "de");
-                    d_ger_eep2.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep2.Text, "en", "pl");
-                    d_pol_eep2.Text = translation6;
-
-
-
-                }
-            }
-
+                await TranslateInstallationSetAsync(1, "en");
         }
 
         private async Task eep_trans_fra_to_1()
         {
             if (Properties.Settings.Default.language == "F")
-            {
-                if (string.IsNullOrEmpty(d_fra_eep2.Text) || string.IsNullOrEmpty(n_fra_eep2.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep2.Text, "fr", "en");
-                    d_eng_eep2.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep2.Text, "fr", "de");
-                    d_ger_eep2.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep2.Text, "fr", "pl");
-                    d_pol_eep2.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(1, "fr");
         }
 
         private async Task eep_trans_ger_to_2()
         {
             if (Properties.Settings.Default.language == "D")
-            {
-                if (string.IsNullOrEmpty(d_ger_eep3.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_ger_eep3.Text, "de", "en");
-                    d_eng_eep3.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_ger_eep3.Text, "de", "fr");
-                    d_fra_eep3.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_ger_eep3.Text, "de", "pl");
-                    d_pol_eep3.Text = translation9;
-                }
-            }
+                await TranslateInstallationSetAsync(2, "de");
         }
 
         private async Task eep_trans_eng_to_2()
         {
             if (Properties.Settings.Default.language == "E")
-            {
-                if (string.IsNullOrEmpty(d_eng_eep3.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_eng_eep3.Text, "en", "fr");
-                    d_fra_eep3.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_eng_eep3.Text, "en", "de");
-                    d_ger_eep3.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_eng_eep3.Text, "en", "pl");
-                    d_pol_eep3.Text = translation9;
-                }
-            }
+                await TranslateInstallationSetAsync(2, "en");
         }
 
         private async Task eep_trans_fra_to_2()
         {
             if (Properties.Settings.Default.language == "F")
-            {
-                if (string.IsNullOrEmpty(d_fra_eep3.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "en");
-                    d_eng_eep3.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "de");
-                    d_ger_eep3.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "pl");
-                    d_pol_eep3.Text = translation9;
-                }
-            }
+                await TranslateInstallationSetAsync(2, "fr");
         }
 
         private async Task eep_trans_ger_to_3()
         {
             if (Properties.Settings.Default.language == "D")
-            {
-                if (string.IsNullOrEmpty(d_ger_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_ger_eep4.Text, "de", "en");
-                    d_eng_eep4.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_ger_eep4.Text, "de", "fr");
-                    d_fra_eep4.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_ger_eep4.Text, "de", "pl");
-                    d_pol_eep4.Text = translation9;
-                }
-            }
+                await TranslateInstallationSetAsync(3, "de");
         }
 
         private async Task eep_trans_eng_to_3()
         {
             if (Properties.Settings.Default.language == "E")
-            {
-                if (string.IsNullOrEmpty(d_eng_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_eng_eep4.Text, "en", "fr");
-                    d_fra_eep4.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_eng_eep4.Text, "en", "de");
-                    d_ger_eep4.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_eng_eep4.Text, "en", "pl");
-                    d_pol_eep4.Text = translation9;
-                }
-            }
+                await TranslateInstallationSetAsync(3, "en");
         }
 
         private async Task eep_trans_fra_to_3()
         {
             if (Properties.Settings.Default.language == "F")
-            {
-                if (string.IsNullOrEmpty(d_fra_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "en");
-                    d_eng_eep4.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "de");
-                    d_ger_eep4.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "pl");
-                    d_pol_eep4.Text = translation9;
-                }
-            }
+                await TranslateInstallationSetAsync(3, "fr");
         }
 
         private async Task eep_trans_ger_to_4()
         {
             if (Properties.Settings.Default.language == "D")
-            {
-                if (string.IsNullOrEmpty(d_ger_eep5.Text) || string.IsNullOrEmpty(n_ger_eep5.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep5.Text, "de", "en");
-                    d_eng_eep5.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep5.Text, "de", "fr");
-                    d_fra_eep5.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep5.Text, "de", "pl");
-                    d_pol_eep5.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(4, "de");
         }
 
         private async Task eep_trans_eng_to_4()
         {
             if (Properties.Settings.Default.language == "E")
-            {
-                if (string.IsNullOrEmpty(d_eng_eep5.Text) || string.IsNullOrEmpty(n_eng_eep5.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep5.Text, "en", "fr");
-                    d_fra_eep5.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep5.Text, "en", "de");
-                    d_ger_eep5.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep5.Text, "en", "pl");
-                    d_pol_eep5.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(4, "en");
         }
 
         private async Task eep_trans_fra_to_4()
         {
             if (Properties.Settings.Default.language == "F")
-            {
-                if (string.IsNullOrEmpty(d_fra_eep5.Text) || string.IsNullOrEmpty(n_fra_eep5.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "en");
-                    d_eng_eep5.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "de");
-                    d_ger_eep5.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "pl");
-                    d_pol_eep5.Text = translation6;
-
-
-
-                }
-            }
+                await TranslateInstallationSetAsync(4, "fr");
         }
 
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -2188,353 +1902,23 @@ namespace Ini_Edit___Translate
 
         private async void btn_trl_1_Click(object sender, EventArgs e)
         {
-            await RunTranslationOperationAsync(async () =>
-            {
-            if (culture_set.Contains("de"))
-            {
-                if (string.IsNullOrEmpty(d_ger_eep.Text) || string.IsNullOrEmpty(n_ger_eep.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep.Text, "de", "en");
-                    d_eng_eep.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep.Text, "de", "fr");
-                    d_fra_eep.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep.Text, "de", "pl");
-                    d_pol_eep.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("en"))
-            {
-                if (string.IsNullOrEmpty(d_eng_eep.Text) || string.IsNullOrEmpty(n_eng_eep.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep.Text, "en", "fr");
-                    d_eng_eep.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep.Text, "en", "de");
-                    d_ger_eep.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep.Text, "en", "pl");
-                    d_pol_eep.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("fr"))
-            {
-                if (string.IsNullOrEmpty(d_fra_eep.Text) || string.IsNullOrEmpty(d_fra_eep.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep.Text, "fr", "en");
-                    d_eng_eep.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep.Text, "fr", "de");
-                    d_ger_eep.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep.Text, "fr", "pl");
-                    d_pol_eep.Text = translation6;
-
-
-
-                }
-            }
-
-            });
+            await RunTranslationOperationAsync(() => TranslateInstallationSetAsync(0, culture_set));
         }
         private async void btn_trl_2_Click(object sender, EventArgs e)
         {
-            await RunTranslationOperationAsync(async () =>
-            {
-            if (culture_set.Contains("de"))
-            {
-                if (string.IsNullOrEmpty(d_ger_eep4.Text) || string.IsNullOrEmpty(n_ger_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep4.Text, "de", "en");
-                    d_eng_eep4.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep4.Text, "de", "fr");
-                    d_fra_eep4.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep4.Text, "de", "pl");
-                    d_pol_eep4.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("en"))
-            {
-                if (string.IsNullOrEmpty(d_eng_eep4.Text) || string.IsNullOrEmpty(n_eng_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep4.Text, "en", "fr");
-                    d_eng_eep4.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep4.Text, "en", "de");
-                    d_ger_eep4.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep4.Text, "en", "pl");
-                    d_pol_eep4.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("fr"))
-            {
-                if (string.IsNullOrEmpty(d_fra_eep4.Text) || string.IsNullOrEmpty(n_fra_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "en");
-                    d_eng_eep4.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "de");
-                    d_ger_eep4.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "pl");
-                    d_pol_eep4.Text = translation6;
-
-
-
-                }
-            }
-
-            });
+            await RunTranslationOperationAsync(() => TranslateInstallationSetAsync(1, culture_set));
         }
         private async void btn_trl_3_Click(object sender, EventArgs e)
         {
-            await RunTranslationOperationAsync(async () =>
-            {
-            if (culture_set.Contains("de"))
-            {
-                if (string.IsNullOrEmpty(d_ger_eep3.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_ger_eep3.Text, "de", "en");
-                    d_eng_eep3.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_ger_eep3.Text, "de", "fr");
-                    d_fra_eep3.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_ger_eep3.Text, "de", "pl");
-                    d_pol_eep3.Text = translation9;
-                }
-            }
-            if (culture_set.Contains("en"))
-            {
-                if (string.IsNullOrEmpty(d_eng_eep3.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_eng_eep3.Text, "en", "fr");
-                    d_eng_eep3.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_eng_eep3.Text, "en", "de");
-                    d_ger_eep3.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_eng_eep3.Text, "en", "pl");
-                    d_pol_eep3.Text = translation9;
-                }
-            }
-            if (culture_set.Contains("fr"))
-            {
-                if (string.IsNullOrEmpty(d_fra_eep3.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-
-
-
-                    string translation7 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "en");
-                    d_eng_eep3.Text = translation7;
-
-                    string translation8 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "de");
-                    d_ger_eep3.Text = translation8;
-
-                    string translation9 = await TranslateTextAsync(d_fra_eep3.Text, "fr", "pl");
-                    d_pol_eep3.Text = translation9;
-                }
-            }
-
-            });
+            await RunTranslationOperationAsync(() => TranslateInstallationSetAsync(2, culture_set));
         }
         private async void btn_trl_5_Click(object sender, EventArgs e)
         {
-            await RunTranslationOperationAsync(async () =>
-            {
-            if (culture_set.Contains("de"))
-            {
-                if (string.IsNullOrEmpty(d_ger_eep5.Text) || string.IsNullOrEmpty(n_ger_eep5.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep5.Text, "de", "en");
-                    d_eng_eep5.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep5.Text, "de", "fr");
-                    d_fra_eep5.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep5.Text, "de", "pl");
-                    d_pol_eep5.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("en"))
-            {
-                if (string.IsNullOrEmpty(d_eng_eep5.Text) || string.IsNullOrEmpty(n_eng_eep5.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep5.Text, "en", "fr");
-                    d_eng_eep5.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep5.Text, "en", "de");
-                    d_ger_eep5.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep5.Text, "en", "pl");
-                    d_pol_eep5.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("fr"))
-            {
-                if (string.IsNullOrEmpty(d_fra_eep5.Text) || string.IsNullOrEmpty(n_fra_eep5.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "en");
-                    d_eng_eep5.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "de");
-                    d_ger_eep5.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep5.Text, "fr", "pl");
-                    d_pol_eep5.Text = translation6;
-
-
-
-                }
-            }
-
-            });
+            await RunTranslationOperationAsync(() => TranslateInstallationSetAsync(4, culture_set));
         }
         private async void btn_trl_4_Click(object sender, EventArgs e)
         {
-            await RunTranslationOperationAsync(async () =>
-            {
-            if (culture_set.Contains("de"))
-            {
-                if (string.IsNullOrEmpty(d_ger_eep4.Text) || string.IsNullOrEmpty(n_ger_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_GER", "Desc_GER"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_ger_eep4.Text, "de", "en");
-                    d_eng_eep4.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_ger_eep4.Text, "de", "fr");
-                    d_fra_eep4.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_ger_eep4.Text, "de", "pl");
-                    d_pol_eep4.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("en"))
-            {
-                if (string.IsNullOrEmpty(d_eng_eep4.Text) || string.IsNullOrEmpty(n_eng_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_ENG", "Desc_ENG"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_eng_eep4.Text, "en", "fr");
-                    d_eng_eep4.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_eng_eep4.Text, "en", "de");
-                    d_ger_eep4.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_eng_eep4.Text, "en", "pl");
-                    d_pol_eep4.Text = translation6;
-
-
-
-                }
-            }
-            if (culture_set.Contains("fr"))
-            {
-                if (string.IsNullOrEmpty(d_fra_eep4.Text) || string.IsNullOrEmpty(n_fra_eep4.Text))
-                {
-                    MessageBox.Show(Ui.Format("missingPair", "Name_FRA", "Desc_FRA"), "Info");
-                }
-                else
-                {
-                    string translation4 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "en");
-                    d_eng_eep4.Text = translation4;
-
-                    string translation5 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "de");
-                    d_ger_eep4.Text = translation5;
-
-                    string translation6 = await TranslateTextAsync(d_fra_eep4.Text, "fr", "pl");
-                    d_pol_eep4.Text = translation6;
-
-
-
-                }
-            }
-
-            });
+            await RunTranslationOperationAsync(() => TranslateInstallationSetAsync(3, culture_set));
         }
         private void TabControl1_TabIndexChanged(object sender, EventArgs e)
         {

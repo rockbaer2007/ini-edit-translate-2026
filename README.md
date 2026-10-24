@@ -1,5 +1,23 @@
 # INI Edit Translate 2026
 
+## Version 2.1.48: Teilset-Namen wieder übersetzen
+
+Die Namen und Beschreibungen der fünf Teilsets `Install_00` bis `Install_04`
+werden wieder übersetzt. Geschützt bleiben ausschließlich die Modellnamen im
+Modellbereich. Ausgangstexte bleiben erhalten; Deutsch und Französisch nutzen
+weiterhin Englisch als Zwischensprache.
+
+Alle fünf Übersetzungsbuttons und der automatische Import verwenden dieselbe
+geprüfte Zuordnung. Der Button des zweiten Teilsets bearbeitet wieder dessen
+eigene Felder. Ein Teilset wird erst nach vollständiger Übersetzung übernommen;
+bei Fehler oder Abbruch bleiben seine Namen und Beschreibungen erhalten.
+
+91 lokale Prüfungen bestanden. Ein eigener Installations-Test mit dem Namen
+„Detailmodell Großdiesellokomotive V140 001 DRG“ wurde tatsächlich über MyMemory
+übersetzt, gespeichert und erneut eingelesen; Modellnamen und ein zusätzliches
+INI-Feld blieben erhalten. Die Datei auf dem entfernten Spielerechner wurde dabei
+nicht verändert.
+
 ## Version 2.1.47: MyMemory und Englisch als Zwischensprache
 
 Unter **Optionen → Übersetzungseinstellungen** stehen OpenAI-API, ChatGPT-Abo
@@ -117,7 +135,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.47](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.47/INI-Edit-Translate-2026-v2.1.47-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.47)
+[Windows-ZIP v2.1.48](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.48/INI-Edit-Translate-2026-v2.1.48-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.48)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -173,12 +191,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.47.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.48.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.47 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.47/INI-Edit-Translate-2026-v2.1.47-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.47)
+[Windows-ZIP v2.1.48 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.48/INI-Edit-Translate-2026-v2.1.48-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.48)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.

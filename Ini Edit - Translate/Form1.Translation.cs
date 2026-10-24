@@ -54,6 +54,34 @@ namespace Ini_Edit___Translate
         }
 
         private OpenAiTranslation openAi;
+        private async Task TranslateInstallationSetAsync(int section, string from)
+        {
+            if (section < 0 || section > 4) throw new ArgumentOutOfRangeException(nameof(section));
+            string suffix = section == 0 ? "eep" : "eep" + (section + 1);
+            string[] tags = { "eng", "ger", "fra", "pol" }, languages = { "en", "de", "fr", "pl" };
+            int source = Array.IndexOf(languages, from);
+            if (source < 0 || source > 2) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
+            var names = tags.Select(tag => Controls.Find("n_" + tag + "_" + suffix, true).Single()).ToArray();
+            var descriptions = tags.Select(tag => Controls.Find("d_" + tag + "_" + suffix, true).Single()).ToArray();
+            string name = names[source].Text, description = descriptions[source].Text;
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(description))
+                throw new InvalidOperationException(Ui.Format("missingPair", "Name_" + tags[source].ToUpperInvariant(), "Desc_" + tags[source].ToUpperInvariant()));
+            var translatedNames = new string[4]; var translatedDescriptions = new string[4];
+            for (int target = 0; target < languages.Length; target++)
+            {
+                if (target == source) continue;
+                translatedNames[target] = await TranslateTextAsync(name, from, languages[target]);
+                translatedDescriptions[target] = await TranslateTextAsync(description, from, languages[target]);
+            }
+            translationCancellation?.Token.ThrowIfCancellationRequested();
+            // Publish a complete set together; errors leave the current set untouched.
+            for (int target = 0; target < languages.Length; target++)
+            {
+                if (target == source) continue;
+                names[target].Text = translatedNames[target]; descriptions[target].Text = translatedDescriptions[target];
+            }
+        }
+
         private CancellationTokenSource translationCancellation;
         private Form translationProgress;
         private bool translationOperationRunning;

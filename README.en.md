@@ -1,5 +1,21 @@
 # INI Edit Translate 2026
 
+## Version 2.1.48: translate installation set titles again
+
+Names and descriptions for all five installation sets, `Install_00` through
+`Install_04`, are translated again. Only model names in the model section remain
+protected. Source texts are retained; German and French still use English as the
+intermediate language.
+
+All five translation buttons and automatic import share the verified field mapping.
+The second set button now edits its own fields. A set is applied only after its
+complete translation; errors and cancellation retain its names and descriptions.
+
+91 local checks passed. An isolated installation set named “Detailmodell
+Großdiesellokomotive V140 001 DRG” was translated through real MyMemory calls,
+saved and reloaded; model names and an extra INI field were retained. The file on
+the remote gaming computer was not modified.
+
 ## Version 2.1.47: MyMemory and English as the intermediate language
 
 Select OpenAI API, ChatGPT plan or **MyMemory** under **Options → Translation settings**.
@@ -107,7 +123,7 @@ catalog formats have separate messages in DE/EN/FR. This update helps diagnose t
 reported remote failure; its cause is not yet confirmed. Settings, API keys and
 connections are retained.
 
-[Windows ZIP v2.1.47](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.47/INI-Edit-Translate-2026-v2.1.47-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.47)
+[Windows ZIP v2.1.48](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.48/INI-Edit-Translate-2026-v2.1.48-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.48)
 
 ## Version 2.1.40: ChatGPT sign-in
 
@@ -136,7 +152,7 @@ Real account authorization and translation still need testing.
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.47.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.48.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -156,7 +172,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.47](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.47/INI-Edit-Translate-2026-v2.1.47-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.47)
+[Download Windows ZIP v2.1.48](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.48/INI-Edit-Translate-2026-v2.1.48-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.48)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

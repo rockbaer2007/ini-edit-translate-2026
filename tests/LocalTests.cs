@@ -105,7 +105,7 @@ internal static class LocalTests
                     Assert(handler.Calls == 1 && (string)handler.Body["input"] == "Sun {0}", "cache/source");
                 }
             });
-            Test("model names are never translated in model or installation fields", () =>
+            Test("model names stay protected while all five installation set titles and descriptions translate", () =>
             {
                 var flags = BindingFlags.NonPublic | BindingFlags.Instance;
                 string[] tags = { "eng", "ger", "fra" }, languages = { "en", "de", "fr" }, selections = { "E", "D", "F" };
@@ -127,8 +127,15 @@ internal static class LocalTests
                         foreach (string lang in new[] { "en", "de", "fr", "pl" }.Where(l => l != languages[source])) translated[lang] = "description-" + lang;
                         var response = new JObject { ["status"] = "completed", ["output"] = new JArray(new JObject { ["type"] = "message", ["content"] = new JArray(new JObject { ["type"] = "output_text", ["text"] = translated.ToString() }) }) };
                         var handler = new Handler(response.ToString());
-                        handler.Reply = token => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(
-                            handler.Calls == 1 ? response.ToString() : Response("description-de", "description-fr", "description-pl")) });
+                        handler.Reply = token =>
+                        {
+                            string input = (string)handler.Body["input"];
+                            string prefix = input.Contains("_unchanged") || input.StartsWith("set-name-") ? "set-name-" : "description-";
+                            var values = new JObject();
+                            foreach (var property in ((JObject)handler.Body["text"]["format"]["schema"]["properties"]).Properties()) values[property.Name] = prefix + property.Name;
+                            var answer = JObject.Parse(Response()); answer["output"][1]["content"][0]["text"] = values.ToString();
+                            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(answer.ToString()) });
+                        };
                         using (var service = new OpenAiTranslation(Settings(), handler))
                         using (var cancellation = new CancellationTokenSource())
                         {
@@ -143,14 +150,16 @@ internal static class LocalTests
                                 ((Task)typeof(Form1).GetMethod(method, flags).Invoke(form, null)).GetAwaiter().GetResult();
                             }
                             finally { SynchronizationContext.SetSynchronizationContext(previousContext); }
-                            Assert(handler.Calls == (source == 0 ? 1 : 2) && (string)handler.Body["input"] ==
+                            Assert(handler.Calls == (source == 0 ? 1 : 2) * (section < 0 ? 1 : 2) && (string)handler.Body["input"] ==
                                 (source == 0 ? "original-eng" : "description-en"), "English pivot and cached target languages: " + method);
-                            foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
-                                Assert(((Control)typeof(Form1).GetField("n_" + tag + "_" + suffix, flags).GetValue(form)).Text == "DRG V140 " + tag + "_unchanged", "name changed: " + method);
                             string[] targetTags = { "eng", "ger", "fra", "pol" }, targetLanguages = { "en", "de", "fr", "pl" };
                             for (int target = 0; target < 4; target++)
+                            {
+                                Assert(((Control)typeof(Form1).GetField("n_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
+                                    (section < 0 || target == source ? "DRG V140 " + targetTags[target] + "_unchanged" : "set-name-" + targetLanguages[target]), "set title/source field mismatch: " + method);
                                 Assert(((Control)typeof(Form1).GetField("d_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
                                     (target == source ? "original-" + tags[source] : "description-" + targetLanguages[target]), "description field mismatch: " + method);
+                            }
                         }
                     }
                 }
@@ -159,6 +168,34 @@ internal static class LocalTests
                     Ini_Edit___Translate.Properties.Settings.Default.language = oldLanguage;
                     SynchronizationContext.SetSynchronizationContext(originalContext);
                 }
+            });
+            Test("failed installation translation leaves all set names and descriptions untouched", () =>
+            {
+                var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+                var context = SynchronizationContext.Current;
+                try
+                {
+                    using (var form = new Form1())
+                    {
+                        foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
+                        foreach (string prefix in new[] { "n_", "d_" })
+                            ((Control)typeof(Form1).GetField(prefix + tag + "_eep2", flags).GetValue(form)).Text = "original-" + prefix + tag;
+                        var handler = new Handler(Response());
+                        handler.Reply = token => Task.FromResult(new HttpResponseMessage(handler.Calls == 1 ? HttpStatusCode.OK : HttpStatusCode.ServiceUnavailable) { Content = new StringContent(Response()) });
+                        using (var service = new OpenAiTranslation(Settings(), handler))
+                        using (var cancellation = new CancellationTokenSource())
+                        {
+                            typeof(Form1).GetField("openAi", flags).SetValue(form, service);
+                            typeof(Form1).GetField("translationCancellation", flags).SetValue(form, cancellation);
+                            SynchronizationContext.SetSynchronizationContext(null);
+                            Fails(() => ((Task)typeof(Form1).GetMethod("TranslateInstallationSetAsync", flags).Invoke(form, new object[] { 1, "en" })).GetAwaiter().GetResult());
+                            foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
+                            foreach (string prefix in new[] { "n_", "d_" })
+                                Assert(((Control)typeof(Form1).GetField(prefix + tag + "_eep2", flags).GetValue(form)).Text == "original-" + prefix + tag, "partial installation output leaked");
+                        }
+                    }
+                }
+                finally { SynchronizationContext.SetSynchronizationContext(context); }
             });
             Test("translation output accepts only complete language JSON with optional single fence", () =>
             {
