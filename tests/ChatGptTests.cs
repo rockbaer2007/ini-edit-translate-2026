@@ -221,6 +221,49 @@ internal static class ChatGptTests
                     Assert(handler.Calls == 1, "single three-language response");
                 }
             });
+            test("ChatGPT validates body instead of relying on response MIME", () =>
+            {
+                var complete = Completed(); complete["object"] = "response";
+                foreach (string media in new[] { "application/json", "text/plain", "application/octet-stream", "missing" })
+                foreach (bool json in new[] { false, true })
+                {
+                    var handler = new Handler { Reply = request =>
+                    {
+                        Assert(request.Headers.Accept.Any(h => h.MediaType == "text/event-stream"), "explicit event-stream preference");
+                        var content = new StringContent(json ? complete.ToString() : CompleteStream(), Encoding.UTF8, media == "missing" ? "text/plain" : media);
+                        if (media == "missing") content.Headers.ContentType = null;
+                        return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = content });
+                    } };
+                    using (var translation = new OpenAiTranslation(PlanSettings(), handler, new Tokens()))
+                        Assert(translation.TranslateAsync("Sun {0}", "en", "de", CancellationToken.None).GetAwaiter().GetResult() == "Sonne {0}", "validated terminal body: " + media);
+                }
+                using (var input = new MemoryStream(Encoding.UTF8.GetBytes(new string(' ', 5000) + complete)))
+                    Assert((string)ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult()["status"] == "completed", "format detection across whitespace chunks");
+                using (var input = new MemoryStream(Encoding.UTF8.GetBytes("id: fixture\nretry: 1000\n\n" + CompleteStream())))
+                    Assert((string)ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult()["status"] == "completed", "valid SSE metadata prefix");
+            });
+            test("ChatGPT rejects HTTP 200 error pages and incomplete JSON without leaking contents", () =>
+            {
+                foreach (var body in new[] { "<html>SECRET-FIXTURE</html>", "{}", "{invalid", "{\"detail\":\"SECRET-FIXTURE\"}",
+                    "{\"error\":{\"code\":\"subscription_sharing_usage_unavailable\",\"message\":\"SECRET-FIXTURE\"}}",
+                    "{\"object\":\"response\",\"status\":\"in_progress\",\"output\":[]}" })
+                {
+                    var handler = new Handler { Reply = request => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(body, Encoding.UTF8, "application/json") }) };
+                    using (var translation = new OpenAiTranslation(PlanSettings(), handler, new Tokens()))
+                    {
+                        try { translation.TranslateAsync("Sun {0}", "en", "de", CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("invalid body should fail"); }
+                        catch (InvalidOperationException error) { Assert(error.Message.Contains("HTTP 200; media=json") && !error.Message.Contains("SECRET-FIXTURE"), "safe response format diagnostics"); }
+                    }
+                }
+            });
+            test("ChatGPT JSON response size is bounded", () =>
+            {
+                using (var input = new MemoryStream(Encoding.UTF8.GetBytes("{\"padding\":\"" + new string('x', 2 * 1024 * 1024) + "\"}")))
+                {
+                    try { ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("oversized JSON should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message == Ui.Text("cgStreamSize"), "response limit retained"); }
+                }
+            });
             test("ChatGPT rejects truncated incomplete failed and quota streams", () =>
             {
                 foreach (string stream in new[] { "data: {\"type\":\"response.output_text.delta\",\"delta\":\"partial\"}\n\n",

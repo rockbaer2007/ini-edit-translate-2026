@@ -117,6 +117,7 @@ namespace Ini_Edit___Translate
                 using (var request = new HttpRequestMessage(HttpMethod.Post, "https://api.openai.com/v1/responses"))
                 {
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", key.Trim());
+                    if (settings.UseChatGpt) request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/event-stream"));
                     request.Content = new StringContent(payload.ToString(Formatting.None), Encoding.UTF8, "application/json");
                     using (var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellation))
                     {
@@ -128,9 +129,18 @@ namespace Ini_Edit___Translate
                             JObject result;
                             if (settings.UseChatGpt)
                             {
-                                if (!string.Equals(response.Content.Headers.ContentType?.MediaType, "text/event-stream", StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException(Ui.Text("cgStreamFormat") + " (HTTP 200; shape=non-event-stream)");
-                                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                                    result = await ChatGptStream.ReadAsync(stream, deadline.Token).ConfigureAwait(false);
+                                try
+                                {
+                                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                                        result = await ChatGptStream.ReadAsync(stream, deadline.Token).ConfigureAwait(false);
+                                }
+                                catch (InvalidOperationException error)
+                                {
+                                    string media = response.Content.Headers.ContentType?.MediaType;
+                                    string category = media == null ? "missing" : media == "text/event-stream" ? "event-stream" :
+                                        media == "application/json" ? "json" : media == "text/html" ? "html" : media == "text/plain" ? "text" : "other";
+                                    throw new InvalidOperationException(error.Message + " (HTTP " + (int)response.StatusCode + "; media=" + category + ")");
+                                }
                             }
                             else
                             {
