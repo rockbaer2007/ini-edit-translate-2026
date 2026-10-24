@@ -319,4 +319,5 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="cgStreamSize" xml:space="preserve"><value>La réponse de traduction ChatGPT dépasse la taille maximale. Les textes existants sont conservés.</value></data>
   <data name="cgTranslationJson" xml:space="preserve"><value>Le résultat de traduction n’est pas un JSON valide au format de langues attendu. Les textes existants sont conservés.</value></data>
   <data name="cgProtocolJson" xml:space="preserve"><value>La réponse du serveur n’est pas un JSON valide. La connexion et les identifiants sont conservés.</value></data>
+  <data name="cgNoTranslationText" xml:space="preserve"><value>OpenAI a terminé la requête sans fournir de texte de traduction exploitable. Les textes existants sont conservés.</value></data>
 </root>

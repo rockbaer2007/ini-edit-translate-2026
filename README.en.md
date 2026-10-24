@@ -1,5 +1,22 @@
 # INI Edit Translate 2026
 
+## Version 2.1.46: retain finalized stream text
+
+If the final completion event omits translation text, the app now considers earlier
+finalized `response.output_item.done`, `response.content_part.done` and
+`response.output_text.done` events. Nothing is applied before `response.completed`
+with completed status. Accumulated deltas may undergo full JSON/language validation
+only then. Deltas without terminal success, errors, interruptions, refusals and gapped text
+parts are never treated as a successful translation.
+
+Empty output has a dedicated diagnostic with transport and fixed event counts,
+without response text, tokens or user identifiers. The actual remote event sequence
+still requires confirmation. 78 local checks passed without live API calls.
+Model names and original data are retained.
+
+[OpenAI Docs on streaming events](https://developers.openai.com/api/reference/resources/responses/streaming-events).
+
+
 ## Version 2.1.45: translation JSON output
 
 Instructions now explicitly request a JSON object with the three target-language keys;
@@ -63,7 +80,7 @@ catalog formats have separate messages in DE/EN/FR. This update helps diagnose t
 reported remote failure; its cause is not yet confirmed. Settings, API keys and
 connections are retained.
 
-[Windows ZIP v2.1.45](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.45/INI-Edit-Translate-2026-v2.1.45-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.45)
+[Windows ZIP v2.1.46](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.46/INI-Edit-Translate-2026-v2.1.46-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.46)
 
 ## Version 2.1.40: ChatGPT sign-in
 
@@ -92,7 +109,7 @@ Real account authorization and translation still need testing.
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.45.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.46.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -112,7 +129,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.45](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.45/INI-Edit-Translate-2026-v2.1.45-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.45)
+[Download Windows ZIP v2.1.46](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.46/INI-Edit-Translate-2026-v2.1.46-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.46)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

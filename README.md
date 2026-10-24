@@ -1,5 +1,22 @@
 # INI Edit Translate 2026
 
+## Version 2.1.46: fertige Stream-Texte erhalten
+
+Fehlt der Übersetzungstext im letzten Abschlussereignis, berücksichtigt die App nun
+die zuvor abgeschlossenen `response.output_item.done`, `response.content_part.done`
+und `response.output_text.done`. Übernommen wird erst nach `response.completed` mit
+Status `completed`. Bis dahin gesammelte Text-Deltas können erst dann die vollständige
+Sprach-/JSON-Prüfung durchlaufen. Deltas ohne Gesamtabschluss, Fehler, Abbrüche, Ablehnungen und lückenhafte
+Textteile werden nicht als erfolgreiche Übersetzung verwendet.
+
+Eine weiterhin leere Antwort bekommt eine eigene Meldung mit Transport und festen
+Ereigniszählern, ohne Antworttexte, Tokens oder Benutzerkennungen. Der konkrete
+Ereignisverlauf auf dem entfernten Rechner muss noch bestätigt werden. 78 lokale
+Prüfungen bestanden ohne echte API-Aufrufe. Modellnamen und Originaldaten bleiben erhalten.
+
+[OpenAI Docs zu Streaming-Ereignissen](https://developers.openai.com/api/reference/resources/responses/streaming-events).
+
+
 ## Version 2.1.45: JSON-Ausgabe der Übersetzung
 
 Die Anweisung fordert nun ausdrücklich ein JSON-Objekt mit den drei Zielsprachen
@@ -69,7 +86,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.45](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.45/INI-Edit-Translate-2026-v2.1.45-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.45)
+[Windows-ZIP v2.1.46](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.46/INI-Edit-Translate-2026-v2.1.46-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.46)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -125,12 +142,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.45.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.46.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.45 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.45/INI-Edit-Translate-2026-v2.1.45-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.45)
+[Windows-ZIP v2.1.46 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.46/INI-Edit-Translate-2026-v2.1.46-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.46)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.

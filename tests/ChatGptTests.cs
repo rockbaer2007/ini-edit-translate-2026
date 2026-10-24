@@ -264,6 +264,54 @@ internal static class ChatGptTests
                     catch (InvalidOperationException error) { Assert(error.Message == Ui.Text("cgStreamSize"), "response limit retained"); }
                 }
             });
+            test("ChatGPT retains finished text events until terminal success", () =>
+            {
+                var message = (JObject)Completed()["output"][0];
+                var part = (JObject)message["content"][0];
+                string terminal = Event(new JObject { ["type"] = "response.completed", ["response"] = new JObject { ["status"] = "completed", ["output"] = new JArray() } });
+                foreach (var done in new[] {
+                    new JObject { ["type"] = "response.output_item.done", ["output_index"] = 0, ["item"] = message.DeepClone() },
+                    new JObject { ["type"] = "response.content_part.done", ["output_index"] = 0, ["content_index"] = 0, ["part"] = part.DeepClone() },
+                    new JObject { ["type"] = "response.output_text.done", ["output_index"] = 0, ["content_index"] = 0, ["text"] = (string)part["text"] },
+                    new JObject { ["type"] = "response.output_text.delta", ["output_index"] = 0, ["content_index"] = 0, ["delta"] = (string)part["text"] } })
+                {
+                    string trace = null;
+                    using (var input = new MemoryStream(Encoding.UTF8.GetBytes(Event(done) + terminal)))
+                    {
+                        var result = ChatGptStream.ReadAsync(input, CancellationToken.None, value => trace = value).GetAwaiter().GetResult();
+                        Assert((string)result["output"][0]["content"][0]["text"] == (string)part["text"] && trace.Contains("transport=sse") && trace.Contains("events=2"), "finished text retained");
+                        Assert(!trace.Contains((string)part["text"]), "diagnostics contain counts only");
+                    }
+                    var handler = new Handler { Reply = request => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(Event(done) + terminal, Encoding.UTF8, "text/event-stream") }) };
+                    using (var translation = new OpenAiTranslation(PlanSettings(), handler, new Tokens()))
+                        Assert(translation.TranslateAsync("Sun {0}", "en", "de", CancellationToken.None).GetAwaiter().GetResult() == "Sonne {0}", "full translation from done event");
+                    using (var input = new MemoryStream(Encoding.UTF8.GetBytes(Event(done)))) Fails(() => ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult());
+                    using (var input = new MemoryStream(Encoding.UTF8.GetBytes(Event(done) + Event(new JObject { ["type"] = "response.failed" })))) Fails(() => ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult());
+                }
+            });
+            test("ChatGPT stream fallback rejects gaps and refusals and keeps terminal text authoritative", () =>
+            {
+                string terminal = Event(new JObject { ["type"] = "response.completed", ["response"] = new JObject { ["status"] = "completed", ["output"] = new JArray() } });
+                foreach (var done in new[] {
+                    new JObject { ["type"] = "response.output_text.done", ["output_index"] = 0, ["content_index"] = 1, ["text"] = "SECRET-FIXTURE" },
+                    new JObject { ["type"] = "response.content_part.done", ["output_index"] = 0, ["content_index"] = 0, ["part"] = new JObject { ["type"] = "refusal", ["refusal"] = "SECRET-FIXTURE" } },
+                    new JObject { ["type"] = "response.output_item.done", ["output_index"] = 0, ["item"] = new JObject { ["type"] = "message", ["status"] = "incomplete", ["content"] = new JArray() } } })
+                    using (var input = new MemoryStream(Encoding.UTF8.GetBytes(Event(done) + terminal))) Fails(() => ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult());
+                string early = Event(new JObject { ["type"] = "response.output_text.done", ["output_index"] = 0, ["content_index"] = 0, ["text"] = "EARLIER-FIXTURE" });
+                using (var input = new MemoryStream(Encoding.UTF8.GetBytes(early + CompleteStream())))
+                    Assert((string)ChatGptStream.ReadAsync(input, CancellationToken.None).GetAwaiter().GetResult()["output"][0]["content"][0]["text"] != "EARLIER-FIXTURE", "terminal text not overwritten");
+            });
+            test("ChatGPT does not accept invalid accumulated translation text", () =>
+            {
+                string delta = Event(new JObject { ["type"] = "response.output_text.delta", ["output_index"] = 0, ["content_index"] = 0, ["delta"] = "SECRET-FIXTURE" });
+                string terminal = Event(new JObject { ["type"] = "response.completed", ["response"] = new JObject { ["status"] = "completed", ["output"] = new JArray() } });
+                var handler = new Handler { Reply = request => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(delta + terminal, Encoding.UTF8, "text/event-stream") }) };
+                using (var translation = new OpenAiTranslation(PlanSettings(), handler, new Tokens()))
+                {
+                    try { translation.TranslateAsync("Sun {0}", "en", "de", CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("unfinished delta should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message.Contains("stage=translation-output") && error.Message.Contains("shape=other-text") && error.Message.Contains("deltas=1") && !error.Message.Contains("SECRET-FIXTURE"), "invalid-output diagnostics, no delta applied"); }
+                }
+            });
             test("ChatGPT rejects truncated incomplete failed and quota streams", () =>
             {
                 foreach (string stream in new[] { "data: {\"type\":\"response.output_text.delta\",\"delta\":\"partial\"}\n\n",

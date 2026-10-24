@@ -128,12 +128,13 @@ namespace Ini_Edit___Translate
                             if (!response.IsSuccessStatusCode)
                                 throw await OpenAiErrors.FromHttpAsync(response, settings.UseChatGpt).ConfigureAwait(false);
                             JObject result;
+                            string responseTrace = settings.UseChatGpt ? "transport=chatgpt" : "transport=api";
                             if (settings.UseChatGpt)
                             {
                                 try
                                 {
                                     using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                                        result = await ChatGptStream.ReadAsync(stream, deadline.Token).ConfigureAwait(false);
+                                        result = await ChatGptStream.ReadAsync(stream, deadline.Token, trace => responseTrace = trace).ConfigureAwait(false);
                                 }
                                 catch (InvalidOperationException error)
                                 {
@@ -161,7 +162,11 @@ namespace Ini_Edit___Translate
                                     if ((string)part["type"] == "output_text") output.Append((string)part["text"]);
                                 }
                             }
-                            var values = ParseTranslationOutput(output.ToString(), targets);
+                            if (output.Length == 0)
+                                throw new InvalidOperationException(Ui.Text("cgNoTranslationText") + "; stage=translation-output; shape=empty; " + responseTrace);
+                            JObject values;
+                            try { values = ParseTranslationOutput(output.ToString(), targets); }
+                            catch (InvalidOperationException error) { throw new InvalidOperationException(error.Message + "; " + responseTrace); }
                             translated = new Dictionary<string, string> { [from] = text };
                             foreach (var target in targets)
                             {
