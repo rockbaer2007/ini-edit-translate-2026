@@ -239,7 +239,7 @@
   <data name="incompleteResponse" xml:space="preserve"><value>OpenAI did not return a complete translation.</value></data>
   <data name="refusedResponse" xml:space="preserve"><value>OpenAI could not translate this text.</value></data>
   <data name="missingLanguages" xml:space="preserve"><value>The OpenAI response does not contain all target languages.</value></data>
-  <data name="changedTokens" xml:space="preserve"><value>Placeholders or formatting markers changed. The translation was discarded.</value></data>
+  <data name="changedTokens" xml:space="preserve"><value>Control codes, identifiers, version labels or formatting markers changed. The translation was discarded.</value></data>
   <data name="missingPair" xml:space="preserve"><value>Complete the {0} and {1} fields.</value></data>
   <data name="invalidArguments" xml:space="preserve"><value>Incomplete command: Required arguments or a file path are missing.</value></data>
   <data name="alreadyRunning" xml:space="preserve"><value>INI Edit Translate 2026 is already running.</value></data>

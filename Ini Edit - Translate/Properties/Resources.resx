@@ -852,7 +852,7 @@
   <data name="incompleteResponse" xml:space="preserve"><value>OpenAI hat keine vollständige Übersetzung geliefert.</value></data>
   <data name="refusedResponse" xml:space="preserve"><value>OpenAI konnte diesen Text nicht übersetzen.</value></data>
   <data name="missingLanguages" xml:space="preserve"><value>Die OpenAI-Antwort enthält nicht alle Zielsprachen.</value></data>
-  <data name="changedTokens" xml:space="preserve"><value>Platzhalter oder Formatmarkierungen wurden verändert. Die Übersetzung wurde verworfen.</value></data>
+  <data name="changedTokens" xml:space="preserve"><value>Steuerzeichen, Kennungen, Versionsangaben oder Formatmarkierungen wurden verändert. Die Übersetzung wurde verworfen.</value></data>
   <data name="missingPair" xml:space="preserve"><value>Bitte die Felder {0} und {1} ausfüllen.</value></data>
   <data name="invalidArguments" xml:space="preserve"><value>Aufruf unvollständig: Erforderliche Argumente oder ein Dateipfad fehlen.</value></data>
   <data name="alreadyRunning" xml:space="preserve"><value>INI Edit Translate 2026 läuft bereits.</value></data>

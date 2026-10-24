@@ -42,6 +42,51 @@ internal static class MyMemoryTests
 
     internal static void Run(Action<string, Action> test)
     {
+        test("EEP line-break controls, complete constructor tags and game versions stay outside MyMemory requests", () =>
+        {
+            string source = "Antrieb (GK3) für EEP16.2[e]Laterne (AG3)[e]eep16.2 (DL1) EEP 16.2 EEP17";
+            var handler = new Handler { Reply = (request, token) => {
+                string text = HttpUtility.ParseQueryString(request.RequestUri.Query)["q"];
+                Assert(!text.Contains("GK3") && !text.Contains("AG3") && !text.Contains("DL1") && !text.Contains("EEP") && !text.Contains("eep") && !text.Contains("[e]") && !text.Contains("(") && !text.Contains(")"), "protected tokens never submitted, including their delimiters");
+                return Task.FromResult(Response(text == "Antrieb" ? "Drive" : text == "für" ? "for" : text == "Laterne" ? "Lamp" : text));
+            } };
+            using (var service = new OpenAiTranslation(new OpenAiSettings { UseMyMemory = true }, handler))
+            {
+                string result = service.TranslateAsync(source, "de", "en", CancellationToken.None).GetAwaiter().GetResult();
+                Assert(result == "Drive (GK3) for EEP16.2[e]Lamp (AG3)[e]eep16.2 (DL1) EEP 16.2 EEP17", "exact literals restored in their original sequence and boundaries");
+            }
+        });
+        test("constructor recognition is generic and absent identifiers are never invented", () =>
+        {
+            foreach (string code in new[] { "(GK3)", "(AG3)", "(DL1)", "(ab7)", "(XY12)", "(7AB)", "(A9B)", "(AB-CD3)", "( AB12 )" })
+            {
+                var handler = new Handler();
+                using (var service = new OpenAiTranslation(new OpenAiSettings { UseMyMemory = true }, handler))
+                    Assert(Translate(service, "Lamp " + code) == "Lamp " + code, "generic identifier retained: " + code);
+                Assert(handler.Queries.SequenceEqual(new[] { "Lamp" }), "no constructor list required");
+            }
+            foreach (string addition in new[] { "", " (Winter)", " (Sommer)" })
+            {
+                var parts = MyMemoryTranslation.Split("Lamp" + addition);
+                Assert(!parts.Any(part => !part.Translate && part.Text.Contains("Winter")), "ordinary words remain translatable");
+                var handler = new Handler();
+                using (var service = new OpenAiTranslation(new OpenAiSettings { UseMyMemory = true }, handler))
+                    Assert(Translate(service, "Lamp" + addition) == "Lamp" + addition, "no identifier appended");
+            }
+            Fails(() => OpenAiTranslation.ValidateTokens("Lamp", "Lampe (GK3)"));
+        });
+        test("legacy bare constructor codes remain intact at the start middle or end", () =>
+        {
+            foreach (string source in new[] { "GK3 Lamp", "ab7 Lamp", "Lamp GK3", "Lamp GK3 Drive", "GK3_Lamp", "GK3-Lamp", "Lamp (ab7)", "XY12: Lamp" })
+            {
+                var handler = new Handler();
+                using (var service = new OpenAiTranslation(new OpenAiSettings { UseMyMemory = true }, handler))
+                    Assert(Translate(service, source) == source, "legacy position and separators retained");
+                Assert(handler.Queries.All(query => !query.Contains("GK3") && !query.Contains("ab7") && !query.Contains("XY12")), "bare identifiers excluded from online query");
+            }
+            Fails(() => OpenAiTranslation.ValidateTokens("GK3 Drive", "KG3 Antrieb"));
+            Fails(() => OpenAiTranslation.ValidateTokens("Drive", "Antrieb GK3"));
+        });
         test("German and French use English as pivot and cache the intermediate translation", () =>
         {
             foreach (string source in new[] { "de", "fr" })

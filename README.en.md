@@ -1,5 +1,32 @@
 # INI Edit Translate 2026
 
+## Version 2.1.50: protect EEP controls, constructor codes and versions
+
+`[e]` remains an EEP line-break control, never a translated word or an actual newline.
+Exact spelling, count and order of protected markers are validated.
+
+Constructor codes are recognized by letter/digit patterns without a fixed name list,
+including `(GK3)`, `(AG3)`, `(DL1)` and legacy bare codes at the start, middle or end.
+No code is added when none exists. Ordinary additions such as `(Winter)` remain
+translatable. Unusual letter-only codes cannot reliably be distinguished from
+ordinary words without an additional list.
+
+Game versions such as `EEP16.2`, `eep16.2` and `EEP 16.2` retain their case and punctuation.
+MyMemory never receives protected segments for translation; changed or invented codes
+and controls in OpenAI/ChatGPT results are rejected. Existing rollback remains active.
+
+A configuration entry introduced in 2.1.49 could prevent application startup.
+This is fixed and covered by a test of the shipped configuration.
+**If 2.1.49 does not start:** Back up `INI Edit Translate 2026.exe.config`,
+download the additional configuration asset from release 2.1.50, rename it to
+`INI Edit Translate 2026.exe.config` and replace the file beside the EXE.
+Start the editor and install the normal 2.1.50 update. Do not replace INI files,
+databases or personal settings.
+
+99 local checks passed. An isolated installation test containing a leading code,
+game version, parenthesized code and two `[e]` controls was translated through real
+MyMemory calls, saved and reloaded. Original files and credentials are retained.
+
 ## Version 2.1.49: keep the last folder
 
 Enable **Keep last folder** under **About → Settings**, then **Save**.
@@ -135,7 +162,7 @@ catalog formats have separate messages in DE/EN/FR. This update helps diagnose t
 reported remote failure; its cause is not yet confirmed. Settings, API keys and
 connections are retained.
 
-[Windows ZIP v2.1.49](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.49/INI-Edit-Translate-2026-v2.1.49-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.49)
+[Windows ZIP v2.1.50](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.50/INI-Edit-Translate-2026-v2.1.50-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.50)
 
 ## Version 2.1.40: ChatGPT sign-in
 
@@ -164,7 +191,7 @@ Real account authorization and translation still need testing.
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.49.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.50.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -184,7 +211,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.49](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.49/INI-Edit-Translate-2026-v2.1.49-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.49)
+[Download Windows ZIP v2.1.50](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.50/INI-Edit-Translate-2026-v2.1.50-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.50)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

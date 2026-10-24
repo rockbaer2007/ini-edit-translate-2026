@@ -175,6 +175,15 @@ internal static class LocalTests
                 }
                 finally { settings.rememberLastFolder = remember; settings.read_only = readOnly; settings.msg_on = message; settings.culture_l = language; CultureInfo.CurrentUICulture = culture; SynchronizationContext.SetSynchronizationContext(context); }
             });
+            Test("shipped application configuration loads all user and application settings", () =>
+            {
+                var map = new System.Configuration.ExeConfigurationFileMap { ExeConfigFilename = typeof(Form1).Assembly.Location + ".config" };
+                var configuration = System.Configuration.ConfigurationManager.OpenMappedExeConfiguration(map, System.Configuration.ConfigurationUserLevel.None);
+                var user = (System.Configuration.ClientSettingsSection)configuration.GetSection("userSettings/Ini_Edit___Translate.Properties.Settings");
+                var application = (System.Configuration.ClientSettingsSection)configuration.GetSection("applicationSettings/Ini_Edit___Translate.Properties.Settings");
+                Assert(user.Settings.Count > 1 && user.Settings.Get("rememberLastFolder").Value.ValueXml.InnerText == "False", "new and existing user settings deserialize together");
+                Assert(application.Settings.Count > 0, "application settings deserialize");
+            });
             Test("three target languages, one request, unchanged source", () =>
             {
                 var handler = new Handler(Response());
@@ -213,7 +222,7 @@ internal static class LocalTests
                             string input = (string)handler.Body["input"];
                             string prefix = input.Contains("_unchanged") || input.StartsWith("set-name-") ? "set-name-" : "description-";
                             var values = new JObject();
-                            foreach (var property in ((JObject)handler.Body["text"]["format"]["schema"]["properties"]).Properties()) values[property.Name] = prefix + property.Name;
+                            foreach (var property in ((JObject)handler.Body["text"]["format"]["schema"]["properties"]).Properties()) values[property.Name] = prefix + property.Name + (input.Contains("V140") ? " V140" : "");
                             var answer = JObject.Parse(Response()); answer["output"][1]["content"][0]["text"] = values.ToString();
                             return Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(answer.ToString()) });
                         };
@@ -237,7 +246,7 @@ internal static class LocalTests
                             for (int target = 0; target < 4; target++)
                             {
                                 Assert(((Control)typeof(Form1).GetField("n_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
-                                    (section < 0 || target == source ? "DRG V140 " + targetTags[target] + "_unchanged" : "set-name-" + targetLanguages[target]), "set title/source field mismatch: " + method);
+                                    (section < 0 || target == source ? "DRG V140 " + targetTags[target] + "_unchanged" : "set-name-" + targetLanguages[target] + " V140"), "set title/source field mismatch: " + method);
                                 Assert(((Control)typeof(Form1).GetField("d_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
                                     (target == source ? "original-" + tags[source] : "description-" + targetLanguages[target]), "description field mismatch: " + method);
                             }
@@ -390,6 +399,20 @@ internal static class LocalTests
             {
                 OpenAiTranslation.ValidateTokens("A [e] %s {0} <b>\\n", "B [e] %s {0} <b>\\n");
                 Fails(() => OpenAiTranslation.ValidateTokens("A [e] %s", "B [e] %d"));
+            });
+            Test("constructor and EEP version mutations are rejected before applying OpenAI results", () =>
+            {
+                string source = "Drive (GK3) for EEP16.2[e]Lamp (AG3)[e]eep16.2 (DL1)";
+                OpenAiTranslation.ValidateTokens(source, "Antrieb (GK3) für EEP16.2[e]Laterne (AG3)[e]eep16.2 (DL1)");
+                foreach (string changed in new[] {
+                    source.Replace("(GK3)", "(GK3pressure)"), source.Replace("(GK3)", "GK3"),
+                    source.Replace("EEP16.2", "EEP16"), source.Replace("EEP16.2", "eep16.2"),
+                    source.Replace("[e]", "\n"), source + "[e]", source.Replace("[e]", "[e]\n"),
+                    source.Replace("(GK3)", "(TMP1)").Replace("(AG3)", "(GK3)").Replace("(TMP1)", "(AG3)") })
+                    Fails(() => OpenAiTranslation.ValidateTokens(source, changed));
+                var handler = new Handler(Response(source.Replace("(GK3)", "(GK3pressure)"), source, source));
+                using (var service = new OpenAiTranslation(Settings(), handler)) Fails(() => Translate(service, source));
+                Assert(((string)handler.Body["instructions"]).Contains("EEP program line-break control"), "control semantics are explicit");
             });
             Test("table export retains final row, Unicode and escaping", () =>
             {
