@@ -63,6 +63,7 @@ namespace Ini_Edit___Translate
             string name = names[source].Text, description = descriptions[source].Text;
             var translatedNames = new string[4]; var translatedDescriptions = new string[4];
             bool hasName = ModelNameTranslation.HasDescriptiveWords(name, from), hasDescription = !string.IsNullOrWhiteSpace(description);
+            if (hasName || hasDescription) CaptureTranslationState();
             for (int target = 0; target < 4; target++)
             {
                 if (target == source) continue;

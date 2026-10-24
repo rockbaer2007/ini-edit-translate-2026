@@ -270,6 +270,10 @@ internal static class LocalTests
                         ((Task)typeof(Form1).GetMethod("gertrans_n", flags).Invoke(form, null)).GetAwaiter().GetResult();
                         Assert(typeof(Form1).GetField("openAi", flags).GetValue(form) == null, "no provider opened for name-only translation");
                         typeof(Form1).GetMethod("inischreiben2", flags).Invoke(form, new object[] { file });
+                        var restore = (Action)typeof(Form1).GetField("restoreTranslation", flags).GetValue(form);
+                        Assert(restore != null, "local-only names retain a recovery snapshot for later failures");
+                        restore();
+                        Assert(((Control)typeof(Form1).GetField("n_eng_txt", flags).GetValue(form)).Text == "Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter", "later failure can restore the original model names");
                     }
                     var saved = new UnicodeIniFile(file);
                     Assert(saved["FileInfo"]["Name_ENG"] == "House Helios Typ4 UD1 (GK3) EEP16.2[e]Winter", "English name saved");
