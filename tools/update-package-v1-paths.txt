@@ -1,0 +1,63 @@
+# Frozen package paths verified with the actual 2.1.53 updater.
+# Keep this contract for clients predating support for additional archive paths.
+de/INI Edit Translate 2026.resources.dll
+docs/dictionary-review.json
+docs/dictionary-review.md
+docs/images/editor-de.png
+docs/images/editor-en.png
+docs/images/editor-fr.png
+en/INI Edit Translate 2026.resources.dll
+fr/INI Edit Translate 2026.resources.dll
+help/de/Info_trans.resources.dll
+help/en/Info_trans.resources.dll
+help/estate.csv
+help/fbclient.dll
+help/fbembed.dll
+help/firebird.conf
+help/firebird.msg
+help/FirebirdSql.Data.FirebirdClient.dll
+help/fr/Info_trans.resources.dll
+help/goods.csv
+help/ib_util.dll
+help/iconhelp.csv
+help/iconhelp.dat
+help/icudt30.dll
+help/icuin30.dll
+help/icuuc30.dll
+help/IET2.FDB
+help/Info_trans.exe
+help/Info_trans.exe.config
+help/intl/fbintl.conf
+help/intl/fbintl.dll
+help/landscape.csv
+help/licenses/Firebird-provider-license.txt
+help/licenses/Firebird-provider-readme.txt
+help/Microsoft.VC80.CRT.manifest
+help/msvcp80.dll
+help/msvcr80.dll
+help/object.csv
+help/REFERENCE-DATA.md
+help/signals.csv
+help/stock.csv
+help/twb.csv
+help/udf/fbudf.dll
+help/udf/fbudf.sql
+help/udf/fbudf.txt
+help/udf/ib_udf.dll
+help/udf/ib_udf.sql
+help/udf/ib_udf2.sql
+help/ws_D_E_F.csv
+help/ws_D_E.csv
+IET.Updater.exe
+Info.de.rtf
+Info.en.rtf
+Info.fr.rtf
+Info.rtf
+INI Edit Translate 2026.exe
+INI Edit Translate 2026.exe.config
+IniFile.dll
+LICENSE
+Newtonsoft.Json.dll
+README.en.md
+README.fr.md
+README.md

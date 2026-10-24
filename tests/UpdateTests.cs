@@ -176,16 +176,20 @@ internal static class UpdateTests
             });
             Test("download checksum mismatch is rejected", () => {
                 var job=Package(); var bytes=File.ReadAllBytes(job.ZipPath);
+                var values=new List<int>(); var phases=new List<UpdatePhase>();
                 using(var client=new GithubUpdateClient(new Handler{Reply=(request,token)=>Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK){
                     Content=request.RequestUri.AbsolutePath.EndsWith(".txt") ? (HttpContent)new StringContent(new string('0',64)+"  test.zip") : new ByteArrayContent(bytes)})})) {
-                    Fails(()=>client.Download(new GithubRelease{ZipName="test.zip",ZipUrl="https://github.com/test.zip",ChecksumsUrl="https://github.com/hash.txt",Version=new Version(job.Version)},Folder(),CancellationToken.None,null).GetAwaiter().GetResult()); }
+                    Fails(()=>client.Download(new GithubRelease{ZipName="test.zip",ZipUrl="https://github.com/test.zip",ChecksumsUrl="https://github.com/hash.txt",Version=new Version(job.Version)},Folder(),CancellationToken.None,new InlineProgress<int>(values.Add),new InlineProgress<UpdatePhase>(phases.Add)).GetAwaiter().GetResult());
+                    Assert(!values.Contains(100) && phases.Contains(UpdatePhase.Validating) && !phases.Contains(UpdatePhase.Ready)); }
             });
             Test("verified download is staged before application shutdown",()=>{
                 var job=Package(); var bytes=File.ReadAllBytes(job.ZipPath);
+                var values=new List<int>(); var phases=new List<UpdatePhase>();
                 using(var client=new GithubUpdateClient(new Handler{Reply=(request,token)=>Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK){
                     Content=request.RequestUri.AbsolutePath.EndsWith(".txt") ? (HttpContent)new StringContent(job.Sha256+"  test.zip") : new ByteArrayContent(bytes)})})) {
-                    var prepared=client.Download(new GithubRelease{ZipName="test.zip",ZipUrl="https://github.com/test.zip",ChecksumsUrl="https://github.com/hash.txt",Version=new Version(job.Version)},Folder(),CancellationToken.None,null).GetAwaiter().GetResult();
-                    Assert(prepared.Sha256==job.Sha256); Unchanged(job); }
+                    var prepared=client.Download(new GithubRelease{ZipName="test.zip",ZipUrl="https://github.com/test.zip",ChecksumsUrl="https://github.com/hash.txt",Version=new Version(job.Version)},Folder(),CancellationToken.None,new InlineProgress<int>(values.Add),new InlineProgress<UpdatePhase>(phases.Add)).GetAwaiter().GetResult();
+                    Assert(prepared.Sha256==job.Sha256 && values.Last()==100 && values.Take(values.Count-1).All(value=>value<100));
+                    Assert(phases.SequenceEqual(new[]{UpdatePhase.Downloading,UpdatePhase.Validating,UpdatePhase.Ready})); Unchanged(job); }
             });
             Test("redirect to another host is rejected",()=>{
                 using(var client=new GithubUpdateClient(new Handler{Reply=(request,token)=>{

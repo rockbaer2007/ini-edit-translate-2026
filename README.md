@@ -9,10 +9,18 @@ belegter fremdsprachiger Kürzel. Die bisher leere Kr.-Zeile ist als Gleiskreuzu
 Ein Klick auf eine Zelle kopiert deren Inhalt wie in den bestehenden Nachschlagetabellen.
 Die Tabelle ist schreibgeschützt, Spalten können sortiert werden; lange Texte werden
 umgebrochen. Der Tab heißt auf Englisch **Railway abbreviations**, auf Französisch
-**Abréviations ferroviaires**. Die Datei `help/railway-abbreviations.csv` gehört zum
-vollständigen Paket. Sie ist eine Nachschlagetabelle und ändert keine automatischen
+**Abréviations ferroviaires**. Die Tabelle ist in Info_trans eingebettet. Eine vorhandene externe Datei
+`help/railway-abbreviations.csv` kann weiterhin verwendet werden. Sie ist eine Nachschlagetabelle und ändert keine automatischen
 Übersetzungsregeln. Vorher Backup erstellt; Wörterbuch, Datenbank, Einstellungen,
 Zugangsdaten und die externe Konstrukteursliste bleiben erhalten.
+Das Update-ZIP verwendet nur Dateipfade, die auch der Updater aus 2.1.53 akzeptiert.
+Download und Paketprüfung sind getrennte Schritte; 100 % wird erst nach erfolgreicher
+Prüfung angezeigt. Fehlerdetails stehen im Dialog, ein erneuter Versuch ist möglich.
+Für Visual Studio bleibt .NET Framework 4.8 erhalten. Beide Projekte verwenden den
+Framework-Designer außerhalb des VS-Prozesses; Info_trans referenziert System.Configuration.
+Nach der Änderung die Projektmappe einmal neu laden. Entwurfszeit-Build und
+WinForms-DesignSurface wurden geprüft; Visual Studio selbst wurde nicht ferngesteuert.
+
 114 lokale Prüfungen bestanden, einschließlich Tabelleninhalt und Oberfläche
 DE/EN/FR bei 100 und 150 Prozent Skalierung. Keine echten API-Anfragen.
 

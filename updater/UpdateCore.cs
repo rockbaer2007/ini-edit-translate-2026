@@ -84,7 +84,8 @@ namespace Iet.Update
             if (new[] { MainExe.ToLowerInvariant(), MainExe.ToLowerInvariant() + ".config", "iet.updater.exe",
                 "inifile.dll", "newtonsoft.json.dll", "info.rtf", "info.de.rtf", "info.en.rtf", "info.fr.rtf",
                 "license", "readme.md", "readme.en.md", "readme.fr.md",
-                "docs/dictionary-review.md", "docs/dictionary-review.json" }.Contains(name)) return true;
+                "docs/dictionary-review.md", "docs/dictionary-review.json", "docs/railway-glossary.md", "docs/constructor-codes.txt",
+                "help/railway-abbreviations.csv" }.Contains(name)) return true;
             foreach (string locale in new[] { "de", "en", "fr" })
             {
                 if (name == locale + "/ini edit translate 2026.resources.dll" ||

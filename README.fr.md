@@ -10,10 +10,19 @@ pour une traversée de voies. Cliquer sur une cellule copie son contenu, comme
 dans les autres tableaux de référence. Le tableau est en lecture seule, les colonnes
 peuvent être triées et les textes longs passent à la ligne.
 L’onglet allemand s’appelle **Bahnabkürzung**, l’anglais **Railway abbreviations**.
-Le paquet complet inclut `help/railway-abbreviations.csv`. Ce tableau de référence
+Le tableau est intégré dans Info_trans. Un fichier externe existant
+`help/railway-abbreviations.csv` reste utilisable. Ce tableau de référence
 ne modifie pas les règles de traduction automatique. Sauvegarde effectuée avant
 modification ; dictionnaire, base de données, paramètres, identifiants d’accès et
 liste externe des constructeurs sont conservés.
+Le ZIP de mise à jour utilise uniquement les chemins acceptés par le programme
+de mise à jour 2.1.53. Téléchargement et validation sont distincts ; 100 % n’est affiché
+qu’après validation. Les détails d’erreur sont visibles et une nouvelle tentative est possible.
+Les deux projets conservent .NET Framework 4.8 et utilisent son concepteur Visual Studio
+hors processus. Info_trans référence explicitement System.Configuration.
+Recharger la solution après modification. Compilation de conception et chargement
+WinForms DesignSurface vérifiés ; Visual Studio lui-même n’a pas été piloté à distance.
+
 114 vérifications locales réussies : contenu du tableau et affichage DE/EN/FR
 aux échelles 100 et 150 %, sans appel réel aux API.
 

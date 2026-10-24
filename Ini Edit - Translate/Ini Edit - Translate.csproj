@@ -9,6 +9,7 @@
     <RootNamespace>Ini_Edit___Translate</RootNamespace>
     <AssemblyName>INI Edit Translate 2026</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>

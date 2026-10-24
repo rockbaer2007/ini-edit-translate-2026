@@ -33,8 +33,22 @@ namespace Info_trans
         {
             if (!File.Exists(PathFor(filename)) && filename.EndsWith(".dat", StringComparison.OrdinalIgnoreCase))
                 filename = Path.ChangeExtension(filename, ".csv");
-            var table = new DataTable();
             using (var parser = new TextFieldParser(PathFor(filename), System.Text.Encoding.UTF8, true))
+                return ReadTable(parser, filename);
+        }
+
+        internal static DataTable ReadRailwayTable()
+        {
+            const string filename = "railway-abbreviations.csv";
+            if (File.Exists(PathFor(filename))) return ReadTable(filename);
+            using (var stream = typeof(DataFiles).Assembly.GetManifestResourceStream("IET.RailwayAbbreviations.csv"))
+            using (var parser = new TextFieldParser(stream ?? throw new InvalidDataException("Railway reference resource missing."), System.Text.Encoding.UTF8, true))
+                return ReadTable(parser, filename);
+        }
+
+        private static DataTable ReadTable(TextFieldParser parser, string filename)
+        {
+            var table = new DataTable();
             {
                 parser.SetDelimiters(";");
                 parser.HasFieldsEnclosedInQuotes = true;

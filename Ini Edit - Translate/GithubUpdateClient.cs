@@ -11,6 +11,15 @@ using Newtonsoft.Json.Linq;
 
 namespace Ini_Edit___Translate
 {
+    internal enum UpdatePhase { Downloading, Validating, Ready }
+
+    internal sealed class InlineProgress<T> : IProgress<T>
+    {
+        private readonly Action<T> report;
+        internal InlineProgress(Action<T> report) { this.report = report; }
+        public void Report(T value) { report(value); }
+    }
+
     internal sealed class GithubRelease
     {
         internal Version Version;
@@ -115,8 +124,9 @@ namespace Ini_Edit___Translate
             };
         }
 
-        internal async Task<UpdateJob> Download(GithubRelease release, string directory, CancellationToken cancel, IProgress<int> progress)
+        internal async Task<UpdateJob> Download(GithubRelease release, string directory, CancellationToken cancel, IProgress<int> progress, IProgress<UpdatePhase> phase = null)
         {
+            phase?.Report(UpdatePhase.Downloading);
             byte[] checksumBytes = await Read(new Uri(release.ChecksumsUrl), 128 * 1024, cancel);
             string[] matches = System.Text.Encoding.UTF8.GetString(checksumBytes).Split('\n')
                 .Select(line => Regex.Match(line.Trim().TrimStart('\ufeff'), @"^([a-fA-F0-9]{64})\s+\*?(.+)$"))
@@ -126,15 +136,23 @@ namespace Ini_Edit___Translate
             string digest = release.Digest;
             if (!string.IsNullOrWhiteSpace(digest) && digest != "sha256:" + matches[0])
                 throw new InvalidDataException("GitHub digest differs.");
-            byte[] zip = await Read(new Uri(release.ZipUrl), 128 * 1024 * 1024, cancel, progress);
+            byte[] zip = await Read(new Uri(release.ZipUrl), 128 * 1024 * 1024, cancel,
+                new InlineProgress<int>(value => progress?.Report(Math.Max(0, Math.Min(90, value * 90 / 100))))).ConfigureAwait(false);
             cancel.ThrowIfCancellationRequested();
-            Directory.CreateDirectory(directory);
+            phase?.Report(UpdatePhase.Validating);
+            progress?.Report(92);
             string zipPath = Path.Combine(directory, release.ZipName);
-            File.WriteAllBytes(zipPath, zip);
             var job = new UpdateJob { ZipPath = zipPath, Sha256 = matches[0], Version = release.Version.ToString() };
             // Reject corrupt or unexpected packages while the current application is still open.
-            await Task.Run(() => UpdateCore.Extract(job, Path.Combine(directory, "validation"), cancel), cancel);
+            await Task.Run(() => {
+                cancel.ThrowIfCancellationRequested();
+                Directory.CreateDirectory(directory);
+                File.WriteAllBytes(zipPath, zip);
+                UpdateCore.Extract(job, Path.Combine(directory, "validation"), cancel);
+            }, cancel).ConfigureAwait(false);
             cancel.ThrowIfCancellationRequested();
+            progress?.Report(100);
+            phase?.Report(UpdatePhase.Ready);
             return job;
         }
 

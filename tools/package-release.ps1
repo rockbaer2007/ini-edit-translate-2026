@@ -13,7 +13,7 @@ $mainFiles = @('INI Edit Translate 2026.exe','INI Edit Translate 2026.exe.config
 # Package only the intended main files; the complete helper belongs under help/.
 $packageFiles = @($mainFiles | ForEach-Object { Get-Item -LiteralPath (Join-Path $runtime $_) })
 $packageFiles += @(Get-ChildItem -LiteralPath (Join-Path $runtime 'help') -File -Recurse |
-    Where-Object { $_.Extension -notin @('.pdb','.xml','.log') })
+    Where-Object { $_.Extension -notin @('.pdb','.xml','.log') -and $_.Name -ne 'railway-abbreviations.csv' })
 foreach ($locale in @('de','en','fr')) {
     $packageFiles += Get-Item -LiteralPath (Join-Path $runtime "$locale/INI Edit Translate 2026.resources.dll")
 }
@@ -31,15 +31,13 @@ Copy-Item -Path (Join-Path $repoRoot 'docs/images/*.png') -Destination (Join-Pat
 foreach ($filename in @('dictionary-review.md','dictionary-review.json')) {
     Copy-Item -LiteralPath (Join-Path $repoRoot "docs/$filename") -Destination (Join-Path $stage 'docs')
 }
-Copy-Item -LiteralPath (Join-Path $repoRoot 'docs/railway-glossary.md') -Destination (Join-Path $stage 'docs/railway-glossary.md')
-Copy-Item -LiteralPath (Join-Path $repoRoot 'Ini Edit - Translate/ConstructorCodes.txt') -Destination (Join-Path $stage 'docs/constructor-codes.txt')
 Copy-Item -LiteralPath (Join-Path $repoRoot 'Info_trans/reference-data/README.md') -Destination (Join-Path $stage 'help/REFERENCE-DATA.md')
 # Always ship the untouched source database, rather than an opened runtime copy.
 Copy-Item -LiteralPath (Join-Path $repoRoot 'Info_trans/reference-data/IET2.FDB') -Destination (Join-Path $stage 'help/IET2.FDB') -Force
 $required = @('INI Edit Translate 2026.exe','INI Edit Translate 2026.exe.config','IET.Updater.exe','IniFile.dll','Info.rtf',
     'Newtonsoft.Json.dll','help/Info_trans.exe','help/Info_trans.exe.config','help/FirebirdSql.Data.FirebirdClient.dll',
-    'help/iconhelp.csv','help/twb.csv','help/ws_D_E.csv','help/ws_D_E_F.csv','help/object.csv','help/railway-abbreviations.csv',
-    'docs/dictionary-review.md','docs/dictionary-review.json','docs/railway-glossary.md','docs/constructor-codes.txt',
+    'help/iconhelp.csv','help/twb.csv','help/ws_D_E.csv','help/ws_D_E_F.csv','help/object.csv',
+    'docs/dictionary-review.md','docs/dictionary-review.json',
     'help/estate.csv','help/goods.csv','help/landscape.csv','help/stock.csv','help/signals.csv',
     'help/licenses/Firebird-provider-license.txt','help/IET2.FDB','help/iconhelp.dat',
     'help/fbembed.dll','help/fbclient.dll','help/ib_util.dll','help/firebird.conf','help/firebird.msg',
@@ -72,6 +70,14 @@ if (Get-ChildItem -LiteralPath $stage -File -Recurse | Where-Object { $_.Name -i
 foreach ($setting in $configuration.SelectNodes('//setting')) {
     if ($setting.name -in @('sshname','sshpw','sshhost','key1','key2','username','regstring_n','regstring_k') -and
         -not [string]::IsNullOrWhiteSpace($setting.value.InnerText)) { throw 'Nonempty private default' }
+}
+# Older clients validate ZIP paths before they can launch the new updater.
+# A new updater cannot repair an incompatible archive it never gets to install.
+$compatiblePaths = @(Get-Content -LiteralPath (Join-Path $PSScriptRoot 'update-package-v1-paths.txt') |
+    Where-Object { $_ -and -not $_.StartsWith('#') })
+foreach ($item in Get-ChildItem -LiteralPath $stage -File -Recurse) {
+    $relative = $item.FullName.Substring($stage.Length).TrimStart('\','/').Replace('\','/')
+    if ($relative -notin $compatiblePaths) { throw "Path is incompatible with installed v1 updaters: $relative" }
 }
 $zip = Join-Path $outputRoot "INI-Edit-Translate-2026-v$shortVersion-windows.zip"
 if (Test-Path -LiteralPath $zip) { throw "Package already exists: $zip" }

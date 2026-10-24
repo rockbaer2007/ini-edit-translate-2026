@@ -31,10 +31,12 @@ jobs:
         run: ./tests/bin/database/IET.DatabaseTests.exe "Info_trans/bin/Release" "database-test-output"
       - name: Build update tests
         run: msbuild tests/IET.UpdateTests.csproj /t:Build /v:minimal
-      - name: Verify update installation and rollback in temporary folders
-        run: ./tests/bin/updates/IET.UpdateTests.exe "Ini Edit - Translate/bin/Release"
       - name: Package both programs with reference data
         run: ./tools/package-release.ps1 -OutputDirectory dist
+      - name: Verify update installation rollback and actual release package
+        run: |
+          $package = (Get-ChildItem dist/*.zip | Select-Object -First 1).FullName
+          ./tests/bin/updates/IET.UpdateTests.exe "Ini Edit - Translate/bin/Release" --package $package
       - uses: actions/upload-artifact@v4
         with:
           name: INI-Edit-Translate-2026-windows

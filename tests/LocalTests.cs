@@ -958,6 +958,8 @@ internal static class LocalTests
                             helper.Refresh();
                             var status = Descendants(helper).OfType<StatusStrip>().Single().Items[0].Text;
                             Assert(status.Contains("estate.csv") && status.Contains("IET2.FDB"), "missing data visible");
+                            var railway = Descendants(helper).OfType<DataGridView>().Single(grid => grid.Name == "dataGridView11");
+                            Assert(railway.Rows.Count == 14 && !status.Contains("railway-abbreviations.csv"), "embedded railway table works without new package paths");
                             helper.Close();
                         }
                     });

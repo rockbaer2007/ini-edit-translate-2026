@@ -9,9 +9,18 @@ abbreviations. The previously empty Kr. row is completed for a track crossing.
 Clicking a cell copies its contents, as in the existing reference tables.
 The table is read-only, columns can be sorted and long text wraps.
 The German tab name is **Bahnabkürzung**; the French name is **Abréviations ferroviaires**.
-The complete package includes `help/railway-abbreviations.csv`. This reference table
+The table is embedded in Info_trans. An existing external
+`help/railway-abbreviations.csv` can still be used. This reference table
 does not change automatic translation rules. Backup created before changes;
 dictionary, database, settings, credentials and the external constructor list are retained.
+The update ZIP uses only paths accepted by the 2.1.53 updater. Download and package
+validation are separate phases; 100% is shown only after successful validation.
+The dialog shows failure details and allows retrying. Both projects retain .NET
+Framework 4.8 and use its out-of-process Visual Studio designer. Info_trans explicitly
+references System.Configuration. Reload the solution after these changes.
+Design-time compilation and WinForms DesignSurface loading were checked;
+Visual Studio itself was not controlled remotely.
+
 114 local checks passed, including table contents and DE/EN/FR layout at
 100 and 150 percent scaling, without live API calls.
 

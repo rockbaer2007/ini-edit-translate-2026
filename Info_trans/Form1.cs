@@ -217,7 +217,7 @@ namespace Info_trans
             });
             TryLoad("railway-abbreviations.csv", () =>
             {
-                dataGridView11.DataSource = DataFiles.ReadTable("railway-abbreviations.csv");
+                dataGridView11.DataSource = DataFiles.ReadRailwayTable();
             });
             dataStatus.Text = unavailable.Count == 0
                 ? DataFiles.Text("Nachschlagedaten geladen.", "Reference data loaded.", "Données de référence chargées.")

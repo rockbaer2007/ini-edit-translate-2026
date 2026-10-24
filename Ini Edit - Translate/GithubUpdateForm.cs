@@ -58,7 +58,16 @@ namespace Ini_Edit___Translate
                     status.Text = UpdateText.T("Download und Paketprüfung …", "Downloading and checking package …", "Téléchargement et vérification …");
                     string directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                         "UGSo", "IET2026", "updates", Guid.NewGuid().ToString("N"));
-                    var job = await client.Download(release, directory, cancel.Token, new Progress<int>(value => { if (!IsDisposed) progress.Value = value; }));
+                    var job = await client.Download(release, directory, cancel.Token,
+                        new Progress<int>(value => { if (!IsDisposed) progress.Value = value; }),
+                        new Progress<UpdatePhase>(phase => {
+                            if (IsDisposed) return;
+                            status.Text = phase == UpdatePhase.Validating
+                                ? UpdateText.T("Download vollständig. Prüfsumme und Paketinhalt werden geprüft …", "Download complete. Checking checksum and package contents …", "Téléchargement terminé. Vérification de la somme de contrôle et du contenu …")
+                                : phase == UpdatePhase.Ready
+                                ? UpdateText.T("Paket geprüft. Installation bitte bestätigen.", "Package verified. Please confirm installation.", "Paquet vérifié. Veuillez confirmer l’installation.")
+                                : UpdateText.T("Paket wird heruntergeladen …", "Downloading package …", "Téléchargement du paquet …");
+                        }));
                     cancel.Token.ThrowIfCancellationRequested();
                     string message = UpdateText.T(
                         "Sind deine geöffneten Dateien gespeichert? Die Anwendung wird für das Update geschlossen. Einstellungen und vorhandene Nachschlagedaten bleiben erhalten. Jetzt installieren?",
@@ -71,11 +80,17 @@ namespace Ini_Edit___Translate
                     Close();
                 }
                 catch (OperationCanceledException) { if (!IsDisposed) Close(); }
-                catch (Exception)
+                catch (Exception error)
                 {
-                    if (!IsDisposed) status.Text = UpdateText.T("Update nicht vorbereitet. Verbindung, Paket oder Schreibrechte prüfen. Die Anwendung bleibt unverändert.",
+                    if (!IsDisposed)
+                    {
+                    progress.Value = 0;
+                    install.Enabled = release != null && !cancel.IsCancellationRequested;
+                    status.Text = UpdateText.T("Update nicht vorbereitet. Verbindung, Paket oder Schreibrechte prüfen. Die Anwendung bleibt unverändert.",
                         "Update could not be prepared. Check the connection, package or write permissions. The application is unchanged.",
                         "Préparation impossible. Vérifier la connexion, le paquet ou les droits d’écriture. Le programme reste inchangé.");
+                    notes.Text = status.Text + Environment.NewLine + error.GetType().Name + ": " + error.Message;
+                    }
                 }
                 finally { busy = false; if (IsDisposed) client.Dispose(); }
             };
