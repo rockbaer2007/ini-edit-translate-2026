@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Diagnostics;
+using System.Threading;
 using Microsoft.Win32.SafeHandles;
 
 namespace Iet.Update
@@ -23,13 +25,40 @@ namespace Iet.Update
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern uint WaitForSingleObject(SafeProcessHandle process, uint milliseconds);
 
-        internal static void WaitForExit(UpdateJob job, uint milliseconds = 120000)
+        internal static bool ProcessExists(int processId)
+        {
+            // Listing local PIDs does not open the editor's process handle or modules.
+            var processes = Process.GetProcesses();
+            try
+            {
+                foreach (var process in processes) if (process.Id == processId) return true;
+                return false;
+            }
+            finally { foreach (var process in processes) process.Dispose(); }
+        }
+
+        internal static void WaitForAbsentProcess(int processId, uint milliseconds, Func<int, bool> exists)
+        {
+            var elapsed = Stopwatch.StartNew();
+            while (exists(processId))
+            {
+                if (elapsed.ElapsedMilliseconds >= milliseconds)
+                    throw new IOException("Editor process still exists; access was denied. Installation has not started.");
+                Thread.Sleep((int)Math.Min(100L, Math.Max(1L, (long)milliseconds - elapsed.ElapsedMilliseconds)));
+            }
+        }
+
+        internal static void WaitForExit(UpdateJob job, uint milliseconds = 120000,
+            Func<uint, bool, int, SafeProcessHandle> openProcess = null)
         {
             if (job.ProcessId <= 0) throw new IOException("Invalid editor process.");
+            var elapsed = Stopwatch.StartNew();
+            try
+            {
             // One stable handle identifies the original process, even if its PID
             // is later reused. Query the OS image path instead of reading modules
             // in another process, which fails across bitness or during shutdown.
-            using (var process = OpenProcess(QueryLimitedInformation | Synchronize, false, job.ProcessId))
+            using (var process = (openProcess ?? OpenProcess)(QueryLimitedInformation | Synchronize, false, job.ProcessId))
             {
                 if (process.IsInvalid)
                 {
@@ -57,6 +86,14 @@ namespace Iet.Update
                 uint result = WaitForSingleObject(process, milliseconds);
                 if (result == TimedOut) throw new IOException("Application is still running.");
                 if (result != Completed) throw new Win32Exception(Marshal.GetLastWin32Error());
+            }
+            }
+            catch (Win32Exception error) when (error.NativeErrorCode == 5)
+            {
+                // Access denied is not proof of exit. Fail closed unless a local
+                // PID snapshot confirms absence; enumeration errors propagate.
+                uint remaining = (uint)Math.Max(0L, (long)milliseconds - elapsed.ElapsedMilliseconds);
+                WaitForAbsentProcess(job.ProcessId, remaining, ProcessExists);
             }
         }
     }

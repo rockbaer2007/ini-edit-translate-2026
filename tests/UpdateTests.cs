@@ -76,6 +76,12 @@ internal static class UpdateTests
     }
     private static void ProcessChecks()
     {
+        Test("process enumeration failure never counts as confirmed exit", () =>
+        {
+            Fails(() => EditorProcess.WaitForAbsentProcess(123, 10, pid => { throw new System.ComponentModel.Win32Exception(5); }));
+            Fails(() => EditorProcess.WaitForExit(new UpdateJob { ProcessId = 123 }, 10,
+                (access, inherit, pid) => { throw new System.ComponentModel.Win32Exception(32); }));
+        });
         foreach (string architecture in Environment.Is64BitOperatingSystem ? new[] { "x86", "x64" } : new[] { "x86" })
         {
             string directory = Folder();
@@ -99,6 +105,31 @@ internal static class UpdateTests
                     EditorProcess.WaitForExit(job, 10000);
                     Assert(process.WaitForExit(1000));
                     EditorProcess.WaitForExit(job, 1000); // Already exited, no module reads.
+                }
+            });
+            Test("access denied cannot permit installation while editor exists " + architecture, () =>
+            {
+                using (var process = start(30000))
+                {
+                    try
+                    {
+                        var job = new UpdateJob { InstallDirectory = directory, ProcessId = process.Id,
+                            ProcessStartTicks = process.StartTime.ToUniversalTime().Ticks };
+                        Fails(() => EditorProcess.WaitForExit(job, 5, (access, inherit, pid) => { throw new System.ComponentModel.Win32Exception(5); }));
+                        Assert(!process.HasExited);
+                    }
+                    finally { if (!process.HasExited) { process.Kill(); process.WaitForExit(); } }
+                }
+            });
+            Test("access denied waits for independently confirmed exit " + architecture, () =>
+            {
+                using (var process = start(600))
+                {
+                    var job = new UpdateJob { InstallDirectory = directory, ProcessId = process.Id,
+                        ProcessStartTicks = process.StartTime.ToUniversalTime().Ticks };
+                    EditorProcess.WaitForExit(job, 10000, (access, inherit, pid) => { throw new System.ComponentModel.Win32Exception(5); });
+                    Assert(process.WaitForExit(1000));
+                    Assert(!EditorProcess.ProcessExists(process.Id));
                 }
             });
             Test("reject identity mismatch and timeout before installation " + architecture, () =>
@@ -170,6 +201,24 @@ internal static class UpdateTests
                 using(var archive=ZipFile.Open(job.ZipPath,ZipArchiveMode.Update))
                     archive.GetEntry("IniFile.dll").ExternalAttributes=unchecked((int)0xa1ff0000);
                 job.Sha256=UpdateCore.Hash(job.ZipPath);Fails(()=>UpdateCore.Install(job));Unchanged(job);
+            });
+            Test("new updater is staged from the verified package", () => {
+                var job = Package(); string directory = Folder();
+                string updater = UpdateCore.PrepareUpdater(job, directory);
+                using (var zip = ZipFile.OpenRead(job.ZipPath))
+                using (var input = zip.GetEntry("IET.Updater.exe").Open())
+                using (var memory = new MemoryStream())
+                {
+                    input.CopyTo(memory);
+                    Assert(File.ReadAllBytes(updater).SequenceEqual(memory.ToArray()));
+                }
+                Unchanged(job);
+            });
+            Test("tampered package cannot stage an updater", () => {
+                var job = Package(); string directory = Folder();
+                File.AppendAllText(job.ZipPath, "tampered");
+                Fails(() => UpdateCore.PrepareUpdater(job, directory));
+                Assert(!File.Exists(Path.Combine(directory, "IET.Updater.exe"))); Unchanged(job);
             });
             Test("changed archive rejected before writes", () => { var job=Package(); File.AppendAllText(job.ZipPath,"changed"); Fails(()=>UpdateCore.Install(job)); Unchanged(job); });
             foreach(string path in new[]{"../escape.exe","help/../../escape.exe","C:/escape.exe","/escape.exe","user.config","openai.json","help/../Info.rtf"})

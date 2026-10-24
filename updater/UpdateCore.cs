@@ -44,6 +44,15 @@ namespace Iet.Update
             using (var file = File.OpenRead(path)) return (UpdateJob)new DataContractJsonSerializer(typeof(UpdateJob)).ReadObject(file);
         }
 
+        internal static string PrepareUpdater(UpdateJob job, string directory)
+        {
+            string validation = Path.Combine(directory, "updater-validation");
+            Extract(job, validation, CancellationToken.None);
+            string updater = Target(directory, "IET.Updater.exe");
+            File.Copy(Target(validation, "IET.Updater.exe"), updater);
+            return updater;
+        }
+
         internal static string RelativePath(string path)
         {
             string normalized = path.Replace('\\', '/');

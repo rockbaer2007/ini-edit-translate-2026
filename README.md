@@ -1,5 +1,21 @@
 # INI Edit Translate 2026
 
+## Version 2.1.43: Update bei verweigertem Prozesszugriff
+
+Der Updater behandelt „Zugriff verweigert“ beim Warten auf das Ende des Editors.
+Er fährt nur fort, wenn die lokale Prozessliste bestätigt, dass die Prozess-ID nicht
+mehr existiert. Solange der Prozess vorhanden ist oder die Prüfung fehlschlägt,
+beginnt keine Installation. Die normale Identitätsprüfung bleibt erhalten.
+Künftige Updates starten den Updater aus dem erneut geprüften neuen Paket.
+
+**Einmalige Reparatur bei betroffenem altem Updater:** Editor schließen, die einzelne
+`IET.Updater.exe` aus dem GitHub-Release herunterladen und nur diese Datei neben der
+Editor-EXE ersetzen (vorher die bisherige Datei sichern). Danach den Editor starten
+und **Über → Nach Updates suchen** wählen. Daten, Wörterbücher und Einstellungen
+nicht mit dem kompletten ZIP überschreiben. Die einzelne EXE ist ebenfalls in
+`SHA256SUMS.txt` aufgeführt.
+
+
 ## Version 2.1.42: Modellnamen erhalten
 
 Die Übersetzung lässt alle vier Modellnamen in Modell-INI und Installation.eep
@@ -24,7 +40,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
+[Windows-ZIP v2.1.43](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.43/INI-Edit-Translate-2026-v2.1.43-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.43)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -80,12 +96,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.42.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.43.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.42 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
+[Windows-ZIP v2.1.43 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.43/INI-Edit-Translate-2026-v2.1.43-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.43)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.

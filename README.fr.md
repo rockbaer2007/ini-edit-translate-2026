@@ -1,5 +1,20 @@
 # INI Edit Translate 2026
 
+## Version 2.1.43 : accès au processus refusé pendant la mise à jour
+
+Si Windows refuse l’accès au processus de l’éditeur, la mise à jour ne continue que
+lorsque la liste locale confirme l’absence de son PID. Un processus encore présent,
+un échec de vérification ou un délai dépassé empêche l’installation. Les contrôles
+d’identité habituels sont conservés. Les prochaines mises à jour utilisent l’outil
+du nouveau paquet vérifié à nouveau.
+
+**Réparation unique d’un ancien outil concerné :** fermer l’éditeur, sauvegarder son
+`IET.Updater.exe`, puis remplacer uniquement ce fichier à côté de l’EXE de l’éditeur
+par le téléchargement individuel de la version GitHub. Relancer l’éditeur et choisir
+**À propos → Rechercher des mises à jour**. Ne pas écraser données, dictionnaires ou
+paramètres avec le ZIP complet. L’outil individuel figure dans `SHA256SUMS.txt`.
+
+
 ## Version 2.1.42 : conserver les noms de modèles
 
 La traduction conserve les quatre noms de modèles des fichiers INI et d’Installation.eep.
@@ -24,7 +39,7 @@ temporaires, les erreurs réseau et les formats inattendus ont des messages dist
 en DE/EN/FR. Cette mise à jour aide à diagnostiquer le problème distant signalé ; sa
 cause n’est pas encore confirmée. Paramètres, clés API et connexions sont conservés.
 
-[ZIP Windows v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
+[ZIP Windows v2.1.43](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.43/INI-Edit-Translate-2026-v2.1.43-windows.zip) · [Version et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.43)
 
 ## Version 2.1.40 : connexion ChatGPT
 
@@ -55,7 +70,7 @@ rappel local isolé. L’autorisation du compte réel et la traduction restent �
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.42.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.43.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -76,7 +91,7 @@ Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traductio
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
+[Télécharger le ZIP Windows v2.1.43](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.43/INI-Edit-Translate-2026-v2.1.43-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.43)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.

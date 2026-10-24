@@ -1,5 +1,19 @@
 # INI Edit Translate 2026
 
+## Version 2.1.43: update process access failure
+
+If Windows denies access while waiting for the editor to exit, the updater proceeds
+only after the local process list confirms that the PID is absent. A running process,
+failed enumeration or timeout prevents installation. Normal identity checks remain.
+Future updates use the updater from the newly revalidated package.
+
+**One-time repair for an affected older updater:** close the editor, back up its existing
+`IET.Updater.exe`, and replace only that file beside the editor EXE with the individual
+download from the GitHub release. Restart the editor and select **About → Check for updates**.
+Do not overwrite data, dictionaries or settings with the entire ZIP. The standalone
+updater is included in `SHA256SUMS.txt`.
+
+
 ## Version 2.1.42: preserve model names
 
 Translation now preserves all four model names in model INI files and Installation.eep.
@@ -22,7 +36,7 @@ catalog formats have separate messages in DE/EN/FR. This update helps diagnose t
 reported remote failure; its cause is not yet confirmed. Settings, API keys and
 connections are retained.
 
-[Windows ZIP v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
+[Windows ZIP v2.1.43](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.43/INI-Edit-Translate-2026-v2.1.43-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.43)
 
 ## Version 2.1.40: ChatGPT sign-in
 
@@ -51,7 +65,7 @@ Real account authorization and translation still need testing.
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.42.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.43.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -71,7 +85,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.42](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.42/INI-Edit-Translate-2026-v2.1.42-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.42)
+[Download Windows ZIP v2.1.43](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.43/INI-Edit-Translate-2026-v2.1.43-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.43)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

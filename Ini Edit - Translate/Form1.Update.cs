@@ -41,8 +41,9 @@ namespace Ini_Edit___Translate
                         if (File.Exists(configuration)) File.Copy(configuration, Path.Combine(userBackup, "user.config"));
                         string openAi = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UGSo", "IET2026", "openai.json");
                         if (File.Exists(openAi)) File.Copy(openAi, Path.Combine(userBackup, "openai.json"));
-                        string updater = Path.Combine(Path.GetDirectoryName(job.ZipPath), "IET.Updater.exe");
-                        File.Copy(Path.Combine(Application.StartupPath, "IET.Updater.exe"), updater);
+                        // Run the updater from the verified new package so future updater
+                        // fixes take effect for this installation, not only the next one.
+                        string updater = UpdateCore.PrepareUpdater(job, Path.GetDirectoryName(job.ZipPath));
                         string jobFile = Path.Combine(Path.GetDirectoryName(job.ZipPath), "job.json");
                         UpdateCore.WriteJob(jobFile, job);
                         Process.Start(new ProcessStartInfo(updater, "\"" + jobFile + "\"") { UseShellExecute = true });
