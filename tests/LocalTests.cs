@@ -56,6 +56,8 @@ internal static class LocalTests
     [STAThread]
     private static int Main(string[] args)
     {
+        System.Diagnostics.Trace.Listeners.Add(new System.Diagnostics.TextWriterTraceListener(Console.Out));
+        System.Diagnostics.Trace.AutoFlush = true;
         try
         {
             Test("German is default; English and French select the matching source controls", () =>
@@ -907,6 +909,7 @@ internal static class LocalTests
                             var page = (TabPage)grid.Parent;
                             Assert(page.Text == (language == "de" ? "Bahnabkürzung" : language == "en" ? "Railway abbreviations" : "Abréviations ferroviaires"), "localized tab name");
                             Assert(grid.Rows.Count == 14 && grid.Columns.Count == 4 && grid.ReadOnly && !grid.AllowUserToAddRows, "four-language reference grid");
+                            Assert(!Descendants(helper).OfType<StatusStrip>().Single().Items[0].Text.Contains("railway-abbreviations.csv"), "reference table initialization completed without a swallowed layout error");
                             Assert((string)grid.Rows[0].Cells[0].Value == "Bf – Bahnhof" && (string)grid.Rows[0].Cells[3].Value == "ST – stacja", "first entry and Polish abbreviation");
                             Assert((string)grid.Rows[13].Cells[1].Value == "diamond crossing" && (string)grid.Rows[13].Cells[3].Value == "skrzyżowanie torów", "crossing row completed");
                             Assert(grid.Rows.Cast<DataGridViewRow>().All(row => row.Cells.Cast<DataGridViewCell>().All(cell => !string.IsNullOrWhiteSpace(Convert.ToString(cell.Value)))), "no missing translations");

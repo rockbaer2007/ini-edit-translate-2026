@@ -175,11 +175,13 @@ namespace Info_trans
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Trace.WriteLine("Info_trans startup: preparing introductory text");
             button2.Enabled = false;
             richTextBox1.SelectAll();
             richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
             richTextBox1.DeselectAll();
             Center_Text();
+            System.Diagnostics.Trace.WriteLine("Info_trans startup: loading reference tables");
             if (File.Exists(DataFiles.PathFor("IET2.FDB")))
                 TryLoad("IET2.FDB / Firebird", readdb);
             else
@@ -216,7 +218,6 @@ namespace Info_trans
             TryLoad("railway-abbreviations.csv", () =>
             {
                 dataGridView11.DataSource = DataFiles.ReadTable("railway-abbreviations.csv");
-                foreach (DataGridViewColumn column in dataGridView11.Columns) column.MinimumWidth = 150;
             });
             dataStatus.Text = unavailable.Count == 0
                 ? DataFiles.Text("Nachschlagedaten geladen.", "Reference data loaded.", "Données de référence chargées.")
@@ -228,7 +229,8 @@ namespace Info_trans
 
         private void TryLoad(string name, Action load)
         {
-            try { load(); }
+            System.Diagnostics.Trace.WriteLine("Info_trans loading: " + name);
+            try { load(); System.Diagnostics.Trace.WriteLine("Info_trans loaded: " + name); }
             catch (Exception error) when (error is IOException || error is UnauthorizedAccessException
                 || error is FbException || error is DllNotFoundException || error is BadImageFormatException
                 || error is System.Data.DataException || error is ArgumentException
@@ -432,10 +434,8 @@ namespace Info_trans
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (tabControl1.SelectedIndex == 8 || tabControl1.SelectedIndex == 9)
-            //{
-            //    MessageBox.Show(@"das Laden der Wörterbucher dauert etwas, bitte etwas Geduld" + Environment.NewLine + Environment.NewLine + "loading the dictionaries takes some time, please be patient" + Environment.NewLine + Environment.NewLine + "le chargement des dictionnaires prend un certain temps, merci d'être patient");
-            //}
+            dataGridView11.AutoSizeRowsMode = tabControl1.SelectedTab == tabPage11
+                ? DataGridViewAutoSizeRowsMode.DisplayedCells : DataGridViewAutoSizeRowsMode.None;
         }
     }
 }

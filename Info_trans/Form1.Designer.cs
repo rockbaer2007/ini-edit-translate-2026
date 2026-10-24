@@ -328,7 +328,7 @@
             // dataGridView11
             //
             this.dataGridView11.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView11.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView11.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.None;
             this.dataGridView11.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView11.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView11.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
