@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using Iet.Update;
-[assembly: System.Reflection.AssemblyVersion("2.1.44.0")]
-[assembly: System.Reflection.AssemblyFileVersion("2.1.44.0")]
+[assembly: System.Reflection.AssemblyVersion("2.1.45.0")]
+[assembly: System.Reflection.AssemblyFileVersion("2.1.45.0")]
 [assembly: System.Reflection.AssemblyCompany("UGSo-Software by UG1")]
 
 internal static class Program

@@ -317,4 +317,6 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="cgStageTranslation" xml:space="preserve"><value>Übersetzung</value></data>
   <data name="cgStreamFormat" xml:space="preserve"><value>Die ChatGPT-Übersetzungsantwort hat ein unerwartetes Format. Die bisherigen Texte bleiben erhalten.</value></data>
   <data name="cgStreamSize" xml:space="preserve"><value>Die ChatGPT-Übersetzungsantwort überschreitet das Größenlimit. Die bisherigen Texte bleiben erhalten.</value></data>
+  <data name="cgTranslationJson" xml:space="preserve"><value>Die Übersetzungsausgabe enthält kein gültiges JSON im erwarteten Sprachformat. Vorhandene Texte bleiben erhalten.</value></data>
+  <data name="cgProtocolJson" xml:space="preserve"><value>Die Serverantwort enthält kein gültiges JSON. Verbindung und Zugangsdaten bleiben erhalten.</value></data>
 </root>

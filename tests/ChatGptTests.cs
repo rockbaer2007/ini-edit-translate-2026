@@ -363,6 +363,19 @@ internal static class ChatGptTests
                     catch (InvalidOperationException error) { Assert(error.Message == Ui.Text("cgStreamFormat"), "specific format diagnostic"); }
                 }
             });
+            test("ChatGPT invalid token JSON preserves credentials and identifies its stage", () =>
+            {
+                var vault = NewVault(root); var account = Account(); account.ExpiresUtc = DateTime.UtcNow.AddMinutes(-1); Put(vault, account);
+                using (var client = new ChatGptClient(vault, new Handler { Reply = request => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("SECRET-FIXTURE", Encoding.UTF8, "text/html") }) }))
+                {
+                    try { client.GetAccessTokenAsync(account.ClientId, CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("invalid token JSON should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message.Contains("stage=token-response") && !error.Message.Contains("SECRET-FIXTURE"), "safe token-stage diagnostic"); }
+                    var verify = typeof(ChatGptClient).GetMethod("VerifyIdAsync", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                    try { ((Task<JObject>)verify.Invoke(client, new object[] { "invalid-jwt", account.ClientId, null, CancellationToken.None })).GetAwaiter().GetResult(); throw new Exception("invalid identity keys JSON should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message.Contains("stage=identity-keys") && !error.Message.Contains("SECRET-FIXTURE"), "safe identity-stage diagnostic"); }
+                }
+                Assert(vault.ReadAsync(CancellationToken.None).GetAwaiter().GetResult().Accounts.Single().RefreshToken == account.RefreshToken, "refresh token retained");
+            });
             test("ChatGPT malformed model catalogs fail explicitly", () =>
             {
                 var vault = NewVault(root); Put(vault, Account());

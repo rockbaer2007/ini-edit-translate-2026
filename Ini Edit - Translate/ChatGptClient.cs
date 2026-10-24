@@ -210,7 +210,8 @@ namespace Ini_Edit___Translate
             using (var response = await http.PostAsync(TokenEndpoint, body, cancel).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode) throw await OpenAiErrors.FromHttpAsync(response, true).ConfigureAwait(false);
-                return JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                try { return JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false)); }
+                catch (Newtonsoft.Json.JsonException) { throw new InvalidOperationException(Ui.Text("cgProtocolJson") + "; stage=token-response"); }
             }
         }
 
@@ -219,7 +220,10 @@ namespace Ini_Edit___Translate
             using (var response = await http.GetAsync(Issuer + "/.well-known/jwks.json", cancel).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode) throw new InvalidOperationException(Ui.Text("cgInvalidLogin"));
-                return ValidateId(jwt, clientId, nonce, JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false)), DateTimeOffset.UtcNow);
+                JObject jwks;
+                try { jwks = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false)); }
+                catch (Newtonsoft.Json.JsonException) { throw new InvalidOperationException(Ui.Text("cgProtocolJson") + "; stage=identity-keys"); }
+                return ValidateId(jwt, clientId, nonce, jwks, DateTimeOffset.UtcNow);
             }
         }
 

@@ -121,6 +121,26 @@ internal static class LocalTests
                     SynchronizationContext.SetSynchronizationContext(originalContext);
                 }
             });
+            Test("translation output accepts only complete language JSON with optional single fence", () =>
+            {
+                var envelope = JObject.Parse(Response());
+                string json = (string)envelope["output"][1]["content"][0]["text"];
+                foreach (string value in new[] { json, "```json\n" + json + "\n```", "```\r\n" + json + "\r\n```" })
+                {
+                    envelope["output"][1]["content"][0]["text"] = value;
+                    var handler = new Handler(envelope.ToString());
+                    using (var service = new OpenAiTranslation(Settings(), handler))
+                    {
+                        Assert(Translate(service) == "Sonne {0}" && Translate(service, to: "fr") == "Soleil {0}", "validated language output");
+                        Assert(((string)handler.Body["instructions"]).Contains("JSON object") && ((string)handler.Body["instructions"]).Contains("de, fr, pl"), "explicit JSON instruction and target keys");
+                    }
+                }
+                foreach (string value in new[] { "SECRET-FIXTURE", "", "Here is your JSON: " + json, "```json\n" + json + "\n``` extra", "{invalid", "{\"de\":\"a\",\"de\":\"b\",\"fr\":\"c\",\"pl\":\"d\"}", "{\"de\":\"a\",\"fr\":\"b\",\"pl\":\"c\",\"extra\":\"d\"}" })
+                {
+                    try { OpenAiTranslation.ParseTranslationOutput(value, new[] { "de", "fr", "pl" }); throw new Exception("invalid output should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message.Contains("stage=translation-output") && !error.Message.Contains("SECRET-FIXTURE"), "safe output-stage diagnostic"); }
+                }
+            });
             Test("empty and same-language texts do not call network", () =>
             {
                 var handler = new Handler(Response());

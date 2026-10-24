@@ -317,4 +317,6 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="cgStageTranslation" xml:space="preserve"><value>Traduction</value></data>
   <data name="cgStreamFormat" xml:space="preserve"><value>La réponse de traduction ChatGPT présente un format inattendu. Les textes existants sont conservés.</value></data>
   <data name="cgStreamSize" xml:space="preserve"><value>La réponse de traduction ChatGPT dépasse la taille maximale. Les textes existants sont conservés.</value></data>
+  <data name="cgTranslationJson" xml:space="preserve"><value>Le résultat de traduction n’est pas un JSON valide au format de langues attendu. Les textes existants sont conservés.</value></data>
+  <data name="cgProtocolJson" xml:space="preserve"><value>La réponse du serveur n’est pas un JSON valide. La connexion et les identifiants sont conservés.</value></data>
 </root>
