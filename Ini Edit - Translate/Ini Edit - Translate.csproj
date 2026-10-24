@@ -147,7 +147,7 @@
     </Compile>
     <Compile Include="Form1.Update.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-      <SubType>Form</SubType>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="SettingsMigration.cs">
       <SubType>Code</SubType>
@@ -162,7 +162,7 @@
     </Compile>
     <Compile Include="Form1.Translation.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-      <SubType>Form</SubType>
+      <SubType>Code</SubType>
     </Compile>
     <EmbeddedResource Include="about.resx">
       <DependentUpon>about.cs</DependentUpon>
