@@ -1575,52 +1575,40 @@ namespace Ini_Edit___Translate
 
         private async void DirectoryTreeViewOnDemand1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            await OpenSelectedTreeNodeAsync(e.Node);
+        }
+
+        internal async Task OpenSelectedTreeNodeAsync(TreeNode node, Action<string> notify = null)
+        {
+            string path = node?.FullPath;
+            if (string.IsNullOrWhiteSpace(path) || Directory.Exists(path) || !File.Exists(path) ||
+                !string.Equals(Path.GetExtension(path), ".ini", StringComparison.OrdinalIgnoreCase))
+            {
+                string message = Ui.Text("chooseIniFile");
+                if (notify != null) notify(message);
+                else MessageBox.Show(this, message, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             await RunTranslationOperationAsync(async () =>
             {
+                btn_def_trl.Enabled = false;
+                preview.Enabled = false;
+                dataMA.Rows.Clear();
+                dataMA.Refresh();
+                dataSF.Rows.Clear();
+                dataSF.Refresh();
+                listBox1.Items.Clear();
+                richTextBox1.Clear();
+                label21.Text = "";
 
-            btn_def_trl.Enabled = false;
-            preview.Enabled = false;
-            dataMA.Rows.Clear();
-            dataMA.Refresh();
-            dataSF.Rows.Clear();
-            dataSF.Refresh();
-            listBox1.Items.Clear();
-            richTextBox1.Clear();
-            label21.Text = "";
-
-            TreeNode nodeAt = directoryTreeViewOnDemand1.GetNodeAt(directoryTreeViewOnDemand1.PointToClient(Cursor.Position));
-
-            if (e.Node.Text == "install_00" || e.Node.Text == "install_01" || (e.Node.Text == "install_02" || e.Node.Text == "install_03") || (e.Node.Text == "install_04" || e.Node.Text == "install_05" || (e.Node.Text == "install_06" || e.Node.Text == "install_07")) || (e.Node.Text == "install_08" || e.Node.Text == "install_09" || (e.Node.Text == "install_10")))
-            {
-                int num1 = (int)MessageBox.Show(Properties.Resources.msg1);
-            }
-            else if (e.Node.Text == "Install_00" || e.Node.Text == "Install_01" || (e.Node.Text == "Install_02" || e.Node.Text == "Install_03") || (e.Node.Text == "Install_04" || e.Node.Text == "Install_05" || (e.Node.Text == "Install_06" || e.Node.Text == "Install_07")) || (e.Node.Text == "Install_08" || e.Node.Text == "Install_09" || (e.Node.Text == "Install_10")))
-            {
-                int num1 = (int)MessageBox.Show(Properties.Resources.msg1);
-            }
-            else if (e.Node.Text == Properties.Settings.Default.pathdir)
-            {
-                int num2 = (int)MessageBox.Show(Properties.Resources.msg2);
-            }
-            else
-            {
-                Properties.Settings.Default.pathfile = nodeAt.FullPath;
-                {
-                    string decc = Properties.Settings.Default.pathfile;
-                    bodyname = GetEncodingBodyName(decc);
-
-                    label21.Text = " " + decc;
-                    richTextBox1.LoadFile(decc, RichTextBoxStreamType.PlainText);
-                }
-                {
-                    datpath = Properties.Settings.Default.pathfile;
-                    await inilesen(Properties.Settings.Default.pathfile);
-                    string directoryName = Path.GetDirectoryName(Properties.Settings.Default.pathfile);
-                    string fileName = Path.GetFileNameWithoutExtension(Properties.Settings.Default.pathfile);
-                    string dmName = Path.GetFileName(fileName + ".3dm");
-                }
-            }
-
+                // Use the selected node, including keyboard navigation, not the mouse position.
+                Properties.Settings.Default.pathfile = path;
+                bodyname = GetEncodingBodyName(path);
+                label21.Text = " " + path;
+                richTextBox1.LoadFile(path, RichTextBoxStreamType.PlainText);
+                datpath = path;
+                await inilesen(path);
             });
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

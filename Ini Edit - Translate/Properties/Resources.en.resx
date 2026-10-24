@@ -334,4 +334,5 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="mmNetwork" xml:space="preserve"><value>MyMemory could not be reached. Check your internet connection, proxy and firewall.</value></data>
   <data name="rememberLastFolder" xml:space="preserve"><value>Keep last folder</value></data>
   <data name="lastFolderUnavailable" xml:space="preserve"><value>The last folder is currently unavailable. Please select a folder.</value></data>
+  <data name="chooseIniFile" xml:space="preserve"><value>Please select an INI file.</value></data>
 </root>

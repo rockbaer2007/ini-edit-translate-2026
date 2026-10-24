@@ -184,6 +184,63 @@ internal static class LocalTests
                 Assert(user.Settings.Count > 1 && user.Settings.Get("rememberLastFolder").Value.ValueXml.InnerText == "False", "new and existing user settings deserialize together");
                 Assert(application.Settings.Count > 0, "application settings deserialize");
             });
+            Test("folder selection shows an INI hint in DE EN FR without clearing data or invoking translation", () =>
+            {
+                var settings = Ini_Edit___Translate.Properties.Settings.Default;
+                bool readOnly = settings.read_only; string originalFile = settings.pathfile;
+                var culture = CultureInfo.CurrentUICulture; var context = SynchronizationContext.Current;
+                string directory = Path.Combine(Path.GetTempPath(), "iet-folder-click-" + Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(directory); Directory.CreateDirectory(Path.Combine(directory, "folder.ini"));
+                File.WriteAllText(Path.Combine(directory, "notes.txt"), "untouched");
+                try
+                {
+                    foreach (string language in new[] { "de", "en", "fr" })
+                    {
+                        CultureInfo.CurrentUICulture = new CultureInfo(language); settings.read_only = false;
+                        using (var form = new Form1())
+                        using (var tree = new TreeView())
+                        {
+                            var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+                            var name = (Control)typeof(Form1).GetField("n_ger_txt", flags).GetValue(form); name.Text = "loaded model";
+                            var preview = (RichTextBox)typeof(Form1).GetField("richTextBox1", flags).GetValue(form); preview.Text = "loaded source";
+                            var grid = (DataGridView)typeof(Form1).GetField("dataMA", flags).GetValue(form); grid.Rows.Add("1", "drive", "Antrieb", "axe", "napęd");
+                            var root = tree.Nodes.Add(directory);
+                            foreach (TreeNode node in new[] { root, root.Nodes.Add("folder.ini"), root.Nodes.Add("notes.txt"), root.Nodes.Add("missing.ini") })
+                            {
+                                string hint = null; SynchronizationContext.SetSynchronizationContext(null);
+                                form.OpenSelectedTreeNodeAsync(node, message => hint = message).GetAwaiter().GetResult();
+                                Assert(hint == Ui.Text("chooseIniFile"), "localized folder/invalid-selection hint: " + language);
+                                Assert(name.Text == "loaded model" && preview.Text == "loaded source" && grid.Rows.Count == 1, "loaded data retained");
+                                Assert(settings.pathfile == originalFile, "selected file unchanged");
+                                Assert(!(bool)typeof(Form1).GetField("translationOperationRunning", flags).GetValue(form), "no translation operation started");
+                            }
+                        }
+                    }
+                }
+                finally { settings.read_only = readOnly; settings.pathfile = originalFile; CultureInfo.CurrentUICulture = culture; SynchronizationContext.SetSynchronizationContext(context); Directory.Delete(directory, true); }
+            });
+            Test("INI selection uses the selected node and accepts uppercase extensions", () =>
+            {
+                var settings = Ini_Edit___Translate.Properties.Settings.Default;
+                bool readOnly = settings.read_only; string originalFile = settings.pathfile;
+                var context = SynchronizationContext.Current;
+                string directory = Path.Combine(Path.GetTempPath(), "iet-ini-click-" + Guid.NewGuid().ToString("N")); Directory.CreateDirectory(directory);
+                string file = Path.Combine(directory, "selected.INI");
+                File.WriteAllText(file, "[FileInfo]\r\nName_ENG=Selected model\r\nName_GER=Selected model\r\nName_FRA=Selected model\r\nName_POL=Selected model\r\nDescription_ENG=Description\r\nDescription_GER=Description\r\nDescription_FRA=Description\r\nDescription_POL=Description\r\nIcon=32\r\nGeneration=0\r\nDeployment_Start=1935\r\nDeployment_End=2014\r\nCountry=D\r\n");
+                try
+                {
+                    settings.read_only = true;
+                    using (var form = new Form1()) using (var tree = new TreeView())
+                    {
+                        var root = tree.Nodes.Add(directory); var node = root.Nodes.Add("selected.INI");
+                        SynchronizationContext.SetSynchronizationContext(null);
+                        form.OpenSelectedTreeNodeAsync(node, message => { throw new Exception("unexpected hint: " + message); }).GetAwaiter().GetResult();
+                        var flags = BindingFlags.Instance | BindingFlags.NonPublic;
+                        Assert(settings.pathfile == file && ((Control)typeof(Form1).GetField("n_ger_txt", flags).GetValue(form)).Text == "Selected model", "selected node opened without mouse hit testing");
+                    }
+                }
+                finally { settings.read_only = readOnly; settings.pathfile = originalFile; SynchronizationContext.SetSynchronizationContext(context); Directory.Delete(directory, true); }
+            });
             Test("three target languages, one request, unchanged source", () =>
             {
                 var handler = new Handler(Response());

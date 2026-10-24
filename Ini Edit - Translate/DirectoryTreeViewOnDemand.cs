@@ -44,7 +44,7 @@ namespace Ini_Edit___Translate
                     {
                         FileInfo fileInfo = (FileInfo)fileSystemInfo;
                         string we = Path.GetExtension(fileInfo.FullName);
-                        if (we == ".ini")
+                        if (string.Equals(we, ".ini", StringComparison.OrdinalIgnoreCase))
                         {
                             {
                                 if (fileInfo.Name == "install.ini" || fileInfo.Name == "Install.ini")

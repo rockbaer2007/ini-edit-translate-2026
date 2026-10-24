@@ -334,4 +334,5 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="mmNetwork" xml:space="preserve"><value>MyMemory est inaccessible. Vérifiez la connexion Internet, le proxy et le pare-feu.</value></data>
   <data name="rememberLastFolder" xml:space="preserve"><value>Conserver le dernier dossier</value></data>
   <data name="lastFolderUnavailable" xml:space="preserve"><value>Le dernier dossier est actuellement indisponible. Veuillez sélectionner un dossier.</value></data>
+  <data name="chooseIniFile" xml:space="preserve"><value>Veuillez sélectionner un fichier INI.</value></data>
 </root>

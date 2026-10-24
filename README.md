@@ -1,5 +1,21 @@
 # INI Edit Translate 2026
 
+## Version 2.1.51: Hinweis bei Ordnerauswahl
+
+Beim Auswählen eines Ordners im Dateibaum erscheint **„Bitte eine INI-Datei auswählen.“**
+Die bereits geladenen Modelltexte, Tabellen, Vorschau und ausgewählte Datei bleiben
+erhalten. Ein Ordner wird nicht mehr als Datei gelesen; es startet keine Übersetzung.
+
+Das gilt für den Hauptordner und beliebig benannte Unterordner, auch für Ordner mit
+`.ini` im Namen. Gelöscht gewordene Dateien und andere Dateitypen erhalten ebenfalls
+den Auswahlhinweis. Nur eine vorhandene INI-Datei wird geöffnet; `.INI` wird ebenfalls erkannt.
+Die Auswahl verwendet den ausgewählten Baumknoten statt der Mausposition und funktioniert
+damit auch bei Tastaturbedienung. Hinweis in Deutsch, Englisch und Französisch.
+
+101 lokale Prüfungen bestanden, einschließlich Datenerhalt bei Ordnerauswahl in
+allen drei Sprachen sowie Öffnen einer INI-Datei ohne Mauspositionsprüfung.
+Vorher Backup erstellt; persönliche Daten und Zugangsdaten bleiben erhalten.
+
 ## Version 2.1.50: EEP-Steuerzeichen, Kennungen und Versionen schützen
 
 `[e]` bleibt ein EEP-Zeilenumbruch-Steuerzeichen und wird weder übersetzt noch in
@@ -178,7 +194,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.50](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.50/INI-Edit-Translate-2026-v2.1.50-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.50)
+[Windows-ZIP v2.1.51](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.51/INI-Edit-Translate-2026-v2.1.51-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.51)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -234,12 +250,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.50.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.51.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.50 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.50/INI-Edit-Translate-2026-v2.1.50-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.50)
+[Windows-ZIP v2.1.51 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.51/INI-Edit-Translate-2026-v2.1.51-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.51)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
