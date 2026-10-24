@@ -1,5 +1,37 @@
 # INI Edit Translate 2026
 
+## Version 2.1.40: ChatGPT-Anmeldung
+
+Die Korrektur der Programmpfad-Eingabe aus 2.1.39 ist enthalten.
+
+Unter **Optionen → OpenAI-Übersetzung** lässt sich der Zugang auswählen:
+**OpenAI-API · separate Abrechnung** oder **ChatGPT-Abo verwenden**.
+Für die Abo-Nutzung **Mit ChatGPT fortfahren** wählen, im Standardbrowser anmelden
+und die Abo-Nutzung selbst freigeben. Anschließend ein für das Konto verfügbares
+Modell wählen und **Speichern**. **Anderes Konto** ergänzt eine getrennte Verbindung;
+**Abmelden** beendet nur die gewählte Verbindung.
+
+Ausgewählte Modelltexte werden an OpenAI gesendet. Die Abo-Variante nutzt das
+vorhandene ChatGPT-Kontingent und die erteilte App-Freigabe; sie hat kein eigenes
+unbegrenztes Kontingent. **Nutzung verwalten** öffnet die ChatGPT-Nutzungsübersicht.
+Berechtigung und Verfügbarkeit werden bei der echten Anmeldung geprüft.
+Bei Fehlern oder Abo-Limits gibt es keinen automatischen Wechsel zur kostenpflichtigen API.
+
+API-Schlüssel bleiben in der bestehenden Konfiguration erhalten. Neue OAuth-Zugangsdaten
+liegen separat, mit Windows-DPAPI verschlüsselt, unter
+`%LOCALAPPDATA%/UGSo/IET2026/chatgpt-session.dat`.
+Die Abo-Anmeldung benötigt keinen API-Schlüssel. HTTP-429-Meldungen unterscheiden nun
+bekannte API-Kontingent- und Anfragelimit-Fehler.
+
+63 lokale Prüfungen mit simulierten OpenAI-Antworten und einem eigenen lokalen
+Anmelderückweg bestanden; keine echte Übersetzung mit einem ChatGPT-Konto ausgelöst.
+Die echte Kontoanmeldung, Freigabe und Übersetzung sind anschließend noch zu prüfen.
+[Release und Prüfergebnisse](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40).
+
+Offizielle Grundlagen: [Anmeldung](https://developers.openai.com/siwc/token-sharing-open-source/sign-in),
+[Modelle und Streaming](https://developers.openai.com/siwc/token-sharing-open-source/models-and-inference),
+[Vorschaugrenzen](https://developers.openai.com/siwc/token-sharing-open-source/preview-limitations).
+
 **EEP-Modellbeschreibungen bearbeiten und mit ChatGPT übersetzen.**
 
 [English](README.en.md) · [Français](README.fr.md) · [Funktionsbeschreibung](https://opensource.ugso-software.de/eep/ini-edit-translate-2026/)
@@ -22,12 +54,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.38.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.40.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.38 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.38/INI-Edit-Translate-2026-v2.1.38-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.38)
+[Windows-ZIP v2.1.40 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.40/INI-Edit-Translate-2026-v2.1.40-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.

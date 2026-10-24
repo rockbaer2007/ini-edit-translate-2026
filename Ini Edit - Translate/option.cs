@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Drawing;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Ini_Edit___Translate
@@ -52,6 +54,7 @@ namespace Ini_Edit___Translate
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (!SaveProgramPath()) return;
             Properties.Settings.Default.Save();
             MessageBox.Show(Ui.Text("restartRequired"), "Info");
             Application.Restart();
@@ -135,14 +138,65 @@ private void Option_Load(object sender, EventArgs e)
             DialogResult dialogResult = MessageBox.Show(Properties.Resources.quest2, Properties.Resources.quest1, MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                RegistryKey newKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\UGSo\\IET2026");
-                newKey.SetValue("Path", Application.ExecutablePath);
+                SaveProgramPath();
             }
             else if (dialogResult == DialogResult.No)
             {
 
             }
 
+        }
+
+        internal static string NormalizeProgramPath(string candidate)
+        {
+            if (string.IsNullOrWhiteSpace(candidate)) throw new ArgumentException("Empty application path.");
+            string path = Environment.ExpandEnvironmentVariables(candidate.Trim().Trim('"'));
+            if (!Path.IsPathRooted(path)) throw new ArgumentException("Absolute application path required.");
+            string executable = Path.GetFileName(typeof(option).Assembly.Location);
+            if (Directory.Exists(path)) path = Path.Combine(path, executable);
+            path = Path.GetFullPath(path);
+            if (!File.Exists(path) || !string.Equals(Path.GetFileName(path),
+                executable, StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException("Application executable not found.");
+            return path;
+        }
+
+        internal static void WriteProgramPath(RegistryKey key, string candidate)
+        {
+            key.SetValue("Path", NormalizeProgramPath(candidate), RegistryValueKind.String);
+        }
+
+        private bool SaveProgramPath()
+        {
+            string path;
+            try { path = NormalizeProgramPath(textBox1.Text); }
+            catch (Exception error) when (error is ArgumentException || error is NotSupportedException || error is IOException)
+            {
+                MessageBox.Show(this, Ui.Text("programPathInvalid"), Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            try
+            {
+                using (var key = Registry.CurrentUser.CreateSubKey("SOFTWARE\\UGSo\\IET2026"))
+                {
+                    string previous = key.GetValue("Path") as string;
+                    if (!string.IsNullOrEmpty(previous) && !string.Equals(previous, path, StringComparison.OrdinalIgnoreCase))
+                    {
+                        string backup = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                            "UGSo", "IET2026", "backups", "program-path-" + DateTime.Now.ToString("yyyyMMdd-HHmmss-fff") + "-" + Guid.NewGuid().ToString("N"));
+                        Directory.CreateDirectory(backup);
+                        File.WriteAllText(Path.Combine(backup, "program-path.txt"), previous, new UTF8Encoding(false));
+                    }
+                    WriteProgramPath(key, path);
+                }
+                readkey();
+                return true;
+            }
+            catch (Exception error) when (error is IOException || error is UnauthorizedAccessException || error is System.Security.SecurityException)
+            {
+                MessageBox.Show(this, Ui.Text("programPathSaveFailed"), Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

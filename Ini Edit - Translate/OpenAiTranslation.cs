@@ -18,6 +18,9 @@ namespace Ini_Edit___Translate
     {
         public string Model { get; set; } = "gpt-4.1-mini";
         public string ProtectedKey { get; set; }
+        public bool UseChatGpt { get; set; }
+        public string ChatGptClientId { get; set; }
+        public string ChatGptModel { get; set; }
         internal static string FilePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UGSo", "IET2026", "openai.json");
 
         internal static OpenAiSettings Load()
@@ -32,18 +35,21 @@ namespace Ini_Edit___Translate
             return Environment.GetEnvironmentVariable("IET_OPENAI_API_KEY") ?? Environment.GetEnvironmentVariable("OPENAI_API_KEY");
         }
 
-        internal void Save(string key)
+        internal void Save(string key, string destination = null)
         {
             Model = (Model ?? "").Trim();
-            if (!Regex.IsMatch(Model, @"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$"))
+            if (!UseChatGpt && !Regex.IsMatch(Model, @"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$"))
                 throw new InvalidOperationException(Ui.Text("invalidModel"));
+            if (UseChatGpt && (string.IsNullOrWhiteSpace(ChatGptClientId) || string.IsNullOrWhiteSpace(ChatGptModel)))
+                throw new InvalidOperationException(Ui.Text("cgSelectModel"));
             if (!string.IsNullOrWhiteSpace(key))
                 ProtectedKey = Convert.ToBase64String(ProtectedData.Protect(Encoding.UTF8.GetBytes(key.Trim()), null, DataProtectionScope.CurrentUser));
-            Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
-            var temporary = FilePath + ".tmp";
+            string path = destination ?? FilePath;
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            var temporary = path + ".tmp";
             File.WriteAllText(temporary, JsonConvert.SerializeObject(this, Formatting.Indented), Encoding.UTF8);
-            if (File.Exists(FilePath)) File.Replace(temporary, FilePath, FilePath + ".bak");
-            else File.Move(temporary, FilePath);
+            if (File.Exists(path)) File.Replace(temporary, path, path + ".bak");
+            else File.Move(temporary, path);
         }
     }
 
@@ -51,16 +57,23 @@ namespace Ini_Edit___Translate
     {
         private readonly HttpClient client;
         private readonly OpenAiSettings settings;
+        private readonly IChatGptTokens chatGptTokens;
+        private readonly ChatGptClient ownedChatGpt;
         // Cache only for one operation; source texts never persist in the cache.
         private readonly Dictionary<string, Dictionary<string, string>> cache = new Dictionary<string, Dictionary<string, string>>();
         internal static readonly string[] Languages = { "en", "de", "fr", "pl" };
         private static readonly Regex Tokens = new Regex(@"\{[^{}\r\n]+\}|\[[^\]\r\n]+\]|%(?:\d+\$)?[-+0 #]*\d*(?:\.\d+)?[a-zA-Z%]|\\[nrt]|<[^>\r\n]+>", RegexOptions.CultureInvariant);
 
-        internal OpenAiTranslation(OpenAiSettings settings, HttpMessageHandler handler = null)
+        internal OpenAiTranslation(OpenAiSettings settings, HttpMessageHandler handler = null, IChatGptTokens chatGptTokens = null)
         {
             this.settings = settings;
             client = handler == null ? new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) : new HttpClient(handler);
             client.Timeout = TimeSpan.FromSeconds(60);
+            if (settings.UseChatGpt)
+            {
+                if (chatGptTokens == null) ownedChatGpt = new ChatGptClient();
+                this.chatGptTokens = chatGptTokens ?? ownedChatGpt;
+            }
         }
 
         internal async Task<string> TranslateAsync(string text, string from, string to, CancellationToken cancellation)
@@ -72,7 +85,9 @@ namespace Ini_Edit___Translate
             string cacheKey = from + "\0" + text;
             if (!cache.TryGetValue(cacheKey, out var translated))
             {
-                var key = settings.GetKey();
+                if (settings.UseChatGpt && (string.IsNullOrWhiteSpace(settings.ChatGptClientId) || string.IsNullOrWhiteSpace(settings.ChatGptModel)))
+                    throw new InvalidOperationException(Ui.Text("cgSelectModel"));
+                var key = settings.UseChatGpt ? await chatGptTokens.GetAccessTokenAsync(settings.ChatGptClientId, cancellation).ConfigureAwait(false) : settings.GetKey();
                 if (string.IsNullOrWhiteSpace(key)) throw new InvalidOperationException(Ui.Text("missingApiKey"));
                 var targets = Languages.Where(language => language != from).ToArray();
                 var properties = new JObject();
@@ -92,39 +107,60 @@ namespace Ini_Edit___Translate
                             ["required"] = new JArray(targets), ["additionalProperties"] = false }
                     }}
                 };
+                if (settings.UseChatGpt)
+                {
+                    payload["model"] = settings.ChatGptModel;
+                    payload["input"] = new JArray(new JObject { ["role"] = "user", ["content"] = text });
+                    payload["stream"] = true;
+                    payload.Remove("max_output_tokens");
+                }
                 using (var request = new HttpRequestMessage(HttpMethod.Post, "https://api.openai.com/v1/responses"))
                 {
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", key.Trim());
                     request.Content = new StringContent(payload.ToString(Formatting.None), Encoding.UTF8, "application/json");
-                    using (var response = await client.SendAsync(request, cancellation).ConfigureAwait(false))
+                    using (var deadline = CancellationTokenSource.CreateLinkedTokenSource(cancellation))
                     {
-                        if (!response.IsSuccessStatusCode)
-                            throw new InvalidOperationException(Ui.Format("apiHttpFailure", (int)response.StatusCode));
-                        var raw = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                        cancellation.ThrowIfCancellationRequested();
-                        var result = JObject.Parse(raw);
-                        if ((string)result["status"] != "completed") throw new InvalidOperationException(Ui.Text("incompleteResponse"));
-                        var output = new StringBuilder();
-                        foreach (var item in result["output"] as JArray ?? new JArray())
+                        deadline.CancelAfter(TimeSpan.FromSeconds(90));
+                        using (var response = await client.SendAsync(request, settings.UseChatGpt ? HttpCompletionOption.ResponseHeadersRead : HttpCompletionOption.ResponseContentRead, deadline.Token).ConfigureAwait(false))
                         {
-                            if ((string)item["type"] != "message") continue;
-                            foreach (var part in item["content"] as JArray ?? new JArray())
+                            if (!response.IsSuccessStatusCode)
+                                throw await OpenAiErrors.FromHttpAsync(response, settings.UseChatGpt).ConfigureAwait(false);
+                            JObject result;
+                            if (settings.UseChatGpt)
                             {
-                                if ((string)part["type"] == "refusal") throw new InvalidOperationException(Ui.Text("refusedResponse"));
-                                if ((string)part["type"] == "output_text") output.Append((string)part["text"]);
+                                if (!string.Equals(response.Content.Headers.ContentType?.MediaType, "text/event-stream", StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException(Ui.Text("cgRequestFailed"));
+                                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                                    result = await ChatGptStream.ReadAsync(stream, deadline.Token).ConfigureAwait(false);
                             }
+                            else
+                            {
+                                var raw = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                                result = JObject.Parse(raw);
+                            }
+                            cancellation.ThrowIfCancellationRequested();
+                            if ((string)result["status"] != "completed") throw new InvalidOperationException(Ui.Text("incompleteResponse"));
+                            var output = new StringBuilder();
+                            foreach (var item in result["output"] as JArray ?? new JArray())
+                            {
+                                if ((string)item["type"] != "message") continue;
+                                foreach (var part in item["content"] as JArray ?? new JArray())
+                                {
+                                    if ((string)part["type"] == "refusal") throw new InvalidOperationException(Ui.Text("refusedResponse"));
+                                    if ((string)part["type"] == "output_text") output.Append((string)part["text"]);
+                                }
+                            }
+                            var values = JObject.Parse(output.ToString());
+                            translated = new Dictionary<string, string> { [from] = text };
+                            foreach (var target in targets)
+                            {
+                                if (values[target]?.Type != JTokenType.String || string.IsNullOrWhiteSpace((string)values[target]))
+                                    throw new InvalidOperationException(Ui.Text("missingLanguages"));
+                                var value = (string)values[target];
+                                ValidateTokens(text, value);
+                                translated[target] = value;
+                            }
+                            cache.Add(cacheKey, translated);
                         }
-                        var values = JObject.Parse(output.ToString());
-                        translated = new Dictionary<string, string> { [from] = text };
-                        foreach (var target in targets)
-                        {
-                            if (values[target]?.Type != JTokenType.String || string.IsNullOrWhiteSpace((string)values[target]))
-                                throw new InvalidOperationException(Ui.Text("missingLanguages"));
-                            var value = (string)values[target];
-                            ValidateTokens(text, value);
-                            translated[target] = value;
-                        }
-                        cache.Add(cacheKey, translated);
                     }
                 }
             }
@@ -138,6 +174,6 @@ namespace Ini_Edit___Translate
             if (!before.SequenceEqual(after)) throw new InvalidOperationException(Ui.Text("changedTokens"));
         }
 
-        public void Dispose() { client.Dispose(); }
+        public void Dispose() { client.Dispose(); ownedChatGpt?.Dispose(); }
     }
 }

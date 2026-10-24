@@ -1,9 +1,35 @@
 # INI Edit Translate 2026
 
+## Version 2.1.40 : connexion ChatGPT
+
+Inclut la correction du chemin du programme de la version 2.1.39.
+
+Ouvrir **Options → Traduction OpenAI**, puis choisir **Utiliser l’abonnement ChatGPT**.
+Cliquer sur **Continuer avec ChatGPT**, se connecter dans le navigateur système et
+autoriser soi-même l’utilisation de l’abonnement. Choisir un modèle disponible
+pour ce compte et **Enregistrer**. **Autre compte** ajoute une connexion distincte ;
+**Se déconnecter** ne déconnecte que le compte choisi.
+
+Les textes sélectionnés sont envoyés à OpenAI. Ce mode utilise le quota ChatGPT
+existant et l’autorisation de l’application ; il ne fournit pas de quota illimité
+supplémentaire. **Gérer l’utilisation** ouvre les paramètres d’utilisation ChatGPT.
+L’éligibilité du compte est vérifiée pendant la connexion réelle.
+Aucun passage automatique à l’API facturée séparément en cas d’erreur ou de limite.
+
+La clé API existante est conservée. Les identifiants OAuth sont stockés séparément,
+chiffrés avec Windows DPAPI, dans `%LOCALAPPDATA%/UGSo/IET2026/chatgpt-session.dat`.
+Aucune clé API n’est nécessaire pour la connexion ChatGPT. Les erreurs de quota API
+et de fréquence connues ont désormais des messages distincts.
+
+Les 63 vérifications locales ont réussi avec des réponses OpenAI simulées et un
+rappel local isolé. L’autorisation du compte réel et la traduction restent à tester.
+[Version et vérifications](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40).
+[Documentation officielle](https://developers.openai.com/siwc/token-sharing-open-source/sign-in).
+
 [Deutsch](README.md) · [English](README.en.md) · [Documentation](https://opensource.ugso-software.de/fr/eep/ini-edit-translate-2026/)
 
 Éditeur Windows et traducteur ChatGPT pour les fichiers INI de modèles EEP et
-`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.38.0**.
+`Installation.eep`, développé par Uwe Grimm / UGSo Software. Version **2.1.40.0**.
 
 ![Interface française sans données personnelles](docs/images/editor-fr.png)
 
@@ -24,7 +50,7 @@ Google, LEO, Linguee et DeepL ne sont plus proposés comme services de traductio
 
 ## Téléchargement
 
-[Télécharger le ZIP Windows v2.1.38](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.38/INI-Edit-Translate-2026-v2.1.38-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.38)
+[Télécharger le ZIP Windows v2.1.40](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.40/INI-Edit-Translate-2026-v2.1.40-windows.zip) · [Version GitHub et SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40)
 
 Extraire tout le ZIP et lancer `INI Edit Translate 2026.exe`. Windows 11 et
 .NET Framework 4.8 suffisent ; Visual Studio sert uniquement à compiler les sources.

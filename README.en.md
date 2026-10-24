@@ -1,9 +1,33 @@
 # INI Edit Translate 2026
 
+## Version 2.1.40: ChatGPT sign-in
+
+Includes the editable application-path fix from 2.1.39.
+
+Open **Options → OpenAI translation** and select **Use ChatGPT plan**.
+Choose **Continue with ChatGPT**, sign in through the system browser and authorize
+plan usage yourself. Select a model available to that account and **Save**.
+**Another account** adds a separate connection; **Sign out** disconnects only the selected one.
+
+Selected model texts are sent to OpenAI. This mode uses your existing ChatGPT
+allowance and app permission, with no separate unlimited allowance.
+**Manage usage** opens ChatGPT usage settings. Account eligibility is checked during
+real sign-in. Errors and plan limits never trigger an automatic switch to the separately billed API.
+
+The existing API key is retained. OAuth credentials are stored separately with
+Windows DPAPI encryption in `%LOCALAPPDATA%/UGSo/IET2026/chatgpt-session.dat`.
+No API key is needed for ChatGPT sign-in. Known API quota and rate-limit errors now
+have separate messages.
+
+All 63 local checks passed using simulated OpenAI responses and an isolated local callback.
+Real account authorization and translation still need testing.
+[Release and verification](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40).
+[Official sign-in contract](https://developers.openai.com/siwc/token-sharing-open-source/sign-in).
+
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.38.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.40.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -23,7 +47,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.38](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.38/INI-Edit-Translate-2026-v2.1.38-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.38)
+[Download Windows ZIP v2.1.40](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.40/INI-Edit-Translate-2026-v2.1.40-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

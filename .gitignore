@@ -357,3 +357,5 @@ MigrationBackup/
 !Info_trans/firebird-runtime/x86/**
 /database-test-output/
 /dist/
+chatgpt-session.dat*
+docs/LOCAL-*.md

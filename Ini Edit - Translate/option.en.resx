@@ -160,5 +160,5 @@ application path</value>
   <data name="checkBox2.Text" xml:space="preserve">
     <value>Use “Read and translate” by default</value>
   </data>
-  <data name="button3.ToolTip" xml:space="preserve"><value>Registers the current application path for the 2026 edition.</value></data>
+<data name="button3.ToolTip" xml:space="preserve"><value>Saves the entered executable or folder path for the 2026 edition.</value></data>
 </root>

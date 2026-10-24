@@ -19,6 +19,8 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Compile Include="LocalTests.cs" />
+    <Compile Include="ChatGptTests.cs" />
+    <Reference Include="System.Web" />
     <Content Include="..\Info.rtf">
       <Link>Info.rtf</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

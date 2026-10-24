@@ -503,7 +503,7 @@
 eintragen</value>
   </data>
   <data name="button3.ToolTip" xml:space="preserve">
-    <value>Trägt den aktuellen Programmpfad für die 2026-Fassung in die Registry ein.</value>
+<value>Speichert den eingegebenen EXE- oder Ordnerpfad für die 2026-Fassung.</value>
   </data>
   <data name="&gt;&gt;button3.Name" xml:space="preserve">
     <value>button3</value>

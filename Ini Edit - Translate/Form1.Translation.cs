@@ -77,11 +77,13 @@ namespace Ini_Edit___Translate
                 // Snapshot after importing the selected file, before the first API call.
                 // Restoring a previous file's UI against a newly selected path is unsafe.
                 CaptureTranslationState();
-                openAi = new OpenAiTranslation(OpenAiSettings.Load());
+                var settings = OpenAiSettings.Load();
+                openAi = new OpenAiTranslation(settings);
                 translationProgress = new Form { Text = Ui.Text("openAiTitle"), ClientSize = new Size(420, 110),
                     StartPosition = FormStartPosition.CenterParent, FormBorderStyle = FormBorderStyle.FixedDialog,
                     MaximizeBox = false, MinimizeBox = false };
-                translationProgress.Controls.Add(new Label { Text = Ui.Text("translating"), AutoSize = true, Location = new Point(15, 15) });
+                translationProgress.Controls.Add(new Label { Text = Ui.Text(settings.UseChatGpt ? "cgTranslating" : "translating"),
+                    AutoSize = true, MaximumSize = new Size(390, 0), Location = new Point(15, 10) });
                 var cancel = new Button { Text = Ui.Text("cancelAction"), Width = 180, Height = 30, Location = new Point(15, 60) };
                 cancel.Click += (sender, args) => { translationCancellation.Cancel(); cancel.Enabled = false; };
                 translationProgress.FormClosing += (sender, args) =>

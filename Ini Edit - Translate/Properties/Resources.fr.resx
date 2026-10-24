@@ -202,7 +202,7 @@
     <value>Enregistrer le chemin du logiciel ?</value>
   </data>
   <data name="quest2" xml:space="preserve">
-    <value>Enregistrer le chemin actuel de l’édition 2026 ?</value>
+    <value>Enregistrer le chemin saisi pour l’édition 2026 ?</value>
   </data>
   <data name="no_ver" xml:space="preserve">
     <value>La fonction de mise à jour est désactivée.</value>
@@ -266,4 +266,40 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="infoTitle" xml:space="preserve">
     <value>Informations sur le programme</value>
   </data>
+  <data name="programPathInvalid" xml:space="preserve"><value>Saisir le chemin complet d’un fichier INI Edit Translate 2026.exe existant ou de son dossier.</value></data>
+  <data name="programPathSaveFailed" xml:space="preserve"><value>Impossible d’enregistrer le chemin du programme. L’entrée précédente est conservée.</value></data>
+  <data name="cgAccount" xml:space="preserve"><value>Compte ChatGPT</value></data>
+  <data name="cgNoConsent" xml:space="preserve"><value>L’autorisation d’utiliser l’abonnement ChatGPT manque. Se reconnecter et autoriser cette utilisation.</value></data>
+  <data name="cgSignedOut" xml:space="preserve"><value>Déconnecté</value></data>
+  <data name="cgStorageError" xml:space="preserve"><value>Impossible de lire ou d’enregistrer la session ChatGPT protégée. Les paramètres API sont conservés.</value></data>
+  <data name="cgSessionBusy" xml:space="preserve"><value>Une autre instance utilise la session ChatGPT. Réessayer.</value></data>
+  <data name="cgInvalidLogin" xml:space="preserve"><value>La réponse de connexion ChatGPT n’a pas pu être vérifiée de façon sûre. Recommencer la connexion.</value></data>
+  <data name="cgDeclined" xml:space="preserve"><value>La connexion ChatGPT n’a pas été autorisée. La connexion existante est conservée.</value></data>
+  <data name="cgLoginRequired" xml:space="preserve"><value>Se connecter d’abord avec ChatGPT. La clé API ne sera pas utilisée automatiquement.</value></data>
+  <data name="cgWrongAccount" xml:space="preserve"><value>Cette connexion correspond à un autre compte. Choisir « Autre compte » ; la connexion existante est conservée.</value></data>
+  <data name="cgBrowserDone" xml:space="preserve"><value>Connexion reçue. Revenir à l’éditeur INI, qui vérifiera la connexion. Cette fenêtre peut être fermée.</value></data>
+  <data name="cgNoModels" xml:space="preserve"><value>Aucun modèle sélectionnable n’a été renvoyé pour ce compte ChatGPT.</value></data>
+  <data name="cgLimit" xml:space="preserve"><value>Le quota ChatGPT ou l’accès de l’application est indisponible. Vérifier « Gérer l’utilisation ». Aucun passage à l’API facturée séparément.</value></data>
+  <data name="cgRequestFailed" xml:space="preserve"><value>La requête ChatGPT a échoué. Vérifier la connexion, le compte et le modèle. Les textes existants sont conservés.</value></data>
+  <data name="cgSelectModel" xml:space="preserve"><value>Choisir un compte ChatGPT connecté et un modèle disponible.</value></data>
+  <data name="cgProvider" xml:space="preserve"><value>Accès à la traduction</value></data>
+  <data name="cgProviderApi" xml:space="preserve"><value>API OpenAI · facturation séparée</value></data>
+  <data name="cgProviderPlan" xml:space="preserve"><value>Utiliser l’abonnement ChatGPT</value></data>
+  <data name="cgContinue" xml:space="preserve"><value>Continuer avec ChatGPT</value></data>
+  <data name="cgAddAccount" xml:space="preserve"><value>Autre compte</value></data>
+  <data name="cgSignOut" xml:space="preserve"><value>Se déconnecter</value></data>
+  <data name="cgModels" xml:space="preserve"><value>Modèles disponibles pour ce compte</value></data>
+  <data name="cgLoadModels" xml:space="preserve"><value>Charger les modèles</value></data>
+  <data name="cgPrivacy" xml:space="preserve"><value>Les textes sélectionnés sont envoyés à OpenAI. Les traductions utilisent votre quota ChatGPT existant et l’autorisation accordée à cette application. Aucun recours automatique à l’API. Les identifiants sont chiffrés pour votre compte Windows.</value></data>
+  <data name="cgManageUsage" xml:space="preserve"><value>Gérer l’utilisation</value></data>
+  <data name="cgOpenUsage" xml:space="preserve"><value>Ouvrir https://chatgpt.com/settings/usage dans le navigateur.</value></data>
+  <data name="cgWaiting" xml:space="preserve"><value>Terminer la connexion ChatGPT dans le navigateur ouvert. Annulation possible ici ; la tentative expire après cinq minutes.</value></data>
+  <data name="cgRevokeUnconfirmed" xml:space="preserve"><value>Déconnexion locale effectuée. La révocation chez OpenAI n’a pas été confirmée. Au besoin, déconnecter aussi l’application dans les paramètres ChatGPT.</value></data>
+  <data name="cgLastModel" xml:space="preserve"><value>dernier utilisé</value></data>
+  <data name="cgReady" xml:space="preserve"><value>L’utilisation de l’abonnement ChatGPT est autorisée. Choisir un modèle et enregistrer ; le quota existant est partagé.</value></data>
+  <data name="cgCancelled" xml:space="preserve"><value>Opération annulée ou délai dépassé. Les connexions existantes sont conservées.</value></data>
+  <data name="cgTranslating" xml:space="preserve"><value>Traduction avec votre abonnement ChatGPT. Votre quota existant est utilisé.</value></data>
+  <data name="apiQuota" xml:space="preserve"><value>Le crédit API OpenAI ou une limite de dépenses API est épuisé. Vérifier la facturation et les limites API ; l’abonnement ChatGPT est distinct.</value></data>
+  <data name="apiRateLimit" xml:space="preserve"><value>OpenAI limite actuellement les requêtes. Patienter puis réessayer ; aucune nouvelle tentative automatique.</value></data>
+  <data name="api429Unknown" xml:space="preserve"><value>OpenAI renvoie HTTP 429 : limite de requêtes ou quota API atteint. Vérifier le crédit et les limites API et réessayer plus tard si nécessaire.</value></data>
 </root>

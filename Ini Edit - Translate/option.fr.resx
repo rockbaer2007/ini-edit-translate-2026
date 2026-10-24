@@ -160,5 +160,5 @@ en ligne de commande</value>
   <data name="checkBox2.Text" xml:space="preserve">
     <value>Utiliser « Lire et traduire » par défaut</value>
   </data>
-  <data name="button3.ToolTip" xml:space="preserve"><value>Enregistre le chemin actuel de l’édition 2026 dans le Registre Windows.</value></data>
+<data name="button3.ToolTip" xml:space="preserve"><value>Enregistre le chemin saisi du fichier exécutable ou de son dossier pour l’édition 2026.</value></data>
 </root>

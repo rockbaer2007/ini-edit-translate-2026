@@ -818,7 +818,7 @@
     <value>Programmpfad speichern?</value>
   </data>
   <data name="quest2" xml:space="preserve">
-    <value>Den aktuellen Programmpfad für die 2026-Fassung eintragen?</value>
+    <value>Den eingegebenen Programmpfad für die 2026-Fassung speichern?</value>
   </data>
   <data name="tssl1" xml:space="preserve">
     <value>OpenAI ist noch nicht geprüft. Bei einer Übersetzung wird die Verbindung geprüft.</value>
@@ -870,4 +870,40 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="infoTitle" xml:space="preserve">
     <value>Programminformationen</value>
   </data>
+  <data name="programPathInvalid" xml:space="preserve"><value>Bitte eine vorhandene INI Edit Translate 2026.exe oder deren vollständigen Ordnerpfad eingeben.</value></data>
+  <data name="programPathSaveFailed" xml:space="preserve"><value>Der Programmpfad konnte nicht gespeichert werden. Der bisherige Eintrag bleibt erhalten.</value></data>
+  <data name="cgAccount" xml:space="preserve"><value>ChatGPT-Konto</value></data>
+  <data name="cgNoConsent" xml:space="preserve"><value>Die Freigabe zur Nutzung des ChatGPT-Abos fehlt. Melde dich erneut an und erlaube die Abo-Nutzung.</value></data>
+  <data name="cgSignedOut" xml:space="preserve"><value>Abgemeldet</value></data>
+  <data name="cgStorageError" xml:space="preserve"><value>Die geschützte ChatGPT-Sitzung konnte nicht gelesen oder gespeichert werden. Die API-Konfiguration bleibt erhalten.</value></data>
+  <data name="cgSessionBusy" xml:space="preserve"><value>Die ChatGPT-Sitzung wird gerade von einer anderen Instanz verwendet. Bitte erneut versuchen.</value></data>
+  <data name="cgInvalidLogin" xml:space="preserve"><value>Die ChatGPT-Anmeldeantwort konnte nicht sicher bestätigt werden. Bitte die Anmeldung neu starten.</value></data>
+  <data name="cgDeclined" xml:space="preserve"><value>Die ChatGPT-Anmeldung wurde nicht freigegeben. Die bisherige Verbindung bleibt erhalten.</value></data>
+  <data name="cgLoginRequired" xml:space="preserve"><value>Bitte zuerst mit ChatGPT anmelden. Der API-Schlüssel wird nicht automatisch verwendet.</value></data>
+  <data name="cgWrongAccount" xml:space="preserve"><value>Die Anmeldung gehört zu einem anderen Konto. Bitte „Anderes Konto“ wählen; die vorhandene Verbindung bleibt erhalten.</value></data>
+  <data name="cgBrowserDone" xml:space="preserve"><value>Anmeldung empfangen. Bitte zum INI-Editor zurückkehren; dort wird die Anmeldung geprüft. Dieses Fenster kann geschlossen werden.</value></data>
+  <data name="cgNoModels" xml:space="preserve"><value>Für dieses ChatGPT-Konto wurden keine auswählbaren Modelle zurückgegeben.</value></data>
+  <data name="cgLimit" xml:space="preserve"><value>ChatGPT-Kontingent oder App-Freigabe derzeit nicht verfügbar. Unter „Nutzung verwalten“ prüfen. Es erfolgt kein Wechsel zur kostenpflichtigen API.</value></data>
+  <data name="cgRequestFailed" xml:space="preserve"><value>Die ChatGPT-Anfrage ist fehlgeschlagen. Verbindung, Anmeldung und Modellauswahl prüfen. Vorhandene Texte bleiben erhalten.</value></data>
+  <data name="cgSelectModel" xml:space="preserve"><value>Bitte ein angemeldetes ChatGPT-Konto und ein verfügbares Modell auswählen.</value></data>
+  <data name="cgProvider" xml:space="preserve"><value>Übersetzungszugang</value></data>
+  <data name="cgProviderApi" xml:space="preserve"><value>OpenAI-API · separate Abrechnung</value></data>
+  <data name="cgProviderPlan" xml:space="preserve"><value>ChatGPT-Abo verwenden</value></data>
+  <data name="cgContinue" xml:space="preserve"><value>Mit ChatGPT fortfahren</value></data>
+  <data name="cgAddAccount" xml:space="preserve"><value>Anderes Konto</value></data>
+  <data name="cgSignOut" xml:space="preserve"><value>Abmelden</value></data>
+  <data name="cgModels" xml:space="preserve"><value>Für dieses Konto verfügbare Modelle</value></data>
+  <data name="cgLoadModels" xml:space="preserve"><value>Modelle laden</value></data>
+  <data name="cgPrivacy" xml:space="preserve"><value>Ausgewählte Texte werden an OpenAI gesendet. Übersetzungen nutzen dein vorhandenes ChatGPT-Kontingent und die erteilte App-Freigabe. Kein automatischer API-Wechsel. Zugangsdaten werden für dein Windows-Konto verschlüsselt gespeichert.</value></data>
+  <data name="cgManageUsage" xml:space="preserve"><value>Nutzung verwalten</value></data>
+  <data name="cgOpenUsage" xml:space="preserve"><value>Bitte https://chatgpt.com/settings/usage im Browser öffnen.</value></data>
+  <data name="cgWaiting" xml:space="preserve"><value>Bitte die ChatGPT-Anmeldung im geöffneten Browser abschließen. Du kannst hier abbrechen; nach fünf Minuten endet der Versuch.</value></data>
+  <data name="cgRevokeUnconfirmed" xml:space="preserve"><value>Lokal abgemeldet. Der Widerruf bei OpenAI wurde nicht bestätigt. Die App bei Bedarf zusätzlich in den ChatGPT-Einstellungen trennen.</value></data>
+  <data name="cgLastModel" xml:space="preserve"><value>zuletzt verwendet</value></data>
+  <data name="cgReady" xml:space="preserve"><value>ChatGPT-Abo-Nutzung ist freigegeben. Modell auswählen und speichern; vorhandenes Kontingent wird geteilt.</value></data>
+  <data name="cgCancelled" xml:space="preserve"><value>Vorgang abgebrochen oder Zeitlimit erreicht. Vorhandene Verbindungen bleiben erhalten.</value></data>
+  <data name="cgTranslating" xml:space="preserve"><value>Übersetzung mit deinem ChatGPT-Abo läuft. Sie verbraucht dein vorhandenes Kontingent.</value></data>
+  <data name="apiQuota" xml:space="preserve"><value>Das OpenAI-API-Guthaben oder ein API-Ausgabenlimit ist erreicht. API-Abrechnung und Limits prüfen; das ChatGPT-Abo ist davon getrennt.</value></data>
+  <data name="apiRateLimit" xml:space="preserve"><value>OpenAI begrenzt derzeit die Anfragen. Bitte warten und später erneut versuchen; es werden keine automatischen Wiederholungen ausgelöst.</value></data>
+  <data name="api429Unknown" xml:space="preserve"><value>OpenAI meldet HTTP 429: Anfragelimit oder API-Kontingent erreicht. API-Guthaben und Limits prüfen und gegebenenfalls später erneut versuchen.</value></data>
 </root>

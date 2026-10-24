@@ -202,7 +202,7 @@
     <value>Save application path?</value>
   </data>
   <data name="quest2" xml:space="preserve">
-    <value>Register the current application path for the 2026 edition?</value>
+    <value>Save the entered application path for the 2026 edition?</value>
   </data>
   <data name="no_ver" xml:space="preserve">
     <value>Updates are disabled.</value>
@@ -266,4 +266,40 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="infoTitle" xml:space="preserve">
     <value>Program information</value>
   </data>
+  <data name="programPathInvalid" xml:space="preserve"><value>Enter the full path to an existing INI Edit Translate 2026.exe or its folder.</value></data>
+  <data name="programPathSaveFailed" xml:space="preserve"><value>Could not save the application path. The previous entry is retained.</value></data>
+  <data name="cgAccount" xml:space="preserve"><value>ChatGPT account</value></data>
+  <data name="cgNoConsent" xml:space="preserve"><value>Permission to use the ChatGPT plan is missing. Sign in again and allow plan usage.</value></data>
+  <data name="cgSignedOut" xml:space="preserve"><value>Signed out</value></data>
+  <data name="cgStorageError" xml:space="preserve"><value>Could not read or save the protected ChatGPT session. API settings are retained.</value></data>
+  <data name="cgSessionBusy" xml:space="preserve"><value>Another instance is using the ChatGPT session. Please try again.</value></data>
+  <data name="cgInvalidLogin" xml:space="preserve"><value>The ChatGPT sign-in response could not be securely verified. Please restart sign-in.</value></data>
+  <data name="cgDeclined" xml:space="preserve"><value>ChatGPT sign-in was not authorized. The existing connection is retained.</value></data>
+  <data name="cgLoginRequired" xml:space="preserve"><value>Sign in with ChatGPT first. The API key will not be used automatically.</value></data>
+  <data name="cgWrongAccount" xml:space="preserve"><value>This sign-in belongs to another account. Choose “Another account”; the existing connection is retained.</value></data>
+  <data name="cgBrowserDone" xml:space="preserve"><value>Sign-in received. Return to the INI editor, where the sign-in will be verified. You can close this window.</value></data>
+  <data name="cgNoModels" xml:space="preserve"><value>No selectable models were returned for this ChatGPT account.</value></data>
+  <data name="cgLimit" xml:space="preserve"><value>ChatGPT allowance or app access is currently unavailable. Check “Manage usage”. No switch to the separately billed API will occur.</value></data>
+  <data name="cgRequestFailed" xml:space="preserve"><value>The ChatGPT request failed. Check the connection, sign-in and model selection. Existing texts are retained.</value></data>
+  <data name="cgSelectModel" xml:space="preserve"><value>Select a signed-in ChatGPT account and an available model.</value></data>
+  <data name="cgProvider" xml:space="preserve"><value>Translation access</value></data>
+  <data name="cgProviderApi" xml:space="preserve"><value>OpenAI API · separate billing</value></data>
+  <data name="cgProviderPlan" xml:space="preserve"><value>Use ChatGPT plan</value></data>
+  <data name="cgContinue" xml:space="preserve"><value>Continue with ChatGPT</value></data>
+  <data name="cgAddAccount" xml:space="preserve"><value>Another account</value></data>
+  <data name="cgSignOut" xml:space="preserve"><value>Sign out</value></data>
+  <data name="cgModels" xml:space="preserve"><value>Models available for this account</value></data>
+  <data name="cgLoadModels" xml:space="preserve"><value>Load models</value></data>
+  <data name="cgPrivacy" xml:space="preserve"><value>Selected texts are sent to OpenAI. Translations use your existing ChatGPT allowance and the permission granted to this app. No automatic API fallback. Credentials are encrypted for your Windows account.</value></data>
+  <data name="cgManageUsage" xml:space="preserve"><value>Manage usage</value></data>
+  <data name="cgOpenUsage" xml:space="preserve"><value>Open https://chatgpt.com/settings/usage in your browser.</value></data>
+  <data name="cgWaiting" xml:space="preserve"><value>Complete ChatGPT sign-in in the browser that opened. You can cancel here; the attempt expires after five minutes.</value></data>
+  <data name="cgRevokeUnconfirmed" xml:space="preserve"><value>Signed out locally. OpenAI revocation was not confirmed. If needed, also disconnect the app in ChatGPT settings.</value></data>
+  <data name="cgLastModel" xml:space="preserve"><value>last used</value></data>
+  <data name="cgReady" xml:space="preserve"><value>ChatGPT plan usage is enabled. Select a model and save; your existing allowance is shared.</value></data>
+  <data name="cgCancelled" xml:space="preserve"><value>Operation cancelled or timed out. Existing connections are retained.</value></data>
+  <data name="cgTranslating" xml:space="preserve"><value>Translating using your ChatGPT plan. This uses your existing allowance.</value></data>
+  <data name="apiQuota" xml:space="preserve"><value>OpenAI API credits or an API spending limit have been exhausted. Check API billing and limits; the ChatGPT plan is separate.</value></data>
+  <data name="apiRateLimit" xml:space="preserve"><value>OpenAI is currently limiting requests. Wait and try again later; no automatic retries will be made.</value></data>
+  <data name="api429Unknown" xml:space="preserve"><value>OpenAI returned HTTP 429: request limit or API quota reached. Check API credits and limits and try later if appropriate.</value></data>
 </root>

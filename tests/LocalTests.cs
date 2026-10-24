@@ -218,6 +218,31 @@ internal static class LocalTests
                     Assert(!Ui.Text("tssl2").Contains("Google"), "obsolete provider status");
                     Assert(Ui.Text("tableFilter").EndsWith("|*.csv"), "invalid localized export filter");
                 });
+                Test("ChatGPT settings render without live authentication " + language, () =>
+                {
+                    string scratch = Path.Combine(Path.GetTempPath(), "iet-chatgpt-ui-" + Guid.NewGuid().ToString("N"));
+                    try
+                    {
+                        foreach (float scale in new[] { 1f, 1.5f })
+                        using (var form = new OpenAiSettingsForm(new OpenAiSettings { UseChatGpt = true },
+                            new ChatGptClient(new ChatGptVault(Path.Combine(scratch, "session.dat")))))
+                        {
+                            form.StartPosition = FormStartPosition.Manual; form.Location = new Point(-20000, -20000); form.ShowInTaskbar = false;
+                            form.Scale(new SizeF(scale, scale)); form.Show(); form.PerformLayout(); form.Refresh();
+                            Assert(Descendants(form).OfType<ComboBox>().Any(c => c.Items.Count == 2 && c.SelectedIndex == 1), "plan selected");
+                            Assert(Descendants(form).OfType<GroupBox>().Any(g => g.Visible && g.Text == Ui.Text("cgProviderPlan")), "plan controls visible");
+                            foreach (Control control in form.Controls) Assert(form.ClientRectangle.Contains(control.Bounds), "dialog root overflow");
+                            if (args.Length > 0)
+                                using (var bitmap = new Bitmap(form.Width, form.Height))
+                                {
+                                    form.DrawToBitmap(bitmap, new Rectangle(0, 0, form.Width, form.Height));
+                                    bitmap.Save(Path.Combine(Path.GetDirectoryName(args[0]), "chatgpt-settings-" + language + "-" + (int)(scale * 100) + ".png"));
+                                }
+                            form.Close();
+                        }
+                    }
+                    finally { if (Directory.Exists(scratch)) Directory.Delete(scratch, true); }
+                });
                 Test("editor labels and update removal " + language, () =>
                 {
                     using (var form = new Form1())
@@ -411,6 +436,36 @@ internal static class LocalTests
                 finally { Environment.CurrentDirectory = previousDirectory; }
             });
             }
+            Test("custom application path round-trip and invalid input protection", () =>
+            {
+                string folder = Path.Combine(Path.GetTempPath(), "iet-path-" + Guid.NewGuid().ToString("N"));
+                string keyPath = "SOFTWARE\\UGSo\\IET2026-PathTest-" + Guid.NewGuid().ToString("N");
+                Directory.CreateDirectory(folder);
+                try
+                {
+                    string exe = Path.Combine(folder, Path.GetFileName(typeof(option).Assembly.Location));
+                    File.WriteAllText(exe, "temporary path fixture");
+                    Assert(option.NormalizeProgramPath(folder) == exe, "folder resolves to executable");
+                    Assert(option.NormalizeProgramPath("\"" + exe + "\"") == exe, "quoted executable accepted");
+                    using (var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(keyPath))
+                    {
+                        option.WriteProgramPath(key, exe);
+                        Assert((string)key.GetValue("Path") == exe, "entered path saved instead of running executable");
+                        Fails(() => option.WriteProgramPath(key, Path.Combine(folder, "missing.exe")));
+                        Assert((string)key.GetValue("Path") == exe, "invalid entry retains existing path");
+                    }
+                    using (var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(keyPath))
+                        Assert((string)key.GetValue("Path") == exe, "path survives reopening");
+                    Fails(() => option.NormalizeProgramPath(""));
+                    Fails(() => option.NormalizeProgramPath("relative.exe"));
+                }
+                finally
+                {
+                    Microsoft.Win32.Registry.CurrentUser.DeleteSubKeyTree(keyPath, false);
+                    Directory.Delete(folder, true);
+                }
+            });
+            Task.Run(() => ChatGptTests.Run(Test)).GetAwaiter().GetResult();
             Console.WriteLine(passed + " local checks passed; zero live API calls.");
             return 0;
         }

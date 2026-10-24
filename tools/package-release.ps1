@@ -63,7 +63,7 @@ if ((Get-FileHash -LiteralPath (Join-Path $stage 'help/ws_D_E_F.csv')).Hash -ne
     (Get-FileHash -LiteralPath (Join-Path $repoRoot 'Info_trans/reference-data/ws_D_E_F.csv')).Hash) {
     throw 'Packaged dictionary differs from the reviewed source'
 }
-if (Get-ChildItem -LiteralPath $stage -File -Recurse | Where-Object { $_.Name -in @('openai.json','user.config','key2019.dat') }) {
+if (Get-ChildItem -LiteralPath $stage -File -Recurse | Where-Object { $_.Name -in @('openai.json','user.config','key2019.dat') -or $_.Name -like 'chatgpt-session.dat*' }) {
     throw 'Personal configuration found in release staging'
 }
 [xml]$configuration = Get-Content -LiteralPath (Join-Path $stage 'INI Edit Translate 2026.exe.config')
