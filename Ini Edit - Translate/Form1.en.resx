@@ -7076,8 +7076,8 @@
     <value>The number corresponds to XX in the INI entry names.</value>
   </data>
   <data name="btn_def_trl.Text" xml:space="preserve">
-    <value>Translate with
-ChatGPT</value>
+    <value>Translate
+texts</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Model description in EEP</value>

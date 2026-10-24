@@ -25,9 +25,10 @@ namespace Ini_Edit___Translate
         public string ChatGptModel { get; set; }
         internal static string FilePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UGSo", "IET2026", "openai.json");
 
-        internal static OpenAiSettings Load()
+        internal static OpenAiSettings Load(string source = null)
         {
-            return File.Exists(FilePath) ? JsonConvert.DeserializeObject<OpenAiSettings>(File.ReadAllText(FilePath)) ?? new OpenAiSettings() : new OpenAiSettings();
+            string path = source ?? FilePath;
+            return File.Exists(path) ? JsonConvert.DeserializeObject<OpenAiSettings>(File.ReadAllText(path)) ?? new OpenAiSettings { UseMyMemory = true } : new OpenAiSettings { UseMyMemory = true };
         }
 
         internal string GetKey()

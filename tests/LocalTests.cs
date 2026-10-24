@@ -241,6 +241,80 @@ internal static class LocalTests
                 }
                 finally { settings.read_only = readOnly; settings.pathfile = originalFile; SynchronizationContext.SetSynchronizationContext(context); Directory.Delete(directory, true); }
             });
+            Test("model-name descriptive words translate while names codes versions and controls remain literal", () =>
+            {
+                string source = "Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter";
+                Assert(ModelNameTranslation.Translate(source, "de", "en") == "House Helios Typ4 UD1 (GK3) EEP16.2[e]Winter", "English descriptive word");
+                Assert(ModelNameTranslation.Translate(source, "de", "fr") == "Maison Helios Typ4 UD1 (GK3) EEP16.2[e]Hiver", "French descriptive words");
+                Assert(ModelNameTranslation.Translate(source, "de", "pl") == "Dom Helios Typ4 UD1 (GK3) EEP16.2[e]Zima", "Polish descriptive words");
+                foreach (string language in new[] { "en", "de", "fr", "pl" })
+                    Assert(ModelNameTranslation.Translate("UnknownHelios GK3 Typ4 EEP16.2[e]Name_Ident", "de", language) == "UnknownHelios GK3 Typ4 EEP16.2[e]Name_Ident", "unknown names and identifiers not guessed");
+                Assert(ModelNameTranslation.Translate("Maison Helios Typ4 UD1", "fr", "de") == "Haus Helios Typ4 UD1", "French source");
+                Assert(ModelNameTranslation.Translate("House Helios Typ4 UD1", "en", "pl") == "Dom Helios Typ4 UD1", "English source");
+                Assert(ModelNameTranslation.Translate("Dom Helios Typ4 UD1", "pl", "fr") == "Maison Helios Typ4 UD1", "Polish source");
+                Assert(ModelNameTranslation.Translate("HAUS Helios", "de", "en") == "HOUSE Helios", "case retained");
+            });
+            Test("model names translate and save with empty descriptions without needing a provider", () =>
+            {
+                string directory = Path.Combine(Path.GetTempPath(), "iet-model-names-" + Guid.NewGuid().ToString("N")); Directory.CreateDirectory(directory);
+                string file = Path.Combine(directory, "model.ini");
+                File.WriteAllText(file, "[FileInfo]\r\nName_ENG=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nName_GER=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nName_FRA=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nName_POL=Haus Helios Typ4 UD1 (GK3) EEP16.2[e]Winter\r\nIcon=32\r\nGeneration=0\r\nDeployment_Start=1935\r\nDeployment_End=2014\r\nCountry=D\r\nCustomField=preserved\r\n");
+                bool readOnly = Ini_Edit___Translate.Properties.Settings.Default.read_only; var context = SynchronizationContext.Current;
+                try
+                {
+                    Ini_Edit___Translate.Properties.Settings.Default.read_only = true;
+                    using (var form = new Form1())
+                    {
+                        var flags = BindingFlags.Instance | BindingFlags.NonPublic; SynchronizationContext.SetSynchronizationContext(null);
+                        ((Task)typeof(Form1).GetMethod("inilesen", flags).Invoke(form, new object[] { file })).GetAwaiter().GetResult();
+                        ((Task)typeof(Form1).GetMethod("gertrans_n", flags).Invoke(form, null)).GetAwaiter().GetResult();
+                        Assert(typeof(Form1).GetField("openAi", flags).GetValue(form) == null, "no provider opened for name-only translation");
+                        typeof(Form1).GetMethod("inischreiben2", flags).Invoke(form, new object[] { file });
+                    }
+                    var saved = new UnicodeIniFile(file);
+                    Assert(saved["FileInfo"]["Name_ENG"] == "House Helios Typ4 UD1 (GK3) EEP16.2[e]Winter", "English name saved");
+                    Assert(saved["FileInfo"]["Name_FRA"] == "Maison Helios Typ4 UD1 (GK3) EEP16.2[e]Hiver", "French name saved");
+                    Assert(saved["FileInfo"]["Name_POL"] == "Dom Helios Typ4 UD1 (GK3) EEP16.2[e]Zima" && saved["FileInfo"]["CustomField"] == "preserved", "Polish and unrelated field saved");
+                }
+                finally { Ini_Edit___Translate.Properties.Settings.Default.read_only = readOnly; SynchronizationContext.SetSynchronizationContext(context); Directory.Delete(directory, true); }
+            });
+            Test("failed description translation leaves model names and descriptions together untouched", () =>
+            {
+                var flags = BindingFlags.Instance | BindingFlags.NonPublic; var context = SynchronizationContext.Current;
+                try
+                {
+                    using (var form = new Form1())
+                    using (var cancel = new CancellationTokenSource())
+                    using (var service = new OpenAiTranslation(Settings(), new Handler("failure", HttpStatusCode.ServiceUnavailable)))
+                    {
+                        foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
+                        {
+                            ((Control)typeof(Form1).GetField("n_" + tag + "_txt", flags).GetValue(form)).Text = "Haus Helios Typ4 UD1";
+                            ((Control)typeof(Form1).GetField("d_" + tag + "_txt", flags).GetValue(form)).Text = "Original description";
+                        }
+                        typeof(Form1).GetField("openAi", flags).SetValue(form, service); typeof(Form1).GetField("translationCancellation", flags).SetValue(form, cancel);
+                        SynchronizationContext.SetSynchronizationContext(null);
+                        Fails(() => ((Task)typeof(Form1).GetMethod("gertrans_n", flags).Invoke(form, null)).GetAwaiter().GetResult());
+                        foreach (string tag in new[] { "eng", "ger", "fra", "pol" })
+                            Assert(((Control)typeof(Form1).GetField("n_" + tag + "_txt", flags).GetValue(form)).Text == "Haus Helios Typ4 UD1", "no partial model name applied");
+                    }
+                }
+                finally { SynchronizationContext.SetSynchronizationContext(context); }
+            });
+            Test("MyMemory defaults only for new configuration and preserves existing provider choices", () =>
+            {
+                string directory = Path.Combine(Path.GetTempPath(), "iet-provider-default-" + Guid.NewGuid().ToString("N")); Directory.CreateDirectory(directory);
+                string file = Path.Combine(directory, "settings.json");
+                try
+                {
+                    Assert(OpenAiSettings.Load(file).UseMyMemory, "new configuration defaults to translated.net");
+                    File.WriteAllText(file, "{\"UseChatGpt\":true,\"ProtectedKey\":\"PRIVATE-FIXTURE\",\"ChatGptModel\":\"model-fixture\"}");
+                    string original = File.ReadAllText(file); var existing = OpenAiSettings.Load(file);
+                    Assert(!existing.UseMyMemory && existing.UseChatGpt && existing.ProtectedKey == "PRIVATE-FIXTURE", "existing provider and key preserved");
+                    Assert(File.ReadAllText(file) == original, "load does not rewrite existing settings");
+                }
+                finally { Directory.Delete(directory, true); }
+            });
             Test("three target languages, one request, unchanged source", () =>
             {
                 var handler = new Handler(Response());
@@ -252,7 +326,7 @@ internal static class LocalTests
                     Assert(handler.Calls == 1 && (string)handler.Body["input"] == "Sun {0}", "cache/source");
                 }
             });
-            Test("model names stay protected while all five installation set titles and descriptions translate", () =>
+            Test("unreviewed model identifiers stay protected while all five installation set titles and descriptions translate", () =>
             {
                 var flags = BindingFlags.NonPublic | BindingFlags.Instance;
                 string[] tags = { "eng", "ger", "fra" }, languages = { "en", "de", "fr" }, selections = { "E", "D", "F" };

@@ -1473,67 +1473,17 @@ namespace Ini_Edit___Translate
 
         private async Task engtrans_n()
         {
-            // Model names are identifiers. Preserve all four names during translation.
-
-            if (string.IsNullOrEmpty(d_eng_txt.Text))
-            {
-
-            }
-            else
-            {
-                string translation4 = await TranslateTextAsync(d_eng_txt.Text, "en", "de");
-                d_ger_txt.Text = translation4;
-
-                string translation5 = await TranslateTextAsync(d_eng_txt.Text, "en", "fr");
-                d_fra_txt.Text = translation5;
-
-                string translation6 = await TranslateTextAsync(d_eng_txt.Text, "en", "pl");
-                d_pol_txt.Text = translation6;
-            }
+            await TranslateModelTextsAsync("en");
         }
 
         private async Task gertrans_n()
         {
-            // Model names are identifiers. Preserve all four names during translation.
-
-            if (string.IsNullOrEmpty(d_ger_txt.Text))
-            {
-
-            }
-            else
-            {
-                string translation4 = await TranslateTextAsync(d_ger_txt.Text, "de", "en");
-                d_eng_txt.Text = translation4;
-
-
-                string translation5 = await TranslateTextAsync(d_ger_txt.Text, "de", "fr");
-                d_fra_txt.Text = translation5;
-
-                string translation6 = await TranslateTextAsync(d_ger_txt.Text, "de", "pl");
-                d_pol_txt.Text = translation6;
-            }
-
+            await TranslateModelTextsAsync("de");
         }
 
         private async Task fratrans_n()
         {
-            // Model names are identifiers. Preserve all four names during translation.
-
-            if (string.IsNullOrEmpty(d_fra_txt.Text))
-            {
-
-            }
-            else
-            {
-                string translation4 = await TranslateTextAsync(d_fra_txt.Text, "fr", "en");
-                d_eng_txt.Text = translation4;
-
-                string translation5 = await TranslateTextAsync(d_fra_txt.Text, "fr", "de");
-                d_ger_txt.Text = translation5;
-
-                string translation6 = await TranslateTextAsync(d_fra_txt.Text, "fr", "pl");
-                d_pol_txt.Text = translation6;
-            }
+            await TranslateModelTextsAsync("fr");
         }
 
         private void about_Click(object sender, EventArgs e)

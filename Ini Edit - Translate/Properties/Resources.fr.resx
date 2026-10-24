@@ -211,10 +211,10 @@
     <value>Aucun réseau. La traduction en ligne est actuellement indisponible.</value>
   </data>
   <data name="tssl2" xml:space="preserve">
-    <value>Réseau disponible. OpenAI sera vérifié lors de la traduction.</value>
+    <value>Réseau disponible. Le service de traduction sera vérifié lors de la traduction.</value>
   </data>
   <data name="tssl1" xml:space="preserve">
-    <value>OpenAI n’a pas encore été vérifié. La connexion est vérifiée lors de la traduction.</value>
+    <value>Le service de traduction n’a pas encore été vérifié. La connexion est vérifiée lors de la traduction.</value>
   </data>
   <data name="msg8" xml:space="preserve"><value>Saisissez un nom de modèle en anglais.</value></data>
   <data name="msg9" xml:space="preserve"><value>Saisissez un nom de modèle en allemand.</value></data>
@@ -324,7 +324,7 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="mmPrivacy" xml:space="preserve"><value>Aucun compte ni clé API requis. Les textes sont envoyés par Internet à MyMemory/Translated. Le fournisseur indique que les segments soumis sont conservés à long terme. L’application consulte les traductions sans publier d’entrées de dictionnaire.</value></data>
   <data name="mmEmail" xml:space="preserve"><value>E-mail pour un quota supérieur (facultatif, envoyé à MyMemory)</value></data>
   <data name="mmLimits" xml:space="preserve"><value>Jusqu’à 5 000 caractères par jour anonymement ; jusqu’à 50 000 avec un e-mail valide selon le fournisseur. Chaque langue cible compte séparément. Les textes longs sont divisés en sections de 500 octets UTF-8 maximum. Aucun changement automatique de fournisseur.</value></data>
-  <data name="mmReady" xml:space="preserve"><value>MyMemory sélectionné. Les noms de modèles sont conservés ; les textes identiques sont mis en cache pour cette opération.</value></data>
+  <data name="mmReady" xml:space="preserve"><value>MyMemory sélectionné. Les éléments protégés des noms sont conservés ; les textes identiques sont mis en cache pour cette opération.</value></data>
   <data name="mmTranslating" xml:space="preserve"><value>Traduction avec MyMemory en utilisant le quota quotidien gratuit.</value></data>
   <data name="mmInvalidEmail" xml:space="preserve"><value>Saisissez une seule adresse e-mail valide ou laissez ce champ facultatif vide.</value></data>
   <data name="mmSegmentTooLong" xml:space="preserve"><value>Un caractère Unicode avec ses signes combinés dépasse la limite MyMemory. Le texte n’a pas été envoyé.</value></data>

@@ -1,5 +1,29 @@
 # INI Edit Translate 2026
 
+## Version 2.1.52: descriptive words in model names
+
+Descriptive words are now translated in model names, including when descriptions
+are empty. “Haus Helios Typ4 UD1” becomes **House / Maison / Dom Helios Typ4 UD1**.
+
+Name translation uses a limited, reviewed local word list to protect proper names.
+Unknown words and name components are retained and never sent to an online service
+for name translation. This is not general automatic proper-name recognition:
+additional descriptive words require review. Existing names without a recognized
+descriptive component are not overwritten. Type labels, constructor codes, EEP versions,
+`[e]`, separators and the spelling of protected components are retained.
+The railway abbreviations still being collected are not added in this change.
+
+Descriptions still use the selected provider. Model names and descriptions are
+applied together only after success; failures retain existing contents.
+The provider-neutral button is now **Translate texts**.
+
+**MyMemory/translated.net is the default for new configurations.**
+Existing provider choices, API keys, accounts and models are retained.
+To switch deliberately, choose **About → Settings → Translation settings → MyMemory → Save**.
+
+105 local checks passed, covering DE/EN/FR/PL, empty descriptions, protected names and
+codes, failure handling and save/reload. Backup created; original files and credentials retained.
+
 ## Version 2.1.51: folder-selection hint
 
 Selecting a folder in the tree shows **“Please select an INI file.”** Loaded model
@@ -178,7 +202,7 @@ catalog formats have separate messages in DE/EN/FR. This update helps diagnose t
 reported remote failure; its cause is not yet confirmed. Settings, API keys and
 connections are retained.
 
-[Windows ZIP v2.1.51](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.51/INI-Edit-Translate-2026-v2.1.51-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.51)
+[Windows ZIP v2.1.52](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.52/INI-Edit-Translate-2026-v2.1.52-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.52)
 
 ## Version 2.1.40: ChatGPT sign-in
 
@@ -207,7 +231,7 @@ Real account authorization and translation still need testing.
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.51.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.52.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -227,7 +251,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.51](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.51/INI-Edit-Translate-2026-v2.1.51-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.51)
+[Download Windows ZIP v2.1.52](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.52/INI-Edit-Translate-2026-v2.1.52-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.52)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

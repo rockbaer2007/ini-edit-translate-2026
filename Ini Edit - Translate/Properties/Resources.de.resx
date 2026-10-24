@@ -211,10 +211,10 @@
     <value>Kein Netzwerk. Online-Übersetzung ist derzeit nicht verfügbar.</value>
   </data>
   <data name="tssl2" xml:space="preserve">
-    <value>Netzwerk verfügbar. OpenAI wird bei der Übersetzung geprüft.</value>
+    <value>Netzwerk verfügbar. Der Übersetzungsdienst wird bei der Übersetzung geprüft.</value>
   </data>
   <data name="tssl1" xml:space="preserve">
-    <value>OpenAI ist noch nicht geprüft. Bei einer Übersetzung wird die Verbindung geprüft.</value>
+    <value>Der Übersetzungsdienst ist noch nicht geprüft. Bei einer Übersetzung wird die Verbindung geprüft.</value>
   </data>
   <data name="msg8" xml:space="preserve"><value>Bitte einen englischen Modellnamen eingeben.</value></data>
   <data name="msg9" xml:space="preserve"><value>Bitte einen deutschen Modellnamen eingeben.</value></data>
@@ -324,7 +324,7 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="mmPrivacy" xml:space="preserve"><value>Kein Konto und kein API-Schlüssel nötig. Texte werden über das Internet an MyMemory/Translated gesendet. Laut Anbieter werden eingesandte Segmente langfristig gespeichert. Die App ruft nur Übersetzungen ab und veröffentlicht keine Wörterbucheinträge.</value></data>
   <data name="mmEmail" xml:space="preserve"><value>E-Mail für höheres Kontingent (freiwillig, wird an MyMemory gesendet)</value></data>
   <data name="mmLimits" xml:space="preserve"><value>Anonym bis 5.000 Zeichen täglich; mit gültiger E-Mail laut Anbieter bis 50.000. Jede Zielsprache zählt separat. Lange Texte werden in Abschnitte bis 500 UTF-8-Bytes aufgeteilt. Keine automatische Umschaltung auf andere Anbieter.</value></data>
-  <data name="mmReady" xml:space="preserve"><value>MyMemory ausgewählt. Modellnamen bleiben erhalten; gleiche Texte werden pro Durchgang zwischengespeichert.</value></data>
+  <data name="mmReady" xml:space="preserve"><value>MyMemory ausgewählt. Geschützte Namensbestandteile bleiben erhalten; gleiche Texte werden pro Durchgang zwischengespeichert.</value></data>
   <data name="mmTranslating" xml:space="preserve"><value>Übersetzung mit MyMemory. Das kostenlose Tageskontingent wird verwendet.</value></data>
   <data name="mmInvalidEmail" xml:space="preserve"><value>Bitte eine gültige einzelne E-Mail-Adresse eingeben oder das freiwillige Feld leer lassen.</value></data>
   <data name="mmSegmentTooLong" xml:space="preserve"><value>Ein einzelnes Unicode-Zeichen mit Kombinationszeichen überschreitet die MyMemory-Grenze. Der Text wurde nicht gesendet.</value></data>

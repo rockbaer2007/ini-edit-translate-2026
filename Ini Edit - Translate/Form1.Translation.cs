@@ -54,6 +54,30 @@ namespace Ini_Edit___Translate
         }
 
         private OpenAiTranslation openAi;
+        private async Task TranslateModelTextsAsync(string from)
+        {
+            var names = new[] { n_eng_txt, n_ger_txt, n_fra_txt, n_pol_txt };
+            var descriptions = new[] { d_eng_txt, d_ger_txt, d_fra_txt, d_pol_txt };
+            int source = Array.IndexOf(OpenAiTranslation.Languages, from);
+            if (source < 0) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
+            string name = names[source].Text, description = descriptions[source].Text;
+            var translatedNames = new string[4]; var translatedDescriptions = new string[4];
+            bool hasName = ModelNameTranslation.HasDescriptiveWords(name, from), hasDescription = !string.IsNullOrWhiteSpace(description);
+            for (int target = 0; target < 4; target++)
+            {
+                if (target == source) continue;
+                if (hasName) translatedNames[target] = ModelNameTranslation.Translate(name, from, OpenAiTranslation.Languages[target]);
+                if (hasDescription) translatedDescriptions[target] = await TranslateTextAsync(description, from, OpenAiTranslation.Languages[target]);
+            }
+            translationCancellation?.Token.ThrowIfCancellationRequested();
+            for (int target = 0; target < 4; target++)
+            {
+                if (target == source) continue;
+                if (hasName) names[target].Text = translatedNames[target];
+                if (hasDescription) descriptions[target].Text = translatedDescriptions[target];
+            }
+        }
+
         private async Task TranslateInstallationSetAsync(int section, string from)
         {
             if (section < 0 || section > 4) throw new ArgumentOutOfRangeException(nameof(section));

@@ -155,8 +155,8 @@
     <value>Même PDF pour toutes les langues</value>
   </data>
   <data name="btn_def_trl.Text" xml:space="preserve">
-    <value>Traduire avec
-ChatGPT</value>
+    <value>Traduire
+les textes</value>
   </data>
   <data name="counter1.HeaderText" xml:space="preserve">
     <value>N°</value>

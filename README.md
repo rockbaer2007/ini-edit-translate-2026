@@ -1,5 +1,37 @@
 # INI Edit Translate 2026
 
+## Version 2.1.52: beschreibende Wörter in Modellnamen
+
+Beschreibende Wörter werden jetzt auch in Modellnamen übersetzt, selbst wenn die
+Modellbeschreibung leer ist. Beispiel:
+
+| DE | EN | FR | PL |
+| --- | --- | --- | --- |
+| Haus Helios Typ4 UD1 | House Helios Typ4 UD1 | Maison Helios Typ4 UD1 | Dom Helios Typ4 UD1 |
+
+Zum Schutz der Eigennamen arbeitet die Namensübersetzung lokal mit einer begrenzten,
+geprüften Wortliste. Unbekannte Wörter und Namensbestandteile werden unverändert
+übernommen und nicht zur Namensübersetzung an einen Online-Dienst geschickt.
+Das ist keine allgemeine automatische Eigennamenerkennung: weitere beschreibende
+Wörter müssen geprüft ergänzt werden. Vorhandene Namen ohne erkannten beschreibenden
+Anteil werden nicht überschrieben. Typbezeichnungen, Konstrukteurskennungen,
+EEP-Versionen, `[e]`, Trennzeichen und Schreibweise geschützter Bestandteile bleiben erhalten.
+Die noch gesammelten Fachabkürzungen sind in dieser Änderung nicht vorweggenommen.
+
+Beschreibungen verwenden weiterhin den gewählten Übersetzungsanbieter. Namen und
+Beschreibungen werden zusammen erst nach erfolgreichem Abschluss übernommen.
+Bei einem Fehler bleiben die bisherigen Inhalte erhalten. Der Button heißt jetzt
+anbieterneutral **Texte übersetzen**.
+
+**MyMemory/translated.net ist die Voreinstellung für neue Konfigurationen.**
+Eine bereits gespeicherte Anbieterwahl sowie API-Schlüssel, Konten und Modelle
+werden erhalten. Zum bewussten Wechsel **Über → Einstellungen → Übersetzungseinstellungen
+→ MyMemory → Speichern** wählen.
+
+105 lokale Prüfungen bestanden, einschließlich DE/EN/FR/PL, leerer Beschreibung,
+Schutz von `Helios Typ4 UD1 (GK3) EEP16.2[e]`, Fehlerverhalten und Speichern/erneutem Einlesen.
+Vorher Backup erstellt; Originaldateien und Zugangsdaten bleiben erhalten.
+
 ## Version 2.1.51: Hinweis bei Ordnerauswahl
 
 Beim Auswählen eines Ordners im Dateibaum erscheint **„Bitte eine INI-Datei auswählen.“**
@@ -194,7 +226,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.51](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.51/INI-Edit-Translate-2026-v2.1.51-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.51)
+[Windows-ZIP v2.1.52](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.52/INI-Edit-Translate-2026-v2.1.52-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.52)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -250,12 +282,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.51.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.52.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.51 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.51/INI-Edit-Translate-2026-v2.1.51-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.51)
+[Windows-ZIP v2.1.52 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.52/INI-Edit-Translate-2026-v2.1.52-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.52)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.

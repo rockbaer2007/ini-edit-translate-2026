@@ -211,10 +211,10 @@
     <value>No network. Online translation is currently unavailable.</value>
   </data>
   <data name="tssl2" xml:space="preserve">
-    <value>Network available. OpenAI is checked when you translate.</value>
+    <value>Network available. The translation service is checked when you translate.</value>
   </data>
   <data name="tssl1" xml:space="preserve">
-    <value>OpenAI has not been checked. The connection is checked when you translate.</value>
+    <value>The translation service has not been checked. The connection is checked when you translate.</value>
   </data>
   <data name="msg8" xml:space="preserve"><value>Enter an English model name.</value></data>
   <data name="msg9" xml:space="preserve"><value>Enter a German model name.</value></data>
@@ -324,7 +324,7 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="mmPrivacy" xml:space="preserve"><value>No account or API key required. Texts are sent over the internet to MyMemory/Translated. The provider states that submitted segments are stored long term. The app only retrieves translations and does not publish dictionary entries.</value></data>
   <data name="mmEmail" xml:space="preserve"><value>Email for a higher allowance (optional, sent to MyMemory)</value></data>
   <data name="mmLimits" xml:space="preserve"><value>Up to 5,000 characters daily anonymously; up to 50,000 with a valid email according to the provider. Each target language counts separately. Long text is split into sections up to 500 UTF-8 bytes. No automatic switch to another provider.</value></data>
-  <data name="mmReady" xml:space="preserve"><value>MyMemory selected. Model names are retained; identical texts are cached for this operation.</value></data>
+  <data name="mmReady" xml:space="preserve"><value>MyMemory selected. Protected name components are retained; identical texts are cached for this operation.</value></data>
   <data name="mmTranslating" xml:space="preserve"><value>Translating with MyMemory using the free daily allowance.</value></data>
   <data name="mmInvalidEmail" xml:space="preserve"><value>Enter a single valid email address or leave this optional field empty.</value></data>
   <data name="mmSegmentTooLong" xml:space="preserve"><value>A single Unicode character with combining marks exceeds the MyMemory limit. The text was not sent.</value></data>
