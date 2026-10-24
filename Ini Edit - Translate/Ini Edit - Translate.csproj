@@ -9,7 +9,8 @@
     <RootNamespace>Ini_Edit___Translate</RootNamespace>
     <AssemblyName>INI Edit Translate 2026</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+    <!-- Use the classic Framework designer for this AnyCPU project. -->
+    <UseWinFormsOutOfProcDesigner>False</UseWinFormsOutOfProcDesigner>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
