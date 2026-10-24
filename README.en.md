@@ -1,6 +1,6 @@
 # INI Edit Translate 2026
 
-## 2.1.55: external default dictionary (prepared locally)
+## 2.1.55: external default dictionary
 
 The user's 30 reference terms are supplied as a semicolon-separated UTF-8 CSV:
 `%LOCALAPPDATA%\UGSo\IET2026\translation-dictionary.csv`.
@@ -14,7 +14,7 @@ DR, DB, constructor identifiers, technical types, underscore identifiers, versio
 notes or `[e]`. Empty target cells use the fallback. Missing or unreadable files
 remain untouched and the embedded seed list is used. Online results are never
 automatically written to the file. Existing Info_trans tables and database are retained.
-116 local checks passed, without live API calls. No public 2.1.55 release yet.
+116 local checks passed, without live API calls. 43 update checks passed, including the complete ZIP package.
 
 ## Version 2.1.54: railway abbreviations in Info_trans
 
@@ -303,7 +303,7 @@ catalog formats have separate messages in DE/EN/FR. This update helps diagnose t
 reported remote failure; its cause is not yet confirmed. Settings, API keys and
 connections are retained.
 
-[Windows ZIP v2.1.54](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
+[Windows ZIP v2.1.55](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.55/INI-Edit-Translate-2026-v2.1.55-windows.zip) · [Release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.55)
 
 ## Version 2.1.40: ChatGPT sign-in
 
@@ -332,7 +332,7 @@ Real account authorization and translation still need testing.
 [Deutsch](README.md) · [Français](README.fr.md) · [Documentation](https://opensource.ugso-software.de/en/eep/ini-edit-translate-2026/)
 
 Windows editor and ChatGPT translator for EEP model INI files and `Installation.eep`,
-developed by Uwe Grimm / UGSo Software. Version **2.1.54.0**.
+developed by Uwe Grimm / UGSo Software. Version **2.1.55.0**.
 
 ![English application interface without personal data](docs/images/editor-en.png)
 
@@ -352,7 +352,7 @@ Google, LEO, Linguee and DeepL are no longer translation providers.
 
 ## Download
 
-[Download Windows ZIP v2.1.54](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
+[Download Windows ZIP v2.1.55](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.55/INI-Edit-Translate-2026-v2.1.55-windows.zip) · [GitHub release and SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.55)
 
 Extract the complete ZIP and run `INI Edit Translate 2026.exe`. Requires Windows 11
 and .NET Framework 4.8; Visual Studio is only needed to build from source.

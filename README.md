@@ -1,6 +1,6 @@
 # INI Edit Translate 2026
 
-## 2.1.55: externes Standard-Wörterbuch (lokal vorbereitet)
+## 2.1.55: externes Standard-Wörterbuch
 
 Die 30 Begriffe der Nutzervorlage stehen als UTF-8-CSV mit Semikolon bereit:
 `%LOCALAPPDATA%\UGSo\IET2026\translation-dictionary.csv`.
@@ -17,7 +17,7 @@ Fehlende Zielzellen verwenden die Rückfallebene; eine fehlende oder unlesbare D
 bleibt unverändert und verwendet die eingebettete Startliste. Online-Ergebnisse
 werden nicht automatisch in die Datei geschrieben. Die CSV ergänzt die Übersetzung;
 die Nachschlagetabellen und Datenbank in Info_trans bleiben erhalten.
-116 lokale Prüfungen bestanden, ohne echte API-Anfragen. Noch kein öffentliches Release 2.1.55.
+116 lokale Prüfungen bestanden, ohne echte API-Anfragen. 43 Updateprüfungen einschließlich des vollständigen ZIP-Pakets bestanden.
 
 ## Version 2.1.54: Bahnabkürzung in Info_trans
 
@@ -336,7 +336,7 @@ und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
 Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
 ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
 
-[Windows-ZIP v2.1.54](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
+[Windows-ZIP v2.1.55](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.55/INI-Edit-Translate-2026-v2.1.55-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.55)
 
 ## Version 2.1.40: ChatGPT-Anmeldung
 
@@ -392,12 +392,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.54.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.55.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.54 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.54/INI-Edit-Translate-2026-v2.1.54-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.54)
+[Windows-ZIP v2.1.55 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.55/INI-Edit-Translate-2026-v2.1.55-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.55)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
