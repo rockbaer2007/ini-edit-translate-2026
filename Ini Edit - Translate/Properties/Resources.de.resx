@@ -302,4 +302,16 @@ Open Source unter der MIT-Lizenz. Keine Registrierung erforderlich.</value></dat
   <data name="apiQuota" xml:space="preserve"><value>Das OpenAI-API-Guthaben oder ein API-Ausgabenlimit ist erreicht. API-Abrechnung und Limits prüfen; das ChatGPT-Abo ist davon getrennt.</value></data>
   <data name="apiRateLimit" xml:space="preserve"><value>OpenAI begrenzt derzeit die Anfragen. Bitte warten und später erneut versuchen; es werden keine automatischen Wiederholungen ausgelöst.</value></data>
   <data name="api429Unknown" xml:space="preserve"><value>OpenAI meldet HTTP 429: Anfragelimit oder API-Kontingent erreicht. API-Guthaben und Limits prüfen und gegebenenfalls später erneut versuchen.</value></data>
+  <data name="cgCatalogFormat" xml:space="preserve"><value>Die Modellliste hat ein unerwartetes Format (erwartet: models). Es wurden keine Modelle übernommen.</value></data>
+  <data name="cgUnavailable" xml:space="preserve"><value>Die ChatGPT-Abo-Nutzung ist vorübergehend nicht verfügbar. Verbindung und Zugangsdaten bleiben erhalten; später erneut versuchen.</value></data>
+  <data name="cgNotEligible" xml:space="preserve"><value>OpenAI erlaubt diesem Konto oder Arbeitsbereich die Abo-Nutzung durch diese App nicht. Erneutes Anmelden behebt diese Einschränkung nicht.</value></data>
+  <data name="cgPermission" xml:space="preserve"><value>OpenAI hat den Zugriff auf diese Funktion abgelehnt. App-Freigabe, Kontoberechtigung und Verfügbarkeit müssen geprüft werden.</value></data>
+  <data name="cgUnsupported" xml:space="preserve"><value>OpenAI unterstützt eine angeforderte Funktion oder Modelleinstellung für diese Abo-Verbindung nicht.</value></data>
+  <data name="cgNetworkError" xml:space="preserve"><value>Der OpenAI-Server konnte nicht erreicht werden oder die Verbindung wurde unterbrochen. Netzwerk, Proxy und Firewall prüfen.</value></data>
+  <data name="cgCopyError" xml:space="preserve"><value>Fehler kopieren</value></data>
+  <data name="cgCopyFailed" xml:space="preserve"><value>Die Fehlermeldung konnte nicht in die Zwischenablage kopiert werden.</value></data>
+  <data name="cgStageLogin" xml:space="preserve"><value>ChatGPT-Anmeldung</value></data>
+  <data name="cgStageModels" xml:space="preserve"><value>Modellliste laden</value></data>
+  <data name="cgStageSession" xml:space="preserve"><value>Lokale Verbindung laden</value></data>
+  <data name="cgLoginConfirmed" xml:space="preserve"><value>Die Anmeldung wurde bestätigt; der folgende Schritt ist fehlgeschlagen.</value></data>
 </root>

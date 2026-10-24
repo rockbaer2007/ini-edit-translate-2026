@@ -231,6 +231,17 @@ internal static class LocalTests
                             form.Scale(new SizeF(scale, scale)); form.Show(); form.PerformLayout(); form.Refresh();
                             Assert(Descendants(form).OfType<ComboBox>().Any(c => c.Items.Count == 2 && c.SelectedIndex == 1), "plan selected");
                             Assert(Descendants(form).OfType<GroupBox>().Any(g => g.Visible && g.Text == Ui.Text("cgProviderPlan")), "plan controls visible");
+                            var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+                            Func<CancellationToken, Task> failModels = token =>
+                            {
+                                typeof(OpenAiSettingsForm).GetField("loginConfirmed", flags).SetValue(form, true);
+                                typeof(OpenAiSettingsForm).GetField("operation", flags).SetValue(form, Ui.Text("cgStageModels"));
+                                return Task.FromException(new InvalidOperationException(Ui.Text("cgPermission") + "\nHTTP 403; code=subscription_sharing_route_not_supported; request-id=req_fixture123"));
+                            };
+                            ((Task)typeof(OpenAiSettingsForm).GetMethod("RunAsync", flags).Invoke(form, new object[] { failModels })).GetAwaiter().GetResult();
+                            form.PerformLayout();
+                            Assert(Descendants(form).OfType<Button>().Any(b => b.Visible && b.Text == Ui.Text("cgCopyError")), "error copy action visible");
+                            Assert(Descendants(form).OfType<Label>().Any(l => l.Text.Contains(Ui.Text("cgLoginConfirmed")) && l.Text.Contains(Ui.Text("cgStageModels"))), "confirmed login and failed models are distinct");
                             foreach (Control control in form.Controls) Assert(form.ClientRectangle.Contains(control.Bounds), "dialog root overflow");
                             if (args.Length > 0)
                                 using (var bitmap = new Bitmap(form.Width, form.Height))

@@ -283,6 +283,38 @@ internal static class ChatGptTests
                 using (var client = new ChatGptClient(vault, handler)) Assert(!client.SignOutAsync("oaiapp_fixture", CancellationToken.None).GetAwaiter().GetResult(), "remote revocation not falsely confirmed");
                 Assert(!vault.ReadAsync(CancellationToken.None).GetAwaiter().GetResult().Accounts.Single().SignedIn && handler.Calls == 3, "local credentials cleared after bounded attempts");
             });
+            test("ChatGPT diagnostics preserve status and identifiers without response secrets", () =>
+            {
+                using (var response = Json(new JObject { ["error"] = new JObject {
+                    ["code"] = "subscription_sharing_route_not_supported", ["param"] = "model", ["message"] = "SECRET-FIXTURE" } }, HttpStatusCode.Forbidden))
+                {
+                    response.Headers.Add("x-request-id", "req_fixture123");
+                    string message = OpenAiErrors.FromHttpAsync(response, true).GetAwaiter().GetResult().Message;
+                    Assert(message.Contains("HTTP 403") && message.Contains("code=subscription_sharing_route_not_supported") && message.Contains("param=model") && message.Contains("request-id=req_fixture123") && !message.Contains("SECRET-FIXTURE"), "safe identifiers and status");
+                }
+                using (var response = Json(new JObject { ["detail"] = "Bearer SECRET-FIXTURE" }, HttpStatusCode.ServiceUnavailable))
+                {
+                    string message = OpenAiErrors.FromHttpAsync(response, true).GetAwaiter().GetResult().Message;
+                    Assert(message.Contains("HTTP 503") && message.Contains("shape=detail") && !message.Contains("SECRET-FIXTURE"), "admission body shape only");
+                }
+                using (var response = Json(new JObject { ["error"] = new JObject { ["code"] = "sk-SECRET-FIXTURE", ["param"] = "SECRET-FIXTURE" } }, HttpStatusCode.BadRequest))
+                {
+                    response.Headers.Add("x-request-id", "Bearer SECRET-FIXTURE");
+                    string message = OpenAiErrors.FromHttpAsync(response, true).GetAwaiter().GetResult().Message;
+                    Assert(message.Contains("code=-") && message.Contains("param=-") && message.Contains("request-id=-") && !message.Contains("SECRET-FIXTURE"), "reject untrusted identifiers");
+                }
+                Assert(!OpenAiErrors.SafeMessage(new HttpRequestException("https://secret/SECRET-FIXTURE")).Contains("SECRET-FIXTURE"), "network message is sanitized");
+            });
+            test("ChatGPT malformed model catalogs fail explicitly", () =>
+            {
+                var vault = NewVault(root); Put(vault, Account());
+                foreach (var body in new[] { new JObject { ["data"] = new JArray() }, new JObject { ["models"] = "invalid" } })
+                using (var client = new ChatGptClient(vault, new Handler { Reply = request => Task.FromResult(Json(body)) }))
+                {
+                    try { client.ModelsAsync("oaiapp_fixture", CancellationToken.None).GetAwaiter().GetResult(); throw new Exception("catalog should fail"); }
+                    catch (InvalidOperationException error) { Assert(error.Message == Ui.Text("cgCatalogFormat"), "explicit model format error"); }
+                }
+            });
             test("OpenAI 429 messages distinguish quota and throttle without exposing body", () =>
             {
                 foreach (string code in new[] { "insufficient_quota", "credit_balance_exhausted", "rate_limit_exceeded", "subscription_sharing_usage_limit_exceeded" })

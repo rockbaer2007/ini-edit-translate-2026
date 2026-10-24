@@ -302,4 +302,16 @@ Code ouvert sous licence MIT. Aucune inscription requise.</value></data>
   <data name="apiQuota" xml:space="preserve"><value>Le crédit API OpenAI ou une limite de dépenses API est épuisé. Vérifier la facturation et les limites API ; l’abonnement ChatGPT est distinct.</value></data>
   <data name="apiRateLimit" xml:space="preserve"><value>OpenAI limite actuellement les requêtes. Patienter puis réessayer ; aucune nouvelle tentative automatique.</value></data>
   <data name="api429Unknown" xml:space="preserve"><value>OpenAI renvoie HTTP 429 : limite de requêtes ou quota API atteint. Vérifier le crédit et les limites API et réessayer plus tard si nécessaire.</value></data>
+  <data name="cgCatalogFormat" xml:space="preserve"><value>Le catalogue des modèles présente un format inattendu (attendu : models). Aucun modèle n’a été importé.</value></data>
+  <data name="cgUnavailable" xml:space="preserve"><value>L’utilisation de l’abonnement ChatGPT est temporairement indisponible. La connexion et les identifiants sont conservés ; réessayez plus tard.</value></data>
+  <data name="cgNotEligible" xml:space="preserve"><value>OpenAI n’autorise pas ce compte ou cet espace de travail à partager son abonnement avec cette application. Une nouvelle connexion ne résoudra pas cette restriction.</value></data>
+  <data name="cgPermission" xml:space="preserve"><value>OpenAI a refusé l’accès à cette fonction. L’autorisation de l’application, les droits du compte et la disponibilité doivent être vérifiés.</value></data>
+  <data name="cgUnsupported" xml:space="preserve"><value>OpenAI ne prend pas en charge une fonction ou un réglage de modèle demandé pour cette connexion par abonnement.</value></data>
+  <data name="cgNetworkError" xml:space="preserve"><value>Le serveur OpenAI est inaccessible ou la connexion a été interrompue. Vérifiez le réseau, le proxy et le pare-feu.</value></data>
+  <data name="cgCopyError" xml:space="preserve"><value>Copier l’erreur</value></data>
+  <data name="cgCopyFailed" xml:space="preserve"><value>Le message d’erreur n’a pas pu être copié dans le presse-papiers.</value></data>
+  <data name="cgStageLogin" xml:space="preserve"><value>Connexion ChatGPT</value></data>
+  <data name="cgStageModels" xml:space="preserve"><value>Chargement des modèles</value></data>
+  <data name="cgStageSession" xml:space="preserve"><value>Chargement de la connexion locale</value></data>
+  <data name="cgLoginConfirmed" xml:space="preserve"><value>La connexion a été confirmée ; l’étape suivante a échoué.</value></data>
 </root>

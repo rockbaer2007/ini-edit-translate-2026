@@ -209,7 +209,7 @@ namespace Ini_Edit___Translate
             using (var body = new FormUrlEncodedContent(fields))
             using (var response = await http.PostAsync(TokenEndpoint, body, cancel).ConfigureAwait(false))
             {
-                if (!response.IsSuccessStatusCode) throw new InvalidOperationException(Ui.Text("cgLoginRequired"));
+                if (!response.IsSuccessStatusCode) throw await OpenAiErrors.FromHttpAsync(response, true).ConfigureAwait(false);
                 return JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
             }
         }
@@ -299,7 +299,10 @@ namespace Ini_Edit___Translate
                 using (var response = await http.SendAsync(request, cancel).ConfigureAwait(false))
                 {
                     if (!response.IsSuccessStatusCode) throw await OpenAiErrors.FromHttpAsync(response, true).ConfigureAwait(false);
-                    var result = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                JObject result;
+                try { result = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false)); }
+                catch (Newtonsoft.Json.JsonException) { throw new InvalidOperationException(Ui.Text("cgCatalogFormat")); }
+                if (!(result["models"] is JArray)) throw new InvalidOperationException(Ui.Text("cgCatalogFormat"));
                     var models = (result["models"] as JArray ?? new JArray()).OfType<JObject>()
                         .Where(m => (string)m["visibility"] == "list" && !string.IsNullOrWhiteSpace((string)m["slug"]))
                         .Select(m => new ChatGptModel { Slug = (string)m["slug"], DisplayName = (string)m["display_name"] ?? (string)m["slug"] }).ToList();
@@ -352,8 +355,17 @@ namespace Ini_Edit___Translate
         {
             switch (code)
             {
-                case "subscription_sharing_usage_limit_exceeded": case "subscription_sharing_usage_unavailable":
+                case "subscription_sharing_usage_limit_exceeded":
                     return new InvalidOperationException(Ui.Text("cgLimit"));
+                case "subscription_sharing_usage_unavailable": case "subscription_sharing_user_unavailable":
+                    return new InvalidOperationException(Ui.Text("cgUnavailable"));
+                case "subscription_sharing_user_not_eligible":
+                    return new InvalidOperationException(Ui.Text("cgNotEligible"));
+                case "subscription_sharing_route_not_supported": case "chatpass_v2_scope_not_authorized":
+                case "chatpass_v2_invalid_authorization_context":
+                    return new InvalidOperationException(Ui.Text("cgPermission"));
+                case "subscription_sharing_unsupported_capability":
+                    return new InvalidOperationException(Ui.Text("cgUnsupported"));
                 case "insufficient_quota": case "credit_balance_exhausted": case "organization_spend_limit_exceeded":
                 case "project_spend_limit_exceeded": case "organization_usage_limit_exceeded":
                     return new InvalidOperationException(Ui.Text(chatGpt ? "cgLimit" : "apiQuota"));
@@ -363,17 +375,42 @@ namespace Ini_Edit___Translate
         }
         internal static async Task<Exception> FromHttpAsync(HttpResponseMessage response, bool chatGpt)
         {
-            string code = null;
+            string code = null, param = null, shape = "non-json";
             try
             {
-                var error = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false))["error"] as JObject;
-                code = (string)error?["code"] ?? (string)error?["type"];
+                var body = JObject.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                var error = body["error"] as JObject;
+                shape = error != null ? "error-object" : body["detail"] != null ? "detail" : "json-object";
+                code = error?["code"]?.Type == JTokenType.String ? (string)error["code"] : null;
+                if (string.IsNullOrEmpty(code) && error?["type"]?.Type == JTokenType.String) code = (string)error["type"];
+                param = error?["param"]?.Type == JTokenType.String ? (string)error["param"] : null;
             }
             catch { }
-            if (chatGpt && (int)response.StatusCode == 401) return new InvalidOperationException(Ui.Text("cgLoginRequired"));
-            if (!string.IsNullOrEmpty(code)) return FromCode(code, chatGpt);
-            if ((int)response.StatusCode == 429) return new InvalidOperationException(Ui.Text(chatGpt ? "cgLimit" : "api429Unknown"));
-            return new InvalidOperationException(Ui.Format("apiHttpFailure", (int)response.StatusCode));
+            string reason;
+            int status = (int)response.StatusCode;
+            if (chatGpt && status == 401) reason = Ui.Text("cgLoginRequired");
+            else if (!string.IsNullOrEmpty(code)) reason = FromCode(code, chatGpt).Message;
+            else if (status == 429) reason = Ui.Text(chatGpt ? "cgLimit" : "api429Unknown");
+            else if (chatGpt && status == 403) reason = Ui.Text("cgPermission");
+            else if (chatGpt && status == 503) reason = Ui.Text("cgUnavailable");
+            else reason = Ui.Format("apiHttpFailure", status);
+            // Only protocol identifiers are copied, never server messages or arbitrary body values.
+            string safeCode = code != null && System.Text.RegularExpressions.Regex.IsMatch(code,
+                @"\A(?:subscription_sharing_|chatpass_v2_)[a-z_]{1,70}\z|\A(?:invalid_grant|invalid_client|invalid_refresh_token|token_expired|refresh_token_expired|refresh_token_invalidated|refresh_token_reused|insufficient_quota|credit_balance_exhausted|rate_limit_exceeded|rate_limit_error|slow_down)\z") ? code : "-";
+            string safeParam = new[] { "model", "input", "stream", "store", "text.format", "service_tier", "tools", "scope", "resource", "client_id", "grant_type" }.Contains(param) ? param : "-";
+            System.Collections.Generic.IEnumerable<string> ids;
+            string requestId = response.Headers.TryGetValues("x-request-id", out ids) ? ids.FirstOrDefault() : null;
+            if (requestId == null || !System.Text.RegularExpressions.Regex.IsMatch(requestId, @"\Areq_[a-zA-Z0-9]{1,80}\z")) requestId = "-";
+            return new InvalidOperationException(reason + Environment.NewLine +
+                "HTTP " + status + "; code=" + safeCode + "; param=" + safeParam + "; shape=" + shape + "; request-id=" + requestId);
+        }
+
+        internal static string SafeMessage(Exception error)
+        {
+            if (error is InvalidOperationException) return error.Message;
+            if (error is HttpRequestException || error is System.Net.WebException || error is System.Net.Sockets.SocketException)
+                return Ui.Text("cgNetworkError");
+            return Ui.Text("cgRequestFailed") + " (" + error.GetType().Name + ")";
         }
     }
 }

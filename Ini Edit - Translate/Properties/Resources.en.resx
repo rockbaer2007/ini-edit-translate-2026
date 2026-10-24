@@ -302,4 +302,16 @@ Open source under the MIT licence. No registration required.</value></data>
   <data name="apiQuota" xml:space="preserve"><value>OpenAI API credits or an API spending limit have been exhausted. Check API billing and limits; the ChatGPT plan is separate.</value></data>
   <data name="apiRateLimit" xml:space="preserve"><value>OpenAI is currently limiting requests. Wait and try again later; no automatic retries will be made.</value></data>
   <data name="api429Unknown" xml:space="preserve"><value>OpenAI returned HTTP 429: request limit or API quota reached. Check API credits and limits and try later if appropriate.</value></data>
+  <data name="cgCatalogFormat" xml:space="preserve"><value>The model catalog has an unexpected format (expected: models). No models were imported.</value></data>
+  <data name="cgUnavailable" xml:space="preserve"><value>ChatGPT plan usage is temporarily unavailable. Your connection and credentials are retained; try again later.</value></data>
+  <data name="cgNotEligible" xml:space="preserve"><value>OpenAI does not allow this account or workspace to share its plan with this app. Signing in again will not resolve this restriction.</value></data>
+  <data name="cgPermission" xml:space="preserve"><value>OpenAI denied access to this function. App consent, account permissions and availability need to be checked.</value></data>
+  <data name="cgUnsupported" xml:space="preserve"><value>OpenAI does not support a requested capability or model setting for this plan connection.</value></data>
+  <data name="cgNetworkError" xml:space="preserve"><value>The OpenAI server could not be reached or the connection was interrupted. Check the network, proxy and firewall.</value></data>
+  <data name="cgCopyError" xml:space="preserve"><value>Copy error</value></data>
+  <data name="cgCopyFailed" xml:space="preserve"><value>The error message could not be copied to the clipboard.</value></data>
+  <data name="cgStageLogin" xml:space="preserve"><value>ChatGPT sign-in</value></data>
+  <data name="cgStageModels" xml:space="preserve"><value>Load model catalog</value></data>
+  <data name="cgStageSession" xml:space="preserve"><value>Load local connection</value></data>
+  <data name="cgLoginConfirmed" xml:space="preserve"><value>Sign-in was confirmed; the following step failed.</value></data>
 </root>

@@ -22,6 +22,9 @@ namespace Ini_Edit___Translate
         private readonly Button login, add, signOut, reload, save, cancel;
         private CancellationTokenSource pending;
         private bool loadingAccounts;
+        private string operation;
+        private bool loginConfirmed;
+        private readonly Button copyError = ActionButton(Ui.Text("cgCopyError"));
 
         private static Label Caption(string text) => new Label { Text = text, AutoSize = true, Margin = new Padding(3, 7, 3, 3) };
         private static Button ActionButton(string text) => new Button { Text = text, Dock = DockStyle.Fill, Height = 34, MinimumSize = new Size(100, 34) };
@@ -87,6 +90,9 @@ namespace Ini_Edit___Translate
             chatGroup.Controls.Add(chatRows);
             body.Controls.Add(chatGroup);
             body.Controls.Add(status);
+            copyError.Visible = false;
+            copyError.Click += (s, e) => { try { Clipboard.SetText(status.Text); } catch { MessageBox.Show(Ui.Text("cgCopyFailed")); } };
+            body.Controls.Add(copyError);
             scroll.Controls.Add(body); outer.Controls.Add(scroll, 0, 0);
 
             var buttons = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2 };
@@ -102,15 +108,19 @@ namespace Ini_Edit___Translate
             login.Click += async (s, e) => await RunAsync(async token =>
             {
                 var selected = accounts.SelectedItem as ChatGptAccount;
+                operation = Ui.Text("cgStageLogin");
                 status.Text = Ui.Text("cgWaiting");
                 var account = await chat.SignInAsync(selected?.ClientId, token);
+                loginConfirmed = true;
                 await LoadAccountsAsync(account.ClientId, token);
                 if (account.PlanEnabled) await LoadModelsAsync(token);
             });
             add.Click += async (s, e) => await RunAsync(async token =>
             {
+                operation = Ui.Text("cgStageLogin");
                 status.Text = Ui.Text("cgWaiting");
                 var account = await chat.SignInAsync(null, token);
+                loginConfirmed = true;
                 await LoadAccountsAsync(account.ClientId, token);
                 if (account.PlanEnabled) await LoadModelsAsync(token);
             });
@@ -178,6 +188,7 @@ namespace Ini_Edit___Translate
 
         private async Task LoadModelsAsync(CancellationToken token)
         {
+            operation = Ui.Text("cgStageModels");
             var account = accounts.SelectedItem as ChatGptAccount;
             if (account == null) throw new InvalidOperationException(Ui.Text("cgLoginRequired"));
             var choices = await chat.ModelsAsync(account.ClientId, token);
@@ -189,11 +200,17 @@ namespace Ini_Edit___Translate
         private async Task RunAsync(Func<CancellationToken, Task> work)
         {
             if (pending != null) return;
+            operation = Ui.Text("cgStageSession"); loginConfirmed = false; copyError.Visible = false;
             pending = new CancellationTokenSource();
             provider.Enabled = accounts.Enabled = models.Enabled = login.Enabled = add.Enabled = signOut.Enabled = reload.Enabled = save.Enabled = false;
             try { await work(pending.Token); }
             catch (OperationCanceledException) { status.Text = Ui.Text("cgCancelled"); }
-            catch (Exception error) { status.Text = error is InvalidOperationException ? error.Message : Ui.Text("cgRequestFailed"); }
+            catch (Exception error)
+            {
+                status.Text = (loginConfirmed ? Ui.Text("cgLoginConfirmed") + Environment.NewLine : "") +
+                    operation + ": " + OpenAiErrors.SafeMessage(error);
+                copyError.Visible = true;
+            }
             finally
             {
                 pending.Dispose(); pending = null;

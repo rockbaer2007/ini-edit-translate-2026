@@ -1,5 +1,17 @@
 # INI Edit Translate 2026
 
+## Version 2.1.41: Diagnose bei Anmeldung und Modellabruf
+
+Fehler nennen jetzt den betroffenen Schritt. Eine bestätigte Anmeldung wird von einem
+anschließenden Fehler beim Modellabruf unterschieden. **Fehler kopieren** kopiert die
+Meldung mit HTTP-Status, geprüftem Fehlercode und Anfrage-ID, ohne Tokens oder rohe
+Servertexte. Kontobeschränkungen, vorübergehende Nichtverfügbarkeit, Netzwerkfehler
+und ein unerwartetes Modelllistenformat erhalten eigene Meldungen in DE/EN/FR.
+Dies grenzt den gemeldeten Fehler auf dem entfernten Rechner ein; dessen Ursache
+ist noch nicht bestätigt. Einstellungen, API-Schlüssel und Verbindungen bleiben erhalten.
+
+[Windows-ZIP v2.1.41](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.41/INI-Edit-Translate-2026-v2.1.41-windows.zip) · [Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.41)
+
 ## Version 2.1.40: ChatGPT-Anmeldung
 
 Die Korrektur der Programmpfad-Eingabe aus 2.1.39 ist enthalten.
@@ -54,12 +66,12 @@ mit OpenAI-Übersetzung und bereinigter Oberfläche fort.
 - Tabellen vollständig als tabulatorgetrennte UTF-8-Dateien mit BOM exportieren.
 - Oberfläche mit geprüften deutschen, englischen und französischen Texten.
 
-**Version 2.1.40.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
+**Version 2.1.41.0. Manuelle GitHub-Updates mit bestätigter Installation.** Es gibt keine automatische Updateprüfung beim Start. Google, LEO,
 Linguee und DeepL werden nicht mehr als Übersetzungsdienste angeboten.
 
 ## Download
 
-[Windows-ZIP v2.1.40 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.40/INI-Edit-Translate-2026-v2.1.40-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.40)
+[Windows-ZIP v2.1.41 herunterladen](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/download/v2.1.41/INI-Edit-Translate-2026-v2.1.41-windows.zip) · [GitHub-Release und SHA-256](https://github.com/rockbaer2007/ini-edit-translate-2026/releases/tag/v2.1.41)
 
 ZIP vollständig entpacken und `INI Edit Translate 2026.exe` starten. Windows 11 mit
 .NET Framework 4.8 genügt; Visual Studio ist für die fertige Anwendung nicht nötig.
