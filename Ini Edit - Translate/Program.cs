@@ -176,6 +176,7 @@ namespace Ini_Edit___Translate
             if (createdNew)
             {
                 ConstructorIdentifiers.EnsureExternalFile();
+                DefaultDictionary.EnsureExternalFile();
                 Application.Run(new Form1());
                 mutex.ReleaseMutex();
             }

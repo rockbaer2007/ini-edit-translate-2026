@@ -1,5 +1,21 @@
 # INI Edit Translate 2026
 
+## 2.1.55: external default dictionary (prepared locally)
+
+The user's 30 reference terms are supplied as a semicolon-separated UTF-8 CSV:
+`%LOCALAPPDATA%\UGSo\IET2026\translation-dictionary.csv`.
+Header: `Deutsch;ENG;FRA;POL`. The first start creates the file; existing files
+are never overwritten. Add rows or correct translations; each new translation
+reloads the file. Matching external entries take priority over embedded defaults,
+existing model vocabulary and the selected online provider. Whole phrases work
+in all four source languages. Fully covered texts require no online request.
+Unknown proper names in model names remain unchanged. CSV entries cannot override
+DR, DB, constructor identifiers, technical types, underscore identifiers, version
+notes or `[e]`. Empty target cells use the fallback. Missing or unreadable files
+remain untouched and the embedded seed list is used. Online results are never
+automatically written to the file. Existing Info_trans tables and database are retained.
+116 local checks passed, without live API calls. No public 2.1.55 release yet.
+
 ## Version 2.1.54: railway abbreviations in Info_trans
 
 Info_trans adds the **Railway abbreviations** tab with 14 entries:

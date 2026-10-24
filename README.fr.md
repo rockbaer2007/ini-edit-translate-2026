@@ -1,5 +1,22 @@
 # INI Edit Translate 2026
 
+## 2.1.55 : dictionnaire externe par défaut (préparé localement)
+
+Les 30 termes de la liste utilisateur sont fournis dans un CSV UTF-8 séparé par
+des points-virgules : `%LOCALAPPDATA%\UGSo\IET2026\translation-dictionary.csv`.
+En-tête : `Deutsch;ENG;FRA;POL`. Le fichier est créé au premier démarrage ; un fichier
+existant n’est jamais écrasé. Ajouter des lignes ou corriger les traductions ; chaque
+nouvelle traduction relit le fichier. Les correspondances externes sont prioritaires
+sur la liste intégrée, le vocabulaire des modèles et le fournisseur en ligne choisi.
+Les expressions complètes sont reconnues dans les quatre langues sources. Un texte
+entièrement couvert ne nécessite aucune requête en ligne. Les noms propres inconnus
+dans les noms de modèles restent inchangés. Le CSV ne peut pas modifier DR, DB, les
+codes de constructeurs, types techniques, identifiants avec tirets bas, versions ou `[e]`.
+Une cellule cible vide utilise le repli. Un fichier absent ou illisible n’est pas modifié ;
+la liste initiale intégrée sert de repli. Les résultats en ligne ne sont jamais ajoutés
+automatiquement. Les tableaux et la base Info_trans sont conservés.
+116 vérifications locales réussies, sans appel réel aux API. Pas encore de version publique 2.1.55.
+
 ## Version 2.1.54 : abréviations ferroviaires dans Info_trans
 
 Info_trans ajoute l’onglet **Abréviations ferroviaires** avec 14 entrées :

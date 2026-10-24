@@ -95,9 +95,12 @@ namespace Ini_Edit___Translate
             if (!Languages.Contains(from) || !Languages.Contains(to)) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
             if (string.IsNullOrWhiteSpace(text) || from == to) return text;
             if (text.Length > 24000) throw new InvalidOperationException(Ui.Text("inputTooLong"));
-            var glossary = RailwayGlossary.Prepare(text, from, to);
-            string translated = await TranslateCoreAsync(glossary.Text, from, to, cancellation).ConfigureAwait(false);
-            string result = glossary.Restore(translated);
+            var dictionary = DefaultDictionary.Load().Prepare(text, from, to);
+            var glossary = RailwayGlossary.Prepare(dictionary.Text, from, to);
+            string remaining = Tokens.Replace(glossary.Text, "");
+            string translated = dictionary.Replacements.Count > 0 && !remaining.Any(char.IsLetter)
+                ? glossary.Text : await TranslateCoreAsync(glossary.Text, from, to, cancellation).ConfigureAwait(false);
+            string result = dictionary.Restore(glossary.Restore(translated));
             ValidateTokens(text, result);
             return result;
         }

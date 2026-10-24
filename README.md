@@ -1,5 +1,24 @@
 # INI Edit Translate 2026
 
+## 2.1.55: externes Standard-Wörterbuch (lokal vorbereitet)
+
+Die 30 Begriffe der Nutzervorlage stehen als UTF-8-CSV mit Semikolon bereit:
+`%LOCALAPPDATA%\UGSo\IET2026\translation-dictionary.csv`.
+Kopfzeile: `Deutsch;ENG;FRA;POL`. Beim ersten Start wird die Datei angelegt,
+vorhandene Dateien werden niemals überschrieben. Eigene Zeilen ergänzen oder
+vorhandene Übersetzungen korrigieren; die nächste Übersetzung liest die Datei neu.
+Externe passende Einträge haben Vorrang vor der eingebauten Liste, den bisherigen
+Modellbegriffen und dem gewählten Online-Anbieter. Mehrwortbegriffe werden als Ganzes
+erkannt, in allen vier Ausgangssprachen. Vollständig abgedeckte Texte benötigen
+keine Online-Anfrage. Unbekannte Eigennamen in Modellnamen bleiben erhalten.
+DR, DB, Konstrukteurskennungen, technische Typen, Unterstrich-Kennungen,
+Versionshinweise und `[e]` können auch durch CSV-Einträge nicht überschrieben werden.
+Fehlende Zielzellen verwenden die Rückfallebene; eine fehlende oder unlesbare Datei
+bleibt unverändert und verwendet die eingebettete Startliste. Online-Ergebnisse
+werden nicht automatisch in die Datei geschrieben. Die CSV ergänzt die Übersetzung;
+die Nachschlagetabellen und Datenbank in Info_trans bleiben erhalten.
+116 lokale Prüfungen bestanden, ohne echte API-Anfragen. Noch kein öffentliches Release 2.1.55.
+
 ## Version 2.1.54: Bahnabkürzung in Info_trans
 
 Info_trans enthält den zusätzlichen Tab **Bahnabkürzung** mit den 14 Einträgen

@@ -46,8 +46,8 @@ namespace Ini_Edit___Translate
             new[] { "left", "links", "gauche", "lewy" },
             new[] { "right", "rechts", "droite", "prawy" }
         };
-        private static Regex Parts(string from) => new Regex(OpenAiTranslation.Tokens.ToString() +
-            @"|[\p{L}\p{N}]+(?:_[\p{L}\p{N}]+)+|" + RailwayGlossary.Pattern(from) +
+        private static Regex Parts(string from, string dictionaryPattern) => new Regex(OpenAiTranslation.Tokens.ToString() +
+            @"|[\p{L}\p{N}]+(?:_[\p{L}\p{N}]+)+|" + dictionaryPattern + "|" + RailwayGlossary.Pattern(from) +
             @"|(?<![\p{L}\p{N}_])\p{L}+(?![\p{L}\p{N}_])", RegexOptions.CultureInvariant);
 
         internal static bool HasDescriptiveWords(string text, string from)
@@ -55,8 +55,12 @@ namespace Ini_Edit___Translate
             int source = Array.IndexOf(OpenAiTranslation.Languages, from);
             if (source < 0) throw new ArgumentException(Ui.Text("unsupportedLanguage"));
             var words = new HashSet<string>(Words.Select(row => row[source]), StringComparer.OrdinalIgnoreCase);
-            return Parts(from).Matches(text ?? "").Cast<Match>().Any(match =>
-                words.Contains(match.Value.Normalize(NormalizationForm.FormC)) || RailwayGlossary.TryTranslate(match.Value, from, "en", out _));
+            var external = DefaultDictionary.Load();
+            return OpenAiTranslation.Languages.Where(to => to != from).Any(to =>
+                Parts(from, external.Pattern(from, to)).Matches(text ?? "").Cast<Match>().Any(match =>
+                    !OpenAiTranslation.Tokens.IsMatch(match.Value) && !match.Value.Contains("_") &&
+                    (external.TryTranslate(match.Value, from, to, out _) || words.Contains(match.Value.Normalize(NormalizationForm.FormC)) ||
+                    RailwayGlossary.TryTranslate(match.Value, from, to, out _))));
         }
 
         internal static string Translate(string text, string from, string to)
@@ -66,8 +70,11 @@ namespace Ini_Edit___Translate
             if (string.IsNullOrEmpty(text) || source == target) return text;
             var dictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             foreach (var row in Words) dictionary.Add(row[source], row[target]);
-            string result = Parts(from).Replace(text, match => {
+            var external = DefaultDictionary.Load();
+            string result = Parts(from, external.Pattern(from, to)).Replace(text, match => {
                 string word = match.Value;
+                if (OpenAiTranslation.Tokens.IsMatch(word) || word.Contains("_")) return word;
+                if (external.TryTranslate(word, from, to, out string preferred)) return preferred;
                 if (RailwayGlossary.TryTranslate(word, from, to, out string term)) return term;
                 if (!dictionary.TryGetValue(word.Normalize(NormalizationForm.FormC), out string translated)) return word;
                 if (word.All(char.IsUpper)) return translated.ToUpperInvariant();

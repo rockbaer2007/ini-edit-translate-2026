@@ -14,7 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <AssemblyVersion>2.1.54.0</AssemblyVersion>
+    <AssemblyVersion>2.1.55.0</AssemblyVersion>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <Install>true</Install>
@@ -27,7 +27,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>2.1.54.0</ApplicationVersion>
+    <ApplicationVersion>2.1.55.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -70,6 +70,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Configuration" />
@@ -131,6 +132,10 @@
     <Compile Include="OpenAiTranslation.cs" />
     <Compile Include="MyMemoryTranslation.cs" />
     <Compile Include="ModelNameTranslation.cs" />
+    <Compile Include="DefaultDictionary.cs" />
+    <EmbeddedResource Include="DefaultDictionary.csv">
+      <LogicalName>IET.DefaultDictionary.csv</LogicalName>
+    </EmbeddedResource>
     <Compile Include="ConstructorIdentifiers.cs" />
     <Compile Include="RailwayGlossary.cs" />
     <EmbeddedResource Include="ConstructorCodes.txt">

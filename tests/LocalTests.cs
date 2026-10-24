@@ -297,6 +297,44 @@ internal static class LocalTests
                 }
                 finally { Directory.Delete(directory, true); }
             });
+            Test("external default dictionary overrides shipped words and retains edits with safe fallback", () =>
+            {
+                string directory = Path.Combine(Path.GetTempPath(), "iet-dictionary-" + Guid.NewGuid().ToString("N"));
+                string file = Path.Combine(directory, "translation-dictionary.csv");
+                try
+                {
+                    DefaultDictionary.EnsureExternalFile(file);
+                    var initial = DefaultDictionary.Load(file);
+                    Assert(initial.TryTranslate("Arbeiter", "de", "pl", out string pl) && pl == "Robotnik", "four-language seed");
+                    Assert(initial.TryTranslate("Police officer", "en", "fr", out string fr) && fr == "Policier", "multiword reverse source");
+                    File.WriteAllText(file, "Deutsch;ENG;FRA;POL\r\nWinter;Custom winter;Mon hiver;Moja zima\r\nHaus;Custom house;;\r\nDR;Wrong;Wrong;Wrong\r\nGK3;Wrong;Wrong;Wrong\r\n", new UTF8Encoding(false));
+                    byte[] original = File.ReadAllBytes(file);
+                    DefaultDictionary.EnsureExternalFile(file);
+                    var custom = DefaultDictionary.Load(file);
+                    Assert(original.SequenceEqual(File.ReadAllBytes(file)), "startup/update never overwrites edits");
+                    Assert(custom.TryTranslate("Winter", "de", "fr", out fr) && fr == "Mon hiver", "external wins over shipped row");
+                    var protectedText = custom.Prepare("Winter DR GK3 (V8) EEP16.2[e]Name_Ident", "de", "fr");
+                    Assert(protectedText.Restore(protectedText.Text) == "Mon hiver DR GK3 (V8) EEP16.2[e]Name_Ident", "immutable controls and IDs win even over external rows");
+                    Fails(() => protectedText.Restore(protectedText.Text.Replace("{IET_DICT_0}", "lost")));
+                    File.WriteAllText(file, "broken;header\n", new UTF8Encoding(false));
+                    Assert(DefaultDictionary.Load(file).TryTranslate("Winter", "de", "fr", out fr) && fr == "Hiver", "malformed file falls back without rewriting");
+                    Assert(File.ReadAllText(file) == "broken;header\n", "bad original retained");
+                    File.Delete(file);
+                    Assert(DefaultDictionary.Load(file).TryTranslate("Arbeiter", "de", "en", out string en) && en == "Worker", "missing file fallback");
+                }
+                finally { if (Directory.Exists(directory)) Directory.Delete(directory, true); }
+            });
+            Test("dictionary-only translations avoid HTTP and descriptive names preserve unknown names", () =>
+            {
+                var handler = new Handler("unexpected network request");
+                using (var service = new OpenAiTranslation(Settings(), handler))
+                {
+                    Assert(Translate(service, "Arbeiter[e]Feuerwehrmann GK3 (V8) EEP16.2", "de", "fr") == "Ouvrier[e]Pompier GK3 (V8) EEP16.2", "direct reviewed French terms");
+                    Assert(handler.Calls == 0, "fully covered text never needs a provider");
+                }
+                Assert(ModelNameTranslation.Translate("Arbeiter Helios GK3[e]Junge", "de", "fr") == "Ouvrier Helios GK3[e]Garçon", "new model words and accents");
+                Assert(ModelNameTranslation.Translate("Police officer Helios", "en", "de") == "Polizist Helios", "longest phrase before individual words");
+            });
             Test("railway model abbreviations use reviewed locale equivalents and preserve types", () =>
             {
                 string source = "GK3 DKW EKW EW ABW IBW BW DR DB (V8)[e]EEP16.2";
@@ -440,7 +478,7 @@ internal static class LocalTests
                         handler.Reply = token =>
                         {
                             string input = (string)handler.Body["input"];
-                            string prefix = input.Contains("_unchanged") || input.StartsWith("set-name-") ? "set-name-" : "description-";
+                            string prefix = input.Contains("_unchanged") || input.StartsWith("bundle-name-") ? "bundle-name-" : "description-";
                             var values = new JObject();
                             foreach (var property in ((JObject)handler.Body["text"]["format"]["schema"]["properties"]).Properties()) values[property.Name] = prefix + property.Name + (input.Contains("V140") ? " V140" : "");
                             var answer = JObject.Parse(Response()); answer["output"][1]["content"][0]["text"] = values.ToString();
@@ -466,7 +504,7 @@ internal static class LocalTests
                             for (int target = 0; target < 4; target++)
                             {
                                 Assert(((Control)typeof(Form1).GetField("n_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
-                                    (section < 0 || target == source ? "DRG V140 " + targetTags[target] + "_unchanged" : "set-name-" + targetLanguages[target] + " V140"), "set title/source field mismatch: " + method);
+                                    (section < 0 || target == source ? "DRG V140 " + targetTags[target] + "_unchanged" : "bundle-name-" + targetLanguages[target] + " V140"), "set title/source field mismatch: " + method);
                                 Assert(((Control)typeof(Form1).GetField("d_" + targetTags[target] + "_" + suffix, flags).GetValue(form)).Text ==
                                     (target == source ? "original-" + tags[source] : "description-" + targetLanguages[target]), "description field mismatch: " + method);
                             }
